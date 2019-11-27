@@ -20,3 +20,22 @@ func TestExample(t *testing.T) {
 		t.Fatalf("expected %d but got %d", expected, actual)
 	}
 }
+
+func TestExampleTwo(t *testing.T) {
+	input := []string{
+		"#1 @ 1,3: 4x4",
+		"#2 @ 3,1: 4x4",
+		"#3 @ 5,5: 2x2",
+	}
+
+	expected := 3
+	actual, err := FindNonOverlappingClaim(input)
+
+	if err != nil {
+		t.Fatalf("expected no errors but got %v", err)
+	}
+
+	if actual != expected {
+		t.Fatalf("expected %d but got %d", expected, actual)
+	}
+}

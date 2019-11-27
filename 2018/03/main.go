@@ -21,7 +21,14 @@ func main() {
 		log.Fatalf("error finding overlaps: %v", err)
 	}
 
-	log.Printf("overlapping inches: %d", overlaps)
+	log.Printf("overlapping inches: %d\n", overlaps)
+
+	claimId, err := FindNonOverlappingClaim(lines)
+	if err != nil {
+		log.Fatalf("error finding non-overlapping claim: %v", err)
+	}
+
+	log.Printf("non-overlapping claim: %d", claimId)
 }
 
 type claim struct {
@@ -42,29 +49,63 @@ func FindOverlaps(input []string) (int, error) {
 		return 0, fmt.Errorf("failed to parse claims: %v", err)
 	}
 
-	visited := make([][]int, 1000)
-	for i := range visited {
-		visited[i] = make([]int, 1000)
-	}
-
-	for _, claim := range claims {
-		for x := claim.X; x < claim.X+claim.W; x++ {
-			for y := claim.Y; y < claim.Y+claim.H; y++ {
-				visited[x][y] = visited[x][y] + 1
-			}
-		}
-	}
+	canvas := draw(claims)
 
 	count := 0
-	for x := range visited {
-		for y := range visited[x] {
-			if visited[x][y] > 1 {
+	for x := range canvas {
+		for y := range canvas[x] {
+			if canvas[x][y] > 1 {
 				count++
 			}
 		}
 	}
 
 	return count, nil
+}
+
+// FindNonOverlappingClaim looks for the claim that does not overlap with any other claim. The resulting claim's ID is returned.
+func FindNonOverlappingClaim(input []string) (int, error) {
+	claims, err := parseClaims(input)
+	if err != nil {
+		return 0, fmt.Errorf("failed to parse claims: %v", err)
+	}
+
+	canvas := draw(claims)
+
+	for _, claim := range claims {
+		overlap := false
+		for x := claim.X; x < claim.X+claim.W; x++ {
+			for y := claim.Y; y < claim.Y+claim.H; y++ {
+				if canvas[x][y] > 1 {
+					overlap = true
+				}
+			}
+		}
+
+		if !overlap {
+			return claim.ID, nil
+		}
+	}
+
+	return 0, fmt.Errorf("no claim found")
+}
+
+// draw creates a 2D canvas that contains the number of claims for each square inch.
+func draw(claims []claim) [][]int {
+	canvas := make([][]int, 1000)
+	for i := range canvas {
+		canvas[i] = make([]int, 1000)
+	}
+
+	for _, claim := range claims {
+		for x := claim.X; x < claim.X+claim.W; x++ {
+			for y := claim.Y; y < claim.Y+claim.H; y++ {
+				canvas[x][y] = canvas[x][y] + 1
+			}
+		}
+	}
+
+	return canvas
 }
 
 func parseClaims(input []string) ([]claim, error) {
