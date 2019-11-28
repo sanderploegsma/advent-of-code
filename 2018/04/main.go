@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"regexp"
@@ -17,56 +16,78 @@ func main() {
 	}
 	lines := strings.Split(string(input), "\n")
 
-	id, minute, err := FindGuardMostAsleep(lines)
-	if err != nil {
-		log.Fatal(err)
-	}
-
+	id, minute := FindGuardMostAsleep(lines)
 	log.Printf("Guard %d sleeps the most. The minute he is most asleep is: %d. %d * %d = %d\n", id, minute, id, minute, id*minute)
+
+	id, minute = FindGuardMostFrequentlyAsleep(lines)
+	log.Printf("Guard %d is asleep most frequently on the same minute (minute %d). %d * %d = %d\n", id, minute, id, minute, id*minute)
 }
 
-// FindGuardMostAsleep looks for the guard that is asleep the most, and returns the guard's ID together with the minute that guard is asleep the most.
-func FindGuardMostAsleep(input []string) (id int, min int, err error) {
-	schedule, err := createSchedule(input)
-	if err != nil {
-		return 0, 0, fmt.Errorf("unable to create schedule from input: %v", err)
-	}
-
-	guard := 0
-	maxTotalMinutesAsleep := 0
-	minuteMostAsleepPerGuard := make(map[int]int)
-
-	for guardId, minutes := range schedule {
-		totalMinutesAsleep := 0
-		minuteMostAsleep := 0
-		maxTimesAsleep := 0
-
-		for i, timesAsleep := range minutes {
-			if timesAsleep > maxTimesAsleep {
-				maxTimesAsleep = timesAsleep
-				minuteMostAsleep = i
-			}
-			totalMinutesAsleep += timesAsleep
-		}
-
-		minuteMostAsleepPerGuard[guardId] = minuteMostAsleep
-
-		if totalMinutesAsleep > maxTotalMinutesAsleep {
-			maxTotalMinutesAsleep = totalMinutesAsleep
-			guard = guardId
-		}
-	}
-
-	return guard, minuteMostAsleepPerGuard[guard], nil
-}
-
-// Schedule contains a count of times a guard is asleep for each minute (0-59) for each guard
+// Schedule contains a count of times a guard is asleep for each minute (0-59) for each guard.
 type Schedule map[int][]int
 
-var newShiftPattern = regexp.MustCompile(".*Guard #(\\d+) begins shift")
+// Statistics describe the sleep patterns of a single guard.
+type Statistics struct {
+	TotalMinutes       int
+	MaxFrequency       int
+	MinuteMostFrequent int
+}
 
-// createSchedule takes the given input and creates a schedule from it
-func createSchedule(input []string) (Schedule, error) {
+// FindGuardMostAsleep looks for the guard that is asleep the most.
+// It returns the ID of the found guard, together with the minute that he is asleep most frequently on.
+func FindGuardMostAsleep(input []string) (guard int, minute int) {
+	schedule := createSchedule(input)
+	stats := createStatistics(schedule)
+
+	maxTotal := 0
+	for id, s := range stats {
+		if s.TotalMinutes > maxTotal {
+			guard = id
+			maxTotal = s.TotalMinutes
+		}
+	}
+
+	return guard, stats[guard].MinuteMostFrequent
+}
+
+// FindGuardMostFrequentlyAsleep looks for the guard that is most frequently asleep on the same minute.
+// It returns the ID of the found guard, together with the minute that he is asleep most frequently on.
+func FindGuardMostFrequentlyAsleep(input []string) (guard int, minute int) {
+	schedule := createSchedule(input)
+	stats := createStatistics(schedule)
+
+	maxFrequency := 0
+	for id, s := range stats {
+		if s.MaxFrequency > maxFrequency {
+			guard = id
+			maxFrequency = s.MaxFrequency
+		}
+	}
+
+	return guard, stats[guard].MinuteMostFrequent
+}
+
+// createStatistics converts the given schedule to a map of statistics per guard.
+func createStatistics(schedule Schedule) map[int]Statistics {
+	result := make(map[int]Statistics)
+	for guardId, minutes := range schedule {
+		stats := Statistics{}
+
+		for minute, frequency := range minutes {
+			if frequency > stats.MaxFrequency {
+				stats.MaxFrequency = frequency
+				stats.MinuteMostFrequent = minute
+			}
+			stats.TotalMinutes += frequency
+		}
+
+		result[guardId] = stats
+	}
+	return result
+}
+
+// createSchedule takes the given input and creates a schedule from it.
+func createSchedule(input []string) Schedule {
 	records := make([]string, len(input))
 	for i := range input {
 		records[i] = input[i]
@@ -78,6 +99,8 @@ func createSchedule(input []string) (Schedule, error) {
 	guard := -1
 	asleep := false
 	schedule := make(Schedule)
+
+	newShiftPattern := regexp.MustCompile(".*Guard #(\\d+) begins shift")
 
 	for len(records) > 0 {
 		record := records[0]
@@ -110,5 +133,5 @@ func createSchedule(input []string) (Schedule, error) {
 		minute = (minute + 1) % 60
 	}
 
-	return schedule, nil
+	return schedule
 }
