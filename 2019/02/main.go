@@ -8,24 +8,28 @@ import (
 )
 
 func main() {
-	input, err := parseInput("input.txt")
+	program, err := parseProgram("input.txt")
 	if err != nil {
 		log.Fatalf("unable to read file: %v", err)
 	}
 
-	// Replace position 1 with the value 12
-	input[1] = 12
-	// Replace position 2 with the value 2
-	input[2] = 2
+	log.Printf("[PART ONE] result: %v", RunProgramWithInput(program, 12, 2))
 
-	log.Printf("[PART ONE] result: %v", PartOne(input))
+	noun, verb := FindNounAndVerb(program, 19690720)
+	log.Printf("[PART TWO] result: 100 * %d + %d = %d", noun, verb, 100*noun+verb)
 }
 
-func PartOne(input []int) []int {
-	result := make([]int, len(input))
-	for i := range input {
-		result[i] = input[i]
+func RunProgram(program []int) []int {
+	return RunProgramWithInput(program, program[1], program[2])
+}
+
+func RunProgramWithInput(program []int, noun, verb int) []int {
+	result := make([]int, len(program))
+	for i := range program {
+		result[i] = program[i]
 	}
+	result[1] = noun
+	result[2] = verb
 
 	index := 0
 	for index <= len(result)-1 {
@@ -53,7 +57,19 @@ func PartOne(input []int) []int {
 	return result
 }
 
-func parseInput(file string) (input []int, err error) {
+func FindNounAndVerb(program []int, outcome int) (noun int, verb int) {
+	for noun := 0; noun < 100; noun++ {
+		for verb := 0; verb < 100; verb++ {
+			result := RunProgramWithInput(program, noun, verb)
+			if result[0] == outcome {
+				return noun, verb
+			}
+		}
+	}
+	return noun, verb
+}
+
+func parseProgram(file string) (input []int, err error) {
 	text, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err

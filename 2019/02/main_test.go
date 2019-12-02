@@ -35,7 +35,7 @@ func TestPartOne(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("program %v yields output %v", test.input, test.expected), func(t *testing.T) {
-			assert.EqualValues(t, test.expected, PartOne(test.input))
+			assert.EqualValues(t, test.expected, RunProgram(test.input))
 		})
 	}
 }
