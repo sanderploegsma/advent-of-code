@@ -1,5 +1,5 @@
 # Advent of Code
-This repository contains my solutions to the yearly [Advent of Code](https://adventofcode) challenges.
+This repository contains my solutions to the yearly [Advent of Code](https://adventofcode.com) challenges.
 
 | Year                     | Language | 
 | -------------------------|----------|
