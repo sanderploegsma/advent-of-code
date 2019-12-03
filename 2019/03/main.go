@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math"
 	"strconv"
 	"strings"
 	"time"
@@ -16,6 +17,11 @@ func main() {
 	result := DistanceToClosestIntersection(paths[0], paths[1])
 	end := time.Since(start)
 	fmt.Printf("[PART ONE] distance to closest intersection: %d (took %s)\n", result, end)
+
+	start = time.Now()
+	result = FewestStepsToIntersection(paths[0], paths[1])
+	end = time.Since(start)
+	fmt.Printf("[PART ONE] fewest steps to intersection: %d (took %s)\n", result, end)
 }
 
 // DistanceToClosestIntersection finds all intersections between the given lines `a` and `b`,
@@ -38,6 +44,32 @@ func DistanceToClosestIntersection(a, b string) int {
 	}
 
 	return closest.DistanceToOrigin()
+}
+
+// FewestStepsToIntersection finds all intersections between the given lines `a` and `b`,
+// and returns the fewest combined steps needed to reach that intersection.
+func FewestStepsToIntersection(a, b string) int {
+	pathA := generatePath(a)
+	pathB := generatePath(b)
+
+	minSteps := math.MaxInt32
+
+	for i := range pathA {
+		for j := range pathB {
+			if !pathA[i].Equals(pathB[j]) {
+				continue
+			}
+
+			// i and j start at 0, but the first point is actually 1 step,
+			// so the steps taken to get to this point is 2 more than i + j
+			steps := i + j + 2
+			if minSteps > steps {
+				minSteps = steps
+			}
+		}
+	}
+
+	return minSteps
 }
 
 // generatePath converts instructions such as 'U1,R2' to a list of points from the origin,
