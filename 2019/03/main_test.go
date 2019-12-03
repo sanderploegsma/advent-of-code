@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestExampleOne(t *testing.T) {
@@ -23,13 +24,8 @@ func TestExampleOne(t *testing.T) {
 		},
 	}
 
-	for i, test := range tests {
-		t.Run(fmt.Sprintf("example %d", i+1), func(t *testing.T) {
-			actual := DistanceToClosestIntersection(test.line1, test.line2)
-			if actual != test.expected {
-				t.Errorf("expected %d but got %d", test.expected, actual)
-			}
-		})
+	for _, test := range tests {
+		assert.Equal(t, test.expected, DistanceToClosestIntersection(test.line1, test.line2))
 	}
 }
 
@@ -51,12 +47,7 @@ func TestExampleTwo(t *testing.T) {
 		},
 	}
 
-	for i, test := range tests {
-		t.Run(fmt.Sprintf("example %d", i+1), func(t *testing.T) {
-			actual := FewestStepsToIntersection(test.line1, test.line2)
-			if actual != test.expected {
-				t.Errorf("expected %d but got %d", test.expected, actual)
-			}
-		})
+	for _, test := range tests {
+		assert.Equal(t, test.expected, FewestStepsToIntersection(test.line1, test.line2))
 	}
 }

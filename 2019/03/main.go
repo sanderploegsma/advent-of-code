@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"math"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/sanderploegsma/advent-of-code/2019/reader"
 )
 
 func main() {
-	input, _ := ioutil.ReadFile("input.txt")
-	paths := strings.Split(string(input), "\n")
+	paths, _ := reader.ReadLines("input.txt")
 
 	start := time.Now()
 	result := DistanceToClosestIntersection(paths[0], paths[1])

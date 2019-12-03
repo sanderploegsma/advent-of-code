@@ -1,18 +1,14 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"strconv"
-	"strings"
+
+	"github.com/sanderploegsma/advent-of-code/2019/reader"
 )
 
 func main() {
-	input, err := ioutil.ReadFile("input.txt")
-	if err != nil {
-		log.Fatalf("unable to read file: %v", err)
-	}
-	lines := strings.Split(string(input), "\n")
+	lines, _ := reader.ReadLines("input.txt")
 	log.Printf("[PART ONE] fuel requirements: %d", PartOne(lines))
 	log.Printf("[PART TWO] fuel requirements: %d", PartTwo(lines))
 }

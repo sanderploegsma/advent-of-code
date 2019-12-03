@@ -1,10 +1,9 @@
 package main
 
 import (
-	"io/ioutil"
+	"github.com/sanderploegsma/advent-of-code/2019/reader"
 	"log"
 	"strconv"
-	"strings"
 )
 
 func main() {
@@ -70,12 +69,12 @@ func FindNounAndVerb(program []int, outcome int) (noun int, verb int) {
 }
 
 func parseProgram(file string) (input []int, err error) {
-	text, err := ioutil.ReadFile(file)
+	items, err := reader.ReadDelim(file, ",")
 	if err != nil {
 		return nil, err
 	}
 
-	for _, item := range strings.Split(string(text), ",") {
+	for _, item := range items {
 		val, err := strconv.Atoi(item)
 		if err != nil {
 			return nil, err
