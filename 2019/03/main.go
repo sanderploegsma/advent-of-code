@@ -21,7 +21,7 @@ func main() {
 	start = time.Now()
 	result = FewestStepsToIntersection(paths[0], paths[1])
 	end = time.Since(start)
-	fmt.Printf("[PART ONE] fewest steps to intersection: %d (took %s)\n", result, end)
+	fmt.Printf("[PART TWO] fewest steps to intersection: %d (took %s)\n", result, end)
 }
 
 // DistanceToClosestIntersection finds all intersections between the given lines `a` and `b`,
