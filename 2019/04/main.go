@@ -35,26 +35,19 @@ func CheckPasswords(start int, end int) (a int, b int) {
 // - Must have two adjacent digits that are the same
 // - Going from left to right, the digits never decrease
 func PasswordMeetsCriteria(password int) bool {
-	str := strconv.Itoa(password)
+	digits := toDigits(password)
 
-	if len(str) != 6 {
+	if len(digits) != 6 {
 		return false
 	}
 
-	prev := 0
-	double := false
-	for i := range str {
-		cur, _ := strconv.Atoi(str[i : i+1])
-		if cur < prev {
-			return false
-		}
-		if cur == prev {
-			double = true
-		}
-		prev = cur
+	if !isAscending(digits) {
+		return false
 	}
 
-	return double
+	return anyMatch(countDigits(digits), func(k, v int) bool {
+		return v >= 2
+	})
 }
 
 // PasswordMeetsCriteria2 checks the given password for the following criteria:
@@ -62,38 +55,62 @@ func PasswordMeetsCriteria(password int) bool {
 // - Must have a group of exactly two adjacent digits that are the same
 // - Going from left to right, the digits never decrease
 func PasswordMeetsCriteria2(password int) bool {
-	str := strconv.Itoa(password)
+	digits := toDigits(password)
 
-	if len(str) != 6 {
+	if len(digits) != 6 {
 		return false
 	}
 
-	prev := 0
-	repeat := 0
-	double := false
-	for i := range str {
-		cur, _ := strconv.Atoi(str[i : i+1])
-		if cur < prev {
-			return false
-		}
-
-		if cur > prev {
-			if repeat == 2 {
-				double = true
-			}
-			repeat = 1
-		}
-
-		if cur == prev {
-			repeat++
-		}
-
-		if i == len(str)-1 && repeat == 2 {
-			return true
-		}
-
-		prev = cur
+	if !isAscending(digits) {
+		return false
 	}
 
-	return double
+	return anyMatch(countDigits(digits), func(k, v int) bool {
+		return v == 2
+	})
+}
+
+// toDigits converts the given password to a list of digits.
+// Example: 12345 => [1, 2, 3, 4, 5]
+func toDigits(password int) []int {
+	str := strconv.Itoa(password)
+	digits := make([]int, len(str))
+
+	for i := range str {
+		digits[i], _ = strconv.Atoi(string(str[i]))
+	}
+
+	return digits
+}
+
+// isAscending checks if the given list of digits never descends.
+func isAscending(digits []int) bool {
+	for i := 1; i < len(digits); i++ {
+		if digits[i-1] > digits[i] {
+			return false
+		}
+	}
+
+	return true
+}
+
+// countDigits counts occurrences of each digit the given list, and returns a map of digits and their respective counts.
+func countDigits(digits []int) map[int]int {
+	count := make(map[int]int)
+
+	for _, d := range digits {
+		count[d]++
+	}
+
+	return count
+}
+
+// anyMatch checks each key-value pair of the given map and returns true if any of them match the given predicate. If none match, it returns false.
+func anyMatch(count map[int]int, pred func(k, v int) bool) bool {
+	for k, v := range count {
+		if pred(k, v) {
+			return true
+		}
+	}
+	return false
 }

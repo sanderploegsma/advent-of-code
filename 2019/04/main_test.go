@@ -7,9 +7,9 @@ import (
 )
 
 func TestPartOne(t *testing.T) {
-	assert.True(t, PasswordMeetsCriteria(111111))
-	assert.False(t, PasswordMeetsCriteria(223450))
-	assert.False(t, PasswordMeetsCriteria(123789))
+	assert.True(t, PasswordMeetsCriteria(111111), "%d should meet criteria", 111111)
+	assert.False(t, PasswordMeetsCriteria(223450), "%d should not meet criteria", 223450)
+	assert.False(t, PasswordMeetsCriteria(123789), "%d should not meet criteria", 123789)
 }
 
 func TestPartTwo(t *testing.T) {

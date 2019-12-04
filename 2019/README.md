@@ -25,15 +25,9 @@ Also, it took me a while to get the second part working. What didn't help is tha
 I'm still pondering whether there is a nice way of doing this challenge without converting the input to strings and looping over each digit. Something like this might work, but I'm not sure if I like it:
 
 ```go
-func PasswordMeetsCriteria(password int) bool {
-  // Password should have exactly 6 digits
-  if password < 100000 && password > 999999 {
-    return false
-  }
-
+func toDigits(password int) []int {
+  digits := make([]int, 0)
   remainder := password
-  prev := -1
-  double := false
 
   // idea: calculate the digit using this formula:
   //
@@ -51,23 +45,25 @@ func PasswordMeetsCriteria(password int) bool {
     // Not sure if this even compiles because math.Pow10(i) returns a float.
     // For sake of argument, let's pretend it returns an int
     val := remainder % math.Pow10(i+1)
-    digit := val / math.Pow10(i)
-
-    // We are looping from right to left, so we have to switch the comparison from > to <
-    if i > 0 && prev < digit {
-      return false
-    }
-
-    if i > 0 && prev == digit {
-      double = true
-    }
-
-    if i == 0
+    digits = append(digits, val / math.Pow10(i))
 
     remainder = remainder - val
-    prev = digit
   }
 
-  return double
+  // digits contains digits from right-to-left, so we have to reverse them
+  for i := len(digits)/2-1; i >= 0; i-- {
+    opp := len(digits)-1-i
+    digits[i], digits[opp] = digits[opp], digits[i]
+  }
+
+  return digits
 }
+```
+
+**Update:** my colleagues pointed out that because digits have to be ascending, checking if a password contains two adjacent digits is as easy as checking if they occur two times. This makes the code much easier to reason about, which is why I rewrote it.
+
+Note that this solution aims for readability and not performance, because it loops many more times than actually needed. Specifically the `isAscending` and `countDigits` functions could have been combined, but what would have been the signature? I don't really like this:
+
+```go
+func countDigitsAndCheckIfAscending(digits []int) (map[int]int, bool) {}
 ```
