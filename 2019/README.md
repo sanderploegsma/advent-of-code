@@ -4,9 +4,17 @@ This is my first year participating in Advent of Code! To make matters worse, I 
 
 Anyway, if anyone is reading this, feel free to let me know if I did something horribly wrong (or stupid). I am always eager to learn!
 
-## Solutions
+## Notes
 
 I will try and maintain notes for particular challenges if I think they are worth sharing.
+
+### Day 01
+
+Initially, I went down the same path as a lot of other solutions by using an imperative way of calculating the fuel needed in part two. However, using recursion makes a lot more sense, while also improving the readability of the code.
+
+### Day 03
+
+I guess there must be a less naive way of doing this, because my current setup takes a whopping _24 seconds_ on average to calculate the result. However, it is pretty readable IMO. Curious to see if a more performant solution is as easy to follow.
 
 ### Day 04
 
