@@ -88,7 +88,7 @@ func PasswordMeetsCriteria2(password int) bool {
 			repeat++
 		}
 
-		if i == len(str)-1 && (repeat == 2 || double) {
+		if i == len(str)-1 && repeat == 2 {
 			return true
 		}
 
