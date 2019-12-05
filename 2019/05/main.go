@@ -7,7 +7,7 @@ import (
 	"github.com/sanderploegsma/advent-of-code/2019/reader"
 )
 
-var numberOfParameters = map[int]int{1: 3, 2: 3, 3: 1, 4: 1, 99: 0}
+var numberOfParameters = map[int]int{1: 3, 2: 3, 3: 1, 4: 1, 5: 2, 6: 2, 7: 3, 8: 3, 99: 0}
 
 func main() {
 	input, _ := reader.ReadDelim("input.txt", ",")
@@ -16,17 +16,25 @@ func main() {
 		instructions[i], _ = strconv.Atoi(input[i])
 	}
 
+	for o := range RunWithInput(instructions, 1) {
+		fmt.Printf("[PART 1] Output: %d\n", o)
+	}
+
+	for o := range RunWithInput(instructions, 5) {
+		fmt.Printf("[PART 2] Output: %d\n", o)
+	}
+}
+
+func RunWithInput(instructions []int, input int) chan int {
 	in := make(chan int)
 	out := make(chan int)
 
 	go RunProgram(instructions, in, out)
 
-	in <- 1
+	in <- input
 	close(in)
 
-	for o := range out {
-		fmt.Printf("Output: %d\n", o)
-	}
+	return out
 }
 
 func RunProgram(instructions []int, input <-chan int, output chan<- int) {
@@ -43,31 +51,75 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 		}
 
 		if opcode == 1 {
-			x := ReadParameter(buf, i+1, modes[0])
-			y := ReadParameter(buf, i+2, modes[1])
-			pos := buf[i+3]
-			buf[pos] = x + y
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			p3 := buf[i+3]
+			buf[p3] = p1 + p2
 			i += 4
 		}
 
 		if opcode == 2 {
-			x := ReadParameter(buf, i+1, modes[0])
-			y := ReadParameter(buf, i+2, modes[1])
-			pos := buf[i+3]
-			buf[pos] = x * y
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			p3 := buf[i+3]
+			buf[p3] = p1 * p2
 			i += 4
 		}
 
 		if opcode == 3 {
-			pos := buf[i+1]
-			buf[pos] = <-input
+			p1 := buf[i+1]
+			buf[p1] = <-input
 			i += 2
 		}
 
 		if opcode == 4 {
-			p := ReadParameter(buf, i+1, modes[0])
-			output <- p
+			p1 := ReadParameter(buf, i+1, modes[0])
+			output <- p1
 			i += 2
+		}
+
+		if opcode == 5 {
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			if p1 != 0 {
+				i = p2
+			} else {
+				i += 3
+			}
+		}
+
+		if opcode == 6 {
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			if p1 == 0 {
+				i = p2
+			} else {
+				i += 3
+			}
+		}
+
+		if opcode == 7 {
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			p3 := buf[i+3]
+			if p1 < p2 {
+				buf[p3] = 1
+			} else {
+				buf[p3] = 0
+			}
+			i += 4
+		}
+
+		if opcode == 8 {
+			p1 := ReadParameter(buf, i+1, modes[0])
+			p2 := ReadParameter(buf, i+2, modes[1])
+			p3 := buf[i+3]
+			if p1 == p2 {
+				buf[p3] = 1
+			} else {
+				buf[p3] = 0
+			}
+			i += 4
 		}
 	}
 }
