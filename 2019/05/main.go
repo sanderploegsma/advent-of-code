@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/sanderploegsma/advent-of-code/2019/reader"
 )
@@ -16,13 +17,17 @@ func main() {
 		instructions[i], _ = strconv.Atoi(input[i])
 	}
 
+	start := time.Now()
 	for o := range RunWithInput(instructions, 1) {
 		fmt.Printf("[PART 1] Output: %d\n", o)
 	}
+	fmt.Printf("[PART 1] took %s\n", time.Since(start))
 
+	start = time.Now()
 	for o := range RunWithInput(instructions, 5) {
 		fmt.Printf("[PART 2] Output: %d\n", o)
 	}
+	fmt.Printf("[PART 2] took %s\n", time.Since(start))
 }
 
 func RunWithInput(instructions []int, input int) chan int {
@@ -46,39 +51,28 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 	for i <= len(buf)-1 {
 		opcode, modes := ParseOpcode(buf[i])
 
-		if opcode == 99 {
-			break
-		}
-
-		if opcode == 1 {
+		switch opcode {
+		case 1:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			p3 := buf[i+3]
 			buf[p3] = p1 + p2
 			i += 4
-		}
-
-		if opcode == 2 {
+		case 2:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			p3 := buf[i+3]
 			buf[p3] = p1 * p2
 			i += 4
-		}
-
-		if opcode == 3 {
+		case 3:
 			p1 := buf[i+1]
 			buf[p1] = <-input
 			i += 2
-		}
-
-		if opcode == 4 {
+		case 4:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			output <- p1
 			i += 2
-		}
-
-		if opcode == 5 {
+		case 5:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			if p1 != 0 {
@@ -86,9 +80,7 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 			} else {
 				i += 3
 			}
-		}
-
-		if opcode == 6 {
+		case 6:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			if p1 == 0 {
@@ -96,9 +88,7 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 			} else {
 				i += 3
 			}
-		}
-
-		if opcode == 7 {
+		case 7:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			p3 := buf[i+3]
@@ -108,9 +98,7 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 				buf[p3] = 0
 			}
 			i += 4
-		}
-
-		if opcode == 8 {
+		case 8:
 			p1 := ReadParameter(buf, i+1, modes[0])
 			p2 := ReadParameter(buf, i+2, modes[1])
 			p3 := buf[i+3]
@@ -120,6 +108,11 @@ func RunProgram(instructions []int, input <-chan int, output chan<- int) {
 				buf[p3] = 0
 			}
 			i += 4
+		case 99:
+			return
+		default:
+			fmt.Printf("Unknown opcode %d, stopping!", opcode)
+			return
 		}
 	}
 }
