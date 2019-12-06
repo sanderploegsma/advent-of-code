@@ -33,17 +33,17 @@ func Checksum(input []string) int {
 	queue = append(queue, Object{"COM", 0})
 
 	for len(queue) > 0 {
-		nextUp := queue[0]
+		i := queue[0]
 		queue = queue[1:]
 
-		visited[nextUp.Name] = true
-		checksum += nextUp.Level
+		visited[i.Name] = true
+		checksum += i.Level
 
-		children := FindOrbits(input, nextUp.Name)
-		if len(children) > 0 {
-			for _, child := range children {
-				if !visited[child] {
-					queue = append(queue, Object{child, nextUp.Level + 1})
+		neighbours := FindNeighbours(input, i.Name)
+		if len(neighbours) > 0 {
+			for _, n := range neighbours {
+				if !visited[n] {
+					queue = append(queue, Object{n, i.Level + 1})
 				}
 			}
 		}
@@ -62,18 +62,20 @@ func Traverse(input []string, src, dest string) int {
 	dist[src] = 0
 
 	for len(queue) > 0 {
-		nextUp := queue[0]
+		i := queue[0]
 		queue = queue[1:]
 
-		visited[nextUp] = true
-		children := FindOrbits(input, nextUp)
-		if len(children) > 0 {
-			for _, child := range children {
-				if !visited[child] {
-					if d, ok := dist[child]; !ok || d > dist[nextUp]+1 {
-						dist[child] = dist[nextUp] + 1
+		visited[i] = true
+		neighbours := FindNeighbours(input, i)
+		if len(neighbours) > 0 {
+			relativeDist := dist[i] + 1
+
+			for _, n := range neighbours {
+				if !visited[n] {
+					if d, ok := dist[n]; !ok || d > relativeDist {
+						dist[n] = relativeDist
 					}
-					queue = append(queue, child)
+					queue = append(queue, n)
 				}
 			}
 		}
@@ -82,7 +84,7 @@ func Traverse(input []string, src, dest string) int {
 	return dist[dest] - 2
 }
 
-func FindOrbits(orbits []string, obj string) []string {
+func FindNeighbours(orbits []string, obj string) []string {
 	result := make([]string, 0)
 	for i := range orbits {
 		if strings.HasPrefix(orbits[i], obj) {
