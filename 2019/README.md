@@ -67,3 +67,9 @@ Note that this solution aims for readability and not performance, because it loo
 ```go
 func countDigitsAndCheckIfAscending(digits []int) (map[int]int, bool) {}
 ```
+
+### Day 05
+
+"Oh cool, I can use channels for the input and output!" - Me
+
+I kind of liked this challenge. Granted, there was a bit of copying and pasting going on to get all of the opcodes in there, and for a minute I was trying to find a way to repeat myself less. The only real headache I got from this puzzle was figuring out when I had to use the read modes w.r.t. the third parameters of some opcodes (the one telling you which index to write to).
