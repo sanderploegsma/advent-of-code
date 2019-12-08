@@ -5,17 +5,17 @@ const val height = 6
 
 fun main() {
     val input = File("input.txt").useLines { it.toList()[0] }.map { it.toString().toInt() }
-    val image = input.chunked(width * height).map { it.chunked(width) }
+    val layers = input.chunked(width * height)
 
     // Part 1
-    val leastZeroes = image.minBy { layer -> layer.flatten().count { it == 0 } }!!
-    val ones = leastZeroes.flatten().filter { it == 1 }.count()
-    val twos = leastZeroes.flatten().filter { it == 2 }.count()
+    val leastZeroes = layers.minBy { layer -> layer.count { it == 0 } }!!
+    val ones = leastZeroes.count { it == 1 }
+    val twos = leastZeroes.count { it == 2 }
     println(ones * twos)
 
     // Part 2
-    val result = image.reduce { img, layer ->
-        img.flatten().zip(layer.flatten()).map { (a, b) -> if (a < 2) a else b }.chunked(width)
+    val image = layers.reduce { img, layer ->
+        img.zip(layer).map { (a, b) -> if (a < 2) a else b }
     }
-    result.forEach { println(it) }
+    image.chunked(width).forEach { println(it) }
 }
