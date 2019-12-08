@@ -10,7 +10,7 @@ fun main() {
     // Part 1
     val leastZeroes = image.minBy { layer -> layer.flatten().count { it == 0 } }!!
     val ones = leastZeroes.flatten().filter { it == 1 }.count()
-    val twos = leastZeroes.flatten().filter { it == 1 }.count()
+    val twos = leastZeroes.flatten().filter { it == 2 }.count()
     println(ones * twos)
 
     // Part 2
