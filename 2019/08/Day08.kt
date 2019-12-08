@@ -9,13 +9,15 @@ fun main() {
 
     // Part 1
     val leastZeroes = layers.minBy { layer -> layer.count { it == 0 } }!!
-    val ones = leastZeroes.count { it == 1 }
-    val twos = leastZeroes.count { it == 2 }
-    println(ones * twos)
+    println(leastZeroes.count { it == 1 } * leastZeroes.count { it == 2 })
 
     // Part 2
-    val image = layers.reduce { img, layer ->
-        img.zip(layer).map { (a, b) -> if (a < 2) a else b }
-    }
-    image.chunked(width).forEach { println(it) }
+    val image = layers
+            .reduce { img, layer -> img.zip(layer).map { (a, b) -> if (a < 2) a else b } }
+            .map { if (it == 1) '█' else ' ' }
+            .chunked(width)
+            .map { it.joinToString("") }
+            .joinToString("\n")
+
+    println(image)
 }
