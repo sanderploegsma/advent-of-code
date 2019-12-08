@@ -14,19 +14,8 @@ fun main() {
     println(ones * twos)
 
     // Part 2
-    val result = image.reduce { img, layer -> overlay(img, layer) }
-    result.forEach { println(it) }
-}
-
-fun overlay(a: List<List<Int>>, b: List<List<Int>>): List<List<Int>> {
-    val result = mutableListOf<List<Int>>()
-    for (i in 0 until height) {
-        val row = mutableListOf<Int>()
-        for (j in 0 until width) {
-            val res = if (a[i][j] < 2) a[i][j] else b[i][j]
-            row.add(res)
-        }
-        result.add(row)
+    val result = image.reduce { img, layer ->
+        img.flatten().zip(layer.flatten()).map { (a, b) -> if (a < 2) a else b }.chunked(width)
     }
-    return result
+    result.forEach { println(it) }
 }
