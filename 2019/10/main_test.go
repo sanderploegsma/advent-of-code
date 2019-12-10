@@ -21,8 +21,8 @@ func TestPartOne(t *testing.T) {
 .#....####
 	`
 
-	grid := ParseGrid(strings.TrimSpace(input))
-	p, num := PartOne(grid)
+	asteroids := ParseInput(strings.TrimSpace(input))
+	p, num := PartOne(asteroids)
 
 	assert.Equal(t, 5, p.x)
 	assert.Equal(t, 8, p.y)
@@ -53,8 +53,8 @@ func TestPartTwo(t *testing.T) {
 ###.##.####.##.#..##
 `
 
-	asteroids := ParseGrid(strings.TrimSpace(input))
-	destroyed := PartTwo(asteroids, point{11, 13})
+	asteroids := ParseInput(strings.TrimSpace(input))
+	destroyed := PartTwo(asteroids, Point{11, 13})
 
 	assert.Equal(t, 11, destroyed[0].x)
 	assert.Equal(t, 12, destroyed[0].y)

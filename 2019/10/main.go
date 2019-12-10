@@ -12,33 +12,38 @@ import (
 
 func main() {
 	input, _ := reader.ReadFile("input.txt")
-	grid := ParseGrid(input)
+	asteroids := ParseInput(input)
+
 	start := time.Now()
-	p, num := PartOne(grid)
+	p, num := PartOne(asteroids)
 	fmt.Printf("[PART ONE] position (%d, %d) can detect %d asteroids (took %s)\n", p.x, p.y, num, time.Since(start))
 
 	start = time.Now()
-	destroyed := PartTwo(grid, p)
+	destroyed := PartTwo(asteroids, p)
 	fmt.Printf("[PART TWO] 200th destroyed asteroid: (%d, %d) (took %s)\n", destroyed[199].x, destroyed[199].y, time.Since(start))
 }
 
-type point struct{ x, y int }
+// Point describes a point in a 2-dimensional plane
+type Point struct{ x, y int }
 
-func (p *point) DistanceTo(o point) float64 {
+// DistanceTo returns the distance between this point and the given other point
+func (p *Point) DistanceTo(o Point) float64 {
 	return math.Sqrt(math.Pow(float64(p.x-o.x), 2) + math.Pow(float64(p.y-o.y), 2))
 }
 
-func (p *point) AngleTo(o point) float64 {
+// AngleTo returns the angle in radians of the other point w.r.t. this point
+func (p *Point) AngleTo(o Point) float64 {
 	return math.Atan2(float64(o.x-p.x), float64(o.y-p.y))
 }
 
-func ParseGrid(input string) (asteroids []point) {
+// ParseInput parses the given input into a list of points
+func ParseInput(input string) (asteroids []Point) {
 	rows := strings.Split(input, "\n")
 
 	for y, row := range rows {
 		for x := 0; x < len(rows[0]); x++ {
 			if string(row[x]) == "#" {
-				asteroids = append(asteroids, point{x, y})
+				asteroids = append(asteroids, Point{x, y})
 			}
 		}
 	}
@@ -46,7 +51,8 @@ func ParseGrid(input string) (asteroids []point) {
 	return asteroids
 }
 
-func PartOne(asteroids []point) (p point, num int) {
+// PartOne - Find the asteroid that can detect the most other asteroids (ones that are directly in its line of sight)
+func PartOne(asteroids []Point) (p Point, num int) {
 	for _, a := range asteroids {
 		slopes := make([]float64, 0)
 		for _, b := range asteroids {
@@ -76,8 +82,9 @@ func PartOne(asteroids []point) (p point, num int) {
 	return p, num
 }
 
-func PartTwo(asteroids []point, origin point) (destroyed []point) {
-	targets := make(map[float64][]point)
+// PartTwo - Destroy all other asteroids with a laser mounted on the given origin.
+func PartTwo(asteroids []Point, origin Point) (destroyed []Point) {
+	targets := make(map[float64][]Point)
 	for _, a := range asteroids {
 		if a.x == origin.x && a.y == origin.y {
 			continue
@@ -86,7 +93,7 @@ func PartTwo(asteroids []point, origin point) (destroyed []point) {
 		// Calculate the angle wrt origin, offsetting by 45 degrees so that directly upwards counts as 0. Also, since radians go counter-clockwise, multiply by -1
 		angle := (origin.AngleTo(a) - 0.5*math.Pi) * -1
 		if _, ok := targets[angle]; !ok {
-			targets[angle] = make([]point, 0)
+			targets[angle] = make([]Point, 0)
 		}
 
 		targets[angle] = append(targets[angle], a)
