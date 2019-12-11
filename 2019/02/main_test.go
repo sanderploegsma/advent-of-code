@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestPartOne(t *testing.T) {
@@ -34,8 +34,6 @@ func TestPartOne(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run(fmt.Sprintf("program %v yields output %v", test.input, test.expected), func(t *testing.T) {
-			assert.EqualValues(t, test.expected, RunProgram(test.input))
-		})
+		assert.EqualValues(t, test.expected, RunProgram(test.input))
 	}
 }

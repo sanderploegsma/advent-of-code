@@ -2,19 +2,17 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"os"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 )
 
-var numberOfParameters = map[int]int{1: 3, 2: 3, 3: 1, 4: 1, 5: 2, 6: 2, 7: 3, 8: 3, 99: 0}
-
 func main() {
-	input, _ := reader.ReadDelim("input.txt", ",")
-	instructions := make([]int, len(input))
-	for i := range input {
-		instructions[i], _ = strconv.Atoi(input[i])
+	instructions, err := intcode.ReadInstructions("input.txt")
+	if err != nil {
+		fmt.Printf("failed to read input: %v\n", err)
+		os.Exit(1)
 	}
 
 	start := time.Now()
@@ -64,141 +62,31 @@ func generateCombinations(items []int) (c [][]int) {
 }
 
 func RunWithPhases(instructions []int, phases []int, loop bool) (out int) {
-	a := &amp{Input: make(chan int), Output: make(chan int)}
-	b := &amp{Input: a.Output, Output: make(chan int)}
-	c := &amp{Input: b.Output, Output: make(chan int)}
-	d := &amp{Input: c.Output, Output: make(chan int)}
-	e := &amp{Input: d.Output, Output: make(chan int)}
+	a := intcode.NewComputer(make(chan int), make(chan int), instructions)
+	b := intcode.NewComputer(a.Out, make(chan int), instructions)
+	c := intcode.NewComputer(b.Out, make(chan int), instructions)
+	d := intcode.NewComputer(c.Out, make(chan int), instructions)
+	e := intcode.NewComputer(d.Out, make(chan int), instructions)
 
-	go a.runProgram(instructions)
-	go b.runProgram(instructions)
-	go c.runProgram(instructions)
-	go d.runProgram(instructions)
-	go e.runProgram(instructions)
+	go b.Run()
+	go a.Run()
+	go d.Run()
+	go c.Run()
+	go e.Run()
 
-	a.Input <- phases[0]
-	b.Input <- phases[1]
-	c.Input <- phases[2]
-	d.Input <- phases[3]
-	e.Input <- phases[4]
+	a.In <- int(phases[0])
+	b.In <- int(phases[1])
+	c.In <- int(phases[2])
+	d.In <- int(phases[3])
+	e.In <- int(phases[4])
 
-	a.Input <- 0
+	a.In <- 0
 
 	for {
-		o := <-e.Output
+		o := <-e.Out
 		if !loop || a.Finished {
-			return o
+			return int(o)
 		}
-		a.Input <- o
+		a.In <- o
 	}
-}
-
-type amp struct {
-	Input    chan int
-	Output   chan int
-	Finished bool
-}
-
-func (a *amp) runProgram(instructions []int) {
-	defer close(a.Output)
-	buf := make([]int, len(instructions))
-	copy(buf, instructions)
-
-	i := 0
-	for i <= len(buf)-1 {
-		opcode, modes := parseOpcode(buf[i])
-
-		switch opcode {
-		case 1:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			p3 := buf[i+3]
-			buf[p3] = p1 + p2
-			i += 4
-		case 2:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			p3 := buf[i+3]
-			buf[p3] = p1 * p2
-			i += 4
-		case 3:
-			p1 := buf[i+1]
-			buf[p1] = <-a.Input
-			i += 2
-		case 4:
-			p1 := readParameter(buf, i+1, modes[0])
-			a.Output <- p1
-			i += 2
-		case 5:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			if p1 != 0 {
-				i = p2
-			} else {
-				i += 3
-			}
-		case 6:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			if p1 == 0 {
-				i = p2
-			} else {
-				i += 3
-			}
-		case 7:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			p3 := buf[i+3]
-			if p1 < p2 {
-				buf[p3] = 1
-			} else {
-				buf[p3] = 0
-			}
-			i += 4
-		case 8:
-			p1 := readParameter(buf, i+1, modes[0])
-			p2 := readParameter(buf, i+2, modes[1])
-			p3 := buf[i+3]
-			if p1 == p2 {
-				buf[p3] = 1
-			} else {
-				buf[p3] = 0
-			}
-			i += 4
-		case 99:
-			a.Finished = true
-			return
-		default:
-			fmt.Printf("Unknown opcode %d (original %d), stopping!\n", opcode, buf[i])
-			a.Finished = true
-			return
-		}
-	}
-}
-
-func readParameter(buf []int, pos int, mode int) int {
-	if mode == 0 {
-		return buf[buf[pos]]
-	}
-
-	return buf[pos]
-}
-
-func parseOpcode(input int) (opcode int, modes []int) {
-	opcode = input
-	str := strconv.Itoa(input)
-
-	if len(str) >= 2 {
-		opcode, _ = strconv.Atoi(str[len(str)-2:])
-		for i := len(str) - 3; i >= 0; i-- {
-			mode, _ := strconv.Atoi(string(str[i]))
-			modes = append(modes, mode)
-		}
-	}
-
-	for i := len(modes); i < numberOfParameters[opcode]; i++ {
-		modes = append(modes, 0)
-	}
-
-	return opcode, modes
 }
