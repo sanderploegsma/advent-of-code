@@ -70,11 +70,11 @@ func (c *Computer) Run() {
 		case output:
 			c.Out <- params[0]
 		case jumpIfTrue:
-			if params[0] != 0 {
+			if itob(params[0]) {
 				i = params[1]
 			}
 		case jumpIfFalse:
-			if params[0] == 0 {
+			if !itob(params[0]) {
 				i = params[1]
 			}
 		case lessThan:
@@ -145,4 +145,11 @@ func btoi(b bool) int {
 		return 1
 	}
 	return 0
+}
+
+func itob(i int) bool {
+	if i != 0 {
+		return true
+	}
+	return false
 }
