@@ -2,20 +2,41 @@ package intcode
 
 import (
 	"fmt"
-	"strconv"
 )
 
-var numberOfParameters = map[int]int{
-	1:  3,
-	2:  3,
-	3:  1,
-	4:  1,
-	5:  2,
-	6:  2,
-	7:  3,
-	8:  3,
-	9:  1,
-	99: 0,
+type opCode int
+
+const (
+	add         opCode = 1
+	multiply    opCode = 2
+	input       opCode = 3
+	output      opCode = 4
+	jumpIfTrue  opCode = 5
+	jumpIfFalse opCode = 6
+	lessThan    opCode = 7
+	equals      opCode = 8
+	adjust      opCode = 9
+	halt        opCode = 99
+)
+
+type paramType int
+
+const (
+	read  paramType = 0
+	write paramType = 1
+)
+
+var parameters = map[opCode][]paramType{
+	add:         []paramType{read, read, write},
+	multiply:    []paramType{read, read, write},
+	input:       []paramType{write},
+	output:      []paramType{read},
+	jumpIfTrue:  []paramType{read, read},
+	jumpIfFalse: []paramType{read, read},
+	lessThan:    []paramType{read, read, write},
+	equals:      []paramType{read, read, write},
+	adjust:      []paramType{read},
+	halt:        []paramType{},
 }
 
 type Computer struct {
@@ -36,84 +57,42 @@ func (c *Computer) Run() {
 	i := 0
 	offset := 0
 	for !c.Finished {
-		opcode, modes := parseOpcode(c.get(i))
+		opcode, params := c.instruction(i, offset)
+		i += len(params) + 1
 
 		switch opcode {
-		case 1:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			p3 := c.readParameter(i+3, offset, modes[2], true)
-			// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, p1+p2, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-			c.set(p3, p1+p2)
-			i += 4
-		case 2:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			p3 := c.readParameter(i+3, offset, modes[2], true)
-			// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, p1*p2, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-			c.set(p3, p1*p2)
-			i += 4
-		case 3:
-			p1 := c.readParameter(i+1, offset, modes[0], true)
+		case add:
+			c.set(params[2], params[0]+params[1])
+		case multiply:
+			c.set(params[2], params[0]*params[1])
+		case input:
 			in := <-c.In
-			// fmt.Printf("i=%d [%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d))\n", i, c.get(i), c.get(i+1), p1, in, opcode, p1, modes[0])
-			c.set(p1, in)
-			i += 2
-		case 4:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			// fmt.Printf("i=%d [%d,%d] OUT: %d (code: %d, p1: %d (mode %d))\n", i, c.get(i), c.get(i+1), p1, opcode, p1, modes[0])
-			c.Out <- p1
-			i += 2
-		case 5:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			if p1 != 0 {
-				// fmt.Printf("i=%d [%d,%d,%d] GOTO: %d (code: %d, p1: %d (mode %d), p2: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), p2, opcode, p1, modes[0], p2, modes[1])
-				i = p2
-			} else {
-				// fmt.Printf("i=%d [%d,%d,%d] GOTO: %d (code: %d, p1: %d (mode %d), p2: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), i+3, opcode, p1, modes[0], p2, modes[1])
-				i += 3
+			c.set(params[0], in)
+		case output:
+			c.Out <- params[0]
+		case jumpIfTrue:
+			if params[0] != 0 {
+				i = params[1]
 			}
-		case 6:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			if p1 == 0 {
-				// fmt.Printf("i=%d [%d,%d,%d] GOTO: %d (code: %d, p1: %d (mode %d), p2: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), p2, opcode, p1, modes[0], p2, modes[1])
-				i = p2
-			} else {
-				// fmt.Printf("i=%d [%d,%d,%d] GOTO: %d (code: %d, p1: %d (mode %d), p2: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), i+3, opcode, p1, modes[0], p2, modes[1])
-				i += 3
+		case jumpIfFalse:
+			if params[0] == 0 {
+				i = params[1]
 			}
-		case 7:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			p3 := c.readParameter(i+3, offset, modes[2], true)
-			if p1 < p2 {
-				// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, 1, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-				c.set(p3, 1)
+		case lessThan:
+			if params[0] < params[1] {
+				c.set(params[2], 1)
 			} else {
-				// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, 0, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-				c.set(p3, 0)
+				c.set(params[2], 0)
 			}
-			i += 4
-		case 8:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			p2 := c.readParameter(i+2, offset, modes[1], false)
-			p3 := c.readParameter(i+3, offset, modes[2], true)
-			if p1 == p2 {
-				// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, 1, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-				c.set(p3, 1)
+		case equals:
+			if params[0] == params[1] {
+				c.set(params[2], 1)
 			} else {
-				// fmt.Printf("i=%d [%d,%d,%d,%d] SET: %d=%d (code: %d, p1: %d (mode %d), p2: %d (mode %d), p3: %d (mode %d))\n", i, c.get(i), c.get(i+1), c.get(i+2), c.get(i+3), p3, 0, opcode, p1, modes[0], p2, modes[1], p3, modes[2])
-				c.set(p3, 0)
+				c.set(params[2], 0)
 			}
-			i += 4
-		case 9:
-			p1 := c.readParameter(i+1, offset, modes[0], false)
-			// fmt.Printf("i=%d [%d,%d] BASE: +%d (%d) (code: %d, p1: %d (mode %d))\n", i, c.get(i), c.get(i+1), p1, offset+p1, opcode, p1, modes[0])
-			offset += p1
-			i += 2
-		case 99:
+		case adjust:
+			offset += params[0]
+		case halt:
 			c.Finished = true
 			return
 		default:
@@ -141,35 +120,31 @@ func (c *Computer) checkSize(addr int) {
 	}
 }
 
-func (c *Computer) readParameter(pos int, offset int, mode int, isWrite bool) int {
-	if mode == 0 && !isWrite {
+func (c *Computer) instruction(position, offset int) (opCode, []int) {
+	input := c.get(position)
+	opcode := opCode(input % 100)
+	modes := (input - int(opcode)) / 100
+
+	params := make([]int, 0)
+	for i, t := range parameters[opcode] {
+		mode := modes % 10
+		params = append(params, c.readParameter(position+i+1, offset, mode, t))
+		modes = (modes - mode) / 10
+	}
+
+	return opcode, params
+}
+
+func (c *Computer) readParameter(pos int, offset int, mode int, t paramType) int {
+	if mode == 0 && t == read {
 		return c.get(c.get(pos))
 	}
-	if mode == 2 && !isWrite {
+	if mode == 2 && t == read {
 		return c.get(c.get(pos) + offset)
 	}
-	if mode == 2 && isWrite {
+	if mode == 2 && t == write {
 		return c.get(pos) + offset
 	}
 
 	return c.get(pos)
-}
-
-func parseOpcode(input int) (opcode int, modes []int) {
-	opcode = input
-	str := strconv.Itoa(input)
-
-	if len(str) >= 2 {
-		opcode, _ = strconv.Atoi(str[len(str)-2:])
-		for i := len(str) - 3; i >= 0; i-- {
-			mode, _ := strconv.Atoi(string(str[i]))
-			modes = append(modes, mode)
-		}
-	}
-
-	for i := len(modes); i < numberOfParameters[opcode]; i++ {
-		modes = append(modes, 0)
-	}
-
-	return opcode, modes
 }
