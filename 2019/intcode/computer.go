@@ -66,8 +66,7 @@ func (c *Computer) Run() {
 		case multiply:
 			c.set(params[2], params[0]*params[1])
 		case input:
-			in := <-c.In
-			c.set(params[0], in)
+			c.set(params[0], <-c.In)
 		case output:
 			c.Out <- params[0]
 		case jumpIfTrue:
@@ -79,17 +78,9 @@ func (c *Computer) Run() {
 				i = params[1]
 			}
 		case lessThan:
-			if params[0] < params[1] {
-				c.set(params[2], 1)
-			} else {
-				c.set(params[2], 0)
-			}
+			c.set(params[2], btoi(params[0] < params[1]))
 		case equals:
-			if params[0] == params[1] {
-				c.set(params[2], 1)
-			} else {
-				c.set(params[2], 0)
-			}
+			c.set(params[2], btoi(params[0] == params[1]))
 		case adjust:
 			offset += params[0]
 		case halt:
@@ -147,4 +138,11 @@ func (c *Computer) readParameter(pos int, offset int, mode int, t paramType) int
 	}
 
 	return c.get(pos)
+}
+
+func btoi(b bool) int {
+	if b {
+		return 1
+	}
+	return 0
 }
