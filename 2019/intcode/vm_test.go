@@ -9,27 +9,27 @@ import (
 func TestExamplesDay1(t *testing.T) {
 	tests := []struct {
 		input    []int
-		expected []int
+		expected map[int]int
 	}{
 		{
 			input:    []int{1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50},
-			expected: []int{3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50},
+			expected: map[int]int{0: 3500, 1: 9, 2: 10, 3: 70, 4: 2, 5: 3, 6: 11, 7: 0, 8: 99, 9: 30, 10: 40, 11: 50},
 		},
 		{
 			input:    []int{1, 0, 0, 0, 99},
-			expected: []int{2, 0, 0, 0, 99},
+			expected: map[int]int{0: 2, 1: 0, 2: 0, 3: 0, 4: 99},
 		},
 		{
 			input:    []int{2, 3, 0, 3, 99},
-			expected: []int{2, 3, 0, 6, 99},
+			expected: map[int]int{0: 2, 1: 3, 2: 0, 3: 6, 4: 99},
 		},
 		{
 			input:    []int{2, 4, 4, 5, 99, 0},
-			expected: []int{2, 4, 4, 5, 99, 9801},
+			expected: map[int]int{0: 2, 1: 4, 2: 4, 3: 5, 4: 99, 5: 9801},
 		},
 		{
 			input:    []int{1, 1, 1, 4, 99, 5, 6, 0, 99},
-			expected: []int{30, 1, 1, 4, 2, 5, 6, 0, 99},
+			expected: map[int]int{0: 30, 1: 1, 2: 1, 3: 4, 4: 2, 5: 5, 6: 6, 7: 0, 8: 99},
 		},
 	}
 

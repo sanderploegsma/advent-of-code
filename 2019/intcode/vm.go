@@ -42,12 +42,14 @@ var parameters = map[opCode][]paramType{
 type VM struct {
 	In, Out  chan int
 	Finished bool
-	memory   []int
+	memory   map[int]int
 }
 
 func NewVM(in, out chan int, instructions []int) *VM {
-	c := VM{In: in, Out: out, Finished: false, memory: make([]int, len(instructions))}
-	copy(c.memory, instructions)
+	c := VM{In: in, Out: out, Finished: false, memory: make(map[int]int)}
+	for i, instruction := range instructions {
+		c.memory[i] = instruction
+	}
 	return &c
 }
 
@@ -62,11 +64,11 @@ func (c *VM) Run() {
 
 		switch opcode {
 		case add:
-			c.set(params[2], params[0]+params[1])
+			c.memory[params[2]] = params[0] + params[1]
 		case multiply:
-			c.set(params[2], params[0]*params[1])
+			c.memory[params[2]] = params[0] * params[1]
 		case input:
-			c.set(params[0], <-c.In)
+			c.memory[params[0]] = <-c.In
 		case output:
 			c.Out <- params[0]
 		case jumpIfTrue:
@@ -78,48 +80,31 @@ func (c *VM) Run() {
 				i = params[1]
 			}
 		case lessThan:
-			c.set(params[2], btoi(params[0] < params[1]))
+			c.memory[params[2]] = btoi(params[0] < params[1])
 		case equals:
-			c.set(params[2], btoi(params[0] == params[1]))
+			c.memory[params[2]] = btoi(params[0] == params[1])
 		case adjust:
 			offset += params[0]
 		case halt:
 			c.Finished = true
 			return
 		default:
-			fmt.Printf("Unknown opcode %d (original %d), stopping!\n", opcode, c.get(i))
+			fmt.Printf("Unknown opcode %d (original %d), stopping!\n", opcode, c.memory[i])
 			c.Finished = true
 			return
 		}
 	}
 }
 
-func (c *VM) get(addr int) int {
-	c.checkSize(addr)
-	return c.memory[addr]
-}
-
-func (c *VM) set(addr int, val int) {
-	c.checkSize(addr)
-	c.memory[addr] = val
-}
-
-func (c *VM) checkSize(addr int) {
-	if addr >= len(c.memory) {
-		extra := make([]int, addr-(len(c.memory)-1))
-		c.memory = append(c.memory, extra...)
-	}
-}
-
 func (c *VM) instruction(position, offset int) (opCode, []int) {
-	input := c.get(position)
+	input := c.memory[position]
 	opcode := opCode(input % 100)
 	modes := (input - int(opcode)) / 100
 
-	params := make([]int, 0)
+	params := make([]int, len(parameters[opcode]))
 	for i, t := range parameters[opcode] {
 		mode := modes % 10
-		params = append(params, c.readParameter(position+i+1, offset, mode, t))
+		params[i] = c.readParameter(position+i+1, offset, mode, t)
 		modes = (modes - mode) / 10
 	}
 
@@ -128,16 +113,16 @@ func (c *VM) instruction(position, offset int) (opCode, []int) {
 
 func (c *VM) readParameter(pos int, offset int, mode int, t paramType) int {
 	if mode == 0 && t == read {
-		return c.get(c.get(pos))
+		return c.memory[c.memory[pos]]
 	}
 	if mode == 2 && t == read {
-		return c.get(c.get(pos) + offset)
+		return c.memory[c.memory[pos]+offset]
 	}
 	if mode == 2 && t == write {
-		return c.get(pos) + offset
+		return c.memory[pos] + offset
 	}
 
-	return c.get(pos)
+	return c.memory[pos]
 }
 
 func btoi(b bool) int {
