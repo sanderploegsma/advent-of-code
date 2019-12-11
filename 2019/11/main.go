@@ -42,7 +42,7 @@ func main() {
 type Point struct{ x, y int }
 
 func Paint(instructions []int, startingColor int) map[Point]int {
-	in := make(chan int)
+	in := make(chan int, 1)
 	defer close(in)
 	out := make(chan int)
 
@@ -62,17 +62,11 @@ func Paint(instructions []int, startingColor int) map[Point]int {
 			in <- Black
 		}
 
-		color, ok := <-out
-		if !ok {
-			break
-		}
-		turn, ok := <-out
-		if !ok {
-			break
-		}
+		color := <-out
+		turn := <-out
 
 		painted[position] = color
-		position, direction = move(position, direction, int(turn))
+		position, direction = move(position, direction, turn)
 	}
 
 	return painted
@@ -115,8 +109,8 @@ func move(pos Point, dir, turn int) (newPos Point, newDir int) {
 }
 
 func draw(points map[Point]int) {
-	minX, minY := int(math.MaxInt64), int(math.MaxInt64)
-	maxX, maxY := int(math.MinInt64), int(math.MinInt64)
+	minX, minY := math.MaxInt64, math.MaxInt64
+	maxX, maxY := math.MinInt64, math.MinInt64
 
 	for p := range points {
 		if p.x < minX {
@@ -140,7 +134,7 @@ func draw(points map[Point]int) {
 
 	for p, v := range points {
 		if v > 0 {
-			grid[p.y-minY][p.x-minX] = int(v)
+			grid[p.y-minY][p.x-minX] = v
 		}
 	}
 
