@@ -46,7 +46,7 @@ func Paint(instructions []int, startingColor int) map[Point]int {
 	defer close(in)
 	out := make(chan int)
 
-	c := intcode.NewComputer(in, out, instructions)
+	c := intcode.NewVM(in, out, instructions)
 	go c.Run()
 
 	painted := make(map[Point]int)

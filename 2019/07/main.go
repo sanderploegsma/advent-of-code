@@ -62,11 +62,11 @@ func generateCombinations(items []int) (c [][]int) {
 }
 
 func RunWithPhases(instructions []int, phases []int, loop bool) (out int) {
-	a := intcode.NewComputer(make(chan int), make(chan int), instructions)
-	b := intcode.NewComputer(a.Out, make(chan int), instructions)
-	c := intcode.NewComputer(b.Out, make(chan int), instructions)
-	d := intcode.NewComputer(c.Out, make(chan int), instructions)
-	e := intcode.NewComputer(d.Out, make(chan int), instructions)
+	a := intcode.NewVM(make(chan int), make(chan int), instructions)
+	b := intcode.NewVM(a.Out, make(chan int), instructions)
+	c := intcode.NewVM(b.Out, make(chan int), instructions)
+	d := intcode.NewVM(c.Out, make(chan int), instructions)
+	e := intcode.NewVM(d.Out, make(chan int), instructions)
 
 	go b.Run()
 	go a.Run()

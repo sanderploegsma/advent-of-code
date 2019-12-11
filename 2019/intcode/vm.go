@@ -27,31 +27,31 @@ const (
 )
 
 var parameters = map[opCode][]paramType{
-	add:         []paramType{read, read, write},
-	multiply:    []paramType{read, read, write},
-	input:       []paramType{write},
-	output:      []paramType{read},
-	jumpIfTrue:  []paramType{read, read},
-	jumpIfFalse: []paramType{read, read},
-	lessThan:    []paramType{read, read, write},
-	equals:      []paramType{read, read, write},
-	adjust:      []paramType{read},
-	halt:        []paramType{},
+	add:         {read, read, write},
+	multiply:    {read, read, write},
+	input:       {write},
+	output:      {read},
+	jumpIfTrue:  {read, read},
+	jumpIfFalse: {read, read},
+	lessThan:    {read, read, write},
+	equals:      {read, read, write},
+	adjust:      {read},
+	halt:        {},
 }
 
-type Computer struct {
+type VM struct {
 	In, Out  chan int
 	Finished bool
 	memory   []int
 }
 
-func NewComputer(in, out chan int, instructions []int) *Computer {
-	c := Computer{In: in, Out: out, Finished: false, memory: make([]int, len(instructions))}
+func NewVM(in, out chan int, instructions []int) *VM {
+	c := VM{In: in, Out: out, Finished: false, memory: make([]int, len(instructions))}
 	copy(c.memory, instructions)
 	return &c
 }
 
-func (c *Computer) Run() {
+func (c *VM) Run() {
 	defer close(c.Out)
 
 	i := 0
@@ -94,24 +94,24 @@ func (c *Computer) Run() {
 	}
 }
 
-func (c *Computer) get(addr int) int {
+func (c *VM) get(addr int) int {
 	c.checkSize(addr)
 	return c.memory[addr]
 }
 
-func (c *Computer) set(addr int, val int) {
+func (c *VM) set(addr int, val int) {
 	c.checkSize(addr)
 	c.memory[addr] = val
 }
 
-func (c *Computer) checkSize(addr int) {
+func (c *VM) checkSize(addr int) {
 	if addr >= len(c.memory) {
 		extra := make([]int, addr-(len(c.memory)-1))
 		c.memory = append(c.memory, extra...)
 	}
 }
 
-func (c *Computer) instruction(position, offset int) (opCode, []int) {
+func (c *VM) instruction(position, offset int) (opCode, []int) {
 	input := c.get(position)
 	opcode := opCode(input % 100)
 	modes := (input - int(opcode)) / 100
@@ -126,7 +126,7 @@ func (c *Computer) instruction(position, offset int) (opCode, []int) {
 	return opcode, params
 }
 
-func (c *Computer) readParameter(pos int, offset int, mode int, t paramType) int {
+func (c *VM) readParameter(pos int, offset int, mode int, t paramType) int {
 	if mode == 0 && t == read {
 		return c.get(c.get(pos))
 	}

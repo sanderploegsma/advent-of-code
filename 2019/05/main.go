@@ -31,7 +31,7 @@ func main() {
 func RunWithInput(instructions []int, input int) chan int {
 	in := make(chan int)
 	out := make(chan int)
-	c := intcode.NewComputer(in, out, instructions)
+	c := intcode.NewVM(in, out, instructions)
 
 	go c.Run()
 

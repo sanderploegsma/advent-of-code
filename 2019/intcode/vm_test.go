@@ -34,7 +34,7 @@ func TestExamplesDay1(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		c := NewComputer(make(chan int), make(chan int), test.input)
+		c := NewVM(make(chan int), make(chan int), test.input)
 		c.Run()
 		assert.EqualValues(t, test.expected, c.memory)
 	}
@@ -61,7 +61,7 @@ func TestExamplesDay9(t *testing.T) {
 	for i := range tests {
 		in := make(chan int, len(tests[i].input))
 		out := make(chan int)
-		c := NewComputer(in, out, tests[i].instructions)
+		c := NewVM(in, out, tests[i].instructions)
 
 		go c.Run()
 
