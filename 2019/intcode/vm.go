@@ -4,39 +4,30 @@ import (
 	"fmt"
 )
 
-type opCode int
-
 const (
-	add         opCode = 1
-	multiply    opCode = 2
-	input       opCode = 3
-	output      opCode = 4
-	jumpIfTrue  opCode = 5
-	jumpIfFalse opCode = 6
-	lessThan    opCode = 7
-	equals      opCode = 8
-	adjust      opCode = 9
-	halt        opCode = 99
+	add         = 1
+	multiply    = 2
+	input       = 3
+	output      = 4
+	jumpIfTrue  = 5
+	jumpIfFalse = 6
+	lessThan    = 7
+	equals      = 8
+	adjust      = 9
+	halt        = 99
 )
 
-type paramType int
-
-const (
-	read  paramType = 0
-	write paramType = 1
-)
-
-var parameters = map[opCode][]paramType{
-	add:         {read, read, write},
-	multiply:    {read, read, write},
-	input:       {write},
-	output:      {read},
-	jumpIfTrue:  {read, read},
-	jumpIfFalse: {read, read},
-	lessThan:    {read, read, write},
-	equals:      {read, read, write},
-	adjust:      {read},
-	halt:        {},
+var parameters = map[int]int{
+	add:         3,
+	multiply:    3,
+	input:       1,
+	output:      1,
+	jumpIfTrue:  2,
+	jumpIfFalse: 2,
+	lessThan:    3,
+	equals:      3,
+	adjust:      1,
+	halt:        0,
 }
 
 type VM struct {
@@ -59,32 +50,32 @@ func (c *VM) Run() {
 	i := 0
 	offset := 0
 	for !c.Finished {
-		opcode, params := c.instruction(i, offset)
-		i += len(params) + 1
+		opcode, ptrs := c.instruction(i, offset)
+		i += len(ptrs) + 1
 
 		switch opcode {
 		case add:
-			c.memory[params[2]] = params[0] + params[1]
+			c.memory[ptrs[2]] = c.memory[ptrs[0]] + c.memory[ptrs[1]]
 		case multiply:
-			c.memory[params[2]] = params[0] * params[1]
+			c.memory[ptrs[2]] = c.memory[ptrs[0]] * c.memory[ptrs[1]]
 		case input:
-			c.memory[params[0]] = <-c.In
+			c.memory[ptrs[0]] = <-c.In
 		case output:
-			c.Out <- params[0]
+			c.Out <- c.memory[ptrs[0]]
 		case jumpIfTrue:
-			if itob(params[0]) {
-				i = params[1]
+			if itob(c.memory[ptrs[0]]) {
+				i = c.memory[ptrs[1]]
 			}
 		case jumpIfFalse:
-			if !itob(params[0]) {
-				i = params[1]
+			if !itob(c.memory[ptrs[0]]) {
+				i = c.memory[ptrs[1]]
 			}
 		case lessThan:
-			c.memory[params[2]] = btoi(params[0] < params[1])
+			c.memory[ptrs[2]] = btoi(c.memory[ptrs[0]] < c.memory[ptrs[1]])
 		case equals:
-			c.memory[params[2]] = btoi(params[0] == params[1])
+			c.memory[ptrs[2]] = btoi(c.memory[ptrs[0]] == c.memory[ptrs[1]])
 		case adjust:
-			offset += params[0]
+			offset += c.memory[ptrs[0]]
 		case halt:
 			c.Finished = true
 			return
@@ -96,33 +87,24 @@ func (c *VM) Run() {
 	}
 }
 
-func (c *VM) instruction(position, offset int) (opCode, []int) {
-	input := c.memory[position]
-	opcode := opCode(input % 100)
-	modes := (input - int(opcode)) / 100
+func (c *VM) instruction(pos, offset int) (int, []int) {
+	opcode := c.memory[pos] % 100
+	mask := c.memory[pos] / 100
 
-	params := make([]int, len(parameters[opcode]))
-	for i, t := range parameters[opcode] {
-		mode := modes % 10
-		params[i] = c.readParameter(position+i+1, offset, mode, t)
-		modes = (modes - mode) / 10
+	ptrs := make([]int, parameters[opcode])
+	for i := 0; i < parameters[opcode]; i++ {
+		switch mask % 10 {
+		case 0:
+			ptrs[i] = c.memory[pos+i+1]
+		case 1:
+			ptrs[i] = pos + i + 1
+		case 2:
+			ptrs[i] = c.memory[pos+i+1] + offset
+		}
+		mask = mask / 10
 	}
 
-	return opcode, params
-}
-
-func (c *VM) readParameter(pos int, offset int, mode int, t paramType) int {
-	if mode == 0 && t == read {
-		return c.memory[c.memory[pos]]
-	}
-	if mode == 2 && t == read {
-		return c.memory[c.memory[pos]+offset]
-	}
-	if mode == 2 && t == write {
-		return c.memory[pos] + offset
-	}
-
-	return c.memory[pos]
+	return opcode, ptrs
 }
 
 func btoi(b bool) int {
