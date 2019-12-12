@@ -5,40 +5,27 @@ import (
 	"reflect"
 )
 
-var input = []Moon{
-	{Position: XYZ{3, 2, -6}},
-	{Position: XYZ{-13, 18, 10}},
-	{Position: XYZ{-8, -1, 13}},
-	{Position: XYZ{5, 10, 4}},
+var input = [][]int{
+	{3, 2, -6, 0, 0, 0},
+	{-13, 18, 10, 0, 0, 0},
+	{-8, -1, 13, 0, 0, 0},
+	{5, 10, 4, 0, 0, 0},
 }
 
 func main() {
 	fmt.Println(TotalEnergy(SimulateN(input, 1000)))
-	fmt.Println(RepeatUntilPreviousState(input))
+	fmt.Println(CalculateCycle(input))
 }
 
-type Moon struct {
-	Position, Velocity XYZ
-}
-
-type XYZ struct {
-	X, Y, Z int
-}
-
-func (m *Moon) PotentialEnergy() int {
-	return abs(m.Position.X) + abs(m.Position.Y) + abs(m.Position.Z)
-}
-func (m *Moon) KineticEnergy() int {
-	return abs(m.Velocity.X) + abs(m.Velocity.Y) + abs(m.Velocity.Z)
-}
-
-func RepeatUntilPreviousState(moons []Moon) int {
+// CalculateCycle finds the number of steps needed to bring the given moons back to their original position.
+// Because the movement on each axis is not influenced by the the other axes, we can determine the cycle for each axis
+// individually, and then use the Least Common Multiplier to calculate the combined cycle.
+func CalculateCycle(moons [][]int) int {
 	repeats := make(map[int]int)
 
 	for i := 0; i < 3; i++ {
 		steps := 0
-		sim := make([]Moon, len(moons))
-		copy(sim, moons)
+		sim := clone(moons)
 		for {
 			steps++
 			sim = SimulateAxis(sim, i)
@@ -52,9 +39,9 @@ func RepeatUntilPreviousState(moons []Moon) int {
 	return lcm(repeats[0], repeats[1], repeats[2])
 }
 
-func SimulateN(moons []Moon, n int) []Moon {
-	sim := make([]Moon, len(moons))
-	copy(sim, moons)
+// SimulateN simulates the movement of the given moons for n steps.
+func SimulateN(moons [][]int, n int) [][]int {
+	sim := clone(moons)
 
 	for i := 0; i < n; i++ {
 		sim = Simulate(sim)
@@ -62,76 +49,53 @@ func SimulateN(moons []Moon, n int) []Moon {
 	return sim
 }
 
-func Simulate(moons []Moon) []Moon {
-	sim := make([]Moon, len(moons))
-	copy(sim, moons)
+// Simulate simulates a single movement step for all given moons.
+func Simulate(moons [][]int) [][]int {
+	sim := clone(moons)
 
 	for i := 0; i < len(moons); i++ {
 		for j := i + 1; j < len(moons); j++ {
-			dx1, dx2 := gravity(moons[i].Position.X, moons[j].Position.X)
-			sim[i].Velocity.X += dx1
-			sim[j].Velocity.X += dx2
-			dy1, dy2 := gravity(moons[i].Position.Y, moons[j].Position.Y)
-			sim[i].Velocity.Y += dy1
-			sim[j].Velocity.Y += dy2
-			dz1, dz2 := gravity(moons[i].Position.Z, moons[j].Position.Z)
-			sim[i].Velocity.Z += dz1
-			sim[j].Velocity.Z += dz2
-		}
-	}
-
-	for i := range sim {
-		sim[i].Position.X += sim[i].Velocity.X
-		sim[i].Position.Y += sim[i].Velocity.Y
-		sim[i].Position.Z += sim[i].Velocity.Z
-	}
-
-	return sim
-}
-
-func SimulateAxis(moons []Moon, axis int) []Moon {
-	sim := make([]Moon, len(moons))
-	copy(sim, moons)
-
-	for i := 0; i < len(moons); i++ {
-		for j := i + 1; j < len(moons); j++ {
-			if axis == 0 {
-				dx1, dx2 := gravity(moons[i].Position.X, moons[j].Position.X)
-				sim[i].Velocity.X += dx1
-				sim[j].Velocity.X += dx2
-			}
-			if axis == 1 {
-				dy1, dy2 := gravity(moons[i].Position.Y, moons[j].Position.Y)
-				sim[i].Velocity.Y += dy1
-				sim[j].Velocity.Y += dy2
-			}
-			if axis == 2 {
-				dz1, dz2 := gravity(moons[i].Position.Z, moons[j].Position.Z)
-				sim[i].Velocity.Z += dz1
-				sim[j].Velocity.Z += dz2
+			for axis := 0; axis < 3; axis++ {
+				dx1, dx2 := gravity(moons[i][axis], moons[j][axis])
+				sim[i][axis+3] += dx1
+				sim[j][axis+3] += dx2
 			}
 		}
 	}
 
 	for i := range sim {
-		if axis == 0 {
-			sim[i].Position.X += sim[i].Velocity.X
-		}
-		if axis == 1 {
-			sim[i].Position.Y += sim[i].Velocity.Y
-		}
-		if axis == 2 {
-			sim[i].Position.Z += sim[i].Velocity.Z
+		for axis := 0; axis < 3; axis++ {
+			sim[i][axis] += sim[i][axis+3]
 		}
 	}
 
 	return sim
 }
 
-func TotalEnergy(moons []Moon) int {
+// SimulateAxis simulates a single movement step for a single given axis of all moons
+func SimulateAxis(moons [][]int, axis int) [][]int {
+	sim := clone(moons)
+
+	for i := 0; i < len(moons); i++ {
+		for j := i + 1; j < len(moons); j++ {
+			di, dj := gravity(moons[i][axis], moons[j][axis])
+			sim[i][axis+3] += di
+			sim[j][axis+3] += dj
+		}
+	}
+
+	for i := range sim {
+		sim[i][axis] += sim[i][axis+3]
+	}
+
+	return sim
+}
+
+// TotalEnergy calculates the total amount of energy of all given moons.
+func TotalEnergy(moons [][]int) int {
 	energy := 0
 	for _, m := range moons {
-		energy += m.KineticEnergy() * m.PotentialEnergy()
+		energy += (abs(m[0]) + abs(m[1]) + abs(m[2])) * (abs(m[3]) + abs(m[4]) + abs(m[5]))
 	}
 	return energy
 }
@@ -168,4 +132,13 @@ func lcm(a, b int, integers ...int) int {
 	}
 
 	return result
+}
+
+func clone(moons [][]int) [][]int {
+	c := make([][]int, len(moons))
+	for i := range moons {
+		c[i] = make([]int, len(moons[i]))
+		copy(c[i], moons[i])
+	}
+	return c
 }

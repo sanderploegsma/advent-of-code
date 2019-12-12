@@ -7,30 +7,30 @@ import (
 )
 
 func TestPartOne(t *testing.T) {
-	input := []Moon{
-		{Position: XYZ{-1, 0, 2}},
-		{Position: XYZ{2, -10, -7}},
-		{Position: XYZ{4, -8, 8}},
-		{Position: XYZ{3, 5, -1}},
+	input := [][]int{
+		{-1, 0, 2, 0, 0, 0},
+		{2, -10, -7, 0, 0, 0},
+		{4, -8, 8, 0, 0, 0},
+		{3, 5, -1, 0, 0, 0},
 	}
 
-	expected := []Moon{
-		{Position: XYZ{X: 2, Y: -1, Z: 1}, Velocity: XYZ{X: 3, Y: -1, Z: -1}},
-		{Position: XYZ{X: 3, Y: -7, Z: -4}, Velocity: XYZ{X: 1, Y: 3, Z: 3}},
-		{Position: XYZ{X: 1, Y: -7, Z: 5}, Velocity: XYZ{X: -3, Y: 1, Z: -3}},
-		{Position: XYZ{X: 2, Y: 2, Z: 0}, Velocity: XYZ{X: -1, Y: -3, Z: 1}},
+	expected := [][]int{
+		{2, -1, 1, 3, -1, -1},
+		{3, -7, -4, 1, 3, 3},
+		{1, -7, 5, -3, 1, -3},
+		{2, 2, 0, -1, -3, 1},
 	}
 
 	assert.EqualValues(t, expected, Simulate(input))
 }
 
 func TestPartTwo(t *testing.T) {
-	input := []Moon{
-		{Position: XYZ{-1, 0, 2}},
-		{Position: XYZ{2, -10, -7}},
-		{Position: XYZ{4, -8, 8}},
-		{Position: XYZ{3, 5, -1}},
+	input := [][]int{
+		{-1, 0, 2, 0, 0, 0},
+		{2, -10, -7, 0, 0, 0},
+		{4, -8, 8, 0, 0, 0},
+		{3, 5, -1, 0, 0, 0},
 	}
 
-	assert.Equal(t, 2772, RepeatUntilPreviousState(input))
+	assert.Equal(t, 2772, CalculateCycle(input))
 }
