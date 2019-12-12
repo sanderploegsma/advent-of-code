@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"time"
 
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
@@ -15,8 +16,13 @@ var input = [][]int{
 }
 
 func main() {
-	fmt.Println(TotalEnergy(SimulateN(input, 1000)))
-	fmt.Println(CalculateCycle(input))
+	start := time.Now()
+	ans := TotalEnergy(SimulateN(input, 1000))
+	fmt.Println(1, ans, time.Since(start))
+
+	start = time.Now()
+	ans = CalculateCycle(input)
+	fmt.Println(2, ans, time.Since(start))
 }
 
 // CalculateCycle finds the number of steps needed to bring the given moons back to their original position.
