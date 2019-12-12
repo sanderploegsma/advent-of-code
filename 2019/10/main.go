@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 func main() {
-	input, _ := reader.ReadFile("input.txt")
+	input, _ := utils.ReadFile("input.txt")
 	asteroids := ParseInput(input)
 
 	start := time.Now()

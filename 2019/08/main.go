@@ -5,13 +5,13 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 const w, h = 25, 6
 
 func main() {
-	input, _ := reader.ReadFile("input.txt")
+	input, _ := utils.ReadFile("input.txt")
 	layers := ParseLayers(input)
 
 	fmt.Println(CheckLayers(layers))

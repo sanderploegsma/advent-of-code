@@ -1,4 +1,4 @@
-package intcode
+package utils
 
 import (
 	"testing"
@@ -6,9 +6,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestReadInstructions(t *testing.T) {
+func TestReadIntcode(t *testing.T) {
 	expected := []int{204, -1, 104, 1125899906842624, 99}
-	actual, err := ReadInstructions("input_test.txt")
+	actual, err := ReadIntCode("input_intcode.txt")
 	assert.NoError(t, err)
 	assert.Equal(t, expected, actual)
 }

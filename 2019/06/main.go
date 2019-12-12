@@ -5,11 +5,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 func main() {
-	input, _ := reader.ReadLines("input.txt")
+	input, _ := utils.ReadLines("input.txt")
 
 	start := time.Now()
 	result := Checksum(input)

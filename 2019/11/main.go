@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/sanderploegsma/advent-of-code/2019/intcode"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 const (
@@ -22,7 +23,7 @@ const (
 )
 
 func main() {
-	instructions, err := intcode.ReadInstructions("input.txt")
+	instructions, err := utils.ReadIntCode("input.txt")
 	if err != nil {
 		fmt.Printf("failed to read input: %v\n", err)
 		os.Exit(1)
@@ -113,18 +114,10 @@ func draw(points map[Point]int) {
 	maxX, maxY := math.MinInt64, math.MinInt64
 
 	for p := range points {
-		if p.x < minX {
-			minX = p.x
-		}
-		if p.x > maxX {
-			maxX = p.x
-		}
-		if p.y < minY {
-			minY = p.y
-		}
-		if p.y > maxY {
-			maxY = p.y
-		}
+		minX = utils.Min(minX, p.x)
+		maxX = utils.Max(maxX, p.x)
+		minY = utils.Min(minY, p.y)
+		maxY = utils.Max(maxY, p.y)
 	}
 
 	grid := make([][]int, maxY-minY+1)

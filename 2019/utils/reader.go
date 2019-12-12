@@ -1,8 +1,9 @@
-package reader
+package utils
 
 import (
 	"fmt"
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
 
@@ -27,4 +28,22 @@ func ReadFile(file string) (string, error) {
 		return "", fmt.Errorf("failed to read file %s: %v", file, err)
 	}
 	return string(c), nil
+}
+
+// ReadIntCode reads the given file and parses the contents as IntCode instructions
+func ReadIntCode(file string) ([]int, error) {
+	input, err := ReadDelim(file, ",")
+	if err != nil {
+		return nil, fmt.Errorf("failed to read file %s: %w", file, err)
+	}
+
+	instructions := make([]int, len(input))
+	for i := range input {
+		instructions[i], err = strconv.Atoi(input[i])
+		if err != nil {
+			return nil, fmt.Errorf("unable to parse '%s' as int: %w", input[i], err)
+		}
+	}
+
+	return instructions, nil
 }

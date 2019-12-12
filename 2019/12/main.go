@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"reflect"
+
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 var input = [][]int{
@@ -36,7 +38,7 @@ func CalculateCycle(moons [][]int) int {
 		}
 	}
 
-	return lcm(repeats[0], repeats[1], repeats[2])
+	return utils.LCM(repeats[0], repeats[1], repeats[2])
 }
 
 // SimulateN simulates the movement of the given moons for n steps.
@@ -95,7 +97,7 @@ func SimulateAxis(moons [][]int, axis int) [][]int {
 func TotalEnergy(moons [][]int) int {
 	energy := 0
 	for _, m := range moons {
-		energy += (abs(m[0]) + abs(m[1]) + abs(m[2])) * (abs(m[3]) + abs(m[4]) + abs(m[5]))
+		energy += (utils.Abs(m[0]) + utils.Abs(m[1]) + utils.Abs(m[2])) * (utils.Abs(m[3]) + utils.Abs(m[4]) + utils.Abs(m[5]))
 	}
 	return energy
 }
@@ -108,30 +110,6 @@ func gravity(a, b int) (int, int) {
 		return -1, 1
 	}
 	return 1, -1
-}
-
-func abs(i int) int {
-	if i >= 0 {
-		return i
-	}
-	return -1 * i
-}
-
-func gcd(a, b int) int {
-	if b == 0 {
-		return a
-	}
-	return gcd(b, a%b)
-}
-
-func lcm(a, b int, integers ...int) int {
-	result := a * b / gcd(a, b)
-
-	for i := 0; i < len(integers); i++ {
-		result = lcm(result, integers[i])
-	}
-
-	return result
 }
 
 func clone(moons [][]int) [][]int {

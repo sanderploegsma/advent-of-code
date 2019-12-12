@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
+
 	"log"
 	"strconv"
 )
@@ -69,7 +70,7 @@ func FindNounAndVerb(program []int, outcome int) (noun int, verb int) {
 }
 
 func parseProgram(file string) (input []int, err error) {
-	items, err := reader.ReadDelim(file, ",")
+	items, err := utils.ReadDelim(file, ",")
 	if err != nil {
 		return nil, err
 	}

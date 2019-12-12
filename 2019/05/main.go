@@ -6,10 +6,11 @@ import (
 	"time"
 
 	"github.com/sanderploegsma/advent-of-code/2019/intcode"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 func main() {
-	instructions, err := intcode.ReadInstructions("input.txt")
+	instructions, err := utils.ReadIntCode("input.txt")
 	if err != nil {
 		fmt.Printf("failed to read input: %v\n", err)
 		os.Exit(1)

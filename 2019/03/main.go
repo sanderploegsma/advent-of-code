@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 func main() {
-	paths, _ := reader.ReadLines("input.txt")
+	paths, _ := utils.ReadLines("input.txt")
 
 	start := time.Now()
 	result := DistanceToClosestIntersection(paths[0], paths[1])
@@ -63,9 +63,7 @@ func FewestStepsToIntersection(a, b string) int {
 			// i and j start at 0, but the first point is actually 1 step,
 			// so the steps taken to get to this point is 2 more than i + j
 			steps := i + j + 2
-			if minSteps > steps {
-				minSteps = steps
-			}
+			minSteps = utils.Min(minSteps, steps)
 		}
 	}
 
@@ -78,7 +76,7 @@ func generatePath(line string) []point {
 	points := make([]point, 0)
 	lastPoint := point{0, 0}
 	for _, segmentBytes := range strings.Split(line, ",") {
-		segment := string(segmentBytes)
+		segment := segmentBytes
 		dir := segment[0:1]
 		dist, _ := strconv.Atoi(segment[1:])
 
@@ -116,18 +114,10 @@ type point struct {
 
 // DistanceToOrigin returns the Manhattan Distance to the origin (0, 0)
 func (p *point) DistanceToOrigin() int {
-	return abs(p.X) + abs(p.Y)
+	return utils.Abs(p.X) + utils.Abs(p.Y)
 }
 
 // Equals returns true if the given point has the same coordinates as this
 func (p *point) Equals(o point) bool {
 	return p.X == o.X && p.Y == o.Y
-}
-
-func abs(x int) int {
-	if x >= 0 {
-		return x
-	}
-
-	return -x
 }

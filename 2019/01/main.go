@@ -4,11 +4,11 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/sanderploegsma/advent-of-code/2019/reader"
+	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
 func main() {
-	lines, _ := reader.ReadLines("input.txt")
+	lines, _ := utils.ReadLines("input.txt")
 	log.Printf("[PART ONE] fuel requirements: %d", PartOne(lines))
 	log.Printf("[PART TWO] fuel requirements: %d", PartTwo(lines))
 }
