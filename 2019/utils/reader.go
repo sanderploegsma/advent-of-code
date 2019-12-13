@@ -39,7 +39,7 @@ func ReadIntCode(file string) ([]int, error) {
 
 	instructions := make([]int, len(input))
 	for i := range input {
-		instructions[i], err = strconv.Atoi(input[i])
+		instructions[i], err = strconv.Atoi(strings.TrimSpace(input[i]))
 		if err != nil {
 			return nil, fmt.Errorf("unable to parse '%s' as int: %w", input[i], err)
 		}
