@@ -42,3 +42,13 @@ func Min(a, b int) int {
 	}
 	return b
 }
+
+func Compare(a, b int) int {
+	if a < b {
+		return -1
+	}
+	if a > b {
+		return 1
+	}
+	return 0
+}

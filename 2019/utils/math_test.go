@@ -39,3 +39,9 @@ func TestMin(t *testing.T) {
 	assert.Equal(t, 1, Min(2, 1))
 	assert.Equal(t, -2, Min(-2, 1))
 }
+
+func TestCompare(t *testing.T) {
+	assert.Equal(t, 1, Compare(2, 1))
+	assert.Equal(t, -1, Compare(1, 2))
+	assert.Equal(t, 0, Compare(1, 1))
+}

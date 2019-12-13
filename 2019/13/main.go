@@ -16,12 +16,6 @@ const (
 	TileBall   = 4
 )
 
-const (
-	MoveLeft    = -1
-	MoveRight   = 1
-	MoveNeutral = 0
-)
-
 func main() {
 	instructions, err := utils.ReadIntCode("input.txt")
 	if err != nil {
@@ -74,13 +68,7 @@ func Play(instructions []int) int {
 			paddleX = x
 		case TileBall:
 			ballX = x
-			if ballX > paddleX {
-				in <- MoveRight
-			} else if ballX < paddleX {
-				in <- MoveLeft
-			} else {
-				in <- MoveNeutral
-			}
+			in <- utils.Compare(ballX, paddleX)
 		}
 	}
 
