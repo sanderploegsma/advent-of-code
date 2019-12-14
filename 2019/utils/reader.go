@@ -18,7 +18,7 @@ func ReadDelim(file, delim string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	return strings.Split(c, delim), nil
+	return strings.Split(strings.TrimSpace(c), delim), nil
 }
 
 // ReadFile reads the given file and returns the contents as a string
