@@ -5,7 +5,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
@@ -28,8 +27,8 @@ func main() {
 func RunWithInput(instructions []int, input int) int {
 	in := make(chan int, 1)
 	out := make(chan int)
-	c := intcode.NewVM(in, out, instructions)
-	go c.Run()
+
+	go utils.RunIntCode(in, out, instructions)
 
 	in <- input
 	close(in)

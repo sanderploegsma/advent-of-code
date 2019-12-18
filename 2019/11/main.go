@@ -6,7 +6,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
@@ -47,8 +46,7 @@ func Paint(instructions []int, startingColor int) map[Point]int {
 	defer close(in)
 	out := make(chan int)
 
-	c := intcode.NewVM(in, out, instructions)
-	go c.Run()
+	go utils.RunIntCode(in, out, instructions)
 
 	painted := make(map[Point]int)
 	position := Point{0, 0}
@@ -56,18 +54,23 @@ func Paint(instructions []int, startingColor int) map[Point]int {
 
 	painted[position] = startingColor
 
-	for !c.Finished {
-		if color, ok := painted[position]; ok {
-			in <- color
-		} else {
-			in <- Black
-		}
+	if c, ok := painted[position]; ok {
+		in <- c
+	} else {
+		in <- Black
+	}
 
-		color := <-out
+	for color := range out {
 		turn := <-out
 
 		painted[position] = color
 		position, direction = move(position, direction, turn)
+
+		if c, ok := painted[position]; ok {
+			in <- c
+		} else {
+			in <- Black
+		}
 	}
 
 	return painted

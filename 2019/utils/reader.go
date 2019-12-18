@@ -18,7 +18,7 @@ func ReadDelim(file, delim string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	return strings.Split(strings.TrimSpace(c), delim), nil
+	return strings.Split(c, delim), nil
 }
 
 // ReadFile reads the given file and returns the contents as a string
@@ -27,7 +27,7 @@ func ReadFile(file string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to read file %s: %v", file, err)
 	}
-	return string(c), nil
+	return strings.TrimSpace(string(c)), nil
 }
 
 // ReadIntCode reads the given file and parses the contents as IntCode instructions

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+	"sync"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
@@ -25,24 +25,60 @@ func main() {
 	fmt.Printf("[PART 2] output: %d (took %s)\n", result, time.Since(start))
 }
 
-func PartOne(instructions []int) (out int) {
+func PartOne(instructions []int) int {
+	var wg sync.WaitGroup
+	var lock sync.RWMutex
+	var max int
+
 	for _, phases := range generateCombinations([]int{0, 1, 2, 3, 4}) {
-		output := RunWithPhases(instructions, phases, false)
-		if output > out {
-			out = output
-		}
+		in, out := amps(phases, instructions)
+		wg.Add(1)
+
+		go func() {
+			result := <-out
+			lock.Lock()
+			if result > max {
+				max = result
+			}
+			lock.Unlock()
+			wg.Done()
+		}()
+
+		in <- 0
 	}
-	return out
+
+	wg.Wait()
+	return max
 }
 
-func PartTwo(instructions []int) (out int) {
+func PartTwo(instructions []int) int {
+	var wg sync.WaitGroup
+	var lock sync.RWMutex
+	var max int
+
 	for _, phases := range generateCombinations([]int{5, 6, 7, 8, 9}) {
-		output := RunWithPhases(instructions, phases, true)
-		if output > out {
-			out = output
-		}
+		in, out := amps(phases, instructions)
+		wg.Add(1)
+
+		go func() {
+			var result int
+			for result = range out {
+				go func() { in <- result }()
+			}
+
+			lock.Lock()
+			if result > max {
+				max = result
+			}
+			lock.Unlock()
+			wg.Done()
+		}()
+
+		in <- 0
 	}
-	return out
+
+	wg.Wait()
+	return max
 }
 
 func generateCombinations(items []int) (c [][]int) {
@@ -62,32 +98,16 @@ func generateCombinations(items []int) (c [][]int) {
 	return c
 }
 
-func RunWithPhases(instructions []int, phases []int, loop bool) (out int) {
-	a := intcode.NewVM(make(chan int), make(chan int), instructions)
-	b := intcode.NewVM(a.Out, make(chan int), instructions)
-	c := intcode.NewVM(b.Out, make(chan int), instructions)
-	d := intcode.NewVM(c.Out, make(chan int), instructions)
-	e := intcode.NewVM(d.Out, make(chan int), instructions)
-
-	go b.Run()
-	go a.Run()
-	go d.Run()
-	go c.Run()
-	go e.Run()
-
-	a.In <- int(phases[0])
-	b.In <- int(phases[1])
-	c.In <- int(phases[2])
-	d.In <- int(phases[3])
-	e.In <- int(phases[4])
-
-	a.In <- 0
-
-	for {
-		o := <-e.Out
-		if !loop || a.Finished {
-			return int(o)
-		}
-		a.In <- o
+func amps(phases, instructions []int) (in, out chan int) {
+	channels := make([]chan int, len(phases)+1)
+	for i := range channels {
+		channels[i] = make(chan int)
 	}
+
+	for i, phase := range phases {
+		go utils.RunIntCode(channels[i], channels[i+1], instructions)
+		channels[i] <- phase
+	}
+
+	return channels[0], channels[len(channels)-1]
 }

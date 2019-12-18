@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
@@ -29,8 +28,8 @@ func main() {
 
 func CountBlockTiles(instructions []int) int {
 	out := make(chan int)
-	c := intcode.NewVM(make(chan int), out, instructions)
-	go c.Run()
+
+	go utils.RunIntCode(make(chan int), out, instructions)
 
 	blockTiles := 0
 	for range out {
@@ -48,8 +47,7 @@ func Play(instructions []int) int {
 	out := make(chan int)
 	instructions[0] = 2
 
-	c := intcode.NewVM(in, out, instructions)
-	go c.Run()
+	go utils.RunIntCode(in, out, instructions)
 
 	score := 0
 	ballX := -1

@@ -5,7 +5,6 @@ import (
 	"math"
 	"os"
 
-	"github.com/sanderploegsma/advent-of-code/2019/intcode"
 	"github.com/sanderploegsma/advent-of-code/2019/utils"
 )
 
@@ -31,8 +30,7 @@ func main() {
 
 	in := make(chan int, 1)
 	out := make(chan int)
-	c := intcode.NewVM(in, out, instructions)
-	go c.Run()
+	go utils.RunIntCode(in, out, instructions)
 
 	dist, _ := FindOxygenTank(in, out, Point{0, 0}, make(map[Point]bool), 0, math.MaxInt64)
 	fmt.Println(dist)
