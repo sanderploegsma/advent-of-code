@@ -39,11 +39,10 @@ func RunIntCode(in, out chan int, instructions []int) {
 		memory[i] = instruction
 	}
 
-	i := 0
-	offset := 0
+	var pos, offset, opcode int
+	var ptrs []int
 	for {
-		opcode, ptrs := instruction(memory, i, offset)
-		i += len(ptrs) + 1
+		opcode, ptrs, pos = instruction(memory, pos, offset)
 
 		switch opcode {
 		case add:
@@ -56,11 +55,11 @@ func RunIntCode(in, out chan int, instructions []int) {
 			out <- memory[ptrs[0]]
 		case jumpIfTrue:
 			if itob(memory[ptrs[0]]) {
-				i = memory[ptrs[1]]
+				pos = memory[ptrs[1]]
 			}
 		case jumpIfFalse:
 			if !itob(memory[ptrs[0]]) {
-				i = memory[ptrs[1]]
+				pos = memory[ptrs[1]]
 			}
 		case lessThan:
 			memory[ptrs[2]] = btoi(memory[ptrs[0]] < memory[ptrs[1]])
@@ -71,13 +70,13 @@ func RunIntCode(in, out chan int, instructions []int) {
 		case halt:
 			return
 		default:
-			fmt.Printf("Unknown opcode %d (original %d), stopping!\n", opcode, memory[i])
+			fmt.Printf("Unknown opcode %d (original %d), stopping!\n", opcode, memory[pos])
 			return
 		}
 	}
 }
 
-func instruction(memory map[int]int, pos, offset int) (int, []int) {
+func instruction(memory map[int]int, pos, offset int) (int, []int, int) {
 	opcode := memory[pos] % 100
 	mask := memory[pos] / 100
 
@@ -94,7 +93,7 @@ func instruction(memory map[int]int, pos, offset int) (int, []int) {
 		mask = mask / 10
 	}
 
-	return opcode, ptrs
+	return opcode, ptrs, pos + len(ptrs) + 1
 }
 
 func btoi(b bool) int {
