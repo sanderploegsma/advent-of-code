@@ -21,22 +21,25 @@ let partOne ids =
 /// </summary>
 /// <returns>The characters both box IDs have in common</returns>
 let partTwo ids =
-    let removeAt i = List.map (fun (x: string) -> x.Remove(i) + x.Substring(i + 1))
+    let removeCharAt i (s: string) = s.Remove(i) + s.Substring(i + 1)
 
-    let rec findDuplicate i =
+    let findDuplicate = List.countBy id >> List.tryFind (fun (_, c) -> c = 2)
+
+    let rec checkPosition i =
         let duplicate =
             ids
-            |> removeAt i
-            |> List.countBy id
-            |> List.tryFind (fun (_, c) -> c = 2)
+            |> List.map (removeCharAt i)
+            |> findDuplicate
 
         match duplicate with
-        | Some(x, _) -> x
-        | None -> findDuplicate (i + 1)
+        | Some(x, _) -> Some(x)
+        | None when ids.IsEmpty -> None
+        | None when ids.Head.Length = i -> None
+        | None -> checkPosition (i + 1)
 
-    findDuplicate 0
+    checkPosition 0
 
 let input = File.ReadLines("input.txt") |> Seq.toList
 
 printfn "Part one: %d" <| partOne input
-printfn "Part two: %s" <| partTwo input
+printfn "Part two: %A" <| partTwo input
