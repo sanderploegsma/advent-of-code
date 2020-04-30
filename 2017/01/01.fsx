@@ -3,23 +3,20 @@ open System.IO
 let input =
     File.ReadAllText("input.txt")
     |> Seq.map (System.Char.GetNumericValue >> int)
-    |> Seq.toList
 
 /// <summary>
-/// Finds the sum of all digits that match the next digit in the list.
-/// The list is circular, so the digit after the last digit is the first digit in the list.
+/// Sum elements of the given sequence if it matches the element `n` positions ahead.
+/// Consider the sequence circular, so the element after the last element is the first element.
 /// </summary>
-let partOne lst =
-    let first = List.head lst
-    let last = List.last lst
-    let initial = if first = last then first else 0
+let sumAdjacent n seq =
+    Seq.append seq seq
+    |> Seq.windowed (n + 1)
+    |> Seq.take (Seq.length seq)
+    |> Seq.filter (fun x -> Seq.head x = Seq.last x)
+    |> Seq.sumBy Seq.head
 
-    let rec sumAdjacent sum pairs =
-        match pairs with
-        | [] -> sum
-        | (a, b) :: tail when a = b -> sumAdjacent (sum + a) tail
-        | (_, _) :: tail -> sumAdjacent sum tail
+input |> sumAdjacent 1 |> printfn "Part one: %d"
 
-    List.pairwise lst |> sumAdjacent initial
-
-partOne input |> printfn "Part one: %d"
+input
+|> sumAdjacent (Seq.length input / 2)
+|> printfn "Part two: %d"
