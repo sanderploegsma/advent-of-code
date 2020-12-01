@@ -1,52 +1,55 @@
 ﻿module Day03
 
-let findRadius n =
-    Seq.initInfinite id
-    |> Seq.filter (fun x -> x % 2 = 1)
-    |> Seq.skipWhile (fun x -> pown x 2 < n)
-    |> Seq.head
-    
-type Direction = Left | Right | Up | Down
+type Coordinate = int * int
+type Square = Coordinate * int
 
-let findCoordinate n radius =
-    let max = radius / 2
-    let min = max * -1
-    
-    let traverse dir (x, y) =
+type Direction =
+    | Left
+    | Right
+    | Up
+    | Down
+
+let generate limit: seq<Square> =
+    let nextCoordinate dir (x, y) =
         match dir with
         | Left -> (x - 1, y)
         | Right -> (x + 1, y)
         | Up -> (x, y - 1)
         | Down -> (x, y + 1)
-        
-    let newDirection dir (x, y) =
+
+    let nextDirectionAndRadius dir (x, y) r =
+        let max = r / 2
+        let min = max * -1
+
         match dir with
-        | Left when x = min -> Up
-        | Up when y = min -> Right
-        | Right when x = max -> Down
-        | Down when y = max -> Left
-        | _ -> dir
-    
-    let mutable value = pown radius 2
-    let mutable coordinate = (max, max)
-    let mutable direction = Left
-    
-    while value > n do
-        coordinate <- traverse direction coordinate
-        direction <- newDirection direction coordinate
-        value <- value - 1
-    
-    coordinate
-    
+        | Right when x = max + 1 -> (Up, r + 2)
+        | Up when y = min -> (Left, r)
+        | Left when x = min -> (Down, r)
+        | Down when y = max -> (Right, r)
+        | _ -> (dir, r)
+
+    seq {
+        let mutable direction = Right
+        let mutable radius = 1
+        let mutable coordinate = (0, 0)
+
+        for i in 1 .. limit do
+            yield (coordinate, i)
+            coordinate <- nextCoordinate direction coordinate
+
+            let (newDirection, newRadius) =
+                nextDirectionAndRadius direction coordinate radius
+
+            direction <- newDirection
+            radius <- newRadius
+    }
+
 let partOne n =
-    let radius = findRadius n
-    let (x, y) = findCoordinate n radius
+    let ((x, y), _) = generate n |> Seq.last
     (abs x) + (abs y)
 
 [<EntryPoint>]
 let main argv =
     let input = 325489
-    
     partOne input |> printfn "Part one: %d"
-    
     0 // return an integer exit code
