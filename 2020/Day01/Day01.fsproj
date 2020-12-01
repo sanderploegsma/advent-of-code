@@ -12,4 +12,8 @@
         </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Common\Common.fsproj" />
+    </ItemGroup>
+
 </Project>

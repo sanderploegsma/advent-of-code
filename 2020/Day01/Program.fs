@@ -1,18 +1,14 @@
 ﻿module Day01
 
 open System.IO
+open Common.Collections
 
-// https://stackoverflow.com/a/1231711
-let rec comb n l = 
-    match n, l with
-    | 0, _ -> [[]]
-    | _, [] -> []
-    | k, (x::xs) -> List.map ((@) [x]) (comb (k-1) xs) @ comb k xs
+let multiply = List.fold (*) 1
     
-let find n l =
-    comb n l
+let find n input =
+    combinations n input
     |> List.filter (fun l -> List.sum l = 2020)
-    |> List.map (fun l -> List.fold (*) 1 l)
+    |> List.map multiply
     |> List.head
 
 let partOne = find 2

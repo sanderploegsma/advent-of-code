@@ -5,11 +5,10 @@
 
         <IsPackable>false</IsPackable>
         <GenerateProgramFile>false</GenerateProgramFile>
-        <RootNamespace>Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Tests.fs" />
+        <Compile Include="Collections.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
@@ -22,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Day01\Day01.fsproj" />
+      <ProjectReference Include="..\Common\Common.fsproj" />
     </ItemGroup>
 
 </Project>
