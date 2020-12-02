@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common", "Common\Common.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common.Test", "Common.Test\Common.Test.fsproj", "{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day02", "Day02\Day02.fsproj", "{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}.Release|x64.Build.0 = Release|Any CPU
 		{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}.Release|x86.ActiveCfg = Release|Any CPU
 		{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}.Release|x86.Build.0 = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|x64.Build.0 = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Debug|x86.Build.0 = Debug|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x64.ActiveCfg = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x64.Build.0 = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
