@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day01", "Day01\Day01.fsproj", "{40155A75-0748-4883-A697-EAAEF7F8524D}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Day01", "Day01\Day01.fsproj", "{40155A75-0748-4883-A697-EAAEF7F8524D}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day01.Test", "Day01.Test\Day01.Test.fsproj", "{043CF181-A86C-4189-82C7-A65B7073984D}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Day01.Test", "Day01.Test\Day01.Test.fsproj", "{043CF181-A86C-4189-82C7-A65B7073984D}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common", "Common\Common.fsproj", "{6FA3CD4E-EC01-4502-AAC2-E9C5C1AF4B02}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Common", "Common\Common.fsproj", "{6FA3CD4E-EC01-4502-AAC2-E9C5C1AF4B02}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common.Test", "Common.Test\Common.Test.fsproj", "{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Common.Test", "Common.Test\Common.Test.fsproj", "{23EDE976-38D8-4D39-BF08-D6EDEC90F23A}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day02", "Day02\Day02.fsproj", "{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Day02", "Day02\Day02.fsproj", "{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day03", "Day03\Day03.fsproj", "{BA036997-C794-475A-B44D-6648E8DE4A5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{40155A75-0748-4883-A697-EAAEF7F8524D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -86,5 +85,23 @@ Global
 		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x64.Build.0 = Release|Any CPU
 		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x86.ActiveCfg = Release|Any CPU
 		{66A1A1C3-9A53-4ADE-9570-9C451B2BFB3A}.Release|x86.Build.0 = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|x64.Build.0 = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Debug|x86.Build.0 = Debug|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|x64.ActiveCfg = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|x64.Build.0 = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|x86.ActiveCfg = Release|Any CPU
+		{BA036997-C794-475A-B44D-6648E8DE4A5F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47E2479B-D8B4-4740-87B3-231779AA2908}
 	EndGlobalSection
 EndGlobal
