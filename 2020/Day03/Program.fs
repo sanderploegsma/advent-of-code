@@ -2,8 +2,13 @@
 
 open System.IO
 
-let parseLine (input: string): bool[] =
-    input |> Seq.map (fun c -> c = '#') |> Seq.toArray
+type Point = Square | Tree
+
+let parsePoint p = 
+    match p with
+    | '.' -> Square
+    | '#' -> Tree
+    | _ -> failwithf "Unexpected character %c in grid" p
 
 let traverse dx dy grid =
     let mutable x = 0
@@ -14,7 +19,7 @@ let traverse dx dy grid =
         x <- (x + dx) % Array.length grid.[y]
         y <- y + dy
 
-        if grid.[y].[x] then
+        if grid.[y].[x] = Tree then
             trees <- trees + 1
 
     trees
@@ -29,7 +34,10 @@ let partTwo grid =
 
 [<EntryPoint>]
 let main argv =
-    let input = File.ReadLines("input.txt") |> Seq.map parseLine |> Seq.toArray
+    let input = 
+        File.ReadLines("input.txt") 
+        |> Seq.map (Seq.map parsePoint >> Seq.toArray) 
+        |> Seq.toArray
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0
