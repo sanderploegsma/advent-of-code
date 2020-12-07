@@ -2,26 +2,17 @@
 
 open System.IO
 
-let countAllAnswers (group: string list) = 
-    group
-    |> List.toSeq
-    |> Seq.collect id
-    |> Seq.distinct
-    |> Seq.length
-
-let countCommonAnswers (group: string list) =
-    group
-    |> List.toSeq
-    |> Seq.collect id
-    |> Seq.countBy id
-    |> Seq.filter (fun (_, count) -> count = List.length group)
-    |> Seq.length
+let countAnswers combine =
+    List.map Set.ofSeq
+    >> List.toSeq
+    >> combine
+    >> Set.count
 
 let partOne =
-    List.sumBy countAllAnswers
+    List.sumBy (countAnswers Set.unionMany)
 
 let partTwo =
-    List.sumBy countCommonAnswers
+    List.sumBy (countAnswers Set.intersectMany)
 
 [<EntryPoint>]
 let main argv =
