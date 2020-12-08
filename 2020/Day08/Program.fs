@@ -7,7 +7,7 @@ type Instruction =
     | Jump of int
     | Nop of int
 
-type State = { Accumulator: int; Position: int; Path: int list }
+type State = { Acc: int; Pos: int; Path: int list }
 
 let parse (line: string) =
     let parts = line.Split(" ")
@@ -18,26 +18,26 @@ let parse (line: string) =
     | x, _ -> failwithf "Invalid instruction %s" x
 
 let rec boot state (instructions: Instruction array) =
-    if state.Position = Array.length instructions then
+    if state.Pos = Array.length instructions then
         state
     else
-        match instructions.[state.Position] with
+        match instructions.[state.Pos] with
         | Nop _ -> 
-            let newState = { state with Position = state.Position + 1; Path = state.Position :: state.Path }
+            let newState = { state with Pos = state.Pos + 1; Path = state.Pos :: state.Path }
             boot newState instructions
         | Acc x -> 
-            let newState = { state with Accumulator = state.Accumulator + x; Position = state.Position + 1; Path = state.Position :: state.Path }
+            let newState = { state with Acc = state.Acc + x; Pos = state.Pos + 1; Path = state.Pos :: state.Path }
             boot newState instructions
-        | Jump x when List.contains (state.Position + x) state.Path -> state
+        | Jump x when List.contains (state.Pos + x) state.Path -> state
         | Jump x -> 
-            let newState = { state with Position = state.Position + x; Path = state.Position :: state.Path }
+            let newState = { state with Pos = state.Pos + x; Path = state.Pos :: state.Path }
             boot newState instructions
                 
 
 let partOne input = 
-    let initialState = { Accumulator = 0; Position = 0; Path = [] }
+    let initialState = { Acc = 0; Pos = 0; Path = [] }
     let finalState = boot initialState input
-    finalState.Accumulator
+    finalState.Acc
 
 let partTwo input =
     let switch i =
@@ -48,12 +48,12 @@ let partTwo input =
         | x -> copy.[i] <- x
         copy
 
-    let initialState = { Accumulator = 0; Position = 0; Path = [] }
+    let initialState = { Acc = 0; Pos = 0; Path = [] }
     seq { 0 .. Array.length input - 1 } 
     |> Seq.map switch 
     |> Seq.map (boot initialState)
-    |> Seq.filter (fun state -> state.Position = Array.length input)
-    |> Seq.map (fun state -> state.Accumulator)
+    |> Seq.filter (fun state -> state.Pos = Array.length input)
+    |> Seq.map (fun state -> state.Acc)
     |> Seq.head
 
 [<EntryPoint>]
