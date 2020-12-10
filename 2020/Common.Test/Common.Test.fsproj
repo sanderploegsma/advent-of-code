@@ -8,7 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Collections.fs" />
+        <Compile Include="UnitTests\Regex.fs" />
+        <Compile Include="UnitTests\Navigation.fs" />
+        <Compile Include="UnitTests\Math.fs" />
+        <Compile Include="UnitTests\Collections.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

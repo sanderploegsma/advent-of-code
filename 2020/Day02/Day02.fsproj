@@ -13,4 +13,8 @@
         <Content Include="README.md" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Common\Common.fsproj" />
+    </ItemGroup>
+
 </Project>

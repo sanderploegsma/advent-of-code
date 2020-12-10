@@ -5,6 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Math.fs" />
+        <Compile Include="Navigation.fs" />
+        <Compile Include="Regex.fs" />
         <Compile Include="Collections.fs" />
     </ItemGroup>
 

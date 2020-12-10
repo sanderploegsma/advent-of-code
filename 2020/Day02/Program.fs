@@ -1,15 +1,9 @@
 ﻿module Day02
 
 open System.IO
-open System.Text.RegularExpressions
+open Common.RegularExpressions
 
 type Policy = int * int * char
-
-let (|Regex|_|) pattern input =
-    let m = Regex.Match(input, pattern)
-    if m.Success
-    then Some(List.tail [ for g in m.Groups -> g.Value ])
-    else None
 
 let parse line =
     match line with
