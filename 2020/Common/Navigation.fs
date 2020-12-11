@@ -46,3 +46,15 @@ module Navigation =
             (x, y+1)
             (x+1, y+1)
         ]
+
+    let lineOfSight (x, y) =
+        [
+            Seq.initInfinite (fun d -> (x - d, y - d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x, y - d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x + d, y - d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x + d, y)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x + d, y + d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x, y + d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x - d, y + d)) |> Seq.skip 1
+            Seq.initInfinite (fun d -> (x - d, y)) |> Seq.skip 1
+        ]
