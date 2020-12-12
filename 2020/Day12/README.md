@@ -57,7 +57,7 @@ For example, using the same instructions as above:
 - `F10` moves the ship to the waypoint 10 times (a total of 100 units east and 10 units north), leaving the ship at **east 100, north 10**. The waypoint stays 10 units east and 1 unit north of the ship.
 - `N3` moves the waypoint 3 units north to **10 units east and 4 units north of the ship**. The ship remains at east 100, north 10.
 - `F7` moves the ship to the waypoint 7 times (a total of 70 units east and 28 units north), leaving the ship at **east 170, north 38**. The waypoint stays 10 units east and 4 units north of the ship.
-- `R90` rotates the waypoint around the ship clockwise 90 degrees, moving it to** 4 units east and 10 units south of the ship**. The ship remains at east 170, north 38.
+- `R90` rotates the waypoint around the ship clockwise 90 degrees, moving it to **4 units east and 10 units south of the ship**. The ship remains at east 170, north 38.
 - `F11` moves the ship to the waypoint 11 times (a total of 44 units east and 110 units south), leaving the ship at **east 214, south 72**. The waypoint stays 4 units east and 10 units south of the ship.
 
 After these operations, the ship's Manhattan distance from its starting position is `214 + 72 = 286`.
