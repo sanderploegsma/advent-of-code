@@ -6,6 +6,8 @@ module Navigation =
     type Direction = North | East | South | West
     type Rotation = Left | Right
 
+    let addCoordinates (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
     /// Calculate the manhattan distance between two coordinates
     let manhattan (x1, y1) (x2, y2) = abs (x2 - x1) + abs (y2 - y1)
 
