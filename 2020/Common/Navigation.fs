@@ -39,19 +39,43 @@ module Navigation =
             (x+1, y)
         ]
 
-    /// Get the horizontal, vertical and diagonal neighbours of a coordinate
-    let neighbours8 (x, y) =
-        [
-            (x-1, y-1)
-            (x, y-1)
-            (x+1, y-1)
-            (x-1, y)
-            (x+1, y)
-            (x-1, y+1)
-            (x, y+1)
-            (x+1, y+1)
-        ]
+    /// Get the neighbours of a 2D coordinate
+    let neighbours8 c =
+        let (x, y) = c
+        seq {
+            for x' in x-1 .. x+1 do
+                for y' in y-1 .. y+1 do
+                    (x', y')
+        }
+        |> Seq.filter (fun c' -> c' <> c)
+        |> Seq.toList
 
+    /// Get the neighbours of a 3D coordinate
+    let neighbours3D c =
+        let (x, y, z) = c
+        seq {
+            for x' in x-1 .. x+1 do
+                for y' in y-1 .. y+1 do
+                    for z' in z-1 .. z+1 do
+                        (x', y', z')
+        }
+        |> Seq.filter (fun c' -> c' <> c)
+        |> Seq.toList
+        
+    /// Get the neighbours of a 4D coordinate
+    let neighbours4D c =
+        let (x, y, z, w) = c
+        seq {
+            for x' in x-1 .. x+1 do
+                for y' in y-1 .. y+1 do
+                    for z' in z-1 .. z+1 do
+                        for w' in w-1 .. w+1 do
+                            (x', y', z', w')
+        }
+        |> Seq.filter (fun c' -> c' <> c)
+        |> Seq.toList
+
+    /// Get all coordinates that are within a direct line of sight from the given coordinate    
     let lineOfSight (x, y) =
         [
             Seq.initInfinite (fun d -> (x - d, y - d)) |> Seq.skip 1
@@ -62,122 +86,4 @@ module Navigation =
             Seq.initInfinite (fun d -> (x, y + d)) |> Seq.skip 1
             Seq.initInfinite (fun d -> (x - d, y + d)) |> Seq.skip 1
             Seq.initInfinite (fun d -> (x - d, y)) |> Seq.skip 1
-        ]
-
-    /// Get the neighbours of a 3D coordinate
-    let neighbours3D (x, y, z) =
-        [
-            (x-1, y-1, z-1)
-            (x,   y-1, z-1)
-            (x+1, y-1, z-1)
-            (x-1, y,   z-1)
-            (x,   y,   z-1)
-            (x+1, y,   z-1)
-            (x-1, y+1, z-1)
-            (x,   y+1, z-1)
-            (x+1, y+1, z-1)
-            (x-1, y-1, z)
-            (x,   y-1, z)
-            (x+1, y-1, z)
-            (x-1, y,   z)
-            (x+1, y,   z)
-            (x-1, y+1, z)
-            (x,   y+1, z)
-            (x+1, y+1, z)
-            (x-1, y-1, z+1)
-            (x,   y-1, z+1)
-            (x+1, y-1, z+1)
-            (x-1, y,   z+1)
-            (x,   y,   z+1)
-            (x+1, y,   z+1)
-            (x-1, y+1, z+1)
-            (x,   y+1, z+1)
-            (x+1, y+1, z+1)
-        ]
-
-    /// Get the neighbours of a 4D coordinate
-    let neighbours4D (x, y, z, w) =
-        [
-            (x-1, y-1, z-1, w-1)
-            (x,   y-1, z-1, w-1)
-            (x+1, y-1, z-1, w-1)
-            (x-1, y,   z-1, w-1)
-            (x,   y,   z-1, w-1)
-            (x+1, y,   z-1, w-1)
-            (x-1, y+1, z-1, w-1)
-            (x,   y+1, z-1, w-1)
-            (x+1, y+1, z-1, w-1)
-            (x-1, y-1, z,   w-1)
-            (x,   y-1, z,   w-1)
-            (x+1, y-1, z,   w-1)
-            (x-1, y,   z,   w-1)
-            (x,   y,   z,   w-1)
-            (x+1, y,   z,   w-1)
-            (x-1, y+1, z,   w-1)
-            (x,   y+1, z,   w-1)
-            (x+1, y+1, z,   w-1)
-            (x-1, y-1, z+1, w-1)
-            (x,   y-1, z+1, w-1)
-            (x+1, y-1, z+1, w-1)
-            (x-1, y,   z+1, w-1)
-            (x,   y,   z+1, w-1)
-            (x+1, y,   z+1, w-1)
-            (x-1, y+1, z+1, w-1)
-            (x,   y+1, z+1, w-1)
-            (x+1, y+1, z+1, w-1)
-
-            (x-1, y-1, z-1, w)
-            (x,   y-1, z-1, w)
-            (x+1, y-1, z-1, w)
-            (x-1, y,   z-1, w)
-            (x,   y,   z-1, w)
-            (x+1, y,   z-1, w)
-            (x-1, y+1, z-1, w)
-            (x,   y+1, z-1, w)
-            (x+1, y+1, z-1, w)
-            (x-1, y-1, z,   w)
-            (x,   y-1, z,   w)
-            (x+1, y-1, z,   w)
-            (x-1, y,   z,   w)
-            (x+1, y,   z,   w)
-            (x-1, y+1, z,   w)
-            (x,   y+1, z,   w)
-            (x+1, y+1, z,   w)
-            (x-1, y-1, z+1, w)
-            (x,   y-1, z+1, w)
-            (x+1, y-1, z+1, w)
-            (x-1, y,   z+1, w)
-            (x,   y,   z+1, w)
-            (x+1, y,   z+1, w)
-            (x-1, y+1, z+1, w)
-            (x,   y+1, z+1, w)
-            (x+1, y+1, z+1, w)
-
-            (x-1, y-1, z-1, w+1)
-            (x,   y-1, z-1, w+1)
-            (x+1, y-1, z-1, w+1)
-            (x-1, y,   z-1, w+1)
-            (x,   y,   z-1, w+1)
-            (x+1, y,   z-1, w+1)
-            (x-1, y+1, z-1, w+1)
-            (x,   y+1, z-1, w+1)
-            (x+1, y+1, z-1, w+1)
-            (x-1, y-1, z,   w+1)
-            (x,   y-1, z,   w+1)
-            (x+1, y-1, z,   w+1)
-            (x-1, y,   z,   w+1)
-            (x,   y,   z,   w+1)
-            (x+1, y,   z,   w+1)
-            (x-1, y+1, z,   w+1)
-            (x,   y+1, z,   w+1)
-            (x+1, y+1, z,   w+1)
-            (x-1, y-1, z+1, w+1)
-            (x,   y-1, z+1, w+1)
-            (x+1, y-1, z+1, w+1)
-            (x-1, y,   z+1, w+1)
-            (x,   y,   z+1, w+1)
-            (x+1, y,   z+1, w+1)
-            (x-1, y+1, z+1, w+1)
-            (x,   y+1, z+1, w+1)
-            (x+1, y+1, z+1, w+1)
         ]
