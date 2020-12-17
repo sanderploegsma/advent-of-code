@@ -3,6 +3,9 @@
 module Navigation =
 
     type Coordinate = int * int
+    type Coordinate3D = int * int * int
+    type Coordinate4D = int * int * int * int
+
     type Direction = North | East | South | West
     type Rotation = Left | Right
 
@@ -59,4 +62,122 @@ module Navigation =
             Seq.initInfinite (fun d -> (x, y + d)) |> Seq.skip 1
             Seq.initInfinite (fun d -> (x - d, y + d)) |> Seq.skip 1
             Seq.initInfinite (fun d -> (x - d, y)) |> Seq.skip 1
+        ]
+
+    /// Get the neighbours of a 3D coordinate
+    let neighbours3D (x, y, z) =
+        [
+            (x-1, y-1, z-1)
+            (x,   y-1, z-1)
+            (x+1, y-1, z-1)
+            (x-1, y,   z-1)
+            (x,   y,   z-1)
+            (x+1, y,   z-1)
+            (x-1, y+1, z-1)
+            (x,   y+1, z-1)
+            (x+1, y+1, z-1)
+            (x-1, y-1, z)
+            (x,   y-1, z)
+            (x+1, y-1, z)
+            (x-1, y,   z)
+            (x+1, y,   z)
+            (x-1, y+1, z)
+            (x,   y+1, z)
+            (x+1, y+1, z)
+            (x-1, y-1, z+1)
+            (x,   y-1, z+1)
+            (x+1, y-1, z+1)
+            (x-1, y,   z+1)
+            (x,   y,   z+1)
+            (x+1, y,   z+1)
+            (x-1, y+1, z+1)
+            (x,   y+1, z+1)
+            (x+1, y+1, z+1)
+        ]
+
+    /// Get the neighbours of a 4D coordinate
+    let neighbours4D (x, y, z, w) =
+        [
+            (x-1, y-1, z-1, w-1)
+            (x,   y-1, z-1, w-1)
+            (x+1, y-1, z-1, w-1)
+            (x-1, y,   z-1, w-1)
+            (x,   y,   z-1, w-1)
+            (x+1, y,   z-1, w-1)
+            (x-1, y+1, z-1, w-1)
+            (x,   y+1, z-1, w-1)
+            (x+1, y+1, z-1, w-1)
+            (x-1, y-1, z,   w-1)
+            (x,   y-1, z,   w-1)
+            (x+1, y-1, z,   w-1)
+            (x-1, y,   z,   w-1)
+            (x,   y,   z,   w-1)
+            (x+1, y,   z,   w-1)
+            (x-1, y+1, z,   w-1)
+            (x,   y+1, z,   w-1)
+            (x+1, y+1, z,   w-1)
+            (x-1, y-1, z+1, w-1)
+            (x,   y-1, z+1, w-1)
+            (x+1, y-1, z+1, w-1)
+            (x-1, y,   z+1, w-1)
+            (x,   y,   z+1, w-1)
+            (x+1, y,   z+1, w-1)
+            (x-1, y+1, z+1, w-1)
+            (x,   y+1, z+1, w-1)
+            (x+1, y+1, z+1, w-1)
+
+            (x-1, y-1, z-1, w)
+            (x,   y-1, z-1, w)
+            (x+1, y-1, z-1, w)
+            (x-1, y,   z-1, w)
+            (x,   y,   z-1, w)
+            (x+1, y,   z-1, w)
+            (x-1, y+1, z-1, w)
+            (x,   y+1, z-1, w)
+            (x+1, y+1, z-1, w)
+            (x-1, y-1, z,   w)
+            (x,   y-1, z,   w)
+            (x+1, y-1, z,   w)
+            (x-1, y,   z,   w)
+            (x+1, y,   z,   w)
+            (x-1, y+1, z,   w)
+            (x,   y+1, z,   w)
+            (x+1, y+1, z,   w)
+            (x-1, y-1, z+1, w)
+            (x,   y-1, z+1, w)
+            (x+1, y-1, z+1, w)
+            (x-1, y,   z+1, w)
+            (x,   y,   z+1, w)
+            (x+1, y,   z+1, w)
+            (x-1, y+1, z+1, w)
+            (x,   y+1, z+1, w)
+            (x+1, y+1, z+1, w)
+
+            (x-1, y-1, z-1, w+1)
+            (x,   y-1, z-1, w+1)
+            (x+1, y-1, z-1, w+1)
+            (x-1, y,   z-1, w+1)
+            (x,   y,   z-1, w+1)
+            (x+1, y,   z-1, w+1)
+            (x-1, y+1, z-1, w+1)
+            (x,   y+1, z-1, w+1)
+            (x+1, y+1, z-1, w+1)
+            (x-1, y-1, z,   w+1)
+            (x,   y-1, z,   w+1)
+            (x+1, y-1, z,   w+1)
+            (x-1, y,   z,   w+1)
+            (x,   y,   z,   w+1)
+            (x+1, y,   z,   w+1)
+            (x-1, y+1, z,   w+1)
+            (x,   y+1, z,   w+1)
+            (x+1, y+1, z,   w+1)
+            (x-1, y-1, z+1, w+1)
+            (x,   y-1, z+1, w+1)
+            (x+1, y-1, z+1, w+1)
+            (x-1, y,   z+1, w+1)
+            (x,   y,   z+1, w+1)
+            (x+1, y,   z+1, w+1)
+            (x-1, y+1, z+1, w+1)
+            (x,   y+1, z+1, w+1)
+            (x+1, y+1, z+1, w+1)
         ]
