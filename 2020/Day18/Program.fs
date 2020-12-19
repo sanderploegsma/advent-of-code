@@ -19,7 +19,7 @@ let solveEq (precedence: Map<string, int>) (eq: string) =
                    | "*" -> lhs * rhs
         lhs
 
-    let mutable queue = new Queue<string>()
+    let queue = new Queue<string>()
     eq.Split(" ") |> Array.iter (fun n -> queue.Enqueue(n))
     solveRec (queue.Dequeue() |> int64) queue 0
 
