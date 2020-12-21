@@ -20,11 +20,18 @@ let edges tile =
         Array.map (Array.last) tile
     ]
 
+let dropBorder tile =
+    tile
+    |> Array.skip 1 // First row
+    |> Array.take (Array.length tile - 2) // Last row
+    |> Array.map (Array.skip 1) // First col
+    |> Array.map (Array.take (Array.length tile.[0] - 2)) // Last col
+
 let edgeId edge =
     let id = Array.indexed >> Array.sumBy (fun (i, n) -> n <<< i)
     min (id edge) (Array.rev edge |> id)
 
-let partOne tiles =
+let findCorners tiles =
     let mutable edgeToTiles = Map.empty
     let mutable tileToEdges = Map.empty
 
@@ -39,14 +46,14 @@ let partOne tiles =
 
     let edgeHasMatch e = List.length edgeToTiles.[e] = 2
     let isCorner edges = List.filter edgeHasMatch edges |> List.length = 2
-    
-    let corners = 
-        tileToEdges 
-        |> Map.filter (fun _ edges -> isCorner edges) 
-        |> Map.toList 
-        |> List.map fst
+     
+    tileToEdges 
+    |> Map.filter (fun _ edges -> isCorner edges) 
+    |> Map.toList 
+    |> List.map fst
 
-    corners 
+let partOne tiles =
+    findCorners tiles 
     |> List.map int64 
     |> List.fold (*) 1L
 
