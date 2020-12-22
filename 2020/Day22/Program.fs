@@ -6,30 +6,30 @@ type Winner =
     | Player1 of int list
     | Player2 of int list
 
-let rec play player1 player2 =
-    match player1, player2 with
-    | deck1, [] -> Player1 deck1
-    | [], deck2 -> Player2 deck2
-    | card1 :: deck1, card2 :: deck2 when card1 > card2 ->
-        play (deck1 @ [card1; card2]) deck2
-    | card1 :: deck1, card2 :: deck2 when card2 > card1 ->
-        play deck1 (deck2 @ [card2; card1])
+let rec play deck1 deck2 =
+    match deck1, deck2 with
+    | d1, [] -> Player1 d1
+    | [], d2 -> Player2 d2
+    | c1 :: d1, c2 :: d2 when c1 > c2 ->
+        play (d1 @ [c1; c2]) d2
+    | c1 :: d1, c2 :: d2 when c2 > c1 ->
+        play d1 (d2 @ [c2; c1])
 
 let rec play2 player1 player2 =
     let rec playRound deck1 deck2 cache =
         let cache' = deck1 :: cache
         match deck1, deck2 with
-        | d1, _ when List.contains d1 cache -> Player1 d1
-        | [], d2 -> Player2 d2
         | d1, [] -> Player1 d1
-        | card1 :: d1, card2 :: d2 when card1 <= List.length d1 && card2 <= List.length d2 ->
-            match play2 (List.take card1 d1) (List.take card2 d2) with
-            | Player1 _ -> playRound (d1 @ [card1; card2]) d2 cache'
-            | Player2 _ -> playRound d1 (d2 @ [card2; card1]) cache'
-        | card1 :: d1, card2 :: d2 when card1 > card2 ->
-            playRound (d1 @ [card1; card2]) d2 cache'
-        | card1 :: d1, card2 :: d2 when card2 > card1 ->
-            playRound d1 (d2 @ [card2; card1]) cache'
+        | [], d2 -> Player2 d2
+        | d1, _ when List.contains d1 cache -> Player1 d1
+        | c1 :: d1, c2 :: d2 when c1 <= List.length d1 && c2 <= List.length d2 ->
+            match play2 (List.take c1 d1) (List.take c2 d2) with
+            | Player1 _ -> playRound (d1 @ [c1; c2]) d2 cache'
+            | Player2 _ -> playRound d1 (d2 @ [c2; c1]) cache'
+        | c1 :: d1, c2 :: d2 when c1 > c2 ->
+            playRound (d1 @ [c1; c2]) d2 cache'
+        | c1 :: d1, c2 :: d2 when c2 > c1 ->
+            playRound d1 (d2 @ [c2; c1]) cache'
 
     playRound player1 player2 []
 
