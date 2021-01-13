@@ -8,7 +8,7 @@ fun calculateFuelRec(mass: Int): Int {
     else fuel + calculateFuelRec(fuel)
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val input = readLines("day01.txt") { it.toInt() }
 
     println("Part one: ${input.sumBy { calculateFuel(it) }}")
