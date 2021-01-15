@@ -1,3 +1,5 @@
+package nl.sanderp.aoc.day04
+
 fun hasLength6(password: Iterable<Int>) = password.count() == 6
 fun isAscending(password: Iterable<Int>) = password.windowed(2).all { (a, b) -> a <= b }
 fun hasRepeatDigit(password: Iterable<Int>) = password.windowed(2).any { (a, b) -> a == b }

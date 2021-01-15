@@ -1,3 +1,6 @@
+package nl.sanderp.aoc.day03
+
+import nl.sanderp.aoc.IO
 import kotlin.math.abs
 
 enum class Direction { Up, Down, Left, Right }
@@ -35,7 +38,7 @@ fun generatePath(directions: Iterable<Instruction>, start: Coordinate = Coordina
         .runningFold(start) { position, movement -> movement(position) }
 
 fun main() {
-    val (pathA, pathB) = readLines("day03.txt") { line -> line.split(',').map { parse(it) } }.map { generatePath(it) }
+    val (pathA, pathB) = IO.readLines("day03.txt") { line -> line.split(',').map { parse(it) } }.map { generatePath(it) }
 
     val intersections = pathA.intersect(pathB).drop(1) // Drop (0, 0)
     println("Part one: ${intersections.map { abs(it.first) + abs(it.second) }.minOrNull()}")

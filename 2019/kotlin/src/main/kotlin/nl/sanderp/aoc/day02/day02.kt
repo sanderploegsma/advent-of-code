@@ -1,3 +1,7 @@
+package nl.sanderp.aoc.day02
+
+import nl.sanderp.aoc.IO
+
 class IntCode(private val memory: IntArray) {
     fun run(): Int {
         var pointer = 0
@@ -38,7 +42,7 @@ fun findNounAndVerb(instructions: List<Int>): Pair<Int, Int> {
 }
 
 fun main() {
-    val instructions = readText("day02.txt") { it.split(',') }.map { it.toInt() }
+    val instructions = IO.readText("day02.txt") { it.split(',') }.map { it.toInt() }
 
     val input = instructions.toIntArray().apply {
         set(1, 12)
