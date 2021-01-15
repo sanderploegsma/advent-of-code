@@ -1,7 +1,7 @@
 open System.IO
 
 let input =
-    File.ReadLines("input.txt")
+    File.ReadLines("input01.txt")
     |> Seq.map int
     |> Seq.toList
 
