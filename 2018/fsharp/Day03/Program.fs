@@ -10,6 +10,7 @@ type Claim =
 
 let (|Regex|_|) pattern input =
     let m = Regex.Match(input, pattern)
+
     if m.Success
     then Some(List.tail [ for g in m.Groups -> g.Value ])
     else None
@@ -17,13 +18,12 @@ let (|Regex|_|) pattern input =
 let parseClaim line =
     match line with
     | Regex @"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)" [ id; x; y; w; h ] ->
-        Some
-            ({ ID = id
-               X = int x
-               Y = int y
-               W = int w
-               H = int h })
-    | _ -> None
+        { ID = id
+          X = int x
+          Y = int y
+          W = int w
+          H = int h }
+    | _ -> failwithf "Unable to parse claim %s" line
 
 let toCoords claim =
     seq {
@@ -37,14 +37,26 @@ let main argv =
     let input =
         File.ReadLines("Input.txt")
         |> Seq.map parseClaim
-        |> Seq.choose id
-        |> Seq.collect toCoords
+        |> Seq.map (fun claim -> claim.ID, toCoords claim)
 
-    let partOne =
-        Seq.countBy id
-        >> Seq.filter (fun (_, c) -> c >= 2)
-        >> Seq.length
+    let squareCount =
+        input
+        |> Seq.collect snd
+        |> Seq.countBy id
+        |> Map.ofSeq
 
-    printfn "Part one: %d" <| partOne input
-    
+    let overlapCount =
+        squareCount
+        |> Map.filter (fun _ count -> count >= 2)
+        |> Map.count
+
+    printfn "Part one: %d" overlapCount
+
+    let nonOverlappingClaim =
+        input
+        |> Seq.find (fun (_, coords) -> Seq.forall (fun xy -> squareCount.[xy] = 1) coords)
+        |> fst
+
+    printfn "Part two: %s" nonOverlappingClaim
+
     0 // return an integer exit code
