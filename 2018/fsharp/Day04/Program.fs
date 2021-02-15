@@ -8,8 +8,10 @@ let (|Regex|_|) pattern input =
     then Some(List.tail [ for g in m.Groups -> g.Value ])
     else None
 
+type Guard = Guard of int
+
 type Event =
-    | GuardBeginsShift of int
+    | GuardBeginsShift of Guard
     | GuardFallsAsleep
     | GuardWakesUp
 
@@ -18,12 +20,12 @@ type Record =
       Minute: int
       Event: Event }
 
-let parse (line: string) =
+let parse (line: string): Record =
     match line with
     | Regex @"\[(\d{4}-\d{2}-\d{2}) \d{2}:(\d{2})\] Guard #(\d+) begins shift" [ date; minute; guard ] ->
         { Date = date
           Minute = int minute
-          Event = GuardBeginsShift(int guard) }
+          Event = GuardBeginsShift(Guard(int guard)) }
     | Regex @"\[(\d{4}-\d{2}-\d{2}) \d{2}:(\d{2})\] falls asleep" [ date; minute ] ->
         { Date = date
           Minute = int minute
@@ -34,69 +36,54 @@ let parse (line: string) =
           Event = GuardWakesUp }
     | _ -> failwithf "Unable to parse input: %s" line
 
-type State =
-    { CurrentGuard: int
-      AsleepSince: int option }
+type GuardState =
+    | Initial
+    | GuardAwake of Guard
+    | GuardAsleep of Guard * asleepSince: int
 
-type SleepingGuard = { Guard: int; Minute: int }
+type SleepingGuard = Guard * int
+
+type Schedule = SleepingGuard seq
 
 /// Construct a sequence of sleeping guards - the guard ID x each minute they are asleep - from a sequence of records
-let createSchedule records =
+let createSchedule records: Schedule =
     let nextState state record =
-        match record, state with
-        | { Event = GuardBeginsShift (guard) }, _ ->
-            Seq.empty,
-            { CurrentGuard = guard
-              AsleepSince = None }
-        | { Event = GuardFallsAsleep }, _ ->
-            Seq.empty,
-            { state with
-                  AsleepSince = Some(record.Minute) }
-        | { Event = GuardWakesUp }, { AsleepSince = Some (asleepSince) } ->
-            Seq.init (record.Minute - asleepSince) (fun i ->
-                { Guard = state.CurrentGuard
-                  Minute = asleepSince + i }),
-            { state with AsleepSince = None }
+        match state, record.Event with
+        | _, GuardBeginsShift (guard) -> Seq.empty, GuardAwake(guard)
+        | GuardAwake (guard), GuardFallsAsleep -> Seq.empty, GuardAsleep(guard, record.Minute)
+        | GuardAsleep (guard, asleepSince), GuardWakesUp ->
+            let minutesSlept = record.Minute - asleepSince
+            Seq.init minutesSlept (fun i -> guard, asleepSince + i), GuardAwake(guard)
         | _, _ -> Seq.empty, state
 
-    let initialState =
-        { CurrentGuard = -1
-          AsleepSince = None }
-
     records
-    |> Seq.mapFold nextState initialState
+    |> Seq.mapFold nextState Initial
     |> fst
     |> Seq.collect id
 
 /// Find the guard that spends the most minutes asleep, multiplied by the minute they are asleep the most
-let partOne schedule =
-    let guard, minutes =
+let partOne (schedule: Schedule): int =
+    let (Guard guardId), minutes =
         schedule
-        |> Seq.groupBy (fun x -> x.Guard)
+        |> Seq.groupBy fst
         |> Seq.maxBy (snd >> Seq.length)
 
     let minute =
-        minutes
-        |> Seq.countBy (fun x -> x.Minute)
-        |> Seq.maxBy snd
-        |> fst
+        minutes |> Seq.countBy snd |> Seq.maxBy snd |> fst
 
-    guard * minute
+    guardId * minute
 
 /// Find the guard that is most frequently asleep on the same minute
-let partTwo schedule =
+let partTwo (schedule: Schedule): int =
     let minute, guards =
         schedule
-        |> Seq.groupBy (fun x -> x.Minute)
+        |> Seq.groupBy snd
         |> Seq.maxBy (snd >> Seq.length)
 
-    let guard =
-        guards
-        |> Seq.countBy (fun x -> x.Guard)
-        |> Seq.maxBy snd
-        |> fst
+    let (Guard guardId) =
+        guards |> Seq.countBy fst |> Seq.maxBy snd |> fst
 
-    guard * minute
+    guardId * minute
 
 [<EntryPoint>]
 let main argv =
