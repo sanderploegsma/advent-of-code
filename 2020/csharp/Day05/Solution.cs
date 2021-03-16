@@ -18,7 +18,7 @@ namespace AdventOfCode2020.Day05
 
         public int PartOne() => _seats.Max();
 
-        public long PartTwo()
+        public int PartTwo()
         {
             var missing =
                 from seat in AllPossibleSeats()
