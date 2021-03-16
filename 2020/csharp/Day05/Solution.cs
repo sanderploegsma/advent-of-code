@@ -20,11 +20,13 @@ namespace AdventOfCode2020.Day05
 
         public int PartTwo()
         {
+            var numberOfSeats = (int) Math.Pow(2, NumberOfRowBits + NumberOfColBits);
+            var (min, max) = (_seats.Min(), _seats.Max());
+            
             var missing =
-                from seat in AllPossibleSeats()
+                from seat in Enumerable.Range(0, numberOfSeats)
+                where seat > min && seat < max
                 where !_seats.Contains(seat)
-                where _seats.Contains(seat - 1)
-                where _seats.Contains(seat + 1)
                 select seat;
 
             return missing.Single();
@@ -32,18 +34,13 @@ namespace AdventOfCode2020.Day05
 
         private static int ParseSeatId(string seat)
         {
-            var id = seat.Replace('F', '0').Replace('B', '1').Replace('L', '0').Replace('R', '1');
-            return Convert.ToInt32(id, 2);
-        }
-
-        private static IEnumerable<int> AllPossibleSeats()
-        {
-            var rows = (int) Math.Pow(2, NumberOfRowBits);
-            var cols = (int) Math.Pow(2, NumberOfColBits);
+            var id = seat
+                .Replace('F', '0')
+                .Replace('B', '1')
+                .Replace('L', '0')
+                .Replace('R', '1');
             
-            for (var row = 0; row < rows; row++)
-            for (var col = 0; col < cols; col++)
-                yield return (row << NumberOfColBits) + col;
+            return Convert.ToInt32(id, 2);
         }
     }
 }
