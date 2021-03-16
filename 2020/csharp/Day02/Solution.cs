@@ -4,23 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Day02
+namespace AdventOfCode2020.Day02
 {
-    internal static class Program
+    internal class Solution
     {
-        private static void Main(string[] args)
+        private readonly IReadOnlyCollection<string> _input;
+
+        public Solution(IEnumerable<string> input)
         {
-            var input = File.ReadLines("Input.txt").ToList();
-
-            Console.WriteLine("Part one: {0}", PartOne(input));
-            Console.WriteLine("Part two: {0}", PartTwo(input));
+            _input = input.ToList();
         }
+        
+        public int PartOne() => _input.Select(Parser.ParseCharacterCountBasedPolicy).Count(x => x.IsValid);
 
-        private static int PartOne(IEnumerable<string> input) => 
-            input.Select(Parser.ParseCharacterCountBasedPolicy).Count(x => x.IsValid);
-
-        private static int PartTwo(IEnumerable<string> input) => 
-            input.Select(Parser.ParseCharacterPositionBasedPolicy).Count(x => x.IsValid);
+        public int PartTwo() => _input.Select(Parser.ParseCharacterPositionBasedPolicy).Count(x => x.IsValid);
     }
 
     internal static class Parser
