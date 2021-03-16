@@ -7,7 +7,13 @@ namespace AdventOfCode2020
     {
         public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T?> o) where T : class =>
             o.Where(x => x != null)!;
-        
+
+        public static IEnumerable<(T, T)> Pairwise<T>(this IEnumerable<T> items)
+        {
+            var list = items.ToList();
+            return list.SkipLast(1).Zip(list.Skip(1));
+        }
+
         public static ISet<T> UnionAll<T>(this IEnumerable<ISet<T>> sets)
         {
             var list = sets.ToList();
