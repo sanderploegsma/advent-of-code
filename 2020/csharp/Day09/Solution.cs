@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text.RegularExpressions;
 using Combinatorics.Collections;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
@@ -9,46 +10,57 @@ namespace AdventOfCode2020.Day09
 {
     internal class Solution
     {
-        private readonly long[] _preamble;
+        private readonly int _preambleSize;
         private readonly long[] _data;
 
         private readonly Lazy<long> _invalidNumber;
 
         public Solution(int preambleSize, IEnumerable<string> input)
         {
-            var data = input.Select(line => Convert.ToInt64(line)).ToList();
-            _preamble = data.Take(preambleSize).ToArray();
-            _data = data.Skip(preambleSize).ToArray();
-            _invalidNumber = new Lazy<long>(() => FindInvalidNumber(_preamble, _data));
+            _preambleSize = preambleSize;
+            _data = input.Select(line => Convert.ToInt64(line)).ToArray();
+            _invalidNumber = new Lazy<long>(FindInvalidNumber);
         }
 
         public long PartOne() => _invalidNumber.Value;
 
-        public long PartTwo() => FindWeakness(_preamble.Concat(_data).ToArray(), _invalidNumber.Value);
-
-        private static long FindWeakness(long[] data, long targetValue)
+        public long PartTwo()
         {
-            var range = new List<long>();
-            for (var i = 0; range.Sum() < targetValue && i < data.Length; i++)
-                range.Add(data[i]);
+            var target = _invalidNumber.Value;
+            var targetIndex = Array.IndexOf(_data, target);
+            var result = Enumerable.Range(0, targetIndex)
+                .Select(n => _data.Skip(n))
+                .Select(values => SelectRangeWithSumNotExceedingTarget(values, target))
+                .First(values => values.Sum() == target)
+                .ToList();
 
-            if (range.Sum() != targetValue)
-                return FindWeakness(data.Skip(1).ToArray(), targetValue);
-
-            return range.Min() + range.Max();
+            return result.Min() + result.Max();
         }
 
-        private static long FindInvalidNumber(long[] preamble, long[] data)
+        private long FindInvalidNumber()
         {
-            var nextNumber = data.First();
-            var pairs =
-                from pair in new Combinations<long>(preamble.ToList(), 2)
-                where pair.Sum() == nextNumber
-                select pair;
+            var windowSize = _preambleSize + 1;
 
-            return pairs.Any()
-                ? FindInvalidNumber(preamble.Skip(1).Append(nextNumber).ToArray(), data.Skip(1).ToArray())
-                : nextNumber;
+            return _data
+                .ToObservable()
+                .Buffer(windowSize, 1)
+                .ToEnumerable()
+                .First(data =>
+                    new Combinations<long>(data.SkipLast(1).ToList(), 2)
+                        .All(pair => pair.Sum() != data.Last()))
+                .Last();
+        }
+
+        private static IEnumerable<long> SelectRangeWithSumNotExceedingTarget(IEnumerable<long> numbers, long target)
+        {
+            var rangeWithSum = numbers
+                .ToObservable()
+                .Scan(new {Value = 0L, Sum = 0L}, (acc, cur) => new {Value = cur, Sum = acc.Sum + cur});
+
+            return rangeWithSum
+                .TakeWhile(value => value.Sum <= target)
+                .Select(value => value.Value)
+                .ToEnumerable();
         }
     }
 }
