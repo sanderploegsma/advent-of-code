@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AdventOfCode2020.Day03
 {
-    public class Solution
+    internal class Solution
     {
         private const char Tree = '#';
         private readonly char[,] _matrix;
