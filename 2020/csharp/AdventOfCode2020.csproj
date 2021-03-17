@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="Combinatorics" Version="1.1.0.19" />
+        <PackageReference Include="FsCheck.Xunit" Version="2.15.1" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
         <PackageReference Include="System.Reactive" Version="5.0.0" />
         <PackageReference Include="xunit" Version="2.4.0" />
@@ -91,6 +92,12 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="Day11\Example.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Day12\Input.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Day12\Example.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
