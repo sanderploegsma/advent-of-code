@@ -17,6 +17,9 @@ namespace AdventOfCode2020
 
             return result;
         }
+
+        public static T[][] Copy<T>(this T[][] matrix) =>
+            matrix.Select(x => x.ToArray()).ToArray();
     }
 
     public class MatricesTest
