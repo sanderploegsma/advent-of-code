@@ -11,7 +11,7 @@ namespace AdventOfCode2020.Day03
         public Solution(IEnumerable<string> input)
         {
             var grid = input.Select(x => x.ToCharArray()).ToArray();
-            _matrix = Matrices.Create(grid);
+            _matrix = Matrix.Create(grid);
         }
 
         public int PartOne() => CountTreesInPath(3, 1);

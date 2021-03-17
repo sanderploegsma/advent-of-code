@@ -3,7 +3,7 @@ using Xunit;
 
 namespace AdventOfCode2020
 {
-    public static class Matrices
+    public static class Matrix
     {
         public static T[,] Create<T>(T[][] data)
         {
@@ -19,7 +19,7 @@ namespace AdventOfCode2020
         }
     }
 
-    public class MatricesTest
+    public class MatrixTest
     {
         [Fact]
         public void Create_2D_Matrix()
@@ -38,7 +38,7 @@ namespace AdventOfCode2020
                 {7, 8, 9}
             };
 
-            Assert.Equal(expected, Matrices.Create(data));
+            Assert.Equal(expected, Matrix.Create(data));
         }
     }
 }

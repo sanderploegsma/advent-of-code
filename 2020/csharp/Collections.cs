@@ -42,5 +42,22 @@ namespace AdventOfCode2020
                         return acc;
                     });
         }
+
+        public static IEnumerable<IEnumerable<T>> SubSets<T>(this IEnumerable<T> items)
+        {
+            var set = items.ToArray();
+
+            bool[] state = new bool[set.Length + 1];
+            for (int x; !state[set.Length]; state[x] = true)
+            {
+                yield return Enumerable.Range(0, state.Length)
+                    .Where(i => state[i])
+                    .Select(i => set[i]);
+
+                for (x = 0; state[x]; state[x++] = false)
+                {
+                }
+            }
+        }
     }
 }
