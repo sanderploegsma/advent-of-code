@@ -14,6 +14,9 @@ namespace AdventOfCode2020
             return list.SkipLast(1).Zip(list.Skip(1));
         }
 
+        public static IEnumerable<(T Value, int Index)> Indexed<T>(this IEnumerable<T> items) =>
+            items.Select((item, i) => (item, i));
+
         public static ISet<T> UnionAll<T>(this IEnumerable<ISet<T>> sets)
         {
             var list = sets.ToList();
