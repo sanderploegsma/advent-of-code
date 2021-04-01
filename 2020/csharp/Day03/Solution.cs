@@ -24,16 +24,16 @@ namespace AdventOfCode2020.Day03
         private int CountTreesInPath(int dx, int dy)
         {
             var trees = 0;
-            var (row, col) = (0, 0);
+            var (x, y) = (0, 0);
             
-            while (row < _matrix.GetLength(0))
+            while (y < _matrix.Height())
             {
-                if (_matrix[row, col] == Tree)
+                if (_matrix[x, y] == Tree)
                     trees++;
 
-                row += dy;
-                col += dx;
-                col %= _matrix.GetLength(1);
+                y += dy;
+                x += dx;
+                x %= _matrix.Width();
             }
 
             return trees;
