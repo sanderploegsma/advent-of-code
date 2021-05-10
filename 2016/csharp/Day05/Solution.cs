@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2016.Day05
 {
@@ -36,7 +32,7 @@ namespace AdventOfCode2016.Day05
                 i++;
             }
 
-            return password;
+            return password.ToLower();
         }
 
         public string PartTwo()
