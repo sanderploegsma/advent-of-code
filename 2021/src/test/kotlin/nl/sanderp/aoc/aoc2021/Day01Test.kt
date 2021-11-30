@@ -1,15 +1,16 @@
 package nl.sanderp.aoc.aoc2021
 
 import nl.sanderp.aoc.aoc2021.day01.Day01
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import org.amshove.kluent.`should be equal to`
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class Day01Test {
-    @Test
-    fun `Part one - sample unit test`() {
-        val input = "Hello, World!"
-        val solver = Day01(input)
+    @ParameterizedTest
+    @ValueSource(strings = ["Hello, World!", "Advent of Code"])
+    fun `Sample unit test with different examples`(example: String) {
+        val solver = Day01(example)
 
-        assertEquals(input, solver.partOne())
+        solver.partOne() `should be equal to` example
     }
 }
