@@ -4,7 +4,7 @@ import org.amshove.kluent.`should contain all`
 import org.amshove.kluent.`should contain`
 import kotlin.test.Test
 
-class PermutationsTest {
+class ListPermutationsTest {
     @Test
     fun `all permutations of a small list`() {
         val actual = listOf(1, 2, 3).permutations()
