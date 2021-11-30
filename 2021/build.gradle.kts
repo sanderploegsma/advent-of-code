@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val junitVersion by extra {
@@ -18,7 +20,9 @@ repositories {
 }
 
 dependencies {
+    @Suppress("GradlePackageUpdate")
     testImplementation(kotlin("test"))
+
     testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
     testImplementation("org.amshove.kluent", "kluent", "1.68")
 }
@@ -30,6 +34,6 @@ tasks.test {
     }
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
