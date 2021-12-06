@@ -5,10 +5,10 @@ import nl.sanderp.aoc.aoc2021.*
 fun main() {
     val input = readResource("Day05.txt").lines().map { parse(it) }
 
-    val (answer1, duration1) = measureDuration<Int> { partOne(input) }
+    val (answer1, duration1) = measureDuration<Int> { countOverlappingPoints(input.filter { it.type != LineType.Diagonal }) }
     println("Part one: $answer1 (took ${duration1.prettyPrint()})")
 
-    val (answer2, duration2) = measureDuration<Int> { partTwo(input) }
+    val (answer2, duration2) = measureDuration<Int> { countOverlappingPoints(input) }
     println("Part two: $answer2 (took ${duration2.prettyPrint()})")
 }
 
@@ -41,19 +41,5 @@ private fun parse(line: String): LineSegment {
     return LineSegment(a, b)
 }
 
-private fun partOne(input: List<LineSegment>) = input
-    .filter { it.type != LineType.Diagonal }
-    .flatMap { it.points }
-    .groupingBy { it }
-    .eachCount()
-    .filterValues { it > 1 }
-    .keys
-    .size
-
-private fun partTwo(input: List<LineSegment>): Int = input
-    .flatMap { it.points }
-    .groupingBy { it }
-    .eachCount()
-    .filterValues { it > 1 }
-    .keys
-    .size
+private fun countOverlappingPoints(segments: List<LineSegment>) =
+    segments.flatMap { it.points }.groupingBy { it }.eachCount().filterValues { it > 1 }.keys.size
