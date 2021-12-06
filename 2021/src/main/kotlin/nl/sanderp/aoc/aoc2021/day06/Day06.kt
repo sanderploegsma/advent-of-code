@@ -15,21 +15,19 @@ fun main() {
 }
 
 private fun simulate(initial: List<Int>, days: Int): Long {
-    var counts = initial.groupingBy { it }.eachCount().mapValues { it.value.toLong() }
-    var next = mutableMapOf<Int, Long>()
+    val initialCounts = initial.groupingBy { it }.eachCount().mapValues { it.value.toLong() }
+    return simulate(initialCounts).drop(days).first().values.sum()
+}
 
-    for (i in 1..days) {
-        for ((x, n) in counts) {
+private fun simulate(initial: Map<Int, Long>) = generateSequence(initial) {
+    buildMap {
+        for ((x, n) in it) {
             if (x == 0) {
-                next.merge(6, n) { a, b -> a + b }
-                next[8] = n
+                merge(6, n) { a, b -> a + b }
+                set(8, n)
             } else {
-                next.merge(x - 1, n) { a, b -> a + b }
+                merge(x - 1, n) { a, b -> a + b }
             }
         }
-        counts = next
-        next = mutableMapOf()
     }
-
-    return counts.values.sum()
 }
