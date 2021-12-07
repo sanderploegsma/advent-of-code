@@ -19,8 +19,5 @@ private fun partOne(input: List<Int>) = findMinimumFuel(input) { from, to -> abs
 
 private fun partTwo(input: List<Int>) = findMinimumFuel(input) { from, to -> (1..abs(from - to)).sum() }
 
-private fun findMinimumFuel(positions: List<Int>, calculateFuel: (from: Int, to: Int) -> Int) = sequence {
-    for (x in positions.minOf { it }..positions.maxOf { it }) {
-        yield(positions.sumOf { calculateFuel(it, x) })
-    }
-}.minOf { it }
+private fun findMinimumFuel(positions: List<Int>, calculateFuel: (from: Int, to: Int) -> Int) =
+    (positions.minOf { it }..positions.maxOf { it }).minOf { x -> positions.sumOf { calculateFuel(it, x) } }
