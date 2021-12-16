@@ -11,7 +11,7 @@ fun main() {
     println("Part one: $answer1 (took ${duration1.prettyPrint()})")
 
     val (answer2, duration2) = measureDuration<Int> { partTwo(input) }
-    println("Part one: $answer2 (took ${duration2.prettyPrint()})")
+    println("Part two: $answer2 (took ${duration2.prettyPrint()})")
 }
 
 private fun parse(line: String): Pair<String, String> {
