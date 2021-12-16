@@ -25,6 +25,19 @@ fun Point2D.rotateRadians(radians: Double) =
 fun Point2D.pointsNextTo() = listOf(-1 to 0, 1 to 0, 0 to -1, 0 to 1).map { this + it }
 fun Point2D.pointsAround() = (-1..1).allPairs().filterNot { it == Pair(0, 0) }.map { this + it }.toList()
 
+fun Iterable<Point2D>.print() {
+    for (y in 0..this.maxOf { it.y }) {
+        for (x in 0..this.maxOf { it.x }) {
+            if (this.contains(x to y)) {
+                print('█')
+            } else {
+                print(' ')
+            }
+        }
+        println()
+    }
+}
+
 typealias Point3D = Triple<Int, Int, Int>
 
 val Point3D.x: Int

@@ -47,15 +47,5 @@ private fun partOne(points: Set<Point2D>, folds: List<Fold>): Int {
 
 private fun partTwo(points: Set<Point2D>, folds: List<Fold>) {
     val result = folds.fold(points, ::fold)
-
-    for (y in 0..result.maxOf { it.y }) {
-        for (x in 0..result.maxOf { it.x }) {
-            if (result.contains(x to y)) {
-                print('#')
-            } else {
-                print('.')
-            }
-        }
-        println()
-    }
+    result.print()
 }
