@@ -1,5 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day14
 
+import nl.sanderp.aoc.aoc2021.increaseBy
 import nl.sanderp.aoc.aoc2021.measureDuration
 import nl.sanderp.aoc.aoc2021.prettyPrint
 import nl.sanderp.aoc.aoc2021.readResource
@@ -23,8 +24,8 @@ private fun parseRule(rule: String) = rule.split(" -> ").let { (it[0][0] to it[0
 private fun insert(polymer: Map<Pair<Char, Char>, Long>, rules: Map<Pair<Char, Char>, Char>) = buildMap<Pair<Char, Char>, Long> {
     for ((pair, n) in polymer) {
         val c = rules[pair]!!
-        merge(pair.first to c, n) { a, b -> a + b }
-        merge(c to pair.second, n) { a, b -> a + b }
+        increaseBy(pair.first to c, n)
+        increaseBy(c to pair.second, n)
     }
 }
 

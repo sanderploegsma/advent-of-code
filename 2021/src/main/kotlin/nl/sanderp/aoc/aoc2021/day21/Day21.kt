@@ -1,5 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day21
 
+import nl.sanderp.aoc.aoc2021.increaseBy
 import nl.sanderp.aoc.aoc2021.measureDuration
 import nl.sanderp.aoc.aoc2021.prettyPrint
 import kotlin.math.min
@@ -81,13 +82,13 @@ private fun partTwo(initial: Game): Long {
                     val newGame = game.next(turn, move)
                     val newGameCount = gameCount * moveCount
 
-                    merge(newGame, newGameCount) { a, b -> a + b }
+                    increaseBy(newGame, newGameCount)
                 }
             }
         }
 
         games.entries.mapNotNull { it.key.winner(winningScore)?.to(it.value) }.forEach { (winner, count) ->
-            wins.merge(winner, count) { a, b -> a + b }
+            wins.increaseBy(winner, count)
         }
 
         openGames = games.filterKeys { it.winner(winningScore) == null }.toMap()

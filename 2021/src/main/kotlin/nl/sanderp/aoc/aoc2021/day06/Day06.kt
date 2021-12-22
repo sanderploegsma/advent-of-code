@@ -1,5 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day06
 
+import nl.sanderp.aoc.aoc2021.increaseBy
 import nl.sanderp.aoc.aoc2021.measureDuration
 import nl.sanderp.aoc.aoc2021.prettyPrint
 import nl.sanderp.aoc.aoc2021.readResource
@@ -23,10 +24,10 @@ private fun simulate(initial: Map<Int, Long>) = generateSequence(initial) {
     buildMap {
         for ((x, n) in it) {
             if (x == 0) {
-                merge(6, n) { a, b -> a + b }
+                increaseBy(6, n)
                 set(8, n)
             } else {
-                merge(x - 1, n) { a, b -> a + b }
+                increaseBy(x - 1, n)
             }
         }
     }

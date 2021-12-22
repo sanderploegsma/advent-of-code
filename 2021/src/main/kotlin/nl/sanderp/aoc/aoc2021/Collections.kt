@@ -69,3 +69,6 @@ fun <T, U, V> allTriples(first: Iterable<T>, second: Iterable<U>, third: Iterabl
 
 fun <T> Iterable<T>.allPairs() = allPairs(this, this)
 fun <T> Iterable<T>.allTriples() = allTriples(this, this, this)
+
+fun <T> MutableMap<T, Int>.increaseBy(key: T, value: Int) = merge(key, value) { a, b -> a + b }
+fun <T> MutableMap<T, Long>.increaseBy(key: T, value: Long) = merge(key, value) { a, b -> a + b }

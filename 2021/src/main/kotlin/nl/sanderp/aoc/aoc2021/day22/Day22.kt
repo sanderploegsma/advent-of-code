@@ -57,16 +57,16 @@ private fun partTwo(steps: List<RebootStep>): Long {
 
             if (maxX >= minX && maxY >= minY && maxZ >= minZ) {
                 val overlap = Cuboid(minX..maxX, minY..maxY, minZ..maxZ)
-                diff.merge(overlap, -count) { a, b -> a + b }
+                diff.increaseBy(overlap, -count)
             }
         }
 
         if (newState == CuboidState.On) {
-            diff.merge(cuboid, 1) { a, b -> a + b }
+            diff.increaseBy(cuboid, 1)
         }
 
         for (x in diff) {
-            cuboids.merge(x.key, x.value) { a, b -> a + b }
+            cuboids.increaseBy(x.key, x.value)
         }
     }
 
