@@ -35,27 +35,26 @@ private fun parse(line: String): Instruction {
     val b = parts[2]
 
     return when (parts[0]) {
-        "add" -> if (b[0].isLetter()) Add(a, b[0]-'w') else AddLiteral(a, b.toInt())
-        "mul" -> if (b[0].isLetter()) Multiply(a, b[0]-'w') else MultiplyLiteral(a, b.toInt())
-        "div" -> if (b[0].isLetter()) DivideBy(a, b[0]-'w') else DivideByLiteral(a, b.toInt())
-        "mod" -> if (b[0].isLetter()) Mod(a, b[0]-'w') else ModLiteral(a, b.toInt())
-        "eql" -> if (b[0].isLetter()) Equals(a, b[0]-'w') else EqualsLiteral(a, b.toInt())
+        "add" -> if (b[0].isLetter()) Add(a, b[0] - 'w') else AddLiteral(a, b.toInt())
+        "mul" -> if (b[0].isLetter()) Multiply(a, b[0] - 'w') else MultiplyLiteral(a, b.toInt())
+        "div" -> if (b[0].isLetter()) DivideBy(a, b[0] - 'w') else DivideByLiteral(a, b.toInt())
+        "mod" -> if (b[0].isLetter()) Mod(a, b[0] - 'w') else ModLiteral(a, b.toInt())
+        "eql" -> if (b[0].isLetter()) Equals(a, b[0] - 'w') else EqualsLiteral(a, b.toInt())
         else -> throw IllegalArgumentException("Cannot parse line: $line")
     }
 }
 
 private fun run(instructions: List<Instruction>, w: Int, z: Int): Map<IntArray, Int> {
     val memory = arrayOf(w, 0, 0, z)
-    val states = mutableMapOf<IntArray, Int>()
     for ((n, i) in instructions.withIndex()) {
         when (i) {
             is Input -> {
                 val rest = instructions.drop(n + 1)
-                for (d in 1..9) {
-                    run(rest, d, memory[3]).forEach { (k, v) -> states.putIfAbsent(IntArray(1) { d } + k, v) }
-                }
-
-                return states
+                return (1..9)
+                    .flatMap { digit ->
+                        run(rest, digit, memory[3]).mapKeys { IntArray(1) { digit } + it.key }.toList()
+                    }
+                    .toMap()
             }
             is Add -> memory[i.a] = memory[i.a] + memory[i.b]
             is AddLiteral -> memory[i.a] = memory[i.a] + i.b
@@ -70,8 +69,7 @@ private fun run(instructions: List<Instruction>, w: Int, z: Int): Map<IntArray, 
         }
     }
 
-    states[IntArray(0)] = memory[3]
-    return states
+    return mapOf(IntArray(0) to memory[3])
 }
 
 private fun partOne(instructions: List<Instruction>): Long {
@@ -80,4 +78,3 @@ private fun partOne(instructions: List<Instruction>): Long {
 
     return states.filterValues { it == 0 }.maxOf { it.key }
 }
-
