@@ -1,15 +1,15 @@
-//: [Previous](@previous)
-
-import Algorithms
 import Foundation
+import Algorithms
+import Common
 
-let input = readLines(fromResource: "Input")
+let input = Bundle.module.readLines(fromResource: "Input")
 
 var gammaRate: [Character] = []
 var epsilonRate: [Character] = []
 
 for position in 0...11 {
-    let (ones, zeroes) = input.partitioned(by: { $0[position] == "0" })
+    let zeroes = input.filter { $0[position] == "0" }
+    let ones = input.filter { $0[position] == "1" }
 
     if ones.count > zeroes.count {
         gammaRate.append("1")
@@ -30,7 +30,9 @@ var co2ScrubberRating = input
 
 for position in 0...11 {
     if oxygenGeneratorRating.count > 1 {
-        let (ones, zeroes) = oxygenGeneratorRating.partitioned(by: { $0[position] == "0" })
+        let zeroes = oxygenGeneratorRating.filter { $0[position] == "0" }
+        let ones = oxygenGeneratorRating.filter { $0[position] == "1" }
+        
         if ones.count >= zeroes.count {
             oxygenGeneratorRating = ones
         } else {
@@ -39,7 +41,9 @@ for position in 0...11 {
     }
 
     if co2ScrubberRating.count > 1 {
-        let (ones, zeroes) = co2ScrubberRating.partitioned(by: { $0[position] == "0" })
+        let zeroes = co2ScrubberRating.filter { $0[position] == "0" }
+        let ones = co2ScrubberRating.filter { $0[position] == "1" }
+        
         if zeroes.count <= ones.count {
             co2ScrubberRating = zeroes
         } else {
@@ -58,5 +62,3 @@ extension StringProtocol {
         self[index(startIndex, offsetBy: offset)]
     }
 }
-
-//: [Next](@next)

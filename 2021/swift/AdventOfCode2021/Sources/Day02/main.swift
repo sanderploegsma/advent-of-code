@@ -1,6 +1,5 @@
-//: [Previous](@previous)
-
 import Foundation
+import Common
 
 enum Command {
     case forward(Int)
@@ -8,7 +7,7 @@ enum Command {
     case up(Int)
 }
 
-let input = readLines(fromResource: "Input").map { line -> Command in
+let input = Bundle.module.readLines(fromResource: "Input").map { line -> Command in
     let parts = line.split(separator: " ")
     let value = Int(parts[1])!
     
@@ -54,5 +53,3 @@ func reducePartTwo(_ state: State2, _ command: Command) -> State2 {
 
 let partTwo = input.reduce(State2(position: 0, depth: 0, aim: 0), reducePartTwo)
 print("Part two: \(partTwo.position * partTwo.depth)")
-
-//: [Next](@next)
