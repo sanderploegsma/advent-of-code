@@ -1,0 +1,4 @@
+[submodule "swift-algorithms"]
+	path = 2021/swift/packages/swift-algorithms
+	url = git@github.com:apple/swift-algorithms.git
+	branch = tags/1.0.0

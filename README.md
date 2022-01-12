@@ -10,4 +10,4 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 2018 |                       | [Go](2018/go), [F#](2018/fsharp)     |
 | 2019 | [Go](2019/go)         | [Kotlin](2019/kotlin)                |
 | 2020 | [F#](2020/fsharp)     | [C#](2020/csharp)                    |
-| 2021 | [Kotlin](2021/kotlin) |                                      |
+| 2021 | [Kotlin](2021/kotlin) | [Swift](2021/swift)                  |
