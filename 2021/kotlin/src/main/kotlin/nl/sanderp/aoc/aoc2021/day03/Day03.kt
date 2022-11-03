@@ -1,8 +1,8 @@
 package nl.sanderp.aoc.aoc2021.day03
 
-import nl.sanderp.aoc.aoc2021.measureDuration
-import nl.sanderp.aoc.aoc2021.prettyPrint
-import nl.sanderp.aoc.aoc2021.readResource
+import nl.sanderp.aoc.common.measureDuration
+import nl.sanderp.aoc.common.prettyPrint
+import nl.sanderp.aoc.common.readResource
 
 data class Result(val a: String, val b: String) {
     val product by lazy { a.toLong(2) * b.toLong(2) }

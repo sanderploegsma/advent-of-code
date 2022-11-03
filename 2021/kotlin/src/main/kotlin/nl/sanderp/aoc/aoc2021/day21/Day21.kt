@@ -1,8 +1,8 @@
 package nl.sanderp.aoc.aoc2021.day21
 
-import nl.sanderp.aoc.aoc2021.increaseBy
-import nl.sanderp.aoc.aoc2021.measureDuration
-import nl.sanderp.aoc.aoc2021.prettyPrint
+import nl.sanderp.aoc.common.increaseBy
+import nl.sanderp.aoc.common.measureDuration
+import nl.sanderp.aoc.common.prettyPrint
 import kotlin.math.min
 
 

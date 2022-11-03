@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day13
 
-import nl.sanderp.aoc.aoc2021.*
+import nl.sanderp.aoc.common.*
 
 fun main() {
     val (points, folds) = parse(readResource("Day13.txt"))

@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day17
 
-import nl.sanderp.aoc.aoc2021.*
+import nl.sanderp.aoc.common.*
 
 private val targetX = 29..73
 private val targetY = -248..-194

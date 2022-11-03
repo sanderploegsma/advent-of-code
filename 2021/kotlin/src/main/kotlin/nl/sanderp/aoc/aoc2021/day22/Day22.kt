@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day22
 
-import nl.sanderp.aoc.aoc2021.*
+import nl.sanderp.aoc.common.*
 import kotlin.math.max
 import kotlin.math.min
 

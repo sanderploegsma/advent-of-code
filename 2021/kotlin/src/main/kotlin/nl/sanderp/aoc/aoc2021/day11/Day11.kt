@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day11
 
-import nl.sanderp.aoc.aoc2021.*
+import nl.sanderp.aoc.common.*
 import java.util.*
 
 fun main() {

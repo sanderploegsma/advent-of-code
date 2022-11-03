@@ -1,9 +1,9 @@
 package nl.sanderp.aoc.aoc2021.day20
 
-import nl.sanderp.aoc.aoc2021.Point2D
-import nl.sanderp.aoc.aoc2021.readResource
-import nl.sanderp.aoc.aoc2021.x
-import nl.sanderp.aoc.aoc2021.y
+import nl.sanderp.aoc.common.Point2D
+import nl.sanderp.aoc.common.readResource
+import nl.sanderp.aoc.common.x
+import nl.sanderp.aoc.common.y
 
 fun main() {
     val input = readResource("Day20.txt").replace('.', '0').replace('#', '1').lines()

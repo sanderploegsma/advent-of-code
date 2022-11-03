@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day25
 
-import nl.sanderp.aoc.aoc2021.*
+import nl.sanderp.aoc.common.*
 
 private typealias Grid = Map<Point2D, Char>
 

@@ -1,6 +1,6 @@
 package nl.sanderp.aoc.aoc2021.day16
 
-import nl.sanderp.aoc.aoc2021.readResource
+import nl.sanderp.aoc.common.readResource
 
 fun main() {
     val input = readResource("Day16.txt")

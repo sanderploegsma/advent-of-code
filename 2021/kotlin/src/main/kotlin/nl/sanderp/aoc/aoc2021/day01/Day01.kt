@@ -1,8 +1,8 @@
 package nl.sanderp.aoc.aoc2021.day01
 
-import nl.sanderp.aoc.aoc2021.measureDuration
-import nl.sanderp.aoc.aoc2021.prettyPrint
-import nl.sanderp.aoc.aoc2021.readResource
+import nl.sanderp.aoc.common.measureDuration
+import nl.sanderp.aoc.common.prettyPrint
+import nl.sanderp.aoc.common.readResource
 
 fun main() {
     val input = readResource("Day01.txt")
