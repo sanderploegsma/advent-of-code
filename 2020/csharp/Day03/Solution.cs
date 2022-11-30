@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AdventOfCode.Common;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2020.Day03

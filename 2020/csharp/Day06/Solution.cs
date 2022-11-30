@@ -1,7 +1,7 @@
-﻿using System;
+﻿using AdventOfCode.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace AdventOfCode2020.Day06
 {
