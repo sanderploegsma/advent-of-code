@@ -1,7 +1,9 @@
 package AdventOfCode2022
 
+import scala.collection.MapView
+
 object Day03 {
-  private lazy val priorities: Map[Char, Int] = (('a' to 'z') ++ ('A' to 'Z')).zipWithIndex.toMap.mapValues(_ + 1)
+  private lazy val priorities: Map[Char, Int] = (('a' to 'z') ++ ('A' to 'Z')).zipWithIndex.toMap.transform((_, v) => v + 1)
 
   def partOne(input: Seq[String]): Int = input
     .map(s => s.substring(0, s.length / 2).intersect(s.substring(s.length / 2)))

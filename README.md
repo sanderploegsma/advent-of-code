@@ -22,7 +22,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)        | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
 | 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)     | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
 | 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
-| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | [C#](2022/csharp/Day04.cs)                                                                  |
+| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
 | 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)           | [C#](2022/csharp/Day05.cs)                                                                  |
 
 ## 2021
