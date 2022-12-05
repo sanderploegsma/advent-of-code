@@ -1,6 +1,6 @@
-package nl.sanderp.aoc.day01
+package nl.sanderp.aoc.aoc2019.day01
 
-import nl.sanderp.aoc.IO
+import nl.sanderp.aoc.aoc2019.IO
 import kotlin.math.floor
 
 fun calculateFuel(mass: Int) = floor(mass.toDouble() / 3.0).toInt() - 2
