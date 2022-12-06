@@ -2,11 +2,9 @@ package AdventOfCode2022
 
 object Day06 {
   private def findMarker(input: String, markerSize: Int): Int =
-    val (_, startOfMarker) = input
+    val startOfMarker = input
       .sliding(markerSize)
-      .zipWithIndex
-      .find(_._1.toSet.size == markerSize)
-      .head
+      .indexWhere(_.toSet.size == markerSize)
 
     startOfMarker + markerSize
 
