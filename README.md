@@ -24,7 +24,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3) | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
 | 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
 | 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)           | [C#](2022/csharp/Day05.cs)                                                                  |
-| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)          | [C#](2022/csharp/Day06.cs)                                                                  |
+| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)          | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala) |
 
 ## 2021
 
