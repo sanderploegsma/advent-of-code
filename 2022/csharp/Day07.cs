@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2022;
+﻿namespace AdventOfCode2022;
 
 internal class Day07
 {
@@ -90,27 +84,7 @@ internal class Day07
     
     public int PartOne()
     {
-        var sum = 0;
-        var queue = new Queue<Directory>();
-        queue.Enqueue(_root);
-
-        while (queue.Any())
-        {
-            var dir = queue.Dequeue();
-            if (dir.Size <= 100000)
-            {
-                sum += dir.Size;
-            }
-            foreach (var c in dir.Children)
-            {
-                if (c is Directory d)
-                {
-                    queue.Enqueue(d);
-                }
-            }
-        }
-
-        return sum;
+        return Traverse(dir => dir.Size <= 100000).Sum(d => d.Size);
     }
 
     public int PartTwo()
@@ -118,16 +92,20 @@ internal class Day07
         var freeSpace = 70000000 - _root.Size;
         var requiredSpace = 30000000 - freeSpace;
 
-        var candidates = new List<Directory>();
+        return Traverse(dir => dir.Size >= requiredSpace).Select(d => d.Size).Min();
+    }
+
+    private IEnumerable<Directory> Traverse(Func<Directory, bool> predicate)
+    {
         var queue = new Queue<Directory>();
         queue.Enqueue(_root);
 
         while (queue.Any())
         {
             var dir = queue.Dequeue();
-            if (dir.Size >= requiredSpace)
+            if (predicate.Invoke(dir))
             {
-                candidates.Add(dir);
+                yield return dir;
             }
             foreach (var c in dir.Children)
             {
@@ -137,8 +115,6 @@ internal class Day07
                 }
             }
         }
-
-        return candidates.Select(d => d.Size).Min();
     }
 }
 
