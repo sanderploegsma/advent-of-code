@@ -7,9 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2020", "2020\cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2022", "2022\csharp\AdventOfCode2022.csproj", "{9AF559CC-6B43-4F84-95A8-1DE269BD4706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Common", "common\csharp\AdventOfCode.Common\AdventOfCode.Common.csproj", "{2D1498DC-B368-4A76-84A9-9E409CC057F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Common", "common\csharp\AdventOfCode.Common\AdventOfCode.Common.csproj", "{2D1498DC-B368-4A76-84A9-9E409CC057F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Common.Test", "common\csharp\AdventOfCode.Common.Test\AdventOfCode.Common.Test.csproj", "{2F2DA960-043E-4C2D-B8B7-A18CA55F4B12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Common.Test", "common\csharp\AdventOfCode.Common.Test\AdventOfCode.Common.Test.csproj", "{2F2DA960-043E-4C2D-B8B7-A18CA55F4B12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA367907-ED48-416F-8A65-76A1C518B475}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
