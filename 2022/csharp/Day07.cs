@@ -1,13 +1,15 @@
-﻿namespace AdventOfCode2022;
+﻿using System.Text.RegularExpressions;
 
-internal class Day07
+namespace AdventOfCode2022;
+
+internal partial class Day07
 {
     public interface INode
     {
         string Name { get; }
         int Size { get; }
     }
-    
+
     public class Directory : INode
     {
         public string Name { get; init; }
@@ -22,66 +24,51 @@ internal class Day07
         public int Size { get; init; }
     }
 
-    private readonly Directory _root;
+    private readonly Directory _root = new() { Name = "/" };
 
     public Day07(IEnumerable<string> input)
     {
-        Directory current = null;
+        var current = _root;
 
         foreach (var line in input)
         {
-            if (line == "$ cd /")
+            switch (line)
             {
-                current = new Directory { Name = "/" };
-                _root = current;
-                continue;
-            }
-            if (line == "$ cd ..")
-            {
-                current = current.Parent;
-                continue;
-            }
-            if (line.StartsWith("$ cd"))
-            {
-                var name = line.Substring(5);
-                if (current.Children.FirstOrDefault(x => x.Name == name) is Directory existing)
-                {
-                    current = existing;
-                    continue;
-                }
-                else
-                {
-                    var d = new Directory { Name = name, Parent = current };
-                    current.Children.Add(d);
-                    current = d;
-                }
-            }
-            if (line == "$ ls")
-            {
-                continue;
-            }
-            if (line.StartsWith("dir"))
-            {
-                var dirName = line.Substring(4);
-                if (current.Children.All(x => x.Name != dirName))
-                {
-                    var d = new Directory { Name = dirName, Parent = current };
-                    current.Children.Add(d);
-                    continue;
-                }
-            }
-
-            var size = line.Split(' ')[0];
-            var fileName = line.Split(' ')[1];
-
-            if (current.Children.All(x => x.Name != fileName))
-            {
-                var f = new File { Name = fileName, Size = int.Parse(size) };
-                current.Children.Add(f);
+                case "$ cd /":
+                    current = _root;
+                    break;
+                case "$ cd ..":
+                    if (current.Parent != null)
+                    {
+                        current = current.Parent;
+                    }
+                    break;
+                case string cd when cd.StartsWith("$ cd"):
+                    var targetName = cd[5..];
+                    if (current.Children.FirstOrDefault(x => x.Name == targetName) is Directory target)
+                    {
+                        current = target;
+                    }
+                    break;
+                case string dir when dir.StartsWith("dir "):
+                    var dirName = dir[4..];
+                    if (current.Children.All(x => x.Name != dirName))
+                    {
+                        current.Children.Add(new Directory { Name = dirName, Parent = current });
+                    }
+                    break;
+                case string file when FilePattern().IsMatch(file):
+                    var fileSize = file.Split(' ')[0];
+                    var fileName = file.Split(' ')[1];
+                    if (current.Children.All(x => x.Name != fileName))
+                    {
+                        current.Children.Add(new File { Name = fileName, Size = int.Parse(fileSize) });
+                    }
+                    break;
             }
         }
     }
-    
+
     public int PartOne()
     {
         return Traverse(dir => dir.Size <= 100000).Sum(d => d.Size);
@@ -116,6 +103,9 @@ internal class Day07
             }
         }
     }
+
+    [GeneratedRegex("\\d+ .*")]
+    private static partial Regex FilePattern();
 }
 
 public class Day07Test
