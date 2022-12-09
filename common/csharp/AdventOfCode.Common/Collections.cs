@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace AdventOfCode.Common
 {
@@ -56,6 +57,18 @@ namespace AdventOfCode.Common
 
                 for (x = 0; state[x]; state[x++] = false)
                 {
+                }
+            }
+        }
+
+        public static IEnumerable<T> TakeUntilIncluding<T>(this IEnumerable<T> items, Func<T, bool> predicate)
+        {
+            foreach (var item in items)
+            {
+                yield return item;
+                if (predicate(item))
+                {
+                    yield break;
                 }
             }
         }
