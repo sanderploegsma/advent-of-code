@@ -25,29 +25,7 @@ internal class Day09
             for (var i = 0; i < distance; i++)
             {
                 head = head.Move(direction);
-
-                if (Math.Abs(tail.X - head.X) < 2 && Math.Abs(tail.Y - head.Y) < 2)
-                {
-                    continue;
-                }
-
-                if (tail.X - head.X == 2)
-                {
-                    tail = new IntVector(head.X + 1, head.Y);
-                }
-                else if (tail.X - head.X == -2)
-                {
-                    tail = new IntVector(head.X - 1, head.Y);
-                }
-                else if (tail.Y - head.Y == 2)
-                {
-                    tail = new IntVector(head.X, head.Y + 1);
-                }
-                else if (tail.Y - head.Y == -2)
-                {
-                    tail = new IntVector(head.X, head.Y - 1);
-                }
-
+                tail = MoveTail(head, tail);
                 tailPositions.Add(tail);
             }
         }
@@ -68,30 +46,7 @@ internal class Day09
 
                 for (var j = 1; j < knots.Length; j++)
                 {
-                    var head = knots[j - 1];
-                    var tail = knots[j];
-
-                    if (Math.Abs(tail.X - head.X) < 2 && Math.Abs(tail.Y - head.Y) < 2)
-                    {
-                        continue;
-                    }
-
-                    if (tail.X - head.X == 2)
-                    {
-                        knots[j] = new IntVector(head.X + 1, head.Y);
-                    }
-                    else if (tail.X - head.X == -2)
-                    {
-                        knots[j] = new IntVector(head.X - 1, head.Y);
-                    }
-                    else if (tail.Y - head.Y == 2)
-                    {
-                        knots[j] = new IntVector(head.X, head.Y + 1);
-                    }
-                    else if (tail.Y - head.Y == -2)
-                    {
-                        knots[j] = new IntVector(head.X, head.Y - 1);
-                    }
+                    knots[j] = MoveTail(knots[j - 1], knots[j]);
                 }
 
                 tailPositions.Add(knots.Last());
@@ -99,6 +54,34 @@ internal class Day09
         }
 
         return tailPositions.Count;
+    }
+
+    private static IntVector MoveTail(IntVector head, IntVector tail)
+    {
+        if (Math.Abs(tail.X - head.X) < 2 && Math.Abs(tail.Y - head.Y) < 2)
+        {
+            return tail;
+        }
+
+        var (dx, dy) = (0, 0);
+
+        if (tail.X == head.X)
+        {
+            dx = 0;
+            dy = (int)((head.Y - tail.Y) / Math.Abs(head.Y - tail.Y));
+        }
+        else if (tail.Y == head.Y)
+        {
+            dx = (int)((head.X - tail.X) / Math.Abs(head.X - tail.X));
+            dy = 0;
+        }
+        else
+        {
+            dx = (int)((head.X - tail.X) / Math.Abs(head.X - tail.X));
+            dy = (int)((head.Y - tail.Y) / Math.Abs(head.Y - tail.Y));
+        }
+
+        return new IntVector(tail.X + dx, tail.Y + dy);
     }
 
     private static Direction ToDirection(char c) => c switch
@@ -129,7 +112,7 @@ public class Day09Test
     [Theory]
     [FileData(FirstExampleFile, FileContents.StringPerLine, 1)]
     [FileData(SecondExampleFile, FileContents.StringPerLine, 36)]
-    [FileData(InputFile, FileContents.StringPerLine, -1)]
+    [FileData(InputFile, FileContents.StringPerLine, 2455)]
     public void TestPartTwo(IEnumerable<string> input, int expected)
     {
         var solution = new Day09(input);
