@@ -57,7 +57,48 @@ internal class Day09
 
     public int PartTwo()
     {
-        return -1;
+        var knots = Enumerable.Repeat(new IntVector(0, 0), 10).ToArray();
+        var tailPositions = new HashSet<IntVector>() { knots.Last() };
+
+        foreach (var (direction, distance) in _moves)
+        {
+            for (var i = 0; i < distance; i++)
+            {
+                knots[0] = knots[0].Move(direction);
+
+                for (var j = 1; j < knots.Length; j++)
+                {
+                    var head = knots[j - 1];
+                    var tail = knots[j];
+
+                    if (Math.Abs(tail.X - head.X) < 2 && Math.Abs(tail.Y - head.Y) < 2)
+                    {
+                        continue;
+                    }
+
+                    if (tail.X - head.X == 2)
+                    {
+                        knots[j] = new IntVector(head.X + 1, head.Y);
+                    }
+                    else if (tail.X - head.X == -2)
+                    {
+                        knots[j] = new IntVector(head.X - 1, head.Y);
+                    }
+                    else if (tail.Y - head.Y == 2)
+                    {
+                        knots[j] = new IntVector(head.X, head.Y + 1);
+                    }
+                    else if (tail.Y - head.Y == -2)
+                    {
+                        knots[j] = new IntVector(head.X, head.Y - 1);
+                    }
+                }
+
+                tailPositions.Add(knots.Last());
+            }
+        }
+
+        return tailPositions.Count;
     }
 
     private static Direction ToDirection(char c) => c switch
@@ -73,10 +114,11 @@ internal class Day09
 public class Day09Test
 {
     private const string InputFile = "Day09.Input.txt";
-    private const string ExampleFile = "Day09.Example.txt";
+    private const string FirstExampleFile = "Day09.Example1.txt";
+    private const string SecondExampleFile = "Day09.Example2.txt";
 
     [Theory]
-    [FileData(ExampleFile, FileContents.StringPerLine, 13)]
+    [FileData(FirstExampleFile, FileContents.StringPerLine, 13)]
     [FileData(InputFile, FileContents.StringPerLine, 6337)]
     public void TestPartOne(IEnumerable<string> input, int expected)
     {
@@ -85,7 +127,8 @@ public class Day09Test
     }
 
     [Theory]
-    [FileData(ExampleFile, FileContents.StringPerLine, -1)]
+    [FileData(FirstExampleFile, FileContents.StringPerLine, 1)]
+    [FileData(SecondExampleFile, FileContents.StringPerLine, 36)]
     [FileData(InputFile, FileContents.StringPerLine, -1)]
     public void TestPartTwo(IEnumerable<string> input, int expected)
     {
