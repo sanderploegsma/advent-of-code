@@ -30,7 +30,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)                | [C#](2022/csharp/Day09.cs)                                                                  |
 | 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)          | [C#](2022/csharp/Day10.cs)                                                                  |
 | 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)      | [C#](2022/csharp/Day11.cs)                                                                  |
-| 11  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)   | [C#](2022/csharp/Day12.cs)                                                                  |
+| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)   | [C#](2022/csharp/Day12.cs)                                                                  |
 
 ## 2021
 
