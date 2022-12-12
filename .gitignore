@@ -12,3 +12,6 @@ build
 # Scala projects
 .bsp
 target
+
+# Visual Studio generated items
+/Visual Studio 2022/
