@@ -2,6 +2,11 @@
 
 internal class Day12
 {
+    private const char StartMarker = 'S';
+    private const char EndMarker = 'E';
+    private const char MinHeight = 'a';
+    private const char MaxHeight = 'z';
+
     private readonly Dictionary<Point, char> _map;
     private readonly Dictionary<Point, int> _distances;
     private readonly Point _start;
@@ -14,9 +19,8 @@ internal class Day12
                       select new { Point = new Point(c.Index, line.Index), Height = c.Value };
 
         _map = heights.ToDictionary(x => x.Point, x => x.Height);
-
-        _start = heights.First(x => x.Height == 'S').Point;
-        _end = heights.First(x => x.Height == 'E').Point;
+        _start = heights.First(x => x.Height == StartMarker).Point;
+        _end = heights.First(x => x.Height == EndMarker).Point;
         _distances = new Dictionary<Point, int> { [_end] = 0 };
 
         var queue = new Queue<Point>();
@@ -40,9 +44,9 @@ internal class Day12
 
     private static int GetHeight(char c) => c switch
     {
-        'S' => 0,
-        'E' => 'z' - 'a',
-        _ => c - 'a',
+        StartMarker => 0,
+        EndMarker => MaxHeight - MinHeight,
+        _ => c - MinHeight,
     };
 
     public int PartOne()
@@ -52,7 +56,7 @@ internal class Day12
 
     public int PartTwo()
     {
-        return _distances.Where(x => _map[x.Key] == 'a').Min(x => x.Value);
+        return _distances.Where(x => _map[x.Key] == MinHeight).Min(x => x.Value);
     }
 
     private record struct Point(int X, int Y);
