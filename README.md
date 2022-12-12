@@ -5,7 +5,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## Overview
 
 | Year          | Participation         | Practice                                 |
-| ------------- | --------------------- | ---------------------------------------- |
+|---------------|-----------------------|------------------------------------------|
 | [2022](#2022) | [C#](2022/csharp)     | [Scala](2022/scala)                      |
 | [2021](#2021) | [Kotlin](2021/kotlin) | [Swift](2021/swift)                      |
 | [2020](#2020) | [F#](2020/fsharp)     | [C#](2020/csharp), [Python](2020/python) |
@@ -17,25 +17,25 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2022
 
-| Day | Name                                                              | Solutions                                                                                   |
-| --- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)           | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
-| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)        | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
-| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)    | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
-| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)               | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
-| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)              | [C#](2022/csharp/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala) |
-| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)             | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala) |
-| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)    | [C#](2022/csharp/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala) |
-| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)         | [C#](2022/csharp/Day08.cs)                                                                  |
-| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)                | [C#](2022/csharp/Day09.cs)                                                                  |
-| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)          | [C#](2022/csharp/Day10.cs)                                                                  |
-| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)      | [C#](2022/csharp/Day11.cs)                                                                  |
-| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)   | [C#](2022/csharp/Day12.cs)                                                                  |
+| Day | Name                                                            | Solutions                                                                                   |
+|-----|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)         | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
+| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)      | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
+| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)  | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
+| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)             | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
+| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)            | [C#](2022/csharp/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala) |
+| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)           | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala) |
+| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)  | [C#](2022/csharp/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala) |
+| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)       | [C#](2022/csharp/Day08.cs)                                                                  |
+| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)              | [C#](2022/csharp/Day09.cs)                                                                  |
+| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)        | [C#](2022/csharp/Day10.cs)                                                                  |
+| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)    | [C#](2022/csharp/Day11.cs)                                                                  |
+| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [C#](2022/csharp/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala) |
 
 ## 2021
 
 | Day | Name                                                            | Solutions                                                                                                                                  |
-| --- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|-----|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | 1   | [Sonar Sweep](https://adventofcode.com/2021/day/1)              | [Kotlin](2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day01/Day01.kt), [Swift](2021/swift/AdventOfCode2021/Sources/Day01/main.swift) |
 | 2   | [Dive!](https://adventofcode.com/2021/day/2)                    | [Kotlin](2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day02/Day02.kt), [Swift](2021/swift/AdventOfCode2021/Sources/Day02/main.swift) |
 | 3   | [Binary Diagnostic](https://adventofcode.com/2021/day/3)        | [Kotlin](2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day03/Day03.kt), [Swift](2021/swift/AdventOfCode2021/Sources/Day03/main.swift) |
@@ -65,7 +65,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2020
 
 | Day | Name                                                            | Solutions                                                                                               |
-| --- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|-----|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | 1   | [Report Repair](https://adventofcode.com/2020/day/1)            | [F#](2020/fsharp/Day01/Program.fs), [C#](2020/csharp/Day01/Solution.cs), [Python](2020/python/day01.py) |
 | 2   | [Password Philosophy](https://adventofcode.com/2020/day/2)      | [F#](2020/fsharp/Day02/Program.fs), [C#](2020/csharp/Day02/Solution.cs), [Python](2020/python/day02.py) |
 | 3   | [Toboggan Trajectory](https://adventofcode.com/2020/day/3)      | [F#](2020/fsharp/Day03/Program.fs), [C#](2020/csharp/Day03/Solution.cs), [Python](2020/python/day03.py) |
@@ -95,7 +95,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2019
 
 | Day | Name                                                                      | Solutions                                                                                                                                  |
-| --- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|-----|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | 1   | [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [Go](2019/go/01/main.go), [Kotlin](2019/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2019/day01/day01.kt), [F#](2019/fsharp/Day01/Solution.fs) |
 | 2   | [1202 Program Alarm](https://adventofcode.com/2019/day/2)                 | [Go](2019/go/02/main.go), [Kotlin](2019/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2019/day02/day02.kt)                                      |
 | 3   | [Crossed Wires](https://adventofcode.com/2019/day/3)                      | [Go](2019/go/03/main.go), [Kotlin](2019/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2019/day03/day03.kt)                                      |
@@ -125,7 +125,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2018
 
 | Day | Name                                                                         | Solutions                                                    |
-| --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------ |
+|-----|------------------------------------------------------------------------------|--------------------------------------------------------------|
 | 1   | [Chronal Calibration](https://adventofcode.com/2018/day/1)                   | [Go](2018/go/01/main.go), [F#](2018/fsharp/Day01/Program.fs) |
 | 2   | [Inventory Management System](https://adventofcode.com/2018/day/2)           | [Go](2018/go/02/main.go), [F#](2018/fsharp/Day02/Program.fs) |
 | 3   | [No Matter How You Slice It](https://adventofcode.com/2018/day/3)            | [Go](2018/go/03/main.go), [F#](2018/fsharp/Day03/Program.fs) |
@@ -155,7 +155,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2017
 
 | Day | Name                                                                           | Solutions                   |
-| --- | ------------------------------------------------------------------------------ | --------------------------- |
+|-----|--------------------------------------------------------------------------------|-----------------------------|
 | 1   | [Inverse Captcha](https://adventofcode.com/2017/day/1)                         | [F#](2017/Day01/Program.fs) |
 | 2   | [Corruption Checksum](https://adventofcode.com/2017/day/2)                     | [F#](2017/Day02/Program.fs) |
 | 3   | [Spiral Memory](https://adventofcode.com/2017/day/3)                           | [F#](2017/Day03/Program.fs) |
@@ -185,7 +185,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2016
 
 | Day | Name                                                                           | Solutions                                                               |
-| --- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+|-----|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | 1   | [No Time for a Taxicab](https://adventofcode.com/2016/day/1)                   | [C#](2016/csharp/Day01/Solution.cs), [F#](2016/fsharp/Day01/Program.fs) |
 | 2   | [Bathroom Security](https://adventofcode.com/2016/day/2)                       | [C#](2016/csharp/Day02/Solution.cs), [F#](2016/fsharp/Day02/Program.fs) |
 | 3   | [Squares With Three Sides](https://adventofcode.com/2016/day/3)                | [C#](2016/csharp/Day03/Solution.cs), [F#](2016/fsharp/Day03/Program.fs) |
@@ -215,7 +215,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 ## 2015
 
 | Day | Name                                                                          | Solutions                         |
-| --- | ----------------------------------------------------------------------------- | --------------------------------- |
+|-----|-------------------------------------------------------------------------------|-----------------------------------|
 | 1   | [Not Quite Lisp](https://adventofcode.com/2015/day/1)                         | [F#](2015/Day01/Program.fs)       |
 | 2   | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | [F#](2015/Day02/Program.fs)       |
 | 3   | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [F#](2015/Day03/Program.fs)       |
