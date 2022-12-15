@@ -111,5 +111,16 @@ namespace AdventOfCode.Common
 
             return result;
         }
+
+        public static IEnumerable<(int X, int Y, T Data)> Enumerate<T>(this T[,] matrix)
+        {
+            for (int y = 0; y < matrix.Height(); y++)
+            {
+                for (int x = 0; x < matrix.Width(); x++)
+                {
+                    yield return (x, y, matrix[x, y]);
+                }
+            }
+        }
     }
 }
