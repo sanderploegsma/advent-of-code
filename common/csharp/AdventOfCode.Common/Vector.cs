@@ -15,6 +15,8 @@ namespace AdventOfCode.Common
 
         public int ManhattanDistance => Math.Abs(X) + Math.Abs(Y);
 
+        public int ManhattanDistanceTo(IntVector other) => (this - other).ManhattanDistance;
+
         public IntVector Rotate(int degrees)
         {
             var radians = Math.PI * degrees / 180.0;
