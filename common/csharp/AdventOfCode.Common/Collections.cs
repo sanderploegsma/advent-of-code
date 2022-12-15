@@ -15,8 +15,8 @@ namespace AdventOfCode.Common
             return Enumerable.Zip(list.SkipLast(1), list.Skip(1), (a, b) => (a, b));
         }
 
-        public static IEnumerable<(T Value, int Index)> Indexed<T>(this IEnumerable<T> items) =>
-            items.Select((item, i) => (item, i));
+        public static IEnumerable<(T Value, int Index)> Indexed<T>(this IEnumerable<T> items, int start = 0) =>
+            items.Select((item, i) => (item, i + start));
 
         public static ISet<T> UnionAll<T>(this IEnumerable<ISet<T>> sets)
         {

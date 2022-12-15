@@ -31,7 +31,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)        | [C#](2022/csharp/Day10.cs)                                                                  |
 | 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)    | [C#](2022/csharp/Day11.cs)                                                                  |
 | 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [C#](2022/csharp/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala) |
-| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         |                                                                                             |
+| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         | [C#](2022/csharp/Day13.cs)                                                                  |
 | 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)      |                                                                                             |
 | 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)   | [C#](2022/csharp/Day15.cs)                                                                  |
 
