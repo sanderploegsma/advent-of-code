@@ -19,21 +19,31 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 | Day | Name                                                            | Solutions                                                                                   |
 |-----|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)         | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
-| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)      | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
-| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)  | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
-| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)             | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
-| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)            | [C#](2022/csharp/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala) |
-| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)           | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala) |
-| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)  | [C#](2022/csharp/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala) |
-| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)       | [C#](2022/csharp/Day08.cs)                                                                  |
-| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)              | [C#](2022/csharp/Day09.cs)                                                                  |
-| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)        | [C#](2022/csharp/Day10.cs)                                                                  |
-| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)    | [C#](2022/csharp/Day11.cs)                                                                  |
-| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [C#](2022/csharp/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala) |
-| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)         | [C#](2022/csharp/Day13.cs)                                                                  |
-| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)      | [C#](2022/csharp/Day14.cs)                                                                  |
-| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)   | [C#](2022/csharp/Day15.cs)                                                                  |
+| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)          | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
+| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
+| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
+| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)              | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala) |
+| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)             | [C#](2022/csharp/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala) |
+| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)            | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala) |
+| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)   | [C#](2022/csharp/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala) |
+| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)        | [C#](2022/csharp/Day08.cs)                                                                  |
+| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)               | [C#](2022/csharp/Day09.cs)                                                                  |
+| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | [C#](2022/csharp/Day10.cs)                                                                  |
+| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)     | [C#](2022/csharp/Day11.cs)                                                                  |
+| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | [C#](2022/csharp/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala) |
+| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)          | [C#](2022/csharp/Day13.cs)                                                                  |
+| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)       | [C#](2022/csharp/Day14.cs)                                                                  |
+| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | [C#](2022/csharp/Day15.cs)                                                                  |
+| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |                                                                                             |
+| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         |                                                                                             |
+| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         |                                                                                             |
+| 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |                                                                                             |
+| 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |                                                                                             |
+| 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              |                                                                                             |
+| 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               |                                                                                             |
+| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       |                                                                                             |
+| 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           |                                                                                             |
+| 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          |                                                                                             |
 
 ## 2021
 
