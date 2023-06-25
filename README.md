@@ -17,8 +17,8 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2022
 
-| Day | Name                                                            | Solutions                                                                                   |
-|-----|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Day | Name                                                             | Solutions                                                                                   |
+|-----|------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)          | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala) |
 | 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala) |
 | 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala) |
@@ -36,7 +36,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | [C#](2022/csharp/Day15.cs)                                                                  |
 | 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |                                                                                             |
 | 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         |                                                                                             |
-| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         |                                                                                             |
+| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | [C#](2022/csharp/Day18.cs)                                                                  |
 | 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |                                                                                             |
 | 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |                                                                                             |
 | 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              |                                                                                             |
