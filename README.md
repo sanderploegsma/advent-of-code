@@ -6,7 +6,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 | Year          | Participation         | Practice                                 |
 | ------------- | --------------------- | ---------------------------------------- |
-| [2023](#2023) | [Swift](2023/swift)   |                                          |
+| [2023](#2023) |                       |                                          |
 | [2022](#2022) | [C#](2022/csharp)     | [Scala](2022/scala)                      |
 | [2021](#2021) | [Kotlin](2021/kotlin) | [Swift](2021/swift)                      |
 | [2020](#2020) | [F#](2020/fsharp)     | [C#](2020/csharp), [Python](2020/python) |
