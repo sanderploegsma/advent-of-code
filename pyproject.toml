@@ -4,7 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Sander Ploegsma <sanderploegsma@gmail.com>"]
 readme = "README.md"
-packages = [{include="2023/python/aoc_2023"}]
+packages = [
+    { include = "2020/python/aoc_2020" },
+    { include = "2023/python/aoc_2023" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -12,6 +15,7 @@ python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.9.1"
+pytest = "^7.4.3"
 
 [build-system]
 requires = ["poetry-core"]

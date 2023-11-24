@@ -21,7 +21,7 @@ def intersect(group: List[List[str]]) -> List[str]:
     return result
 
 
-with open('day06.txt', encoding='utf8') as file:
+with open('2020/input/day06.txt', encoding='utf8') as file:
     groups = [group.splitlines()
               for group in file.read().split(os.linesep + os.linesep)]
 

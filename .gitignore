@@ -15,3 +15,7 @@ target
 
 # Visual Studio generated items
 /Visual Studio 2022/
+
+# Python
+*.pyc
+__pycache__

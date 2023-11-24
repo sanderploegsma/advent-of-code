@@ -5,7 +5,7 @@ def parse_line(line):
 
     return a, b, target, password
 
-input = open('day02.txt').read()
+input = open('2020/input/day02.txt').read()
 passwords = [parse_line(x) for x in input.splitlines()]
 
 def validate_part_one(min, max, target, password):

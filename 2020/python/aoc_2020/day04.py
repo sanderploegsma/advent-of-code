@@ -91,7 +91,7 @@ def parse_passport(data: str) -> Passport:
     return Passport(fields)
 
 
-with open('day04.txt', encoding='utf8') as file:
+with open('2020/input/day04.txt', encoding='utf8') as file:
     passport_data = file.read().split(os.linesep + os.linesep)
     passports = [parse_passport(lines) for lines in passport_data]
 

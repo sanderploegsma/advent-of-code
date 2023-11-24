@@ -34,7 +34,7 @@ def find_seat_location(seat: str) -> Tuple[int, int]:
     return find_row(seat[:7]), find_column(seat[7:])
 
 
-with open('day05.txt', encoding='utf8') as file:
+with open('2020/input/day05.txt', encoding='utf8') as file:
     seats = [find_seat_location(line) for line in file.read().splitlines()]
     seat_ids = [row * 8 + column for row, column in seats]
     max_seat = max(seat_ids)
