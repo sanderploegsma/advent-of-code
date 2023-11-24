@@ -4,17 +4,17 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## Overview
 
-| Year          | Participation                  | Practice                                   |
-| ------------- | ------------------------------ | ------------------------------------------ |
-| [2023](#2023) | [Python](2023/python/aoc_2023) |                                            |
-| [2022](#2022) | [C#](2022/csharp)              | [Scala](2022/scala), [Elixir](2022/elixir) |
-| [2021](#2021) | [Kotlin](2021/kotlin)          | [Swift](2021/swift)                        |
-| [2020](#2020) | [F#](2020/fsharp)              | [C#](2020/csharp), [Python](2020/python)   |
-| [2019](#2019) | [Go](2019/go)                  | [Kotlin](2019/kotlin)                      |
-| [2018](#2018) |                                | [Go](2018/go), [F#](2018/fsharp)           |
-| [2017](#2017) |                                | [F#](2017)                                 |
-| [2016](#2016) |                                | [F#](2016/fsharp), [C#](2016/csharp)       |
-| [2015](#2015) |                                | [F# / Kotlin](2015)                        |
+| Year          | Participation                  | Practice                                          |
+| ------------- | ------------------------------ | ------------------------------------------------- |
+| [2023](#2023) | [Python](2023/python/aoc_2023) |                                                   |
+| [2022](#2022) | [C#](2022/csharp)              | [Scala](2022/scala), [Elixir](2022/elixir)        |
+| [2021](#2021) | [Kotlin](2021/kotlin)          | [Swift](2021/swift)                               |
+| [2020](#2020) | [F#](2020/fsharp)              | [C#](2020/csharp), [Python](2020/python/aoc_2020) |
+| [2019](#2019) | [Go](2019/go)                  | [Kotlin](2019/kotlin)                             |
+| [2018](#2018) |                                | [Go](2018/go), [F#](2018/fsharp)                  |
+| [2017](#2017) |                                | [F#](2017)                                        |
+| [2016](#2016) |                                | [F#](2016/fsharp), [C#](2016/csharp)              |
+| [2015](#2015) |                                | [F# / Kotlin](2015)                               |
 
 ## 2023
 
@@ -108,33 +108,33 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2020
 
-| Day | Name                                                            | Solutions                                                                                               |
-| --- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| 1   | [Report Repair](https://adventofcode.com/2020/day/1)            | [F#](2020/fsharp/Day01/Program.fs), [C#](2020/csharp/Day01/Solution.cs), [Python](2020/python/day01.py) |
-| 2   | [Password Philosophy](https://adventofcode.com/2020/day/2)      | [F#](2020/fsharp/Day02/Program.fs), [C#](2020/csharp/Day02/Solution.cs), [Python](2020/python/day02.py) |
-| 3   | [Toboggan Trajectory](https://adventofcode.com/2020/day/3)      | [F#](2020/fsharp/Day03/Program.fs), [C#](2020/csharp/Day03/Solution.cs), [Python](2020/python/day03.py) |
-| 4   | [Passport Processing](https://adventofcode.com/2020/day/4)      | [F#](2020/fsharp/Day04/Program.fs), [C#](2020/csharp/Day04/Solution.cs), [Python](2020/python/day04.py) |
-| 5   | [Binary Boarding](https://adventofcode.com/2020/day/5)          | [F#](2020/fsharp/Day05/Program.fs), [C#](2020/csharp/Day05/Solution.cs), [Python](2020/python/day05.py) |
-| 6   | [Custom Customs](https://adventofcode.com/2020/day/6)           | [F#](2020/fsharp/Day06/Program.fs), [C#](2020/csharp/Day06/Solution.cs), [Python](2020/python/day06.py) |
-| 7   | [Handy Haversacks](https://adventofcode.com/2020/day/7)         | [F#](2020/fsharp/Day07/Program.fs), [C#](2020/csharp/Day07/Solution.cs)                                 |
-| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/Day08/Solution.cs)                                 |
-| 9   | [Encoding Error](https://adventofcode.com/2020/day/9)           | [F#](2020/fsharp/Day09/Program.fs), [C#](2020/csharp/Day09/Solution.cs)                                 |
-| 10  | [Adapter Array](https://adventofcode.com/2020/day/10)           | [F#](2020/fsharp/Day10/Program.fs), [C#](2020/csharp/Day10/Solution.cs)                                 |
-| 11  | [Seating System](https://adventofcode.com/2020/day/11)          | [F#](2020/fsharp/Day11/Program.fs), [C#](2020/csharp/Day11/Solution.cs)                                 |
-| 12  | [Rain Risk](https://adventofcode.com/2020/day/12)               | [F#](2020/fsharp/Day12/Program.fs), [C#](2020/csharp/Day12/Solution.cs)                                 |
-| 13  | [Shuttle Search](https://adventofcode.com/2020/day/13)          | [F#](2020/fsharp/Day13/Program.fs), [C#](2020/csharp/Day13/Solution.cs)                                 |
-| 14  | [Docking Data](https://adventofcode.com/2020/day/14)            | [F#](2020/fsharp/Day14/Program.fs), [C#](2020/csharp/Day14/Solution.cs)                                 |
-| 15  | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [F#](2020/fsharp/Day15/Program.fs), [C#](2020/csharp/Day15/Solution.cs)                                 |
-| 16  | [Ticket Translation](https://adventofcode.com/2020/day/16)      | [F#](2020/fsharp/Day16/Program.fs), [C#](2020/csharp/Day16/Solution.cs)                                 |
-| 17  | [Conway Cubes](https://adventofcode.com/2020/day/17)            | [F#](2020/fsharp/Day17/Program.fs), [C#](2020/csharp/Day17/Solution.cs)                                 |
-| 18  | [Operation Order](https://adventofcode.com/2020/day/18)         | [F#](2020/fsharp/Day18/Program.fs), [C#](2020/csharp/Day18/Solution.cs)                                 |
-| 19  | [Monster Messages](https://adventofcode.com/2020/day/19)        | [F#](2020/fsharp/Day19/Program.fs), [C#](2020/csharp/Day19/Solution.cs)                                 |
-| 20  | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)         | [F#](2020/fsharp/Day20/Program.fs), [C#](2020/csharp/Day20/Solution.cs)                                 |
-| 21  | [Allergen Assessment](https://adventofcode.com/2020/day/21)     | [F#](2020/fsharp/Day21/Program.fs), [C#](2020/csharp/Day21/Solution.cs)                                 |
-| 22  | [Crab Combat](https://adventofcode.com/2020/day/22)             | [F#](2020/fsharp/Day22/Program.fs), [C#](2020/csharp/Day22/Solution.cs)                                 |
-| 23  | [Crab Cups](https://adventofcode.com/2020/day/23)               | [F#](2020/fsharp/Day23/Program.fs), [C#](2020/csharp/Day23/Solution.cs)                                 |
-| 24  | [Lobby Layout](https://adventofcode.com/2020/day/24)            | [F#](2020/fsharp/Day24/Program.fs), [C#](2020/csharp/Day24/Solution.cs)                                 |
-| 25  | [Combo Breaker](https://adventofcode.com/2020/day/25)           | [F#](2020/fsharp/Day25/Program.fs), [C#](2020/csharp/Day25/Solution.cs)                                 |
+| Day | Name                                                            | Solutions                                                                                                        |
+| --- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| 1   | [Report Repair](https://adventofcode.com/2020/day/1)            | [F#](2020/fsharp/Day01/Program.fs), [C#](2020/csharp/Day01/Solution.cs), [Python](2020/python/aoc_2020/day01.py) |
+| 2   | [Password Philosophy](https://adventofcode.com/2020/day/2)      | [F#](2020/fsharp/Day02/Program.fs), [C#](2020/csharp/Day02/Solution.cs), [Python](2020/python/aoc_2020/day02.py) |
+| 3   | [Toboggan Trajectory](https://adventofcode.com/2020/day/3)      | [F#](2020/fsharp/Day03/Program.fs), [C#](2020/csharp/Day03/Solution.cs), [Python](2020/python/aoc_2020/day03.py) |
+| 4   | [Passport Processing](https://adventofcode.com/2020/day/4)      | [F#](2020/fsharp/Day04/Program.fs), [C#](2020/csharp/Day04/Solution.cs), [Python](2020/python/aoc_2020/day04.py) |
+| 5   | [Binary Boarding](https://adventofcode.com/2020/day/5)          | [F#](2020/fsharp/Day05/Program.fs), [C#](2020/csharp/Day05/Solution.cs), [Python](2020/python/aoc_2020/day05.py) |
+| 6   | [Custom Customs](https://adventofcode.com/2020/day/6)           | [F#](2020/fsharp/Day06/Program.fs), [C#](2020/csharp/Day06/Solution.cs), [Python](2020/python/aoc_2020/day06.py) |
+| 7   | [Handy Haversacks](https://adventofcode.com/2020/day/7)         | [F#](2020/fsharp/Day07/Program.fs), [C#](2020/csharp/Day07/Solution.cs)                                          |
+| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/Day08/Solution.cs)                                          |
+| 9   | [Encoding Error](https://adventofcode.com/2020/day/9)           | [F#](2020/fsharp/Day09/Program.fs), [C#](2020/csharp/Day09/Solution.cs)                                          |
+| 10  | [Adapter Array](https://adventofcode.com/2020/day/10)           | [F#](2020/fsharp/Day10/Program.fs), [C#](2020/csharp/Day10/Solution.cs)                                          |
+| 11  | [Seating System](https://adventofcode.com/2020/day/11)          | [F#](2020/fsharp/Day11/Program.fs), [C#](2020/csharp/Day11/Solution.cs)                                          |
+| 12  | [Rain Risk](https://adventofcode.com/2020/day/12)               | [F#](2020/fsharp/Day12/Program.fs), [C#](2020/csharp/Day12/Solution.cs)                                          |
+| 13  | [Shuttle Search](https://adventofcode.com/2020/day/13)          | [F#](2020/fsharp/Day13/Program.fs), [C#](2020/csharp/Day13/Solution.cs)                                          |
+| 14  | [Docking Data](https://adventofcode.com/2020/day/14)            | [F#](2020/fsharp/Day14/Program.fs), [C#](2020/csharp/Day14/Solution.cs)                                          |
+| 15  | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | [F#](2020/fsharp/Day15/Program.fs), [C#](2020/csharp/Day15/Solution.cs)                                          |
+| 16  | [Ticket Translation](https://adventofcode.com/2020/day/16)      | [F#](2020/fsharp/Day16/Program.fs), [C#](2020/csharp/Day16/Solution.cs)                                          |
+| 17  | [Conway Cubes](https://adventofcode.com/2020/day/17)            | [F#](2020/fsharp/Day17/Program.fs), [C#](2020/csharp/Day17/Solution.cs)                                          |
+| 18  | [Operation Order](https://adventofcode.com/2020/day/18)         | [F#](2020/fsharp/Day18/Program.fs), [C#](2020/csharp/Day18/Solution.cs)                                          |
+| 19  | [Monster Messages](https://adventofcode.com/2020/day/19)        | [F#](2020/fsharp/Day19/Program.fs), [C#](2020/csharp/Day19/Solution.cs)                                          |
+| 20  | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)         | [F#](2020/fsharp/Day20/Program.fs), [C#](2020/csharp/Day20/Solution.cs)                                          |
+| 21  | [Allergen Assessment](https://adventofcode.com/2020/day/21)     | [F#](2020/fsharp/Day21/Program.fs), [C#](2020/csharp/Day21/Solution.cs)                                          |
+| 22  | [Crab Combat](https://adventofcode.com/2020/day/22)             | [F#](2020/fsharp/Day22/Program.fs), [C#](2020/csharp/Day22/Solution.cs)                                          |
+| 23  | [Crab Cups](https://adventofcode.com/2020/day/23)               | [F#](2020/fsharp/Day23/Program.fs), [C#](2020/csharp/Day23/Solution.cs)                                          |
+| 24  | [Lobby Layout](https://adventofcode.com/2020/day/24)            | [F#](2020/fsharp/Day24/Program.fs), [C#](2020/csharp/Day24/Solution.cs)                                          |
+| 25  | [Combo Breaker](https://adventofcode.com/2020/day/25)           | [F#](2020/fsharp/Day25/Program.fs), [C#](2020/csharp/Day25/Solution.cs)                                          |
 
 ## 2019
 
