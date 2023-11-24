@@ -117,7 +117,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 5   | [Binary Boarding](https://adventofcode.com/2020/day/5)          | [F#](2020/fsharp/Day05/Program.fs), [C#](2020/csharp/Day05/Solution.cs), [Python](2020/python/aoc_2020/day05.py) |
 | 6   | [Custom Customs](https://adventofcode.com/2020/day/6)           | [F#](2020/fsharp/Day06/Program.fs), [C#](2020/csharp/Day06/Solution.cs), [Python](2020/python/aoc_2020/day06.py) |
 | 7   | [Handy Haversacks](https://adventofcode.com/2020/day/7)         | [F#](2020/fsharp/Day07/Program.fs), [C#](2020/csharp/Day07/Solution.cs), [Python](2020/python/aoc_2020/day07.py) |
-| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/Day08/Solution.cs)                                          |
+| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/Day08/Solution.cs), [Python](2020/python/aoc_2020/day08.py) |
 | 9   | [Encoding Error](https://adventofcode.com/2020/day/9)           | [F#](2020/fsharp/Day09/Program.fs), [C#](2020/csharp/Day09/Solution.cs)                                          |
 | 10  | [Adapter Array](https://adventofcode.com/2020/day/10)           | [F#](2020/fsharp/Day10/Program.fs), [C#](2020/csharp/Day10/Solution.cs)                                          |
 | 11  | [Seating System](https://adventofcode.com/2020/day/11)          | [F#](2020/fsharp/Day11/Program.fs), [C#](2020/csharp/Day11/Solution.cs)                                          |
