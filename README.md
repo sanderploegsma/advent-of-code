@@ -12,7 +12,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | [2020](#2020) | [F#](2020/fsharp)              | [C#](2020/csharp), [Python](2020/python/aoc_2020) |
 | [2019](#2019) | [Go](2019/go)                  | [Kotlin](2019/kotlin)                             |
 | [2018](#2018) |                                | [Go](2018/go), [F#](2018/fsharp)                  |
-| [2017](#2017) |                                | [F#](2017)                                        |
+| [2017](#2017) |                                | [F#](2017/fsharp)                                 |
 | [2016](#2016) |                                | [F#](2016/fsharp), [C#](2016/csharp)              |
 | [2015](#2015) |                                | [F#](2015/fsharp), [Kotlin](2015/kotlin)          |
 
@@ -198,33 +198,33 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2017
 
-| Day | Name                                                                           | Solutions                   |
-| --- | ------------------------------------------------------------------------------ | --------------------------- |
-| 1   | [Inverse Captcha](https://adventofcode.com/2017/day/1)                         | [F#](2017/Day01/Program.fs) |
-| 2   | [Corruption Checksum](https://adventofcode.com/2017/day/2)                     | [F#](2017/Day02/Program.fs) |
-| 3   | [Spiral Memory](https://adventofcode.com/2017/day/3)                           | [F#](2017/Day03/Program.fs) |
-| 4   | [High-Entropy Passphrases](https://adventofcode.com/2017/day/4)                | [F#](2017/Day04/Program.fs) |
-| 5   | [A Maze of Twisty Trampolines, All Alike](https://adventofcode.com/2017/day/5) | [F#](2017/Day05/Program.fs) |
-| 6   | [Memory Reallocation](https://adventofcode.com/2017/day/6)                     | [F#](2017/Day06/Program.fs) |
-| 7   | [Recursive Circus](https://adventofcode.com/2017/day/7)                        | [F#](2017/Day07/Program.fs) |
-| 8   | [I Heard You Like Registers](https://adventofcode.com/2017/day/8)              | [F#](2017/Day08/Program.fs) |
-| 9   | [Stream Processing](https://adventofcode.com/2017/day/9)                       | [F#](2017/Day09/Program.fs) |
-| 10  | [Knot Hash](https://adventofcode.com/2017/day/10)                              |                             |
-| 11  | [Hex Ed](https://adventofcode.com/2017/day/11)                                 |                             |
-| 12  | [Digital Plumber](https://adventofcode.com/2017/day/12)                        |                             |
-| 13  | [Packet Scanners](https://adventofcode.com/2017/day/13)                        |                             |
-| 14  | [Disk Defragmentation](https://adventofcode.com/2017/day/14)                   |                             |
-| 15  | [Dueling Generators](https://adventofcode.com/2017/day/15)                     |                             |
-| 16  | [Permutation Promenade](https://adventofcode.com/2017/day/16)                  |                             |
-| 17  | [Spinlock](https://adventofcode.com/2017/day/17)                               |                             |
-| 18  | [Duet](https://adventofcode.com/2017/day/18)                                   |                             |
-| 19  | [A Series of Tubes](https://adventofcode.com/2017/day/19)                      |                             |
-| 20  | [Particle Swarm](https://adventofcode.com/2017/day/20)                         |                             |
-| 21  | [Fractal Art](https://adventofcode.com/2017/day/21)                            |                             |
-| 22  | [Sporifica Virus](https://adventofcode.com/2017/day/22)                        |                             |
-| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              |                             |
-| 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   |                             |
-| 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    |                             |
+| Day | Name                                                                           | Solutions                          |
+| --- | ------------------------------------------------------------------------------ | ---------------------------------- |
+| 1   | [Inverse Captcha](https://adventofcode.com/2017/day/1)                         | [F#](2017/fsharp/Day01/Program.fs) |
+| 2   | [Corruption Checksum](https://adventofcode.com/2017/day/2)                     | [F#](2017/fsharp/Day02/Program.fs) |
+| 3   | [Spiral Memory](https://adventofcode.com/2017/day/3)                           | [F#](2017/fsharp/Day03/Program.fs) |
+| 4   | [High-Entropy Passphrases](https://adventofcode.com/2017/day/4)                | [F#](2017/fsharp/Day04/Program.fs) |
+| 5   | [A Maze of Twisty Trampolines, All Alike](https://adventofcode.com/2017/day/5) | [F#](2017/fsharp/Day05/Program.fs) |
+| 6   | [Memory Reallocation](https://adventofcode.com/2017/day/6)                     | [F#](2017/fsharp/Day06/Program.fs) |
+| 7   | [Recursive Circus](https://adventofcode.com/2017/day/7)                        | [F#](2017/fsharp/Day07/Program.fs) |
+| 8   | [I Heard You Like Registers](https://adventofcode.com/2017/day/8)              | [F#](2017/fsharp/Day08/Program.fs) |
+| 9   | [Stream Processing](https://adventofcode.com/2017/day/9)                       | [F#](2017/fsharp/Day09/Program.fs) |
+| 10  | [Knot Hash](https://adventofcode.com/2017/day/10)                              |                                    |
+| 11  | [Hex Ed](https://adventofcode.com/2017/day/11)                                 |                                    |
+| 12  | [Digital Plumber](https://adventofcode.com/2017/day/12)                        |                                    |
+| 13  | [Packet Scanners](https://adventofcode.com/2017/day/13)                        |                                    |
+| 14  | [Disk Defragmentation](https://adventofcode.com/2017/day/14)                   |                                    |
+| 15  | [Dueling Generators](https://adventofcode.com/2017/day/15)                     |                                    |
+| 16  | [Permutation Promenade](https://adventofcode.com/2017/day/16)                  |                                    |
+| 17  | [Spinlock](https://adventofcode.com/2017/day/17)                               |                                    |
+| 18  | [Duet](https://adventofcode.com/2017/day/18)                                   |                                    |
+| 19  | [A Series of Tubes](https://adventofcode.com/2017/day/19)                      |                                    |
+| 20  | [Particle Swarm](https://adventofcode.com/2017/day/20)                         |                                    |
+| 21  | [Fractal Art](https://adventofcode.com/2017/day/21)                            |                                    |
+| 22  | [Sporifica Virus](https://adventofcode.com/2017/day/22)                        |                                    |
+| 23  | [Coprocessor Conflagration](https://adventofcode.com/2017/day/23)              |                                    |
+| 24  | [Electromagnetic Moat](https://adventofcode.com/2017/day/24)                   |                                    |
+| 25  | [The Halting Problem](https://adventofcode.com/2017/day/25)                    |                                    |
 
 ## 2016
 
