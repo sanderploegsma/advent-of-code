@@ -14,7 +14,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | [2018](#2018) |                                | [Go](2018/go), [F#](2018/fsharp)                  |
 | [2017](#2017) |                                | [F#](2017)                                        |
 | [2016](#2016) |                                | [F#](2016/fsharp), [C#](2016/csharp)              |
-| [2015](#2015) |                                | [F# / Kotlin](2015)                               |
+| [2015](#2015) |                                | [F#](2015/fsharp), [Kotlin](2015/kotlin)          |
 
 ## 2023
 
@@ -258,30 +258,30 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2015
 
-| Day | Name                                                                          | Solutions                         |
-| --- | ----------------------------------------------------------------------------- | --------------------------------- |
-| 1   | [Not Quite Lisp](https://adventofcode.com/2015/day/1)                         | [F#](2015/Day01/Program.fs)       |
-| 2   | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | [F#](2015/Day02/Program.fs)       |
-| 3   | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [F#](2015/Day03/Program.fs)       |
-| 4   | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | [F#](2015/Day04/Program.fs)       |
-| 5   | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | [F#](2015/Day05/Program.fs)       |
-| 6   | [Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | [F#](2015/Day06/Program.fs)       |
-| 7   | [Some Assembly Required](https://adventofcode.com/2015/day/7)                 | [F#](2015/Day07/Program.fs)       |
-| 8   | [Matchsticks](https://adventofcode.com/2015/day/8)                            | [Kotlin](2015/Day08/src/Main.kt)  |
-| 9   | [All in a Single Night](https://adventofcode.com/2015/day/9)                  | [Kotlin](2015/Day09/src/Main.kt)  |
-| 10  | [Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                 | [Kotlin](2015/Day10/src/Day10.kt) |
-| 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      |                                   |
-| 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | [Kotlin](2015/Day12/src/Day12.kt) |
-| 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           |                                   |
-| 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     |                                   |
-| 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             |                                   |
-| 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              |                                   |
-| 17  | [No Such Thing as Too Much](https://adventofcode.com/2015/day/17)             |                                   |
-| 18  | [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)              |                                   |
-| 19  | [Medicine for Rudolph](https://adventofcode.com/2015/day/19)                  |                                   |
-| 20  | [Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20)    |                                   |
-| 21  | [RPG Simulator 20XX](https://adventofcode.com/2015/day/21)                    |                                   |
-| 22  | [Wizard Simulator 20XX](https://adventofcode.com/2015/day/22)                 |                                   |
-| 23  | [Opening the Turing Lock](https://adventofcode.com/2015/day/23)               |                                   |
-| 24  | [It Hangs in the Balance](https://adventofcode.com/2015/day/24)               |                                   |
-| 25  | [Let It Snow](https://adventofcode.com/2015/day/25)                           |                                   |
+| Day | Name                                                                          | Solutions                                                                       |
+| --- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| 1   | [Not Quite Lisp](https://adventofcode.com/2015/day/1)                         | [F#](2015/fsharp/Day01/Program.fs)                                              |
+| 2   | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | [F#](2015/fsharp/Day02/Program.fs)                                              |
+| 3   | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [F#](2015/fsharp/Day03/Program.fs)                                              |
+| 4   | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | [F#](2015/fsharp/Day04/Program.fs)                                              |
+| 5   | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | [F#](2015/fsharp/Day05/Program.fs)                                              |
+| 6   | [Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | [F#](2015/fsharp/Day06/Program.fs)                                              |
+| 7   | [Some Assembly Required](https://adventofcode.com/2015/day/7)                 | [F#](2015/fsharp/Day07/Program.fs)                                              |
+| 8   | [Matchsticks](https://adventofcode.com/2015/day/8)                            | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day08/src/Day08.kt) |
+| 9   | [All in a Single Night](https://adventofcode.com/2015/day/9)                  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day09/src/Day09.kt) |
+| 10  | [Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                 | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day10.kt) |
+| 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      |                                                                                 |
+| 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day12/src/Day12.kt) |
+| 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           |                                                                                 |
+| 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     |                                                                                 |
+| 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             |                                                                                 |
+| 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              |                                                                                 |
+| 17  | [No Such Thing as Too Much](https://adventofcode.com/2015/day/17)             |                                                                                 |
+| 18  | [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)              |                                                                                 |
+| 19  | [Medicine for Rudolph](https://adventofcode.com/2015/day/19)                  |                                                                                 |
+| 20  | [Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20)    |                                                                                 |
+| 21  | [RPG Simulator 20XX](https://adventofcode.com/2015/day/21)                    |                                                                                 |
+| 22  | [Wizard Simulator 20XX](https://adventofcode.com/2015/day/22)                 |                                                                                 |
+| 23  | [Opening the Turing Lock](https://adventofcode.com/2015/day/23)               |                                                                                 |
+| 24  | [It Hangs in the Balance](https://adventofcode.com/2015/day/24)               |                                                                                 |
+| 25  | [Let It Snow](https://adventofcode.com/2015/day/25)                           |                                                                                 |
