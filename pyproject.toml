@@ -14,13 +14,9 @@ python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.9.1"
 pytest = "^7.4.3"
-isort = "^5.12.0"
+ruff = "^0.1.6"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.isort]
-profile = "black"
