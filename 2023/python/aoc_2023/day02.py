@@ -24,25 +24,22 @@ def parse_game(line: str) -> Game:
     return int(id.split(" ")[-1]), [parse_rgb(x) for x in subsets.split("; ")]
 
 
-with open("2023/input/02.txt", encoding="utf-8") as f:
-    input = [parse_game(line.strip()) for line in f.readlines()]
-
-possible_games = [
-    game
-    for game in input
-    if all(r <= 12 and g <= 13 and b <= 14 for r, g, b in game[1])
-]
-
-print("Part one:", sum(game[0] for game in possible_games))
+def is_possible(game: Game) -> bool:
+    return all(r <= 12 and g <= 13 and b <= 14 for r, g, b in game[1])
 
 
 def power(game: Game) -> int:
-    r_max, g_max, b_max = game[1][0]
-    for r, g, b in game[1][1:]:
+    r_max, g_max, b_max = 0, 0, 0
+    for r, g, b in game[1]:
         r_max = max(r_max, r)
         g_max = max(g_max, g)
         b_max = max(b_max, b)
     return r_max * g_max * b_max
 
 
-print("Part two:", sum(power(game) for game in input))
+with open("2023/input/02.txt", encoding="utf-8") as f:
+    input = f.readlines()
+
+games = [parse_game(line.strip()) for line in input]
+print("Part one:", sum(game[0] for game in games if is_possible(game)))
+print("Part two:", sum(power(game) for game in games))
