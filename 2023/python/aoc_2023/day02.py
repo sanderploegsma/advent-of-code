@@ -37,7 +37,7 @@ def power(game: Game) -> int:
     return r_max * g_max * b_max
 
 
-with open("2023/input/02.txt", encoding="utf-8") as f:
+with open("../input/02.txt", encoding="utf-8") as f:
     input = f.readlines()
 
 games = [parse_game(line.strip()) for line in input]

@@ -2,7 +2,7 @@ from functools import reduce
 from itertools import permutations
 from operator import mul
 
-input = open("2020/input/day01.txt").read()
+input = open("../input/day01.txt").read()
 numbers = [int(x) for x in input.splitlines()]
 
 

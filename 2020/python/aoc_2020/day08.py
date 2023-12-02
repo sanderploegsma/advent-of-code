@@ -21,7 +21,7 @@ def boot(code: list[str]):
     return acc, pos == len(code)
 
 
-with open("2020/input/08.txt", encoding="utf-8") as file:
+with open("../input/08.txt", encoding="utf-8") as file:
     input = file.readlines()
 
 acc, _ = boot(input)

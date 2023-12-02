@@ -1,7 +1,7 @@
 from functools import reduce
 from operator import mul
 
-input = open("2020/input/day03.txt").read().splitlines()
+input = open("../input/day03.txt").read().splitlines()
 
 
 def traverse(step_x, step_y):

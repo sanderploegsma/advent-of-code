@@ -1,13 +1,9 @@
 [tool.poetry]
-name = "advent-of-code"
+name = "aoc-2020"
 version = "0.1.0"
 description = ""
 authors = ["Sander Ploegsma <sanderploegsma@gmail.com>"]
 readme = "README.md"
-packages = [
-    { include = "2020/python/aoc_2020" },
-    { include = "2023/python/aoc_2023" },
-]
 
 [tool.poetry.dependencies]
 python = "^3.11"

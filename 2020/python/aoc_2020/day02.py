@@ -6,7 +6,7 @@ def parse_line(line):
     return a, b, target, password
 
 
-input = open("2020/input/day02.txt").read()
+input = open("../input/day02.txt").read()
 passwords = [parse_line(x) for x in input.splitlines()]
 
 

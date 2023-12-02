@@ -54,7 +54,7 @@ def part_two(rules: list[Rule]):
     return count_children("shiny gold")
 
 
-with open("2020/input/07.txt", encoding="utf-8") as file:
+with open("../input/07.txt", encoding="utf-8") as file:
     input = [parse_line(line) for line in file.readlines()]
     print("Part one:", part_one(input))
     print("Part two:", part_two(input))

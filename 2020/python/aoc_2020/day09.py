@@ -29,7 +29,7 @@ def part_two(invalid: int, input: list[int]):
     return part_two(invalid, input[1:])
 
 
-with open("2020/input/09.txt", encoding="utf-8") as file:
+with open("../input/09.txt", encoding="utf-8") as file:
     input = [int(line) for line in file.readlines()]
 
 invalid = part_one(input)

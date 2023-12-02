@@ -2,7 +2,7 @@
 import re
 import string
 
-with open("2023/input/01.txt", encoding="utf-8") as f:
+with open("../input/01.txt", encoding="utf-8") as f:
     input = [line.strip() for line in f.readlines()]
 
 
