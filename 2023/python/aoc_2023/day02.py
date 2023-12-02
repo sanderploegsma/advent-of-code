@@ -1,4 +1,5 @@
 """Advent of Code 2023 - Day 2."""
+from aoc_2023.input import Input
 
 RGB = tuple[int, int, int]
 Game = tuple[int, list[RGB]]
@@ -37,9 +38,6 @@ def power(game: Game) -> int:
     return r_max * g_max * b_max
 
 
-with open("../input/02.txt", encoding="utf-8") as f:
-    input = f.readlines()
-
-games = [parse_game(line.strip()) for line in input]
+games = [parse_game(line.strip()) for line in Input("02.txt").lines]
 print("Part one:", sum(game[0] for game in games if is_possible(game)))
 print("Part two:", sum(power(game) for game in games))
