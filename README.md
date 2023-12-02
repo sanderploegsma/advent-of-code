@@ -48,33 +48,33 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2022
 
-| Day | Name                                                             | Stars  | Solutions                                                                                                                       |
-| --- | ---------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)          | ⭐️⭐️ | [C#](2022/csharp/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala), [Elixir](2022/elixir/lib/day01.ex) |
-| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | ⭐️⭐️ | [C#](2022/csharp/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala), [Elixir](2022/elixir/lib/day02.ex) |
-| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | ⭐️⭐️ | [C#](2022/csharp/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala)                                     |
-| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)              | ⭐️⭐️ | [C#](2022/csharp/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala)                                     |
-| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)             | ⭐️⭐️ | [C#](2022/csharp/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala)                                     |
-| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)            | ⭐️⭐️ | [C#](2022/csharp/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala)                                     |
-| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)   | ⭐️⭐️ | [C#](2022/csharp/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala)                                     |
-| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)        | ⭐️⭐️ | [C#](2022/csharp/Day08.cs)                                                                                                      |
-| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)               | ⭐️⭐️ | [C#](2022/csharp/Day09.cs)                                                                                                      |
-| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | ⭐️⭐️ | [C#](2022/csharp/Day10.cs)                                                                                                      |
-| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)     | ⭐️⭐️ | [C#](2022/csharp/Day11.cs)                                                                                                      |
-| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | ⭐️⭐️ | [C#](2022/csharp/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala)                                     |
-| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)          | ⭐️⭐️ | [C#](2022/csharp/Day13.cs)                                                                                                      |
-| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)       | ⭐️⭐️ | [C#](2022/csharp/Day14.cs)                                                                                                      |
-| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | ⭐️⭐️ | [C#](2022/csharp/Day15.cs)                                                                                                      |
-| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |        |                                                                                                                                 |
-| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         |        |                                                                                                                                 |
-| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | ⭐️⭐️ | [C#](2022/csharp/Day18.cs)                                                                                                      |
-| 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |        |                                                                                                                                 |
-| 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |        |                                                                                                                                 |
-| 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              |        |                                                                                                                                 |
-| 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               |        |                                                                                                                                 |
-| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       |        |                                                                                                                                 |
-| 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           |        |                                                                                                                                 |
-| 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          |        |                                                                                                                                 |
+| Day | Name                                                             | Stars  | Solutions                                                                                                                                        |
+| --- | ---------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | [Calorie Counting](https://adventofcode.com/2022/day/1)          | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day01.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day01.scala), [Elixir](2022/elixir/lib/day01.ex) |
+| 2   | [Rock Paper Scissors](https://adventofcode.com/2022/day/2)       | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day02.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day02.scala), [Elixir](2022/elixir/lib/day02.ex) |
+| 3   | [Rucksack Reorganization](https://adventofcode.com/2022/day/3)   | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day03.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day03.scala)                                     |
+| 4   | [Camp Cleanup](https://adventofcode.com/2022/day/4)              | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day04.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day04.scala)                                     |
+| 5   | [Supply Stacks](https://adventofcode.com/2022/day/5)             | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day05.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day05.scala)                                     |
+| 6   | [Tuning Trouble](https://adventofcode.com/2022/day/6)            | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day06.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day06.scala)                                     |
+| 7   | [No Space Left On Device](https://adventofcode.com/2022/day/7)   | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day07.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day07.scala)                                     |
+| 8   | [Treetop Tree House](https://adventofcode.com/2022/day/8)        | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day08.cs)                                                                                                      |
+| 9   | [Rope Bridge](https://adventofcode.com/2022/day/9)               | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day09.cs)                                                                                                      |
+| 10  | [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day10.cs)                                                                                                      |
+| 11  | [Monkey in the Middle](https://adventofcode.com/2022/day/11)     | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day11.cs)                                                                                                      |
+| 12  | [Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day12.cs), [Scala](2022/scala/src/main/scala/AdventOfCode2022/Day12.scala)                                     |
+| 13  | [Distress Signal](https://adventofcode.com/2022/day/13)          | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day13.cs)                                                                                                      |
+| 14  | [Regolith Reservoir](https://adventofcode.com/2022/day/14)       | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day14.cs)                                                                                                      |
+| 15  | [Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day15.cs)                                                                                                      |
+| 16  | [Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    |        |                                                                                                                                                  |
+| 17  | [Pyroclastic Flow](https://adventofcode.com/2022/day/17)         |        |                                                                                                                                                  |
+| 18  | [Boiling Boulders](https://adventofcode.com/2022/day/18)         | ⭐️⭐️ | [C#](2022/csharp/AdventOfCode2022/Day18.cs)                                                                                                      |
+| 19  | [Not Enough Minerals](https://adventofcode.com/2022/day/19)      |        |                                                                                                                                                  |
+| 20  | [Grove Positioning System](https://adventofcode.com/2022/day/20) |        |                                                                                                                                                  |
+| 21  | [Monkey Math](https://adventofcode.com/2022/day/21)              |        |                                                                                                                                                  |
+| 22  | [Monkey Map](https://adventofcode.com/2022/day/22)               |        |                                                                                                                                                  |
+| 23  | [Unstable Diffusion](https://adventofcode.com/2022/day/23)       |        |                                                                                                                                                  |
+| 24  | [Blizzard Basin](https://adventofcode.com/2022/day/24)           |        |                                                                                                                                                  |
+| 25  | [Full of Hot Air](https://adventofcode.com/2022/day/25)          |        |                                                                                                                                                  |
 
 ## 2021
 
@@ -108,33 +108,33 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2020
 
-| Day | Name                                                            | Stars  | Solutions                                                                                                        |
-| --- | --------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
-| 1   | [Report Repair](https://adventofcode.com/2020/day/1)            | ⭐️⭐️ | [F#](2020/fsharp/Day01/Program.fs), [C#](2020/csharp/Day01/Solution.cs), [Python](2020/python/aoc_2020/day01.py) |
-| 2   | [Password Philosophy](https://adventofcode.com/2020/day/2)      | ⭐️⭐️ | [F#](2020/fsharp/Day02/Program.fs), [C#](2020/csharp/Day02/Solution.cs), [Python](2020/python/aoc_2020/day02.py) |
-| 3   | [Toboggan Trajectory](https://adventofcode.com/2020/day/3)      | ⭐️⭐️ | [F#](2020/fsharp/Day03/Program.fs), [C#](2020/csharp/Day03/Solution.cs), [Python](2020/python/aoc_2020/day03.py) |
-| 4   | [Passport Processing](https://adventofcode.com/2020/day/4)      | ⭐️⭐️ | [F#](2020/fsharp/Day04/Program.fs), [C#](2020/csharp/Day04/Solution.cs), [Python](2020/python/aoc_2020/day04.py) |
-| 5   | [Binary Boarding](https://adventofcode.com/2020/day/5)          | ⭐️⭐️ | [F#](2020/fsharp/Day05/Program.fs), [C#](2020/csharp/Day05/Solution.cs), [Python](2020/python/aoc_2020/day05.py) |
-| 6   | [Custom Customs](https://adventofcode.com/2020/day/6)           | ⭐️⭐️ | [F#](2020/fsharp/Day06/Program.fs), [C#](2020/csharp/Day06/Solution.cs), [Python](2020/python/aoc_2020/day06.py) |
-| 7   | [Handy Haversacks](https://adventofcode.com/2020/day/7)         | ⭐️⭐️ | [F#](2020/fsharp/Day07/Program.fs), [C#](2020/csharp/Day07/Solution.cs), [Python](2020/python/aoc_2020/day07.py) |
-| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | ⭐️⭐️ | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/Day08/Solution.cs), [Python](2020/python/aoc_2020/day08.py) |
-| 9   | [Encoding Error](https://adventofcode.com/2020/day/9)           | ⭐️⭐️ | [F#](2020/fsharp/Day09/Program.fs), [C#](2020/csharp/Day09/Solution.cs), [Python](2020/python/aoc_2020/day09.py) |
-| 10  | [Adapter Array](https://adventofcode.com/2020/day/10)           | ⭐️⭐️ | [F#](2020/fsharp/Day10/Program.fs), [C#](2020/csharp/Day10/Solution.cs)                                          |
-| 11  | [Seating System](https://adventofcode.com/2020/day/11)          | ⭐️⭐️ | [F#](2020/fsharp/Day11/Program.fs), [C#](2020/csharp/Day11/Solution.cs)                                          |
-| 12  | [Rain Risk](https://adventofcode.com/2020/day/12)               | ⭐️⭐️ | [F#](2020/fsharp/Day12/Program.fs), [C#](2020/csharp/Day12/Solution.cs)                                          |
-| 13  | [Shuttle Search](https://adventofcode.com/2020/day/13)          | ⭐️⭐️ | [F#](2020/fsharp/Day13/Program.fs), [C#](2020/csharp/Day13/Solution.cs)                                          |
-| 14  | [Docking Data](https://adventofcode.com/2020/day/14)            | ⭐️⭐️ | [F#](2020/fsharp/Day14/Program.fs), [C#](2020/csharp/Day14/Solution.cs)                                          |
-| 15  | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | ⭐️⭐️ | [F#](2020/fsharp/Day15/Program.fs), [C#](2020/csharp/Day15/Solution.cs)                                          |
-| 16  | [Ticket Translation](https://adventofcode.com/2020/day/16)      | ⭐️⭐️ | [F#](2020/fsharp/Day16/Program.fs), [C#](2020/csharp/Day16/Solution.cs)                                          |
-| 17  | [Conway Cubes](https://adventofcode.com/2020/day/17)            | ⭐️⭐️ | [F#](2020/fsharp/Day17/Program.fs), [C#](2020/csharp/Day17/Solution.cs)                                          |
-| 18  | [Operation Order](https://adventofcode.com/2020/day/18)         | ⭐️⭐️ | [F#](2020/fsharp/Day18/Program.fs), [C#](2020/csharp/Day18/Solution.cs)                                          |
-| 19  | [Monster Messages](https://adventofcode.com/2020/day/19)        | ⭐️⭐️ | [F#](2020/fsharp/Day19/Program.fs), [C#](2020/csharp/Day19/Solution.cs)                                          |
-| 20  | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)         | ⭐️⭐️ | [F#](2020/fsharp/Day20/Program.fs), [C#](2020/csharp/Day20/Solution.cs)                                          |
-| 21  | [Allergen Assessment](https://adventofcode.com/2020/day/21)     | ⭐️⭐️ | [F#](2020/fsharp/Day21/Program.fs), [C#](2020/csharp/Day21/Solution.cs)                                          |
-| 22  | [Crab Combat](https://adventofcode.com/2020/day/22)             | ⭐️⭐️ | [F#](2020/fsharp/Day22/Program.fs), [C#](2020/csharp/Day22/Solution.cs)                                          |
-| 23  | [Crab Cups](https://adventofcode.com/2020/day/23)               | ⭐️⭐️ | [F#](2020/fsharp/Day23/Program.fs), [C#](2020/csharp/Day23/Solution.cs)                                          |
-| 24  | [Lobby Layout](https://adventofcode.com/2020/day/24)            | ⭐️⭐️ | [F#](2020/fsharp/Day24/Program.fs), [C#](2020/csharp/Day24/Solution.cs)                                          |
-| 25  | [Combo Breaker](https://adventofcode.com/2020/day/25)           | ⭐️⭐️ | [F#](2020/fsharp/Day25/Program.fs), [C#](2020/csharp/Day25/Solution.cs)                                          |
+| Day | Name                                                            | Stars  | Solutions                                                                                                                         |
+| --- | --------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | [Report Repair](https://adventofcode.com/2020/day/1)            | ⭐️⭐️ | [F#](2020/fsharp/Day01/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day01/Solution.cs), [Python](2020/python/aoc_2020/day01.py) |
+| 2   | [Password Philosophy](https://adventofcode.com/2020/day/2)      | ⭐️⭐️ | [F#](2020/fsharp/Day02/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day02/Solution.cs), [Python](2020/python/aoc_2020/day02.py) |
+| 3   | [Toboggan Trajectory](https://adventofcode.com/2020/day/3)      | ⭐️⭐️ | [F#](2020/fsharp/Day03/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day03/Solution.cs), [Python](2020/python/aoc_2020/day03.py) |
+| 4   | [Passport Processing](https://adventofcode.com/2020/day/4)      | ⭐️⭐️ | [F#](2020/fsharp/Day04/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day04/Solution.cs), [Python](2020/python/aoc_2020/day04.py) |
+| 5   | [Binary Boarding](https://adventofcode.com/2020/day/5)          | ⭐️⭐️ | [F#](2020/fsharp/Day05/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day05/Solution.cs), [Python](2020/python/aoc_2020/day05.py) |
+| 6   | [Custom Customs](https://adventofcode.com/2020/day/6)           | ⭐️⭐️ | [F#](2020/fsharp/Day06/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day06/Solution.cs), [Python](2020/python/aoc_2020/day06.py) |
+| 7   | [Handy Haversacks](https://adventofcode.com/2020/day/7)         | ⭐️⭐️ | [F#](2020/fsharp/Day07/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day07/Solution.cs), [Python](2020/python/aoc_2020/day07.py) |
+| 8   | [Handheld Halting](https://adventofcode.com/2020/day/8)         | ⭐️⭐️ | [F#](2020/fsharp/Day08/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day08/Solution.cs), [Python](2020/python/aoc_2020/day08.py) |
+| 9   | [Encoding Error](https://adventofcode.com/2020/day/9)           | ⭐️⭐️ | [F#](2020/fsharp/Day09/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day09/Solution.cs), [Python](2020/python/aoc_2020/day09.py) |
+| 10  | [Adapter Array](https://adventofcode.com/2020/day/10)           | ⭐️⭐️ | [F#](2020/fsharp/Day10/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day10/Solution.cs)                                          |
+| 11  | [Seating System](https://adventofcode.com/2020/day/11)          | ⭐️⭐️ | [F#](2020/fsharp/Day11/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day11/Solution.cs)                                          |
+| 12  | [Rain Risk](https://adventofcode.com/2020/day/12)               | ⭐️⭐️ | [F#](2020/fsharp/Day12/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day12/Solution.cs)                                          |
+| 13  | [Shuttle Search](https://adventofcode.com/2020/day/13)          | ⭐️⭐️ | [F#](2020/fsharp/Day13/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day13/Solution.cs)                                          |
+| 14  | [Docking Data](https://adventofcode.com/2020/day/14)            | ⭐️⭐️ | [F#](2020/fsharp/Day14/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day14/Solution.cs)                                          |
+| 15  | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | ⭐️⭐️ | [F#](2020/fsharp/Day15/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day15/Solution.cs)                                          |
+| 16  | [Ticket Translation](https://adventofcode.com/2020/day/16)      | ⭐️⭐️ | [F#](2020/fsharp/Day16/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day16/Solution.cs)                                          |
+| 17  | [Conway Cubes](https://adventofcode.com/2020/day/17)            | ⭐️⭐️ | [F#](2020/fsharp/Day17/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day17/Solution.cs)                                          |
+| 18  | [Operation Order](https://adventofcode.com/2020/day/18)         | ⭐️⭐️ | [F#](2020/fsharp/Day18/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day18/Solution.cs)                                          |
+| 19  | [Monster Messages](https://adventofcode.com/2020/day/19)        | ⭐️⭐️ | [F#](2020/fsharp/Day19/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day19/Solution.cs)                                          |
+| 20  | [Jurassic Jigsaw](https://adventofcode.com/2020/day/20)         | ⭐️⭐️ | [F#](2020/fsharp/Day20/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day20/Solution.cs)                                          |
+| 21  | [Allergen Assessment](https://adventofcode.com/2020/day/21)     | ⭐️⭐️ | [F#](2020/fsharp/Day21/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day21/Solution.cs)                                          |
+| 22  | [Crab Combat](https://adventofcode.com/2020/day/22)             | ⭐️⭐️ | [F#](2020/fsharp/Day22/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day22/Solution.cs)                                          |
+| 23  | [Crab Cups](https://adventofcode.com/2020/day/23)               | ⭐️⭐️ | [F#](2020/fsharp/Day23/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day23/Solution.cs)                                          |
+| 24  | [Lobby Layout](https://adventofcode.com/2020/day/24)            | ⭐️⭐️ | [F#](2020/fsharp/Day24/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day24/Solution.cs)                                          |
+| 25  | [Combo Breaker](https://adventofcode.com/2020/day/25)           | ⭐️⭐️ | [F#](2020/fsharp/Day25/Program.fs), [C#](2020/csharp/AdventOfCode2020/Day25/Solution.cs)                                          |
 
 ## 2019
 
