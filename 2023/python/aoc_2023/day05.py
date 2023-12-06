@@ -1,67 +1,51 @@
 """Advent of Code 2023 - Day 5."""
 
+from functools import reduce
 from typing import Callable
 
 from aoc_2023.input import Input
 
-
-class Translation:
-    def __init__(self, translate: Callable[[int], int], translate_reverse: Callable[[int], int]):
-        self._translate = translate
-        self._translate_reverse = translate_reverse
-
-    def translate(self, value: int) -> int:
-        return self._translate(value)
-
-    def translate_reverse(self, value: int) -> int:
-        return self._translate_reverse(value)
+F = Callable[[int], int]
 
 
-class Translations:
-    def __init__(self, translations: list[Translation]):
-        self._translations = translations
-
-    def translate(self, value: int) -> int:
-        values = [value]
-        for t in self._translations:
-            values.append(t.translate(values[-1]))
-        return values[-1]
-
-    def translate_reverse(self, value: int) -> int:
-        values = [value]
-        for t in reversed(self._translations):
-            values.append(t.translate_reverse(values[-1]))
-        return values[-1]
-
-
-def parse_translation(block: str) -> Translation:
+def parse_transformation(block: str) -> list[F]:
     mapping = []
     for line in block.splitlines()[1:]:
         start_dst, start_src, length = [int(x) for x in line.split(" ")]
         mapping.append(((start_dst, start_dst + length - 1), (start_src, start_src + length - 1)))
 
     def translate(value: int) -> int:
-        for (a, _), (c, d) in mapping:
-            if c <= value <= d:
-                return a + (value - c)
+        for (start_dst, _), (start_src, end_src) in mapping:
+            if start_src <= value <= end_src:
+                return start_dst + (value - start_src)
 
         return value
 
     def translate_reverse(value: int) -> int:
-        for (a, b), (c, _) in mapping:
-            if a <= value <= b:
-                return c + (value - a)
+        for (start_dst, end_dst), (start_src, _) in mapping:
+            if start_dst <= value <= end_dst:
+                return start_src + (value - start_dst)
 
         return value
 
-    return Translation(translate, translate_reverse)
+    return [translate, translate_reverse]
 
 
 seeds, maps = Input("05.txt").text.split("\n\n", maxsplit=1)
 seeds = [int(x) for x in seeds.replace("seeds: ", "").split(" ")]
-translations = Translations([parse_translation(block) for block in maps.split("\n\n")])
+transformations = [parse_transformation(block) for block in maps.split("\n\n")]
+transformations = list(map(list, zip(*transformations)))
 
-print("Part one:", min([translations.translate(seed) for seed in seeds]))
+
+def seed_to_loc(seed: int) -> int:
+    return reduce(lambda x, f: f(x), transformations[0], seed)
+
+
+def loc_to_seed(loc: int) -> int:
+    return reduce(lambda x, f: f(x), reversed(transformations[1]), loc)
+
+
+print("Part one:", min([seed_to_loc(seed) for seed in seeds]))
 
 seed_ranges = []
 for i in range(0, len(seeds), 2):
@@ -70,7 +54,7 @@ for i in range(0, len(seeds), 2):
 loc = 1
 found = False
 while not found:
-    seed = translations.translate_reverse(loc)
+    seed = loc_to_seed(loc)
     for seed_start, seed_end in seed_ranges:
         if seed_start <= seed <= seed_end:
             print("Part two:", loc)
