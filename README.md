@@ -18,33 +18,33 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## 2023
 
-| Day | Name                                                  | Stars  | Solutions                                                           |
-| --- | ----------------------------------------------------- | ------ | ------------------------------------------------------------------- |
-| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | ⭐️⭐️ | [Python](2023/python/aoc_2023/day01.py), [Ruby](2023/ruby/day01.rb) |
-| 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | ⭐️⭐️ | [Python](2023/python/aoc_2023/day02.py)                             |
-| 3   | [Gear Ratios](https://adventofcode.com/2023/day/3)    | ⭐️⭐️ | [Python](2023/python/aoc_2023/day03.py)                             |
-| 4   | [Scratchcards](https://adventofcode.com/2023/day/4)   | ⭐️⭐️ | [Python](2023/python/aoc_2023/day04.py)                             |
-| 5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5)   | ⭐️⭐️ | [Python](2023/python/aoc_2023/day05.py)                             |
-| 6   |                                                       |        |                                                                     |
-| 7   |                                                       |        |                                                                     |
-| 8   |                                                       |        |                                                                     |
-| 9   |                                                       |        |                                                                     |
-| 10  |                                                       |        |                                                                     |
-| 11  |                                                       |        |                                                                     |
-| 12  |                                                       |        |                                                                     |
-| 13  |                                                       |        |                                                                     |
-| 14  |                                                       |        |                                                                     |
-| 15  |                                                       |        |                                                                     |
-| 16  |                                                       |        |                                                                     |
-| 17  |                                                       |        |                                                                     |
-| 18  |                                                       |        |                                                                     |
-| 19  |                                                       |        |                                                                     |
-| 20  |                                                       |        |                                                                     |
-| 21  |                                                       |        |                                                                     |
-| 22  |                                                       |        |                                                                     |
-| 23  |                                                       |        |                                                                     |
-| 24  |                                                       |        |                                                                     |
-| 25  |                                                       |        |                                                                     |
+| Day | Name                                                                   | Stars  | Solutions                                                           |
+| --- | ---------------------------------------------------------------------- | ------ | ------------------------------------------------------------------- |
+| 1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day01.py), [Ruby](2023/ruby/day01.rb) |
+| 2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)                  | ⭐️⭐️ | [Python](2023/python/aoc_2023/day02.py)                             |
+| 3   | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day03.py)                             |
+| 4   | [Scratchcards](https://adventofcode.com/2023/day/4)                    | ⭐️⭐️ | [Python](2023/python/aoc_2023/day04.py)                             |
+| 5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | ⭐️⭐️ | [Python](2023/python/aoc_2023/day05.py)                             |
+| 6   | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day06.py)                             |
+| 7   |                                                                        |        |                                                                     |
+| 8   |                                                                        |        |                                                                     |
+| 9   |                                                                        |        |                                                                     |
+| 10  |                                                                        |        |                                                                     |
+| 11  |                                                                        |        |                                                                     |
+| 12  |                                                                        |        |                                                                     |
+| 13  |                                                                        |        |                                                                     |
+| 14  |                                                                        |        |                                                                     |
+| 15  |                                                                        |        |                                                                     |
+| 16  |                                                                        |        |                                                                     |
+| 17  |                                                                        |        |                                                                     |
+| 18  |                                                                        |        |                                                                     |
+| 19  |                                                                        |        |                                                                     |
+| 20  |                                                                        |        |                                                                     |
+| 21  |                                                                        |        |                                                                     |
+| 22  |                                                                        |        |                                                                     |
+| 23  |                                                                        |        |                                                                     |
+| 24  |                                                                        |        |                                                                     |
+| 25  |                                                                        |        |                                                                     |
 
 ## 2022
 
