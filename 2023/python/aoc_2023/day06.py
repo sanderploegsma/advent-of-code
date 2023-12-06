@@ -6,16 +6,17 @@ example_one = [(7, 9), (15, 40), (30, 200)]
 input_one = [(45, 305), (97, 1062), (72, 1110), (95, 1695)]
 
 
-def distance(t_total: int, t_charging: int) -> int:
-    """Calculate the distance traveled for the given time spent charging."""
-    t_traveling = t_total - t_charging
-    return t_traveling * t_charging
+def solve_quadratic(a: float, b: float, c: float) -> tuple[float, float]:
+    """Solve the quadratic formula ax^2 + bx + c = 0."""
+    d = b ** 2 - 4 * a * c
+    return (-b - d ** 0.5) / (2 * a), (-b + d ** 0.5) / (2 * a)
 
 
-def winning_charge_times(race: tuple[int, int]) -> list[int]:
+def winning_charge_times(race: tuple[int, int]) -> range:
     """List the possible charging times that would win the given race."""
     time, record = race
-    return list(filter(lambda d: d > record, list(distance(time, t) for t in range(time + 1))))
+    bounds = solve_quadratic(1, -time, record)
+    return range(int(math.ceil(min(bounds))), int(math.ceil(max(bounds))))
 
 
 print("Part one:", math.prod(len(winning_charge_times(race)) for race in input_one))
