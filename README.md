@@ -26,7 +26,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 4   | [Scratchcards](https://adventofcode.com/2023/day/4)                    | ⭐️⭐️ | [Python](2023/python/aoc_2023/day04.py)                             |
 | 5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | ⭐️⭐️ | [Python](2023/python/aoc_2023/day05.py)                             |
 | 6   | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day06.py)                             |
-| 7   |                                                                        |        |                                                                     |
+| 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day07.py)                             |
 | 8   |                                                                        |        |                                                                     |
 | 9   |                                                                        |        |                                                                     |
 | 10  |                                                                        |        |                                                                     |
