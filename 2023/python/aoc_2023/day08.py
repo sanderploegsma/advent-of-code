@@ -2,6 +2,7 @@
 
 import math
 import re
+from typing import Callable
 
 from aoc_2023.input import Input
 
@@ -14,26 +15,11 @@ def parse_node(line: str):
 instructions, _, *nodes = Input("08.txt").lines
 nodes = dict(map(parse_node, nodes))
 
-current = "AAA"
-steps = 0
-while current != "ZZZ":
-    left, right = nodes[current]
-    match instructions[steps % len(instructions)]:
-        case "L":
-            current = left
-        case "R":
-            current = right
-    steps += 1
 
-print("Part one:", steps)
-
-starting_nodes = list(filter(lambda n: n[-1] == "A", nodes.keys()))
-distances = dict()
-
-for node in starting_nodes:
-    current = node
+def find_distance(start: str, is_end: Callable[[str], bool]):
+    current = start
     i = 0
-    while current[-1] != "Z":
+    while not is_end(current):
         left, right = nodes[current]
         match instructions[i % len(instructions)]:
             case "L":
@@ -41,6 +27,15 @@ for node in starting_nodes:
             case "R":
                 current = right
         i += 1
-    distances[node] = i
+    return i
+
+
+print("Part one:", find_distance("AAA", lambda n: n == "ZZZ"))
+
+starting_nodes = list(filter(lambda n: n[-1] == "A", nodes.keys()))
+distances = dict()
+
+for node in starting_nodes:
+    distances[node] = find_distance(node, lambda n: n[-1] == "Z")
 
 print("Part two:", math.lcm(*distances.values()))
