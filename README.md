@@ -28,7 +28,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 6   | [Wait For It](https://adventofcode.com/2023/day/6)                     | ⭐️⭐️  | [Python](2023/python/aoc_2023/day06.py)                             |
 | 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | ⭐️⭐️  | [Python](2023/python/aoc_2023/day07.py)                             |
 | 8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               | ⭐️⭐   | [Python](2023/python/aoc_2023/day08.py)                             |
-| 9   |                                                                        |       |                                                                     |
+| 9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)              | ⭐️⭐   | [Python](2023/python/aoc_2023/day09.py)                             |
 | 10  |                                                                        |       |                                                                     |
 | 11  |                                                                        |       |                                                                     |
 | 12  |                                                                        |       |                                                                     |
