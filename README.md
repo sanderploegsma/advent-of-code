@@ -29,7 +29,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 7   | [Camel Cards](https://adventofcode.com/2023/day/7)                     | ⭐️⭐️ | [Python](2023/python/aoc_2023/day07.py)                             |
 | 8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)               | ⭐️⭐  | [Python](2023/python/aoc_2023/day08.py)                             |
 | 9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)              | ⭐️⭐  | [Python](2023/python/aoc_2023/day09.py)                             |
-| 10  |                                                                        |        |                                                                     |
+| 10  | [Pipe Maze](https://adventofcode.com/2023/day/10)                      | ⭐️⭐  | [Python](2023/python/aoc_2023/day10.py)                             |
 | 11  | [Cosmic Expansion](https://adventofcode.com/2023/day/11)               | ⭐️⭐  | [Python](2023/python/aoc_2023/day11.py)                             |
 | 12  |                                                                        |        |                                                                     |
 | 13  |                                                                        |        |                                                                     |
