@@ -16,8 +16,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.6.2")
 
+    testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter", "junit-jupiter-params", junitVersion)
     testImplementation("org.amshove.kluent", "kluent", "1.68")
 }
