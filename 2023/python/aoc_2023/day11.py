@@ -2,6 +2,7 @@
 
 from operator import itemgetter
 from itertools import combinations
+from typing import Generator
 
 from aoc_2023.input import Input
 
@@ -22,7 +23,7 @@ def expand(rows: list[str], n: int) -> list[list[tuple[int, int, str]]]:
     return result
 
 
-def parse(grid: list[list[tuple[int, int, str]]]):
+def parse(grid: list[list[tuple[int, int, str]]]) -> Generator[tuple[int, int], None, None]:
     y = 0
     for row in grid:
         x = 0
@@ -44,6 +45,6 @@ coordinates = list(parse(expand(Input("11.txt").lines, 2)))
 distances = list((p1, p2, manhattan_distance(p1, p2)) for p1, p2 in combinations(coordinates, 2))
 print("Part one:", sum(map(itemgetter(2), distances)))
 
-coordinates2 = (list(parse(expand(Input("11.txt").lines, 1000000))))
+coordinates2 = list(parse(expand(Input("11.txt").lines, 1000000)))
 distances2 = list((p1, p2, manhattan_distance(p1, p2)) for p1, p2 in combinations(coordinates2, 2))
 print("Part two:", sum(map(itemgetter(2), distances2)))
