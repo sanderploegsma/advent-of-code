@@ -13,8 +13,17 @@ class Input:
 
     @functools.cached_property
     def lines(self) -> list[str]:
-        return [line.rstrip() for line in self._text.splitlines()]
+        return list(line.rstrip() for line in self.text.splitlines())
 
     @functools.cached_property
     def ints(self) -> list[int]:
-        return [int(line.rstrip()) for line in self._text.splitlines()]
+        return list(map(int, self.lines))
+
+    @functools.cached_property
+    def grid(self) -> dict[tuple[int, int], str]:
+        result = {}
+        for y, row in enumerate(self.lines):
+            for x, cell in enumerate(row):
+                result[x, y] = cell
+
+        return result
