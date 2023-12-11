@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Iterator
+from typing import Iterable, Iterator
 
 
 @dataclass(frozen=True)
@@ -30,3 +30,11 @@ def manhattan_distance(p1: XY, p2: XY) -> int:
     Calculates the manhattan distance between two points on a 2-dimensional grid.
     """
     return abs(p2.x - p1.x) + abs(p2.y - p1.y)
+
+
+def bounding_box(coordinates: Iterable[XY]) -> tuple[XY, XY]:
+    min_x = min(c.x for c in coordinates)
+    max_x = max(c.x for c in coordinates)
+    min_y = min(c.y for c in coordinates)
+    max_y = max(c.y for c in coordinates)
+    return XY(min_x, min_y), XY(max_x, max_y)
