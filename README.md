@@ -270,9 +270,9 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 8   | [Matchsticks](https://adventofcode.com/2015/day/8)                            | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day08/src/Day08.kt) |
 | 9   | [All in a Single Night](https://adventofcode.com/2015/day/9)                  | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day09/src/Day09.kt) |
 | 10  | [Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                 | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day10.kt) |
-| 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      |        |                                                                                 |
-| 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | ⭐️    | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day12/src/Day12.kt) |
-| 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           |        |                                                                                 |
+| 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day11.kt) |
+| 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day12/src/Day12.kt) |
+| 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day13.kt) |
 | 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     |        |                                                                                 |
 | 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             |        |                                                                                 |
 | 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              |        |                                                                                 |
