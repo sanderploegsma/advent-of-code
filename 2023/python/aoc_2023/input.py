@@ -1,6 +1,8 @@
 import functools
 import os
 
+from aoc_2023.navigation import XY
+
 
 class Input:
     def __init__(self, name: str):
@@ -20,10 +22,10 @@ class Input:
         return list(map(int, self.lines))
 
     @functools.cached_property
-    def grid(self) -> dict[tuple[int, int], str]:
+    def grid(self) -> dict[XY, str]:
         result = {}
         for y, row in enumerate(self.lines):
             for x, cell in enumerate(row):
-                result[x, y] = cell
+                result[XY(x, y)] = cell
 
         return result

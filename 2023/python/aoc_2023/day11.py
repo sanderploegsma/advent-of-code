@@ -1,10 +1,11 @@
 """Advent of Code 2023 - Day 11."""
 
-from operator import itemgetter
 from itertools import combinations
+from operator import itemgetter
 from typing import Generator
 
 from aoc_2023.input import Input
+from aoc_2023.navigation import XY, manhattan_distance
 
 
 def expand(rows: list[str], n: int) -> list[list[tuple[int, int, str]]]:
@@ -23,22 +24,15 @@ def expand(rows: list[str], n: int) -> list[list[tuple[int, int, str]]]:
     return result
 
 
-def parse(grid: list[list[tuple[int, int, str]]]) -> Generator[tuple[int, int], None, None]:
+def parse(grid: list[list[tuple[int, int, str]]]) -> Generator[XY, None, None]:
     y = 0
     for row in grid:
         x = 0
         for w, h, c in row:
             if c == "#":
-                yield x, y
+                yield XY(x, y)
             x += w
         y += row[0][1]
-
-
-def manhattan_distance(p1: tuple[int, int], p2: tuple[int, int]) -> int:
-    x1, y1 = p1
-    x2, y2 = p2
-
-    return abs(x2 - x1) + abs(y2 - y1)
 
 
 coordinates = list(parse(expand(Input("11.txt").lines, 2)))
