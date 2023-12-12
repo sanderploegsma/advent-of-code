@@ -277,7 +277,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day15.kt) |
 | 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day16.kt) |
 | 17  | [No Such Thing as Too Much](https://adventofcode.com/2015/day/17)             | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day17.kt) |
-| 18  | [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)              |        |                                                                                 |
+| 18  | [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)              | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day18.kt) |
 | 19  | [Medicine for Rudolph](https://adventofcode.com/2015/day/19)                  |        |                                                                                 |
 | 20  | [Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20)    |        |                                                                                 |
 | 21  | [RPG Simulator 20XX](https://adventofcode.com/2015/day/21)                    |        |                                                                                 |
