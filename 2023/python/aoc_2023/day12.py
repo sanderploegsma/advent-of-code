@@ -1,30 +1,45 @@
 """Advent of Code 2023 - Day 12."""
 
-import re
+import functools
+import itertools
+
 from aoc_2023.input import Input
 
-lines = Input("12.txt").lines
+
+@functools.cache
+def count_options(pattern: str, groups: tuple) -> int:
+    if len(pattern) == 0:
+        return 1 if len(groups) == 0 else 0
+
+    if pattern[0] == ".":
+        return count_options(pattern[1:], groups)
+
+    if pattern[0] == "?":
+        return count_options("." + pattern[1:], groups) + count_options("#" + pattern[1:], groups)
+
+    # We found a broken spring
+    if len(groups) == 0:
+        return 0
+
+    want = groups[0]
+    have = 0
+    for _ in itertools.takewhile(lambda s: s in "#?", pattern):
+        have += 1
+
+    if have < want:  # not enough broken springs
+        return 0
+    if pattern[want:want + 1] == "#":  # too many broken springs
+        return 0
+
+    # Exactly enough broken springs. This means that the next character MUST be a ., even if it's a ?
+    return count_options(pattern[want + 1:], groups[1:])
 
 
-def permutations(row: str) -> list[str]:
-    if "?" not in row:
-        return [row]
-
-    return permutations(row.replace("?", ".", 1)) + permutations(row.replace("?", "#", 1))
+def solve_record(record: str, n: int) -> int:
+    pattern, groups = record.split()
+    return count_options("?".join([pattern] * n), tuple([*map(int, groups.split(","))] * n))
 
 
-def count_valid_permutations(row: str, groups: str) -> int:
-    counts = list(map(int, groups.split(",")))
-    pattern = r"^\.*" + r"\.+".join([f"#{{{d}}}" for d in counts]) + r"\.*$"
-    valid = [p for p in permutations(row) if re.match(pattern, p)]
-    return len(valid)
-
-
-print("Part one:", sum(count_valid_permutations(*line.split()) for line in lines))
-
-
-def unfold(row: str, groups: str) -> tuple[str, str]:
-    return "?".join([row] * 5), ",".join([groups] * 5)
-
-
-# print("Part two:", sum(count_valid_permutations(*unfold(*line.split())) for line in lines))
+records = Input("12.txt").lines
+print("Part one:", sum(solve_record(r, 1) for r in records))
+print("Part two:", sum(solve_record(r, 5) for r in records))
