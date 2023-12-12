@@ -38,6 +38,15 @@ fun Iterable<Point2D>.print() {
     }
 }
 
+fun Iterable<Point2D>.bounds(): Set<Point2D> {
+    val minX = this.minOf { it.x }
+    val minY = this.minOf { it.y }
+    val maxX = this.maxOf { it.x }
+    val maxY = this.maxOf { it.y }
+
+    return setOf(Pair(minX, minY), Pair(maxX, minY), Pair(minX, maxY), Pair(maxX, maxY))
+}
+
 typealias Point3D = Triple<Int, Int, Int>
 
 val Point3D.x: Int
