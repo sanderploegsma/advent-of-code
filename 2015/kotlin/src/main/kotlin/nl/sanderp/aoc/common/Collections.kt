@@ -72,3 +72,17 @@ fun <T> Iterable<T>.allTriples() = allTriples(this, this, this)
 
 fun <T> MutableMap<T, Int>.increaseBy(key: T, value: Int) = merge(key, value) { a, b -> a + b }
 fun <T> MutableMap<T, Long>.increaseBy(key: T, value: Long) = merge(key, value) { a, b -> a + b }
+
+/**
+ * Given a list of lists (ie a matrix), transpose it
+ */
+fun <T> List<List<T>>.transpose(): List<List<T>> {
+    return (this[0].indices).map { i -> (this.indices).map { j -> this[j][i] } }
+}
+
+/**
+ * Given an array of arrays (ie a matrix), transpose it
+ */
+inline fun <reified T> Array<Array<T>>.transpose(): Array<Array<T>> {
+    return Array(this[0].size) { i -> Array(this.size) { j -> this[j][i] } }
+}
