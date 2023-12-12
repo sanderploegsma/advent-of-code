@@ -273,9 +273,9 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day11.kt) |
 | 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day12/src/Day12.kt) |
 | 13  | [Knights of the Dinner Table](https://adventofcode.com/2015/day/13)           | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day13.kt) |
-| 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     |        |                                                                                 |
-| 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             |        |                                                                                 |
-| 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              |        |                                                                                 |
+| 14  | [Reindeer Olympics](https://adventofcode.com/2015/day/14)                     | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day14.kt) |
+| 15  | [Science for Hungry People](https://adventofcode.com/2015/day/15)             | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day15.kt) |
+| 16  | [Aunt Sue](https://adventofcode.com/2015/day/16)                              | ⭐️⭐️ | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day16.kt) |
 | 17  | [No Such Thing as Too Much](https://adventofcode.com/2015/day/17)             |        |                                                                                 |
 | 18  | [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)              |        |                                                                                 |
 | 19  | [Medicine for Rudolph](https://adventofcode.com/2015/day/19)                  |        |                                                                                 |
