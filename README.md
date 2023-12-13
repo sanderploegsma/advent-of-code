@@ -32,7 +32,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 10  | [Pipe Maze](https://adventofcode.com/2023/day/10)                      | ⭐️⭐  | [Python](2023/python/aoc_2023/day10.py)                             |
 | 11  | [Cosmic Expansion](https://adventofcode.com/2023/day/11)               | ⭐️⭐  | [Python](2023/python/aoc_2023/day11.py)                             |
 | 12  | [Hot Springs](https://adventofcode.com/2023/day/12)                    | ⭐️⭐  | [Python](2023/python/aoc_2023/day12.py)                             |
-| 13  |                                                                        |        |                                                                     |
+| 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             | ⭐️⭐  | [Python](2023/python/aoc_2023/day13.py)                             |
 | 14  |                                                                        |        |                                                                     |
 | 15  |                                                                        |        |                                                                     |
 | 16  |                                                                        |        |                                                                     |
