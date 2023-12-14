@@ -2,8 +2,8 @@
 
 import functools
 import itertools
-
-from aoc_2023.input import Input
+import sys
+from typing import TextIO
 
 
 @functools.cache
@@ -40,6 +40,23 @@ def solve_record(record: str, n: int) -> int:
     return count_options("?".join([pattern] * n), tuple([*map(int, groups.split(","))] * n))
 
 
-records = Input("12.txt").lines
-print("Part one:", sum(solve_record(r, 1) for r in records))
-print("Part two:", sum(solve_record(r, 5) for r in records))
+def part_one(file: TextIO) -> int:
+    return sum(solve_record(r, 1) for r in file)
+
+
+def part_two(file: TextIO) -> int:
+    return sum(solve_record(r, 5) for r in file)
+
+
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()

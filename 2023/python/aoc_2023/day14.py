@@ -1,9 +1,11 @@
 """Advent of Code 2023 - Day 14."""
 
+import sys
 from functools import reduce
-from aoc_2023.input import Input
+from typing import TextIO
+
 from aoc_2023.navigation import UP, DOWN, LEFT, RIGHT, XY, bounding_box
-from aoc_2023.parsers import parse_grid
+from aoc_2023.parsers import parse_coordinates
 
 RoundRocks = set[XY]
 CubeRocks = set[XY]
@@ -39,14 +41,16 @@ def north_beam_load(platform: DishPlatform) -> int:
     return sum(max_y - y + 1 for _, y in round_rocks)
 
 
-def part_one(data: str) -> int:
-    platform = parse_grid(data, lambda s: s == "O"), parse_grid(data, lambda s: s == "#")
+def part_one(file: TextIO) -> int:
+    data = list(line.strip() for line in file)
+    platform = parse_coordinates(data, "O"), parse_coordinates(data, "#")
     platform = tilt(platform, UP)
     return north_beam_load(platform)
 
 
-def part_two(data: str) -> int:
-    platform = parse_grid(data, lambda s: s == "O"), parse_grid(data, lambda s: s == "#")
+def part_two(file: TextIO) -> int:
+    data = list(line.strip() for line in file)
+    platform = parse_coordinates(data, "O"), parse_coordinates(data, "#")
 
     cache = {}
     for step in range(CYCLES):
@@ -65,8 +69,15 @@ def part_two(data: str) -> int:
     return north_beam_load(platform)
 
 
-print("Example one:", part_one(Input("14.example.txt").text))
-print("Part one:", part_one(Input("14.txt").text))
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
 
-print("Example two:", part_two(Input("14.example.txt").text))
-print("Part two:", part_two(Input("14.txt").text))
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,9 +1,9 @@
-"""Advent of Code 2023 - Day 6."""
+"""Advent of Code 2023 - Day 06."""
 
 import math
 
-example_one = [(7, 9), (15, 40), (30, 200)]
-input_one = [(45, 305), (97, 1062), (72, 1110), (95, 1695)]
+INPUT_ONE = [(45, 305), (97, 1062), (72, 1110), (95, 1695)]
+INPUT_TWO = 45977295, 305106211101695
 
 
 def solve_quadratic(a: float, b: float, c: float) -> tuple[float, float]:
@@ -19,9 +19,18 @@ def winning_charge_times(race: tuple[int, int]) -> range:
     return range(int(math.ceil(min(bounds))), int(math.ceil(max(bounds))))
 
 
-print("Part one:", math.prod(len(winning_charge_times(race)) for race in input_one))
+def part_one(races: list[tuple[int, int]]) -> int:
+    return math.prod(len(winning_charge_times(race)) for race in races)
 
-example_two = 71530, 940200
-input_two = 45977295, 305106211101695
 
-print("Part two:", len(winning_charge_times(input_two)))
+def part_two(race: tuple[int, int]) -> int:
+    return len(winning_charge_times(race))
+
+
+def main():
+    print("Part one:", part_one(INPUT_ONE))
+    print("Part two:", part_two(INPUT_TWO))
+
+
+if __name__ == "__main__":
+    main()

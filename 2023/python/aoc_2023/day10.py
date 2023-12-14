@@ -1,18 +1,20 @@
 """Advent of Code 2023 - Day 10."""
 
+import sys
 from itertools import pairwise
+from typing import TextIO
 
-from aoc_2023.input import Input
-from aoc_2023.navigation import UP, DOWN, LEFT, RIGHT
+from aoc_2023.navigation import UP, DOWN, LEFT, RIGHT, XY
+from aoc_2023.parsers import parse_grid
 
-start_directions = {
+START_DIRECTIONS = {
     UP: "|F7",
     DOWN: "|JL",
     RIGHT: "-J7",
     LEFT: "-FL",
 }
 
-directions = {
+DIRECTIONS = {
     "-": {LEFT: LEFT, RIGHT: RIGHT},
     "|": {UP: UP, DOWN: DOWN},
     "L": {LEFT: UP, DOWN: RIGHT},
@@ -21,20 +23,44 @@ directions = {
     "F": {UP: RIGHT, LEFT: DOWN},
 }
 
-grid = Input("10.txt").grid
-start = next(coord for coord, cell in grid.items() if cell == "S")
-direction = next(d for d, s in start_directions.items() if grid.get(start + d, "?") in s)
 
-position = start + direction
-loop = [start]
-while position != start:
-    loop.append(position)
-    symbol = grid[position]
-    direction = directions[symbol][direction]
-    position = position + direction
+def find_loop(grid: dict[XY, str]) -> list[XY]:
+    start = next(coord for coord, cell in grid.items() if cell == "S")
+    direction = next(d for d, s in START_DIRECTIONS.items() if grid.get(start + d, "?") in s)
 
-print("Part one:", len(loop) // 2)
+    position = start + direction
+    loop = [start]
+    while position != start:
+        loop.append(position)
+        symbol = grid[position]
+        direction = DIRECTIONS[symbol][direction]
+        position = position + direction
 
-area = abs(sum(x1 * y2 - x2 * y1 for (x1, y1), (x2, y2) in pairwise([*loop, start]))) // 2
+    return loop
 
-print("Part two:", area - len(loop) // 2 + 1)
+
+def part_one(file: TextIO) -> int:
+    grid = parse_grid(file)
+    loop = find_loop(grid)
+    return len(loop) // 2
+
+
+def part_two(file: TextIO) -> int:
+    grid = parse_grid(file)
+    loop = find_loop(grid)
+    area = abs(sum(x1 * y2 - x2 * y1 for (x1, y1), (x2, y2) in pairwise([*loop, loop[0]]))) // 2
+    return area - len(loop) // 2 + 1
+
+
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()

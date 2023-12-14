@@ -1,4 +1,4 @@
-"""Advent of Code 2023 - Day 2."""
+"""Advent of Code 2023 - Day 02."""
 
 import io
 

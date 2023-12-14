@@ -1,4 +1,4 @@
-"""Advent of Code 2023 - Day 5."""
+"""Advent of Code 2023 - Day 05."""
 
 import sys
 from functools import reduce

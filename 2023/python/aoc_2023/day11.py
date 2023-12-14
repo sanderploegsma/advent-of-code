@@ -1,15 +1,16 @@
 """Advent of Code 2023 - Day 11."""
 
+import sys
 from itertools import combinations
+from typing import TextIO
 
-from aoc_2023.input import Input
 from aoc_2023.navigation import XY, manhattan_distance, bounding_box
-
-coordinates = list(k for k, v in Input("11.txt").grid.items() if v == "#")
-top_left, bottom_right = bounding_box(coordinates)
+from aoc_2023.parsers import parse_coordinates
 
 
-def sum_distances(offset: int) -> int:
+def sum_distances(coordinates: set[XY], offset: int) -> int:
+    top_left, bottom_right = bounding_box(coordinates)
+
     columns = []
     column_offset = 0
     for x in range(top_left.x, bottom_right.x + 1):
@@ -28,5 +29,27 @@ def sum_distances(offset: int) -> int:
     return sum(manhattan_distance(p1, p2) for p1, p2 in combinations(expanded, 2))
 
 
-print("Part one:", sum_distances(2))
-print("Part two:", sum_distances(1000000))
+def part_one(file: TextIO) -> int:
+    data = list(line.strip() for line in file)
+    coordinates = parse_coordinates(data)
+    return sum_distances(coordinates, 2)
+
+
+def part_two(file: TextIO, n: int) -> int:
+    data = list(line.strip() for line in file)
+    coordinates = parse_coordinates(data)
+    return sum_distances(coordinates, n)
+
+
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file, 1000000))
+
+
+if __name__ == "__main__":
+    main()

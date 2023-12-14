@@ -1,8 +1,9 @@
 """Advent of Code 2023 - Day 13."""
 
-from typing import Optional
+import sys
+from typing import Optional, TextIO
 
-from aoc_2023.input import Input
+from aoc_2023.parsers import parse_blocks
 
 
 class Pattern:
@@ -70,7 +71,25 @@ def total(results: list[tuple[Optional[int], Optional[int]]]):
     return cols + 100 * rows
 
 
-patterns = list(Pattern(text) for text in Input("13.txt").text.split("\n\n"))
+def part_one(file: TextIO) -> int:
+    patterns = list(map(Pattern, parse_blocks(file.read())))
+    return total(list(map(find_reflection_point, patterns)))
 
-print("Part one:", total(list(map(find_reflection_point, patterns))))
-print("Part two:", total(list(map(find_with_smudge, patterns))))
+
+def part_two(file: TextIO) -> int:
+    patterns = list(map(Pattern, parse_blocks(file.read())))
+    return total(list(map(find_with_smudge, patterns)))
+
+
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()
