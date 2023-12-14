@@ -1,6 +1,7 @@
-"""Advent of Code 2023 - Day {{ day }}."""
+"""Advent of Code 2023, Day {{ day }}: {{ title }}."""
 
 import io
+from typing import TextIO
 
 import pytest
 
@@ -12,13 +13,16 @@ EXAMPLE = """\
 
 
 @pytest.fixture()
-def example():
+def example() -> TextIO:
     return io.StringIO(EXAMPLE)
 
 
-def test_part_one(example):
+def test_part_one(example: TextIO) -> None:
+    """Test that checks if the solution for part one works on the example input."""
     assert part_one(example) == 42
 
 
-def test_part_two(example):
+def test_part_two(example: TextIO) -> None:
+    """Test that checks if the solution for part two works on the example input."""
     assert part_two(example) == 42
+
