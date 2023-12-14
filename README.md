@@ -33,7 +33,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 11  | [Cosmic Expansion](https://adventofcode.com/2023/day/11)               | ⭐️⭐  | [Python](2023/python/aoc_2023/day11.py)                             |
 | 12  | [Hot Springs](https://adventofcode.com/2023/day/12)                    | ⭐️⭐  | [Python](2023/python/aoc_2023/day12.py)                             |
 | 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             | ⭐️⭐  | [Python](2023/python/aoc_2023/day13.py)                             |
-| 14  |                                                                        |        |                                                                     |
+| 14  | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)       | ⭐️⭐  | [Python](2023/python/aoc_2023/day14.py)                             |
 | 15  |                                                                        |        |                                                                     |
 | 16  |                                                                        |        |                                                                     |
 | 17  |                                                                        |        |                                                                     |
