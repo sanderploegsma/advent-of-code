@@ -1,8 +1,9 @@
 """Advent of Code 2023 - Day 4."""
-import re
-from collections import deque
 
-from aoc_2023.input import Input
+import re
+import sys
+from collections import deque
+from typing import TextIO
 
 Card = tuple[int, list[int], list[int]]
 
@@ -16,25 +17,40 @@ def parse(line: str) -> Card:
     )
 
 
-def points(card: Card) -> int:
-    winners = list(filter(lambda n: n in card[1], card[2]))
-    return 0 if len(winners) == 0 else 1 << (len(winners) - 1)
+def part_one(file: TextIO) -> int:
+    def points(card: Card) -> int:
+        winners = list(filter(lambda n: n in card[1], card[2]))
+        return 0 if len(winners) == 0 else 1 << (len(winners) - 1)
+
+    return sum(map(points, map(parse, file)))
 
 
-cards = [parse(line) for line in Input("04.txt").lines]
+def part_two(file: TextIO) -> int:
+    cards = list(map(parse, file))
+    processed = []
+    queue = deque(cards)
 
-print("Part one:", sum(points(card) for card in cards))
+    while len(queue) > 0:
+        card = queue.popleft()
+        matching_cards = list(filter(lambda n: n in card[1], card[2]))
+        for i in range(len(matching_cards)):
+            idx = card[0] + i
+            if idx < len(cards):
+                queue.append(cards[idx])
+        processed.append(card[0])
 
-processed = []
-queue = deque(cards)
+    return len(processed)
 
-while len(queue) > 0:
-    card = queue.popleft()
-    matching_cards = list(filter(lambda n: n in card[1], card[2]))
-    for i in range(len(matching_cards)):
-        idx = card[0] + i
-        if idx < len(cards):
-            queue.append(cards[idx])
-    processed.append(card[0])
 
-print("Part two:", len(processed))
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
+
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()

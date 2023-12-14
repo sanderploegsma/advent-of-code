@@ -1,9 +1,9 @@
 """Advent of Code 2023 - Day 5."""
 
+import sys
 from functools import reduce
-from typing import Callable
-
-from aoc_2023.input import Input
+from operator import itemgetter
+from typing import Callable, TextIO
 
 F = Callable[[int], int]
 
@@ -31,32 +31,52 @@ def parse_transformation(block: str) -> list[F]:
     return [translate, translate_reverse]
 
 
-seeds, maps = Input("05.txt").text.split("\n\n", maxsplit=1)
-seeds = [int(x) for x in seeds.replace("seeds: ", "").split(" ")]
-transformations = [parse_transformation(block) for block in maps.split("\n\n")]
-transformations = list(map(list, zip(*transformations)))
+def parse(file: TextIO, getter: itemgetter) -> tuple[list[int], list[F]]:
+    seeds, maps = file.read().split("\n\n", maxsplit=1)
+    seeds = list(map(int, seeds.replace("seeds: ", "").split(" ")))
+    transformations = list(map(parse_transformation, maps.split("\n\n")))
+    transformations = list(map(getter, transformations))
+
+    return seeds, transformations
 
 
-def seed_to_loc(seed: int) -> int:
-    return reduce(lambda x, f: f(x), transformations[0], seed)
+def part_one(file: TextIO) -> int:
+    seeds, transformations = parse(file, itemgetter(0))
+
+    def seed_to_loc(seed: int) -> int:
+        return reduce(lambda x, f: f(x), transformations, seed)
+
+    return min(map(seed_to_loc, seeds))
 
 
-def loc_to_seed(loc: int) -> int:
-    return reduce(lambda x, f: f(x), reversed(transformations[1]), loc)
+def part_two(file: TextIO) -> int:
+    seeds, transformations = parse(file, itemgetter(1))
+
+    def loc_to_seed(loc: int) -> int:
+        return reduce(lambda x, f: f(x), reversed(transformations), loc)
+
+    seed_ranges = []
+    for i in range(0, len(seeds), 2):
+        seed_ranges.append((seeds[i], seeds[i] + seeds[i + 1] - 1))
+
+    loc = 1
+    while True:
+        seed = loc_to_seed(loc)
+        for seed_start, seed_end in seed_ranges:
+            if seed_start <= seed <= seed_end:
+                return loc
+        loc += 1
 
 
-print("Part one:", min([seed_to_loc(seed) for seed in seeds]))
+def main():
+    filename = sys.argv[0].replace(".py", ".txt")
 
-seed_ranges = []
-for i in range(0, len(seeds), 2):
-    seed_ranges.append((seeds[i], seeds[i] + seeds[i + 1] - 1))
+    with open(filename, encoding="utf-8") as file:
+        print("Part one:", part_one(file))
 
-loc = 1
-found = False
-while not found:
-    seed = loc_to_seed(loc)
-    for seed_start, seed_end in seed_ranges:
-        if seed_start <= seed <= seed_end:
-            print("Part two:", loc)
-            found = True
-    loc += 1
+    with open(filename, encoding="utf-8") as file:
+        print("Part two:", part_two(file))
+
+
+if __name__ == "__main__":
+    main()

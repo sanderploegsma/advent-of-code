@@ -1,3 +1,12 @@
+"""Advent of Code 2023 - Day 5."""
+
+import io
+
+import pytest
+
+from aoc_2023.day05 import part_one, part_two
+
+EXAMPLE = """\
 seeds: 79 14 55 13
 
 seed-to-soil map:
@@ -31,3 +40,17 @@ temperature-to-humidity map:
 humidity-to-location map:
 60 56 37
 56 93 4
+"""
+
+
+@pytest.fixture()
+def example():
+    return io.StringIO(EXAMPLE)
+
+
+def test_part_one(example):
+    assert part_one(example) == 35
+
+
+def test_part_two(example):
+    assert part_two(example) == 46
