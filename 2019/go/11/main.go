@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/utils"
+	"github.com/sanderploegsma/advent-of-code/2019/go/utils"
 )
 
 const (

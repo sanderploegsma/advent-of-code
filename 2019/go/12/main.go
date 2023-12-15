@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/sanderploegsma/advent-of-code/2019/utils"
+	"github.com/sanderploegsma/advent-of-code/2019/go/utils"
 )
 
 var input = [][]int{

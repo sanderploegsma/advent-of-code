@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/sanderploegsma/advent-of-code/2019/utils"
+	"github.com/sanderploegsma/advent-of-code/2019/go/utils"
 
 	"log"
 	"strconv"

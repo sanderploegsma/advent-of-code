@@ -1,4 +1,4 @@
-module github.com/sanderploegsma/advent-of-code/2019
+module github.com/sanderploegsma/advent-of-code/2019/go
 
 go 1.13
 
