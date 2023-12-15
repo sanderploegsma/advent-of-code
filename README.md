@@ -34,7 +34,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 12  | [Hot Springs](https://adventofcode.com/2023/day/12)                    | ⭐️⭐  | [Python](2023/python/aoc_2023/day12.py)                             |
 | 13  | [Point of Incidence](https://adventofcode.com/2023/day/13)             | ⭐️⭐  | [Python](2023/python/aoc_2023/day13.py)                             |
 | 14  | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)       | ⭐️⭐  | [Python](2023/python/aoc_2023/day14.py)                             |
-| 15  |                                                                        |        |                                                                     |
+| 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   | ⭐️⭐  | [Python](2023/python/aoc_2023/day15.py)                             |
 | 16  |                                                                        |        |                                                                     |
 | 17  |                                                                        |        |                                                                     |
 | 18  |                                                                        |        |                                                                     |
