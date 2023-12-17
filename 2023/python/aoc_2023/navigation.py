@@ -1,10 +1,14 @@
 from dataclasses import dataclass
+from functools import total_ordering
 from typing import Iterable, Iterator
 
 
 @dataclass(frozen=True)
+@total_ordering
 class XY:
-    """Represents a point on a 2-dimensional grid."""
+    """
+    Represents a point on a 2-dimensional grid.
+    """
 
     x: int
     y: int
@@ -17,6 +21,19 @@ class XY:
 
     def __iter__(self) -> Iterator[int]:
         yield from [self.x, self.y]
+
+    def __eq__(self, other):
+        return (self.x, self.y) == (other.x, other.y)
+
+    def __gt__(self, other):
+        return (self.x, self.y) > (other.x, other.y)
+
+    def __neg__(self):
+        return XY(-self.x, -self.y)
+
+    @property
+    def swapped(self):
+        return XY(self.y, self.x)
 
 
 UP = XY(0, -1)

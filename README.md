@@ -4,17 +4,17 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 ## Overview
 
-| Year          | Participation                  | Practice                                          |
-|---------------|--------------------------------|---------------------------------------------------|
-| [2023](#2023) | [Python](2023/python/aoc_2023) | [Ruby](2023/ruby)                                 |
-| [2022](#2022) | [C#](2022/csharp)              | [Scala](2022/scala), [Elixir](2022/elixir)        |
-| [2021](#2021) | [Kotlin](2021/kotlin)          | [Swift](2021/swift)                               |
-| [2020](#2020) | [F#](2020/fsharp)              | [C#](2020/csharp), [Python](2020/python/aoc_2020) |
-| [2019](#2019) | [Go](2019/go)                  | [Kotlin](2019/kotlin)                             |
-| [2018](#2018) |                                | [Go](2018/go), [F#](2018/fsharp)                  |
-| [2017](#2017) |                                | [F#](2017/fsharp)                                 |
-| [2016](#2016) |                                | [F#](2016/fsharp), [C#](2016/csharp)              |
-| [2015](#2015) |                                | [F#](2015/fsharp), [Kotlin](2015/kotlin)          |
+| Year          | Participation         | Practice                                   |
+|---------------|-----------------------|--------------------------------------------|
+| [2023](#2023) | [Python](2023/python) | [Ruby](2023/ruby)                          |
+| [2022](#2022) | [C#](2022/csharp)     | [Scala](2022/scala), [Elixir](2022/elixir) |
+| [2021](#2021) | [Kotlin](2021/kotlin) | [Swift](2021/swift)                        |
+| [2020](#2020) | [F#](2020/fsharp)     | [C#](2020/csharp), [Python](2020/python)   |
+| [2019](#2019) | [Go](2019/go)         | [Kotlin](2019/kotlin)                      |
+| [2018](#2018) |                       | [Go](2018/go), [F#](2018/fsharp)           |
+| [2017](#2017) |                       | [F#](2017/fsharp)                          |
+| [2016](#2016) |                       | [F#](2016/fsharp), [C#](2016/csharp)       |
+| [2015](#2015) |                       | [F#](2015/fsharp), [Kotlin](2015/kotlin)   |
 
 ## 2023
 
@@ -36,7 +36,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 14  | [Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)       | ⭐️⭐   | [Python](2023/python/aoc_2023/day14.py)                             |
 | 15  | [Lens Library](https://adventofcode.com/2023/day/15)                   | ⭐️⭐   | [Python](2023/python/aoc_2023/day15.py)                             |
 | 16  | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)         | ⭐️⭐   | [Python](2023/python/aoc_2023/day16.py)                             |
-| 17  |                                                                        |       |                                                                     |
+| 17  | [Clumsy Crucible](https://adventofcode.com/2023/day/17)                | ⭐️⭐   | [Python](2023/python/aoc_2023/day17.py)                             |
 | 18  |                                                                        |       |                                                                     |
 | 19  |                                                                        |       |                                                                     |
 | 20  |                                                                        |       |                                                                     |
@@ -260,15 +260,15 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 | Day | Name                                                                          | Stars | Solutions                                                                       |
 |-----|-------------------------------------------------------------------------------|-------|---------------------------------------------------------------------------------|
-| 1   | [Not Quite Lisp](https://adventofcode.com/2015/day/1)                         | ⭐️⭐️  | [F#](2015/fsharp/Day01/Program.fs)                                              |
-| 2   | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | ⭐️⭐️  | [F#](2015/fsharp/Day02/Program.fs)                                              |
-| 3   | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | ⭐️⭐️  | [F#](2015/fsharp/Day03/Program.fs)                                              |
-| 4   | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | ⭐️⭐️  | [F#](2015/fsharp/Day04/Program.fs)                                              |
-| 5   | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | ⭐️⭐️  | [F#](2015/fsharp/Day05/Program.fs)                                              |
-| 6   | [Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | ⭐️⭐️  | [F#](2015/fsharp/Day06/Program.fs)                                              |
-| 7   | [Some Assembly Required](https://adventofcode.com/2015/day/7)                 | ⭐️⭐️  | [F#](2015/fsharp/Day07/Program.fs)                                              |
-| 8   | [Matchsticks](https://adventofcode.com/2015/day/8)                            | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day08/src/Day08.kt) |
-| 9   | [All in a Single Night](https://adventofcode.com/2015/day/9)                  | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day09/src/Day09.kt) |
+| 01  | [Not Quite Lisp](https://adventofcode.com/2015/day/1)                         | ⭐️⭐️  | [F#](2015/fsharp/Day01/Program.fs)                                              |
+| 02  | [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | ⭐️⭐️  | [F#](2015/fsharp/Day02/Program.fs)                                              |
+| 03  | [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | ⭐️⭐️  | [F#](2015/fsharp/Day03/Program.fs)                                              |
+| 04  | [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | ⭐️⭐️  | [F#](2015/fsharp/Day04/Program.fs)                                              |
+| 05  | [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | ⭐️⭐️  | [F#](2015/fsharp/Day05/Program.fs)                                              |
+| 06  | [Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | ⭐️⭐️  | [F#](2015/fsharp/Day06/Program.fs)                                              |
+| 07  | [Some Assembly Required](https://adventofcode.com/2015/day/7)                 | ⭐️⭐️  | [F#](2015/fsharp/Day07/Program.fs)                                              |
+| 08  | [Matchsticks](https://adventofcode.com/2015/day/8)                            | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day08/src/Day08.kt) |
+| 09  | [All in a Single Night](https://adventofcode.com/2015/day/9)                  | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day09/src/Day09.kt) |
 | 10  | [Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                 | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day10.kt) |
 | 11  | [Corporate Policy](https://adventofcode.com/2015/day/11)                      | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day10/src/Day11.kt) |
 | 12  | [JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                  | ⭐️⭐️  | [Kotlin](2015/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2015/day12/src/Day12.kt) |

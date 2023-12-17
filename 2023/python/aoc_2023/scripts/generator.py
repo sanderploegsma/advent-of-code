@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-"""Generator for Advent of Code 2023 solutions."""
+"""
+Generator for Advent of Code 2023 solutions.
+"""
 
 import os
 import sys
