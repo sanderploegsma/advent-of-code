@@ -1,4 +1,6 @@
-"""Advent of Code 2023 - Day 14."""
+"""
+Advent of Code 2023, Day 14: Parabolic Reflector Dish.
+"""
 
 import io
 

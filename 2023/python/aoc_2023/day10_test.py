@@ -1,4 +1,6 @@
-"""Advent of Code 2023 - Day 10."""
+"""
+Advent of Code 2023, Day 10: Pipe Maze.
+"""
 
 import io
 

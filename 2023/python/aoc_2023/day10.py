@@ -1,30 +1,31 @@
-"""Advent of Code 2023 - Day 10."""
+"""
+Advent of Code 2023, Day 10: Pipe Maze.
+"""
 
 import sys
 from itertools import pairwise
 from typing import TextIO
 
-from aoc_2023.navigation import UP, DOWN, LEFT, RIGHT, XY
-from aoc_2023.parsers import parse_grid
+from aoc_2023.grid import Grid, NORTH, EAST, SOUTH, WEST
 
 START_DIRECTIONS = {
-    UP: "|F7",
-    DOWN: "|JL",
-    RIGHT: "-J7",
-    LEFT: "-FL",
+    NORTH: "|F7",
+    SOUTH: "|JL",
+    EAST: "-J7",
+    WEST: "-FL",
 }
 
 DIRECTIONS = {
-    "-": {LEFT: LEFT, RIGHT: RIGHT},
-    "|": {UP: UP, DOWN: DOWN},
-    "L": {LEFT: UP, DOWN: RIGHT},
-    "J": {RIGHT: UP, DOWN: LEFT},
-    "7": {RIGHT: DOWN, UP: LEFT},
-    "F": {UP: RIGHT, LEFT: DOWN},
+    "-": {WEST: WEST, EAST: EAST},
+    "|": {NORTH: NORTH, SOUTH: SOUTH},
+    "L": {WEST: NORTH, SOUTH: EAST},
+    "J": {EAST: NORTH, SOUTH: WEST},
+    "7": {EAST: SOUTH, NORTH: WEST},
+    "F": {NORTH: EAST, WEST: SOUTH},
 }
 
 
-def find_loop(grid: dict[XY, str]) -> list[XY]:
+def find_loop(grid: Grid) -> list[complex]:
     start = next(coord for coord, cell in grid.items() if cell == "S")
     direction = next(d for d, s in START_DIRECTIONS.items() if grid.get(start + d, "?") in s)
 
@@ -40,15 +41,15 @@ def find_loop(grid: dict[XY, str]) -> list[XY]:
 
 
 def part_one(file: TextIO) -> int:
-    grid = parse_grid(file)
+    grid = Grid.from_ascii_grid(file)
     loop = find_loop(grid)
     return len(loop) // 2
 
 
 def part_two(file: TextIO) -> int:
-    grid = parse_grid(file)
+    grid = Grid.from_ascii_grid(file)
     loop = find_loop(grid)
-    area = abs(sum(x1 * y2 - x2 * y1 for (x1, y1), (x2, y2) in pairwise([*loop, loop[0]]))) // 2
+    area = abs(sum(p1.real * p2.imag - p2.real * p1.imag for p1, p2 in pairwise([*loop, loop[0]]))) // 2
     return area - len(loop) // 2 + 1
 
 

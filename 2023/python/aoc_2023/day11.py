@@ -1,44 +1,41 @@
-"""Advent of Code 2023 - Day 11."""
+"""
+Advent of Code 2023, Day 11: Cosmic Expansion.
+"""
 
 import sys
 from itertools import combinations
 from typing import TextIO
 
-from aoc_2023.navigation import XY, manhattan_distance, bounding_box
-from aoc_2023.parsers import parse_coordinates
+from aoc_2023.grid import Grid
 
 
-def sum_distances(coordinates: set[XY], offset: int) -> int:
-    top_left, bottom_right = bounding_box(coordinates)
-
+def sum_distances(grid: Grid, offset: int) -> int:
     columns = []
     column_offset = 0
-    for x in range(top_left.x, bottom_right.x + 1):
-        if not any(c.x == x for c in coordinates):
+    for x in range(grid.width):
+        if not any(p.real == x for p in grid.keys()):
             column_offset += offset - 1
         columns.append(column_offset)
 
     rows = []
     row_offset = 0
-    for y in range(top_left.y, bottom_right.y + 1):
-        if not any(c.y == y for c in coordinates):
+    for y in range(grid.height):
+        if not any(p.imag == y for p in grid.keys()):
             row_offset += offset - 1
         rows.append(row_offset)
 
-    expanded = {c + XY(columns[c.x], rows[c.y]) for c in coordinates}
-    return sum(manhattan_distance(p1, p2) for p1, p2 in combinations(expanded, 2))
+    expanded = {(p.real + columns[int(p.real)], p.imag + rows[int(p.imag)]) for p in grid.keys()}
+    return sum(abs(x1 - x2) + abs(y1 - y2) for (x1, y1), (x2, y2) in combinations(expanded, 2))
 
 
 def part_one(file: TextIO) -> int:
-    data = list(line.strip() for line in file)
-    coordinates = parse_coordinates(data)
-    return sum_distances(coordinates, 2)
+    grid = Grid.from_ascii_grid(file)
+    return sum_distances(grid, 2)
 
 
 def part_two(file: TextIO, n: int) -> int:
-    data = list(line.strip() for line in file)
-    coordinates = parse_coordinates(data)
-    return sum_distances(coordinates, n)
+    grid = Grid.from_ascii_grid(file)
+    return sum_distances(grid, n)
 
 
 def main():

@@ -1,62 +1,57 @@
-"""Advent of Code 2023 - Day 14."""
+"""
+Advent of Code 2023, Day 14: Parabolic Reflector Dish.
+"""
 
 import sys
 from functools import reduce
 from typing import TextIO
 
-from aoc_2023.navigation import UP, DOWN, LEFT, RIGHT, XY, bounding_box
-from aoc_2023.parsers import parse_coordinates
+from aoc_2023.grid import Grid, NORTH, WEST, SOUTH, EAST
 
-RoundRocks = set[XY]
-CubeRocks = set[XY]
-DishPlatform = tuple[RoundRocks, CubeRocks]
+ROUND_ROCK = "O"
+CUBE_ROCK = "#"
 
 CYCLES = 1_000_000_000
 
 
-def tilt(platform: DishPlatform, direction: XY) -> DishPlatform:
-    round_rocks, cube_rocks = platform
-    (min_x, min_y), (max_x, max_y) = bounding_box(round_rocks | cube_rocks)
+def tilt(grid: Grid, direction: complex) -> Grid:
+    tilted = Grid({p: v for p, v in grid.items() if v == CUBE_ROCK})
 
-    tilted = set(cube_rocks)
-    for rock in sorted(round_rocks,
-                       key=lambda r: r.x if direction in [LEFT, RIGHT] else r.y,
-                       reverse=direction in [DOWN, RIGHT]):
-        while (pos := rock + direction) not in tilted and min_x <= pos.x <= max_x and min_y <= pos.y <= max_y:
-            rock = pos
+    for p in sorted((p for p, v in grid.items() if v == ROUND_ROCK),
+                    key=lambda pos: pos.real if direction in [EAST, WEST] else pos.imag,
+                    reverse=direction in [SOUTH, EAST]):
+        while ((next_pos := p + direction) not in tilted and
+               0 <= next_pos.real < grid.width and
+               0 <= next_pos.imag < grid.height):
+            p = next_pos
 
-        tilted.add(rock)
+        tilted[p] = ROUND_ROCK
 
-    return tilted - cube_rocks, cube_rocks
-
-
-def tilt_cycle(platform: DishPlatform) -> DishPlatform:
-    return reduce(tilt, [UP, LEFT, DOWN, RIGHT], platform)
+    return tilted
 
 
-def north_beam_load(platform: DishPlatform) -> int:
-    round_rocks, cube_rocks = platform
-    _, (_, max_y) = bounding_box(round_rocks | cube_rocks)
+def tilt_cycle(grid: Grid) -> Grid:
+    return reduce(tilt, [NORTH, WEST, SOUTH, EAST], grid)
 
-    return sum(max_y - y + 1 for _, y in round_rocks)
+
+def north_beam_load(grid: Grid) -> int:
+    return int(sum(grid.height - p.imag for p, v in grid.items() if v == ROUND_ROCK))
 
 
 def part_one(file: TextIO) -> int:
-    data = list(line.strip() for line in file)
-    platform = parse_coordinates(data, "O"), parse_coordinates(data, "#")
-    platform = tilt(platform, UP)
+    platform = Grid.from_ascii_grid(file)
+    platform = tilt(platform, NORTH)
     return north_beam_load(platform)
 
 
 def part_two(file: TextIO) -> int:
-    data = list(line.strip() for line in file)
-    platform = parse_coordinates(data, "O"), parse_coordinates(data, "#")
+    platform = Grid.from_ascii_grid(file)
 
     cache = {}
     for step in range(CYCLES):
         platform = tilt_cycle(platform)
 
-        key = frozenset(platform[0])
+        key = frozenset(p for p, v in platform.items() if v == ROUND_ROCK)
         if key in cache:
             loop_length = step - cache[key]
             steps_remaining = (CYCLES - step - 1) % loop_length

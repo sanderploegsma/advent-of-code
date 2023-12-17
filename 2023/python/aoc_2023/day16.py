@@ -6,16 +6,10 @@ import sys
 from collections import deque, defaultdict
 from typing import TextIO
 
-Tile = tuple[int, int]
-Direction = tuple[int, int]
-
-UP = 0, -1
-DOWN = 0, 1
-LEFT = -1, 0
-RIGHT = 1, 0
+from aoc_2023.grid import Grid, NORTH, EAST, SOUTH, WEST
 
 
-def energize(grid: list[str], start: Tile, start_dir: Direction) -> int:
+def energize(grid: Grid, start: complex, start_dir: complex) -> int:
     """
     Energize the given grid by following all beams through it,
     starting with the given starting position and direction.
@@ -26,8 +20,8 @@ def energize(grid: list[str], start: Tile, start_dir: Direction) -> int:
     :return: The number of energized tiles in the grid.
     """
 
-    def in_bounds(_tile: Tile):
-        return 0 <= _tile[0] < len(grid[0]) and 0 <= _tile[1] < len(grid)
+    def in_bounds(_tile: complex):
+        return 0 <= _tile.real < grid.width and 0 <= _tile.imag < grid.height
 
     energized = set()
     seen = defaultdict(set)
@@ -35,32 +29,28 @@ def energize(grid: list[str], start: Tile, start_dir: Direction) -> int:
     while beams:
         tile, direction = beams.popleft()
 
-        if not in_bounds(tile) or tile in seen[direction]:
+        if tile not in grid or tile in seen[direction]:
             continue
 
         energized.add(tile)
         seen[direction].add(tile)
 
-        x, y = tile
-        dx, dy = direction
+        def move(next_dir: complex):
+            return tile + next_dir, next_dir
 
-        def move(next_dir: Direction):
-            _dx, _dy = next_dir
-            return (x + _dx, y + _dy), next_dir
-
-        match grid[y][x]:
-            case "-" if dx == 0:
-                beams.append(move(LEFT))
-                beams.append(move(RIGHT))
-            case "|" if dy == 0:
-                beams.append(move(UP))
-                beams.append(move(DOWN))
+        match grid[tile]:
+            case "-" if direction.real == 0:
+                beams.append(move(EAST))
+                beams.append(move(WEST))
+            case "|" if direction.imag == 0:
+                beams.append(move(NORTH))
+                beams.append(move(SOUTH))
             case "/":
-                beams.append(move((-dy, -dx)))
+                beams.append(move(complex(-direction.imag, -direction.real)))
             case "\\":
-                beams.append(move((dy, dx)))
+                beams.append(move(complex(direction.imag, direction.real)))
             case _:
-                beams.append(move((dx, dy)))
+                beams.append(move(direction))
 
     return len(energized)
 
@@ -69,25 +59,23 @@ def part_one(file: TextIO) -> int:
     """
     Solve part one of the puzzle.
     """
-    grid = list(line.strip() for line in file)
-    return energize(grid, (0, 0), RIGHT)
+    grid = Grid.from_ascii_grid((line.strip() for line in file), ignore_chars="")
+    return energize(grid, complex(0, 0), EAST)
 
 
 def part_two(file: TextIO) -> int:
     """
     Solve part two of the puzzle.
     """
-    grid = list(line.strip() for line in file)
-    max_x = len(grid[0]) - 1
-    max_y = len(grid)
+    grid = Grid.from_ascii_grid((line.strip() for line in file), ignore_chars="")
     start_options = []
-    for x in range(max_x + 1):
-        start_options.append(((x, 0), DOWN))
-        start_options.append(((x, max_y), UP))
+    for x in range(grid.width):
+        start_options.append((complex(x, 0), SOUTH))
+        start_options.append((complex(x, grid.height - 1), NORTH))
 
-    for y in range(max_y + 1):
-        start_options.append(((0, y), RIGHT))
-        start_options.append(((max_x, y), LEFT))
+    for y in range(grid.height):
+        start_options.append((complex(0, y), EAST))
+        start_options.append((complex(grid.width - 1, y), WEST))
 
     return max(energize(grid, start_pos, start_dir) for start_pos, start_dir in start_options)
 
