@@ -11,17 +11,15 @@ Overview
     :delim: ;
 
     Year;Participation;Practice
-    :ref:`2023`;`Python </2023/python>`_;`Ruby </2023/ruby>`_
-    :ref:`2022`;`C# </2022/csharp>`_;`Scala </2022/scala>`_, `Elixir </2022/elixir>`_
-    :ref:`2021`;`Kotlin </2021/kotlin>`_;`Swift </2021/swift>`_
-    :ref:`2020`;`F# </2020/fsharp>`_;`C# </2020/csharp>`_, `Python </2020/python>`_
-    :ref:`2019`;`Go </2019/go>`_;`Kotlin </2019/kotlin>`_
-    :ref:`2018`;;`Go </2018/go>`_, `F# </2018/fsharp>`_
-    :ref:`2017`;;`F# </2017/fsharp>`_
-    :ref:`2016`;;`F# </2016/fsharp>`_, `C# </2016/csharp>`_
-    :ref:`2015`;;`F# </2015/fsharp>`_, `Kotlin </2015/kotlin>`_
-
-.. _2023:
+    `2023`_;`Python </2023/python>`_;`Ruby </2023/ruby>`_
+    `2022`_;`C# </2022/csharp>`_;`Scala </2022/scala>`_, `Elixir </2022/elixir>`_
+    `2021`_;`Kotlin </2021/kotlin>`_;`Swift </2021/swift>`_
+    `2020`_;`F# </2020/fsharp>`_;`C# </2020/csharp>`_, `Python </2020/python>`_
+    `2019`_;`Go </2019/go>`_;`Kotlin </2019/kotlin>`_
+    `2018`_;;`Go </2018/go>`_, `F# </2018/fsharp>`_
+    `2017`_;;`F# </2017/fsharp>`_
+    `2016`_;;`F# </2016/fsharp>`_, `C# </2016/csharp>`_
+    `2015`_;;`F# </2015/fsharp>`_, `Kotlin </2015/kotlin>`_
 
 2023
 ----
@@ -32,8 +30,6 @@ Overview
     :header-rows: 1
     :delim: ;
 
-.. _2022:
-
 2022
 ----
 
@@ -42,8 +38,6 @@ Overview
     :widths: 10 50 10 30
     :header-rows: 1
     :delim: ;
-
-.. _2021:
 
 2021
 ----
@@ -54,8 +48,6 @@ Overview
     :header-rows: 1
     :delim: ;
 
-.. _2020:
-
 2020
 ----
 
@@ -64,8 +56,6 @@ Overview
     :widths: 10 50 10 30
     :header-rows: 1
     :delim: ;
-
-.. _2019:
 
 2019
 ----
@@ -76,8 +66,6 @@ Overview
     :header-rows: 1
     :delim: ;
 
-.. _2018:
-
 2018
 ----
 
@@ -86,8 +74,6 @@ Overview
     :widths: 10 50 10 30
     :header-rows: 1
     :delim: ;
-
-.. _2017:
 
 2017
 ----
@@ -98,8 +84,6 @@ Overview
     :header-rows: 1
     :delim: ;
 
-.. _2016:
-
 2016
 ----
 
@@ -108,8 +92,6 @@ Overview
     :widths: 10 50 10 30
     :header-rows: 1
     :delim: ;
-
-.. _2015:
 
 2015
 ----
