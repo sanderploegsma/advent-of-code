@@ -6,11 +6,8 @@ import sys
 from queue import PriorityQueue
 from typing import TextIO
 
-from aoc_2023.navigation import XY, bounding_box, DOWN, RIGHT
-from aoc_2023.parsers import parse_grid
 
-
-def minimize_heat_loss(grid: dict[XY, str], min_path_length: int, max_path_length: int) -> int:
+def minimize_heat_loss(grid: list[str], min_path_length: int, max_path_length: int) -> int:
     """
     Finds the path through the grid that minimizes the total heat loss.
 
@@ -19,37 +16,40 @@ def minimize_heat_loss(grid: dict[XY, str], min_path_length: int, max_path_lengt
     :param max_path_length: The maximum distance to travel in one direction before having to turn.
     :return: The heat loss incurred by following the path
     """
-    top_left, bottom_right = bounding_box(grid)
+    max_x, max_y = len(grid[0]) - 1, len(grid) - 1
 
     visited = set()
     todo = PriorityQueue()
-    todo.put((0, top_left, RIGHT, 1))
-    todo.put((0, top_left, DOWN, 1))
 
-    while todo.not_empty:
-        cost, position, direction, length = todo.get()
+    # cost, x, y, dx, dy, segment length
+    todo.put((0, 0, 0, 1, 0, 1))
+    todo.put((0, 0, 0, 0, 1, 1))
 
-        if (position, direction, length) in visited:
+    while todo:
+        cost, x, y, dx, dy, c = todo.get()
+
+        if (x, y, dx, dy, c) in visited:
             continue
 
-        visited.add((position, direction, length))
+        visited.add((x, y, dx, dy, c))
 
-        if position == bottom_right:
+        if x == max_x and y == max_y:
             return cost
 
-        position += direction
+        x += dx
+        y += dy
 
-        if position not in grid:
+        if not (0 <= x <= max_x and 0 <= y <= max_y):
             continue
 
-        cost += int(grid[position])
+        cost += int(grid[y][x])
 
-        if length < max_path_length:
-            todo.put((cost, position, direction, length + 1))
+        if c < max_path_length:
+            todo.put((cost, x, y, dx, dy, c + 1))
 
-        if length >= min_path_length:
-            todo.put((cost, position, direction.swapped, 1))
-            todo.put((cost, position, -direction.swapped, 1))
+        if c >= min_path_length:
+            todo.put((cost, x, y, dy, dx, 1))
+            todo.put((cost, x, y, -dy, -dx, 1))
 
     return -1
 
@@ -58,7 +58,7 @@ def part_one(file: TextIO) -> int:
     """
     Solve part one of the puzzle.
     """
-    grid = parse_grid(line.strip() for line in file)
+    grid = list(line.strip() for line in file)
     return minimize_heat_loss(grid, min_path_length=1, max_path_length=3)
 
 
@@ -66,7 +66,7 @@ def part_two(file: TextIO) -> int:
     """
     Solve part two of the puzzle.
     """
-    grid = parse_grid(line.strip() for line in file)
+    grid = list(line.strip() for line in file)
     return minimize_heat_loss(grid, min_path_length=4, max_path_length=10)
 
 
