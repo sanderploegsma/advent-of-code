@@ -1,0 +1,26 @@
+Day;Name;Stars;Solutions
+1;`Sonar Sweep <https://adventofcode.com/2021/day/1>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day01/Day01.kt>`_, `Swift </2021/swift/AdventOfCode2021/Sources/Day01/main.swift>`_
+2;`Dive! <https://adventofcode.com/2021/day/2>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day02/Day02.kt>`_, `Swift </2021/swift/AdventOfCode2021/Sources/Day02/main.swift>`_
+3;`Binary Diagnostic <https://adventofcode.com/2021/day/3>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day03/Day03.kt>`_, `Swift </2021/swift/AdventOfCode2021/Sources/Day03/main.swift>`_
+4;`Giant Squid <https://adventofcode.com/2021/day/4>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day04/Day04.kt>`_
+5;`Hydrothermal Venture <https://adventofcode.com/2021/day/5>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day05/Day05.kt>`_
+6;`Lanternfish <https://adventofcode.com/2021/day/6>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day06/Day06.kt>`_
+7;`The Treachery of Whales <https://adventofcode.com/2021/day/7>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day07/Day07.kt>`_
+8;`Seven Segment Search <https://adventofcode.com/2021/day/8>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day08/Day08.kt>`_
+9;`Smoke Basin <https://adventofcode.com/2021/day/9>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day09/Day09.kt>`_
+10;`Syntax Scoring <https://adventofcode.com/2021/day/10>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day10/Day10.kt>`_
+11;`Dumbo Octopus <https://adventofcode.com/2021/day/11>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day11/Day11.kt>`_
+12;`Passage Pathing <https://adventofcode.com/2021/day/12>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day12/Day12.kt>`_
+13;`Transparent Origami <https://adventofcode.com/2021/day/13>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day13/Day13.kt>`_
+14;`Extended Polymerization <https://adventofcode.com/2021/day/14>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day14/Day14.kt>`_
+15;`Chiton <https://adventofcode.com/2021/day/15>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day15/Day15.kt>`_
+16;`Packet Decoder <https://adventofcode.com/2021/day/16>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day16/Day16.kt>`_
+17;`Trick Shot <https://adventofcode.com/2021/day/17>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day17/Day17.kt>`_
+18;`Snailfish <https://adventofcode.com/2021/day/18>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day18/Day18.kt>`_
+19;`Beacon Scanner <https://adventofcode.com/2021/day/19>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day19/Day19.kt>`_
+20;`Trench Map <https://adventofcode.com/2021/day/20>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day20/Day20.kt>`_
+21;`Dirac Dice <https://adventofcode.com/2021/day/21>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day21/Day21.kt>`_
+22;`Reactor Reboot <https://adventofcode.com/2021/day/22>`_;⭐️⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day22/Day22.kt>`_
+23;`Amphipod <https://adventofcode.com/2021/day/23>`_;⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day23/Day23.kt>`_
+24;`Arithmetic Logic Unit <https://adventofcode.com/2021/day/24>`_;;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day24/Day24.kt>`_
+25;`Sea Cucumber <https://adventofcode.com/2021/day/25>`_;⭐️;`Kotlin </2021/kotlin/src/main/kotlin/nl/sanderp/aoc/aoc2021/day25/Day25.kt>`_
