@@ -6,48 +6,61 @@ import sys
 from collections import deque, defaultdict
 from typing import TextIO
 
-from aoc_2023.navigation import bounding_box, UP, DOWN, LEFT, RIGHT, XY
-from aoc_2023.parsers import parse_grid
+Tile = tuple[int, int]
+Direction = tuple[int, int]
+
+UP = 0, -1
+DOWN = 0, 1
+LEFT = -1, 0
+RIGHT = 1, 0
 
 
-def energize(grid: dict[XY, str], start_pos: XY, start_dir: XY) -> int:
+def energize(grid: list[str], start: Tile, start_dir: Direction) -> int:
     """
     Energize the given grid by following all beams through it,
     starting with the given starting position and direction.
 
     :param grid: Grid containing mirrors and splitters.
-    :param start_pos: Starting position of the first beam.
+    :param start: Starting tile of the first beam.
     :param start_dir: Starting direction of the first beam.
     :return: The number of energized tiles in the grid.
     """
+
+    def in_bounds(_tile: Tile):
+        return 0 <= _tile[0] < len(grid[0]) and 0 <= _tile[1] < len(grid)
+
     energized = set()
     seen = defaultdict(set)
-    beams = deque([(start_pos, start_dir)])
+    beams = deque([(start, start_dir)])
     while beams:
-        position, direction = beams.popleft()
+        tile, direction = beams.popleft()
 
-        if position not in grid or position in seen[direction]:
+        if not in_bounds(tile) or tile in seen[direction]:
             continue
 
-        energized.add(position)
-        seen[direction].add(position)
+        energized.add(tile)
+        seen[direction].add(tile)
 
-        def move(next_dir: XY):
-            return position + next_dir, next_dir
+        x, y = tile
+        dx, dy = direction
 
-        match grid[position]:
-            case "-" if direction in [UP, DOWN]:
+        def move(next_dir: Direction):
+            _dx, _dy = next_dir
+            return (x + _dx, y + _dy), next_dir
+
+        match grid[y][x]:
+            case "-" if dx == 0:
                 beams.append(move(LEFT))
                 beams.append(move(RIGHT))
-            case "|" if direction in [LEFT, RIGHT]:
+            case "|" if dy == 0:
                 beams.append(move(UP))
                 beams.append(move(DOWN))
             case "/":
-                beams.append(move(-direction.swapped))
+                beams.append(move((-dy, -dx)))
             case "\\":
-                beams.append(move(direction.swapped))
+                beams.append(move((dy, dx)))
             case _:
-                beams.append(move(direction))
+                beams.append(move((dx, dy)))
 
     return len(energized)
 
@@ -56,25 +69,25 @@ def part_one(file: TextIO) -> int:
     """
     Solve part one of the puzzle.
     """
-    grid = parse_grid(line.strip() for line in file)
-    top_left, _ = bounding_box(grid.keys())
-    return energize(grid, top_left, RIGHT)
+    grid = list(line.strip() for line in file)
+    return energize(grid, (0, 0), RIGHT)
 
 
 def part_two(file: TextIO) -> int:
     """
     Solve part two of the puzzle.
     """
-    grid = parse_grid(line.strip() for line in file)
-    (min_x, min_y), (max_x, max_y) = bounding_box(grid.keys())
+    grid = list(line.strip() for line in file)
+    max_x = len(grid[0]) - 1
+    max_y = len(grid)
     start_options = []
-    for x in range(min_x, max_x + 1):
-        start_options.append((XY(x, min_y), DOWN))
-        start_options.append((XY(x, max_y), UP))
+    for x in range(max_x + 1):
+        start_options.append(((x, 0), DOWN))
+        start_options.append(((x, max_y), UP))
 
-    for y in range(min_y, max_y + 1):
-        start_options.append((XY(min_x, y), RIGHT))
-        start_options.append((XY(max_x, y), LEFT))
+    for y in range(max_y + 1):
+        start_options.append(((0, y), RIGHT))
+        start_options.append(((max_x, y), LEFT))
 
     return max(energize(grid, start_pos, start_dir) for start_pos, start_dir in start_options)
 
