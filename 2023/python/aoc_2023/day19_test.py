@@ -45,4 +45,4 @@ def test_part_two(example: str) -> None:
     """
     Test that checks if the solution for part two works on the example input.
     """
-    assert part_two(io.StringIO(example)) == -1
+    assert part_two(io.StringIO(example)) == 167409079868000
