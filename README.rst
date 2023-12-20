@@ -48,7 +48,7 @@ Overview
     16;`The Floor Will Be Lava <https://adventofcode.com/2023/day/16>`_;⭐️⭐;`Python </2023/python/aoc_2023/day16.py>`_
     17;`Clumsy Crucible <https://adventofcode.com/2023/day/17>`_;⭐️⭐;`Python </2023/python/aoc_2023/day17.py>`_
     18;`Lavaduct Lagoon <https://adventofcode.com/2023/day/18>`_;⭐️⭐;`Python </2023/python/aoc_2023/day18.py>`_
-    19;;;
+    19;`Aplenty <https://adventofcode.com/2023/day/19>`_;⭐️;`Python </2023/python/aoc_2023/day19.py>`_
     20;;;
     21;;;
     22;;;
