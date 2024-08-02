@@ -28,8 +28,8 @@ GEM
     regexp_parser (2.8.2)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
+    rexml (3.3.3)
+      strscan
     rubocop (1.57.0)
       base64 (~> 0.1.1)
       json (~> 2.3)
