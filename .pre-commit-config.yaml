@@ -15,3 +15,8 @@ repos:
         language: system
         types: [file]
         files: \.v$
+      - id: gofmt
+        name: format .go files
+        entry: go fmt
+        language: system
+        types: [go]
