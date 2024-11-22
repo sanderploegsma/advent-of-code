@@ -16,7 +16,12 @@ def parse(file: TextIO) -> tuple[str, dict[str, tuple[str, str]]]:
     return instructions, nodes
 
 
-def find_distance(instructions: str, nodes: dict[str, tuple[str, str]], start: str, is_end: Callable[[str], bool]):
+def find_distance(
+    instructions: str,
+    nodes: dict[str, tuple[str, str]],
+    start: str,
+    is_end: Callable[[str], bool],
+):
     current = start
     i = 0
     while not is_end(current):
@@ -38,7 +43,10 @@ def part_one(file: TextIO) -> int:
 def part_two(file: TextIO) -> int:
     instructions, nodes = parse(file)
     starting_nodes = list(filter(lambda n: n[-1] == "A", nodes.keys()))
-    distances = list(find_distance(instructions, nodes, node, lambda n: n[-1] == "Z") for node in starting_nodes)
+    distances = list(
+        find_distance(instructions, nodes, node, lambda n: n[-1] == "Z")
+        for node in starting_nodes
+    )
 
     return math.lcm(*distances)
 

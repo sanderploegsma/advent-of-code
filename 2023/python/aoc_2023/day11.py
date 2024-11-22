@@ -24,8 +24,12 @@ def sum_distances(grid: Grid, offset: int) -> int:
             row_offset += offset - 1
         rows.append(row_offset)
 
-    expanded = {(p.real + columns[int(p.real)], p.imag + rows[int(p.imag)]) for p in grid.keys()}
-    return sum(abs(x1 - x2) + abs(y1 - y2) for (x1, y1), (x2, y2) in combinations(expanded, 2))
+    expanded = {
+        (p.real + columns[int(p.real)], p.imag + rows[int(p.imag)]) for p in grid.keys()
+    }
+    return sum(
+        abs(x1 - x2) + abs(y1 - y2) for (x1, y1), (x2, y2) in combinations(expanded, 2)
+    )
 
 
 def part_one(file: TextIO) -> int:

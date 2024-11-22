@@ -21,7 +21,10 @@ def calculate_area(directions: list[complex]):
         trench.append(trench[-1] + direction)
 
     area_edges = sum(abs(d.real + d.imag) for d in directions)
-    shoelace_area = abs(sum(p1.real * p2.imag - p2.real * p1.imag for p1, p2 in pairwise(trench))) // 2
+    shoelace_area = (
+        abs(sum(p1.real * p2.imag - p2.real * p1.imag for p1, p2 in pairwise(trench)))
+        // 2
+    )
     area_interior = shoelace_area - area_edges // 2 + 1
     return int(area_interior + area_edges)
 

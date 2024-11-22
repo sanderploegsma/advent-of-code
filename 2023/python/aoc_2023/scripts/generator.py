@@ -18,7 +18,9 @@ def generate(**kwargs) -> None:
     env = Environment(autoescape=False, optimized=False)
 
     def generate_file(template_name: str, output_name: str):
-        with open(os.path.join(TEMPLATE_DIR, template_name), "r", encoding="utf-8") as f:
+        with open(
+            os.path.join(TEMPLATE_DIR, template_name), "r", encoding="utf-8"
+        ) as f:
             template = env.from_string(f.read())
 
         with open(os.path.join(OUTPUT_DIR, output_name), "x", encoding="utf-8") as f:

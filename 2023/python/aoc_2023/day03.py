@@ -16,7 +16,9 @@ def is_gear(s: str) -> bool:
 
 
 def solve(rows: list[str]) -> tuple[list[int], list[tuple[int, int]]]:
-    def get_neighbours(row_nr: int, col_nr_start: int, col_nr_end: int) -> list[tuple[int, int]]:
+    def get_neighbours(
+        row_nr: int, col_nr_start: int, col_nr_end: int
+    ) -> list[tuple[int, int]]:
         left = max(0, col_nr_start - 1)
         right = min(num_cols - 1, col_nr_end + 1)
 
@@ -59,7 +61,9 @@ def solve(rows: list[str]) -> tuple[list[int], list[tuple[int, int]]]:
                     else:
                         part_numbers_per_gear[cell].append(number)
 
-    return part_numbers, list((xs[0], xs[1]) for xs in part_numbers_per_gear.values() if len(xs) == 2)
+    return part_numbers, list(
+        (xs[0], xs[1]) for xs in part_numbers_per_gear.values() if len(xs) == 2
+    )
 
 
 def part_one(file: TextIO) -> int:

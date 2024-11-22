@@ -7,7 +7,9 @@ from queue import PriorityQueue
 from typing import TextIO
 
 
-def minimize_heat_loss(grid: list[str], min_path_length: int, max_path_length: int) -> int:
+def minimize_heat_loss(
+    grid: list[str], min_path_length: int, max_path_length: int
+) -> int:
     """
     Finds the path through the grid that minimizes the total heat loss.
 

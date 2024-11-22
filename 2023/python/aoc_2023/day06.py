@@ -8,8 +8,8 @@ INPUT_TWO = 45977295, 305106211101695
 
 def solve_quadratic(a: float, b: float, c: float) -> tuple[float, float]:
     """Solve the quadratic formula ax^2 + bx + c = 0."""
-    d = b ** 2 - 4 * a * c
-    return (-b - d ** 0.5) / (2 * a), (-b + d ** 0.5) / (2 * a)
+    d = b**2 - 4 * a * c
+    return (-b - d**0.5) / (2 * a), (-b + d**0.5) / (2 * a)
 
 
 def winning_charge_times(race: tuple[int, int]) -> range:

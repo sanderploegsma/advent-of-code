@@ -43,7 +43,9 @@ def part_two(file: TextIO) -> int:
                 boxes[i].append(step)
 
     def box_value(box: int) -> int:
-        return (box + 1) * sum((i + 1) * int(item[-1]) for i, item in enumerate(boxes[box]))
+        return (box + 1) * sum(
+            (i + 1) * int(item[-1]) for i, item in enumerate(boxes[box])
+        )
 
     return sum(map(box_value, boxes.keys()))
 

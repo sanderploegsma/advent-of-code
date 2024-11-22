@@ -17,12 +17,16 @@ CYCLES = 1_000_000_000
 def tilt(grid: Grid, direction: complex) -> Grid:
     tilted = Grid({p: v for p, v in grid.items() if v == CUBE_ROCK})
 
-    for p in sorted((p for p, v in grid.items() if v == ROUND_ROCK),
-                    key=lambda pos: pos.real if direction in [EAST, WEST] else pos.imag,
-                    reverse=direction in [SOUTH, EAST]):
-        while ((next_pos := p + direction) not in tilted and
-               0 <= next_pos.real < grid.width and
-               0 <= next_pos.imag < grid.height):
+    for p in sorted(
+        (p for p, v in grid.items() if v == ROUND_ROCK),
+        key=lambda pos: pos.real if direction in [EAST, WEST] else pos.imag,
+        reverse=direction in [SOUTH, EAST],
+    ):
+        while (
+            (next_pos := p + direction) not in tilted
+            and 0 <= next_pos.real < grid.width
+            and 0 <= next_pos.imag < grid.height
+        ):
             p = next_pos
 
         tilted[p] = ROUND_ROCK

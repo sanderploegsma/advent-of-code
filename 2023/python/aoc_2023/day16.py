@@ -77,7 +77,9 @@ def part_two(file: TextIO) -> int:
         start_options.append((complex(0, y), EAST))
         start_options.append((complex(grid.width - 1, y), WEST))
 
-    return max(energize(grid, start_pos, start_dir) for start_pos, start_dir in start_options)
+    return max(
+        energize(grid, start_pos, start_dir) for start_pos, start_dir in start_options
+    )
 
 
 def main():

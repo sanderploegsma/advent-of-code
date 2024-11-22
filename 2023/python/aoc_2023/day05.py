@@ -12,7 +12,9 @@ def parse_transformation(block: str) -> list[F]:
     mapping = []
     for line in block.splitlines()[1:]:
         start_dst, start_src, length = [int(x) for x in line.split(" ")]
-        mapping.append(((start_dst, start_dst + length - 1), (start_src, start_src + length - 1)))
+        mapping.append(
+            ((start_dst, start_dst + length - 1), (start_src, start_src + length - 1))
+        )
 
     def translate(value: int) -> int:
         for (start_dst, _), (start_src, end_src) in mapping:

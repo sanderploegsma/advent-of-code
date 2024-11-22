@@ -31,18 +31,23 @@ class Grid(dict):
             complex(0, self.height - 1),
         )
 
-    def get_neighbors(self, point: complex, neighbors: tuple[complex, ...] = NEIGHBORS_4):
+    def get_neighbors(
+        self, point: complex, neighbors: tuple[complex, ...] = NEIGHBORS_4
+    ):
         for n in neighbors:
             other = point + n
             if other in self:
                 yield other
 
     def draw(self, whitespace: str = "."):
-        return "\n".join([
-            "".join([
-                self.get(complex(x, y), whitespace) for x in range(self.width)
-            ]) for y in range(self.height)
-        ])
+        return "\n".join(
+            [
+                "".join(
+                    [self.get(complex(x, y), whitespace) for x in range(self.width)]
+                )
+                for y in range(self.height)
+            ]
+        )
 
     @classmethod
     def from_int_grid(cls, grid: Iterable[str]):

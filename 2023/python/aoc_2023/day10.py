@@ -27,7 +27,9 @@ DIRECTIONS = {
 
 def find_loop(grid: Grid) -> list[complex]:
     start = next(coord for coord, cell in grid.items() if cell == "S")
-    direction = next(d for d, s in START_DIRECTIONS.items() if grid.get(start + d, "?") in s)
+    direction = next(
+        d for d, s in START_DIRECTIONS.items() if grid.get(start + d, "?") in s
+    )
 
     position = start + direction
     loop = [start]
@@ -49,7 +51,15 @@ def part_one(file: TextIO) -> int:
 def part_two(file: TextIO) -> int:
     grid = Grid.from_ascii_grid(file)
     loop = find_loop(grid)
-    area = abs(sum(p1.real * p2.imag - p2.real * p1.imag for p1, p2 in pairwise([*loop, loop[0]]))) // 2
+    area = (
+        abs(
+            sum(
+                p1.real * p2.imag - p2.real * p1.imag
+                for p1, p2 in pairwise([*loop, loop[0]])
+            )
+        )
+        // 2
+    )
     return area - len(loop) // 2 + 1
 
 

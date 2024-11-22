@@ -30,7 +30,10 @@ def parse_rules(rules: str):
         name, conditions, default = RULE_PATTERN.match(rule).groups()
         return name, parse_conditions(conditions) + [(None, default)]
 
-    return {rule: conditions for rule, conditions in list(map(parse_rule, rules.splitlines()))}
+    return {
+        rule: conditions
+        for rule, conditions in list(map(parse_rule, rules.splitlines()))
+    }
 
 
 def parse_parts(parts: str) -> list[dict[str, int]]:
@@ -115,7 +118,9 @@ def part_two(file: TextIO) -> int:
 
     evaluate([], rules["in"])
 
-    return sum(math.prod(hi - lo + 1 for lo, hi in interval.values()) for interval in accepted)
+    return sum(
+        math.prod(hi - lo + 1 for lo, hi in interval.values()) for interval in accepted
+    )
 
 
 def main():

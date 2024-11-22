@@ -25,8 +25,12 @@ def part_one(file: TextIO) -> int:
 def part_two(file: TextIO) -> int:
     def sort_hand(hand: list[str]) -> list[int]:
         cards = hand[0]
-        card_counts = collections.Counter(cards.replace("J", "") if cards != "JJJJJ" else cards)
-        max_count = max(card_counts.values(), default=0) + len(cards) - card_counts.total()
+        card_counts = collections.Counter(
+            cards.replace("J", "") if cards != "JJJJJ" else cards
+        )
+        max_count = (
+            max(card_counts.values(), default=0) + len(cards) - card_counts.total()
+        )
         card_values = list(map("J23456789TQKA".find, cards))
 
         return [-len(card_counts), max_count, *card_values]

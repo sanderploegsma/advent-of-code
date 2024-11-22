@@ -31,7 +31,9 @@ class Pattern:
         self._grid[y][x] = "#" if self._grid[y][x] == "." else "."
 
 
-def find_reflection_point(pattern: Pattern, skip: tuple[Optional[int], Optional[int]] = (None, None)):
+def find_reflection_point(
+    pattern: Pattern, skip: tuple[Optional[int], Optional[int]] = (None, None)
+):
     skip_col, skip_row = skip
 
     def find(data: list[str], skip_i: Optional[int] = None):

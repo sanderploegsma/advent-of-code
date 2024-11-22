@@ -15,7 +15,9 @@ def count_options(pattern: str, groups: tuple) -> int:
         return count_options(pattern[1:], groups)
 
     if pattern[0] == "?":
-        return count_options("." + pattern[1:], groups) + count_options("#" + pattern[1:], groups)
+        return count_options("." + pattern[1:], groups) + count_options(
+            "#" + pattern[1:], groups
+        )
 
     # We found a broken spring
     if len(groups) == 0:
@@ -28,16 +30,18 @@ def count_options(pattern: str, groups: tuple) -> int:
 
     if have < want:  # not enough broken springs
         return 0
-    if pattern[want:want + 1] == "#":  # too many broken springs
+    if pattern[want : want + 1] == "#":  # too many broken springs
         return 0
 
     # Exactly enough broken springs. This means that the next character MUST be a ., even if it's a ?
-    return count_options(pattern[want + 1:], groups[1:])
+    return count_options(pattern[want + 1 :], groups[1:])
 
 
 def solve_record(record: str, n: int) -> int:
     pattern, groups = record.split()
-    return count_options("?".join([pattern] * n), tuple([*map(int, groups.split(","))] * n))
+    return count_options(
+        "?".join([pattern] * n), tuple([*map(int, groups.split(","))] * n)
+    )
 
 
 def part_one(file: TextIO) -> int:
