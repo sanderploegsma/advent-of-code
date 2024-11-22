@@ -8,7 +8,7 @@ namespace AdventOfCode2020.Day21
     internal class Solution
     {
         private readonly IReadOnlyCollection<Food> _foods;
-        
+
         public Solution(IEnumerable<string> input)
         {
             _foods = input.Select(ParseFood).ToList();
@@ -25,17 +25,17 @@ namespace AdventOfCode2020.Day21
         public string PartTwo()
         {
             var allergenToPossibleIngredients = GetIngredientsByAllergen();
-            
+
             var ingredientToAllergen = new Dictionary<string, string>();
             while (allergenToPossibleIngredients.Count > 0)
             {
                 foreach (var (allergen, ingredients) in allergenToPossibleIngredients)
                 {
                     var ingredientsLeft = ingredients.Except(ingredientToAllergen.Keys).ToList();
-                    
-                    if (ingredientsLeft.Count != 1) 
+
+                    if (ingredientsLeft.Count != 1)
                         continue;
-                    
+
                     ingredientToAllergen[ingredientsLeft.Single()] = allergen;
                     allergenToPossibleIngredients.Remove(allergen);
                     break;

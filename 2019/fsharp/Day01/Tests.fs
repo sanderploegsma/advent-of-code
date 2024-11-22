@@ -16,7 +16,7 @@ let ``Part One - Examples`` mass expected =
 let ``Part One``() =
     let input = File.ReadLines("Day01\\Input.txt") |> Seq.map int
     Assert.Equal(3361976, sumFuelRequirements input)
-    
+
 [<Theory>]
 [<InlineData(14, 2)>]
 [<InlineData(1969, 966)>]

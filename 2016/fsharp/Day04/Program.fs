@@ -39,7 +39,7 @@ let decryptName room =
         { 1 .. room.SectorID }
         |> Seq.fold (fun c' _ -> shift c') c
 
-    let decryptedName = 
+    let decryptedName =
         room.Name
         |> Seq.map shiftN
         |> Seq.toArray
@@ -47,7 +47,7 @@ let decryptName room =
 
     { room with Name = decryptedName }
 
-let partOne = 
+let partOne =
     List.filter matchesChecksum
     >> List.sumBy (fun room -> room.SectorID)
 
@@ -58,11 +58,11 @@ let partTwo =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.map parseRoom
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %A"
     0

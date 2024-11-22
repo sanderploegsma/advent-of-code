@@ -22,13 +22,13 @@ let run (input: ('T * int) list) (findNeighbours: 'T -> 'T list) =
 
         Map.toList newState
         |> List.iter (fun (point, value) ->
-            let activeNeighbours = findNeighbours point |> List.sumBy getState           
+            let activeNeighbours = findNeighbours point |> List.sumBy getState
             let newValue =
                 match value, activeNeighbours with
                 | 1, n when n = 2 || n = 3 -> 1
                 | 0, 3 -> 1
                 | _, _ -> 0
-            
+
             newState <- newState.Add(point, newValue)
            )
 
@@ -36,7 +36,7 @@ let run (input: ('T * int) list) (findNeighbours: 'T -> 'T list) =
 
     state |> Map.toList |> List.map snd |> List.sum
 
-let partOne input = 
+let partOne input =
     let coordinates = List.map (fun ((x, y), state) -> (x, y, 0), state) input
     run coordinates neighbours3D
 
@@ -46,12 +46,12 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.indexed
         |> Seq.collect parse
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

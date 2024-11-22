@@ -26,7 +26,7 @@ namespace AdventOfCode2020.Day03
         {
             var trees = 0;
             var (x, y) = (0, 0);
-            
+
             while (y < _matrix.Height())
             {
                 if (_matrix[x, y] == Tree)

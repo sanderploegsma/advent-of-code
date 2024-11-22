@@ -10,7 +10,7 @@ enum Command {
 let input = Bundle.module.readLines(fromResource: "Input").map { line -> Command in
     let parts = line.split(separator: " ")
     let value = Int(parts[1])!
-    
+
     switch parts[0] {
     case "down":
         return .down(value)

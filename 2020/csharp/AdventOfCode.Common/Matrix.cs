@@ -21,7 +21,7 @@ namespace AdventOfCode.Common
             Left,
             Right
         }
-        
+
         public static T[,] Create<T>(T[][] data)
         {
             var height = data.Length;
@@ -36,9 +36,9 @@ namespace AdventOfCode.Common
         }
 
         public static int Width<T>(this T[,] matrix) => matrix.GetLength(0);
-        
+
         public static int Height<T>(this T[,] matrix) => matrix.GetLength(1);
-        
+
         public static T[] GetColumn<T>(this T[,] matrix, int x) =>
             Enumerable.Range(0, matrix.Height())
                 .Select(y => matrix[x, y])
@@ -76,7 +76,7 @@ namespace AdventOfCode.Common
             Corner.BottomRight => matrix.BottomEdge().Last(),
             _ => throw new ArgumentOutOfRangeException(nameof(corner), corner, null)
         };
-        
+
         public static IEnumerable<T> GetCorners<T>(this T[,] matrix) =>
             Enum.GetValues(typeof(Corner))
                 .Cast<Corner>()
@@ -86,7 +86,7 @@ namespace AdventOfCode.Common
         {
             var height = matrix.GetLength(1);
             var width = matrix.GetLength(0);
-            
+
             var result = new T[height, width];
             for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)
@@ -101,7 +101,7 @@ namespace AdventOfCode.Common
         {
             var width = matrix.GetLength(0);
             var height = matrix.GetLength(1);
-            
+
             var result = new T[width, height];
             for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)

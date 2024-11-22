@@ -4,15 +4,15 @@ open Common.Math
 open Common.Navigation
 open System.IO
 
-let moveX pos dir x = 
-    List.replicate x dir 
+let moveX pos dir x =
+    List.replicate x dir
     |> List.fold move pos
 
-let rotateDeg dir rot deg = 
-    List.replicate (deg / 90) rot 
+let rotateDeg dir rot deg =
+    List.replicate (deg / 90) rot
     |> List.fold turn dir
 
-let partOne input = 
+let partOne input =
     let rec traverse pos dir instructions =
         match instructions with
         | [] -> pos
@@ -28,7 +28,7 @@ let partOne input =
 
 let partTwo input =
     let rec traverse ship waypoint instructions =
-        let moveShip x = 
+        let moveShip x =
             List.replicate x waypoint
             |> List.fold addCoordinates ship
 
@@ -51,11 +51,11 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map (fun s -> (s.[0], s.Substring(1) |> int))
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

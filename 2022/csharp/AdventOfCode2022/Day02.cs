@@ -107,4 +107,3 @@ public class Day02Test
         Assert.Equal(expected, solution.PartTwo());
     }
 }
-

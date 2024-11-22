@@ -13,7 +13,7 @@ namespace AdventOfCode2020.Day11
         private readonly IDictionary<(int X, int Y), bool> _cells;
         private readonly int _width;
         private readonly int _height;
-        
+
         public Solution(IEnumerable<string> input)
         {
             _cells = ParseCells(input);
@@ -51,7 +51,7 @@ namespace AdventOfCode2020.Day11
                     state[cell] = isActive;
                 }
             } while (newState.Count > 0);
-            
+
             return state.Count(x => x.Value);
         }
 
@@ -85,7 +85,7 @@ namespace AdventOfCode2020.Day11
                     state[cell] = isActive;
                 }
             } while (newState.Count > 0);
-            
+
             return state.Count(x => x.Value);
         }
 

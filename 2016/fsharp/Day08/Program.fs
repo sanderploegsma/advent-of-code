@@ -60,15 +60,15 @@ type Display(width: int, height: int) =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.map parseInstruction
         |> Seq.toList
 
     let display = new Display(50, 6)
     List.iter display.eval input
-    
-    printfn "Part one: %d" (display.voltage()) 
+
+    printfn "Part one: %d" (display.voltage())
     printfn "Part two:\n%s" (display.draw())
 
     0

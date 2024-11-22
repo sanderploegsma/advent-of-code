@@ -66,7 +66,7 @@ namespace AdventOfCode2016.Day04
                 where c != '-'
                 group c by c
                 into grouped
-                orderby grouped.Count() descending, grouped.Key ascending 
+                orderby grouped.Count() descending, grouped.Key ascending
                 select grouped.Key;
 
             return string.Concat(letterCount.Take(5)) == validRoom.Checksum;

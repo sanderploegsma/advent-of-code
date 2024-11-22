@@ -16,7 +16,7 @@ namespace AdventOfCode2016.Day12
             var solution = new Solution(File.ReadLines(file));
             Assert.Equal(expected, solution.PartOne());
         }
-        
+
         [Theory]
         [InlineData(ExampleFile, 42)]
         [InlineData(InputFile, 9227731)]

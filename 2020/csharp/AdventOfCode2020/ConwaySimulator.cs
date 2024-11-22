@@ -7,11 +7,11 @@ namespace AdventOfCode2020
     {
         IEnumerable<IConwayCell> Neighbours { get; }
     }
-    
+
     public class ConwaySimulator
     {
         public delegate bool NextCellState(bool currentState, int activeNeighbourCells);
-        
+
         private readonly int _numberOfIterations;
         private readonly NextCellState _nextCellState;
 

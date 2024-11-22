@@ -14,7 +14,7 @@ namespace AdventOfCode2020.Day17
         public Solution(IReadOnlyList<string> input)
         {
             _simulator = new ConwaySimulator(NumberOfIterations, NextCellState);
-            
+
             var height = input.Count;
             var width = input[0].Length;
             _initialState = new Dictionary<(int, int), bool>();
@@ -39,11 +39,11 @@ namespace AdventOfCode2020.Day17
             var state = _simulator.Simulate(initial);
             return state.Count(x => x.Value);
         }
-        
-        private static bool NextCellState(bool isActive, int activeNeighbours) => 
+
+        private static bool NextCellState(bool isActive, int activeNeighbours) =>
             isActive ? activeNeighbours == 2 || activeNeighbours == 3 : activeNeighbours == 3;
     }
-    
+
     internal class Point3D : IConwayCell
     {
         private readonly Lazy<IEnumerable<IConwayCell>> _neighbours;

@@ -12,9 +12,9 @@ namespace AdventOfCode2020.Day18
 
         private static readonly Func<long, long, long> OperationAdd = (lhs, rhs) => lhs + rhs;
         private static readonly Func<long, long, long> OperationMultiply = (lhs, rhs) => lhs * rhs;
-        
+
         private readonly IReadOnlyCollection<string> _input;
-        
+
         public Solution(IReadOnlyCollection<string> input)
         {
             _input = input;
@@ -50,7 +50,7 @@ namespace AdventOfCode2020.Day18
     internal class EquationSolver
     {
         private const string EquationGroupPattern = @"\([\s\+\*\d]+\)";
-        
+
         private readonly IDictionary<string, Operator> _operators;
 
         public EquationSolver(IDictionary<string, Operator> operators)

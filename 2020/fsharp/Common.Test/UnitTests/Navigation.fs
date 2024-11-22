@@ -13,7 +13,7 @@ module Navigation =
     [<Fact>]
     let ``Navigate rotations`` () =
         let rotations = [(5, Right); (3, Left); (2, Left); (6, Left); (4, Right)]
-        let takeSteps (position, direction) (steps, rotation) = 
+        let takeSteps (position, direction) (steps, rotation) =
             let newPosition = List.replicate steps direction |> List.fold move position
             let newDirection = turn direction rotation
             (newPosition, newDirection)

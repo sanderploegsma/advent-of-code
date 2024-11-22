@@ -9,7 +9,7 @@ let partOne =
     >> Seq.sum
 
 let partTwo input =
-    let (pos, _) = 
+    let (pos, _) =
         input
         |> Seq.map parse
         |> Seq.indexed
@@ -19,7 +19,7 @@ let partTwo input =
 [<EntryPoint>]
 let main argv =
     let input = File.ReadAllText("Input.txt")
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

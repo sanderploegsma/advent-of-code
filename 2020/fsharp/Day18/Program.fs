@@ -48,10 +48,10 @@ let partTwo =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

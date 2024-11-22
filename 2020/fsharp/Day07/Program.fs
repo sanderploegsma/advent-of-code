@@ -13,9 +13,9 @@ let parseRule (rule: string) =
     let parseChildSegment (segment: string) =
         let parts = segment.Split(" ", StringSplitOptions.RemoveEmptyEntries)
         { Count = int parts.[0]; Color = parts.[1] + parts.[2] }
-    
+
     let parentAndChildren = rule.Split(" contain ", StringSplitOptions.RemoveEmptyEntries)
-    let children = 
+    let children =
         match parentAndChildren.[1] with
         | "no other bags." -> []
         | x -> x.Split(", ") |> Array.map parseChildSegment |> Array.toList
@@ -40,7 +40,7 @@ let rec containsCount color rules =
             child.Count + (child.Count * containsCount child.Color rules)
         rule.Children |> List.sumBy childContainsCount
 
-let partOne rules = 
+let partOne rules =
     canContain "shinygold" rules []
     |> List.distinct
     |> List.length
@@ -49,11 +49,11 @@ let partTwo rules = containsCount "shinygold" rules
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map parseRule
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

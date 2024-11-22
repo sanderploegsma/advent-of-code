@@ -18,6 +18,5 @@ let main argv =
 
     input |> sumAdjacent 1 |> printfn "Part one: %d"
     input |> sumAdjacent middle |> printfn "Part two: %d"
-    
-    0 // return an integer exit code
 
+    0 // return an integer exit code

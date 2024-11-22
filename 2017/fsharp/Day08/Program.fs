@@ -40,7 +40,7 @@ let parseInstruction (input: string) =
     let condition = parseCondition parts.[4] parts.[5] (int parts.[6])
     (operation, condition)
 
-let maxRegisterValue = 
+let maxRegisterValue =
     Map.toSeq
     >> Seq.map (fun (_, v) -> v)
     >> Seq.max
@@ -48,7 +48,7 @@ let maxRegisterValue =
 let rec eval (instructions: List<Instruction>) (memory: Map<Register, int>) maxUsedMemory =
     let getValue register =
         if memory.ContainsKey(register) then memory.Item(register) else 0
-    
+
     let isSatisfied condition =
         match condition with
         | EqualTo (register, value) -> (getValue register) = value

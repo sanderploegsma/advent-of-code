@@ -5,9 +5,9 @@ module RegularExpressions =
     open FsUnit.Xunit
     open Xunit
 
-    type Type = 
-        | String of string 
-        | Number of int 
+    type Type =
+        | String of string
+        | Number of int
         | Boolean of bool
 
     [<Fact>]

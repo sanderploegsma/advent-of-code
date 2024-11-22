@@ -43,7 +43,7 @@ let partTwo input = decompressV2 input
 [<EntryPoint>]
 let main argv =
     let input = File.ReadAllText("Input.txt")
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

@@ -34,7 +34,7 @@ namespace AdventOfCode2016.Day09
             yield return new object[] {"X(8x2)(3x3)ABCY", 18L};
             yield return new object[] {File.ReadAllText(InputFile), 70186L};
         }
-        
+
         public static IEnumerable<object[]> PartTwoData()
         {
             yield return new object[] {"(3x3)XYZ", 9L};

@@ -6,7 +6,7 @@ namespace AdventOfCode2016.Day05
     internal class Solution
     {
         private const int PasswordLength = 8;
-        
+
         private readonly string _input;
 
         public Solution(string input)
@@ -28,7 +28,7 @@ namespace AdventOfCode2016.Day05
                 {
                     password += hash[5];
                 }
-                
+
                 i++;
             }
 
@@ -54,7 +54,7 @@ namespace AdventOfCode2016.Day05
                         password[position] = hash[6];
                     }
                 }
-                
+
                 i++;
             }
 

@@ -8,10 +8,10 @@ namespace AdventOfCode2020.Day13
     internal class Solution
     {
         private const string OutOfService = "x";
-        
+
         private readonly long _timestamp;
         private readonly (int Offset, int Id)[] _buses;
-        
+
         public Solution(IReadOnlyList<string> input)
         {
             _timestamp = Convert.ToInt64(input[0]);
@@ -30,7 +30,7 @@ namespace AdventOfCode2020.Day13
                 orderby time
                 select bus.Id * time;
 
-            return times.First(); 
+            return times.First();
         }
 
         public long PartTwo()
@@ -40,7 +40,7 @@ namespace AdventOfCode2020.Day13
             return ChineseRemainderTheorem.Solve(busIds, offsets);
         }
     }
-    
+
     /// <summary>
     /// Source: https://rosettacode.org/wiki/Chinese_remainder_theorem#C.23
     /// </summary>
@@ -57,7 +57,7 @@ namespace AdventOfCode2020.Day13
             }
             return sm % prod;
         }
- 
+
         private static long ModularMultiplicativeInverse(long a, long mod)
         {
             var b = a % mod;

@@ -4,7 +4,7 @@ open System.IO
 
 type Instruction = Up | Down | Left | Right
 
-let parseInstruction instruction = 
+let parseInstruction instruction =
     match instruction with
     | 'U' -> Up
     | 'D' -> Down
@@ -43,19 +43,19 @@ let findCode instructions moveFn =
         let digit = moveFn state sequence
         (digit, digit)
 
-    let (digits, _) = 
-        instructions 
+    let (digits, _) =
+        instructions
         |> List.mapFold getDigit 5
 
     digits
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map (Seq.map parseInstruction >> Seq.toList)
         |> Seq.toList
-    
+
     printfn "Part one: %A" (findCode input move)
     printfn "Part two: %A" (findCode input move2)
     0 // return an integer exit code

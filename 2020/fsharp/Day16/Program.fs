@@ -6,27 +6,27 @@ type Range = int * int
 type Rule = { Field: string; Range1: Range; Range2: Range }
 
 let parseRule (line: string) =
-    let parseRange (range: string) = 
+    let parseRange (range: string) =
         range.Split('-')
         |> fun s -> (int s.[0], int s.[1])
 
-    let field :: ranges :: _ = 
+    let field :: ranges :: _ =
         line.Split(':')
         |> Array.toList
 
-    let range1 :: range2 :: _ = 
-        ranges.Trim().Split(" or ") 
-        |> Array.map parseRange 
-        |> Array.toList 
+    let range1 :: range2 :: _ =
+        ranges.Trim().Split(" or ")
+        |> Array.map parseRange
+        |> Array.toList
 
-    { 
+    {
         Field = field
         Range1 = range1
-        Range2 = range2 
+        Range2 = range2
     }
 
-let parseTicket (line: string) = 
-    line.Split(',') 
+let parseTicket (line: string) =
+    line.Split(',')
     |> Array.map int
     |> Array.toList
 
@@ -44,7 +44,7 @@ let matchRulesWithTickets rules tickets =
                 Map.toList cols
                 |> List.filter (fun (_, col) -> fitsCol rule col)
                 |> List.map fst
-               
+
             let (rule, matches) =
                 rules
                 |> List.map (fun rule -> (rule, fitsCols rule))
@@ -57,7 +57,7 @@ let matchRulesWithTickets rules tickets =
     let cols = List.transpose tickets |> List.indexed |> Map.ofList
     resolve rules cols Map.empty |> Map.toList
 
-let partOne rules tickets = 
+let partOne rules tickets =
     tickets
     |> List.collect (List.filter (isInvalidTicketValue rules))
     |> List.sum
@@ -73,14 +73,14 @@ let partTwo rules tickets (ticket: int list) =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.toList
 
     let rules = List.take 20 input |> List.map parseRule
     let ticket = parseTicket input.[22]
     let tickets = List.skip 25 input |> List.map parseTicket
-        
+
     partOne rules tickets |> printfn "Part one: %d"
     partTwo rules tickets ticket |> printfn "Part two: %d"
     0

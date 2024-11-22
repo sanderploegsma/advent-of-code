@@ -23,7 +23,7 @@ let (|Regex|_|) pattern input =
 
 let parse (line: string) =
     let parseGate gate =
-        match gate with 
+        match gate with
         | Regex @"^([a-z]+)$" [a] -> Signal a
         | Regex @"^(\d+)$" [a] -> SignalValue (int16 a)
         | Regex @"^([a-z]+) OR ([a-z]+)$" [a; b] -> Or (a, b)
@@ -51,21 +51,21 @@ let rec resolve identifier gates (cache: byref<Map<string, int16>>) =
             | LeftShift (a, shift) -> (resolve a gates &cache) <<< shift
             | RightShift (a, shift) -> (resolve a gates &cache) >>> shift
             | Not a -> ~~~ (resolve a gates &cache)
-        
-        cache <- cache.Add(identifier, value) 
+
+        cache <- cache.Add(identifier, value)
         value
 
-let solve input = 
+let solve input =
     let mutable cache = Map.empty
     resolve "a" input &cache
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map parse
         |> Seq.toList
-        
+
     let signalA = solve input
     signalA |> printfn "Part one: %d"
 

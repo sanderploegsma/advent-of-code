@@ -8,7 +8,7 @@ namespace AdventOfCode2020.Day06
     internal class Solution
     {
         private readonly IReadOnlyCollection<IReadOnlyCollection<ISet<char>>> _groups;
-        
+
         public Solution(string input)
         {
             _groups = input

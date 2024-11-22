@@ -25,7 +25,7 @@ internal class Day13
     {
         var dividers = new[] { "[[2]]", "[[6]]" };
         var comparer = Comparer<string>.Create((left, right) => IsCorrectlyOrdered(left, right) ? -1 : 1);
-        
+
         return _input
             .Concat(dividers)
             .Order(comparer)

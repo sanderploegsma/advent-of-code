@@ -18,7 +18,7 @@ namespace AdventOfCode2016.Day02
             [new IntVector(0, -1)] = '8',
             [new IntVector(1, -1)] = '9',
         };
-        
+
         private static readonly IDictionary<IntVector, char> Keypad2 = new Dictionary<IntVector, char>
         {
             [new IntVector(0, 2)] = '1',
@@ -35,7 +35,7 @@ namespace AdventOfCode2016.Day02
             [new IntVector(1, -1)] = 'C',
             [new IntVector(0, -2)] = 'D',
         };
-        
+
         private readonly IReadOnlyCollection<IEnumerable<Direction>> _instructions;
 
         public Solution(IEnumerable<string> input)

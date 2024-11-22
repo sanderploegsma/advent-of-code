@@ -8,7 +8,7 @@ let parse (line: string) =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map parse
         |> Seq.toList

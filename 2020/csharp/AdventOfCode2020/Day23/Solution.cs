@@ -7,7 +7,7 @@ namespace AdventOfCode2020.Day23
     internal class Solution
     {
         private readonly IReadOnlyCollection<int> _cups;
-        
+
         public Solution(string input)
         {
             _cups = input.Select(c => (int) char.GetNumericValue(c)).ToList();
@@ -42,7 +42,7 @@ namespace AdventOfCode2020.Day23
         {
             var lowestCup = _cups.Min();
             var highestCup = _cups.Max();
-            
+
             var pointers = new int[_cups.Count + 1];
             pointers[_cups.Last()] = _cups.First();
             foreach (var (left, right) in _cups.Pairwise())

@@ -13,7 +13,7 @@ namespace AdventOfCode.Common.Test
         {
             Assert.Equal(0, new IntVector(0, 0).ManhattanDistance);
         }
-        
+
         [Property]
         public Property ManhattanDistance_ShouldBeGreaterThanZero_ForAllVectorsExceptOrigin(int x, int y)
         {
@@ -48,7 +48,7 @@ namespace AdventOfCode.Common.Test
             var b = new IntVector(x2, y2);
             return (a + b).Equals(b + a).ToProperty();
         }
-        
+
         [Property]
         public Property RotatingBy360Degrees_ShouldEqualItself(int x, int y)
         {

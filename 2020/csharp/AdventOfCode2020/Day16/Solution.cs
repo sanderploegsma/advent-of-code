@@ -9,7 +9,7 @@ namespace AdventOfCode2020.Day16
         private readonly IReadOnlyCollection<Rule> _rules;
         private readonly Ticket _myTicket;
         private readonly IReadOnlyCollection<Ticket> _otherTickets;
-        
+
         public Solution(IReadOnlyCollection<string> input)
         {
             _rules = input.TakeWhile(line => !string.IsNullOrWhiteSpace(line)).Select(ParseRule).ToList();
@@ -67,7 +67,7 @@ namespace AdventOfCode2020.Day16
                 Range2 = ParseRange(ranges[1]),
             };
         }
-        
+
         private static (int, int) ParseRange(string range)
         {
             var fromAndTo = range.Split('-');

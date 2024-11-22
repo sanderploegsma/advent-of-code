@@ -45,5 +45,5 @@ let main argv =
 
     printfn "Part one: %d" <| partOne input
     printfn "Part two: %A" <| partTwo input
-    
+
     0 // return an integer exit code

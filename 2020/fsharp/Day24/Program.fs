@@ -14,7 +14,7 @@ let step (x, y) direction =
     | NorthWest -> x - 1, y
 
 let rec navigate start directions =
-    match directions with 
+    match directions with
     | [] -> start
     | d :: tail -> navigate (step start d) tail
 
@@ -35,8 +35,8 @@ let partOne tiles =
     |> List.filter (fun (_, count) -> count % 2 = 1)
     |> List.length
 
-let neighbours coordinate = 
-    [East; SouthEast; SouthWest; West; NorthWest; NorthEast] 
+let neighbours coordinate =
+    [East; SouthEast; SouthWest; West; NorthWest; NorthEast]
     |> List.map (step coordinate)
 
 let run (input: ('T * int) list) (findNeighbours: 'T -> 'T list) =
@@ -55,13 +55,13 @@ let run (input: ('T * int) list) (findNeighbours: 'T -> 'T list) =
 
         Map.toList newState
         |> List.iter (fun (point, value) ->
-            let activeNeighbours = findNeighbours point |> List.sumBy getState           
+            let activeNeighbours = findNeighbours point |> List.sumBy getState
             let newValue =
                 match value, activeNeighbours with
                 | 1, n when n = 0 || n > 2 -> 0
                 | 0, 2 -> 1
                 | v, _ -> v
-            
+
             newState <- newState.Add(point, newValue)
            )
 
@@ -70,7 +70,7 @@ let run (input: ('T * int) list) (findNeighbours: 'T -> 'T list) =
     state |> Map.toList
 
 let partTwo tiles =
-    let initial = 
+    let initial =
         tiles
         |> List.map (navigate (0, 0))
         |> List.countBy id
@@ -81,11 +81,11 @@ let partTwo tiles =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.map (Seq.toList >> parse)
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

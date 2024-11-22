@@ -2,10 +2,10 @@
 
 open System.IO
 
-let partOne input = 
+let partOne input =
     let range = (0 :: input) @ [List.max input + 3] |> List.sort
 
-    let differences = 
+    let differences =
         range
         |> List.pairwise
         |> List.map (fun (a, b) -> b - a)
@@ -34,7 +34,7 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map int
         |> Seq.toList

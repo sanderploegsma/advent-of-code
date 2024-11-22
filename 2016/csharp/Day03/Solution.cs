@@ -26,7 +26,7 @@ namespace AdventOfCode2016.Day03
         public int PartOne()
         {
             var valid = 0;
-            
+
             for (var i = 0; i < _data.GetLength(0); i++)
             {
                 if (IsValidTriangle(_data[i, 0], _data[i, 1], _data[i, 2]))
@@ -41,7 +41,7 @@ namespace AdventOfCode2016.Day03
         public int PartTwo()
         {
             var valid = 0;
-            
+
             for (var i = 0; i < _data.GetLength(0); i += 3)
             {
                 for (var j = 0; j < 3; j++)

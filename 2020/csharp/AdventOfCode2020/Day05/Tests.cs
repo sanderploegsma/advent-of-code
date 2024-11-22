@@ -17,14 +17,14 @@ namespace AdventOfCode2020.Day05
             var solution = new Solution(new[] {input});
             Assert.Equal(expected, solution.PartOne());
         }
-        
+
         [Fact]
         public void TestPartOne()
         {
             var solution = new Solution(File.ReadLines(InputFile));
             Assert.Equal(813, solution.PartOne());
         }
-        
+
         [Fact]
         public void TestPartTwo()
         {

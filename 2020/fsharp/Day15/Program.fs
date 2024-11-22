@@ -8,11 +8,11 @@ let nextNumber ((number, turn, numbers): State) =
     | Some previous -> Some ((number, turn), (turn - previous, turn + 1, numbers.Add(number, turn)))
 
 let generate input =
-    let (lastNumber, lastTurn) :: previous = 
-        input 
-        |> List.mapi (fun i n -> (n, i + 1)) 
+    let (lastNumber, lastTurn) :: previous =
+        input
+        |> List.mapi (fun i n -> (n, i + 1))
         |> List.rev
-    
+
     Seq.unfold nextNumber (lastNumber, lastTurn, Map.ofList previous)
 
 let partOne input =
@@ -28,7 +28,7 @@ let partTwo input =
 [<EntryPoint>]
 let main argv =
     let input = [9;6;0;10;18;2;1]
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

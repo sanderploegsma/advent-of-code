@@ -8,7 +8,7 @@ namespace AdventOfCode2016.Day07
     internal class Solution
     {
         private readonly IReadOnlyCollection<IpV7Address> _addresses;
-        
+
         public Solution(IEnumerable<string> input)
         {
             _addresses = input.Select(IpV7Address.Parse).ToList();

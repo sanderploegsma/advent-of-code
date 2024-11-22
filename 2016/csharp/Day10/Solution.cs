@@ -10,7 +10,7 @@ namespace AdventOfCode2016.Day10
         private readonly IDictionary<int, Node> _nodes;
         private readonly IDictionary<int, int> _inputs;
         private readonly IDictionary<int, int> _outputs;
-        
+
         public Solution(IEnumerable<string> input)
         {
             _nodes = new Dictionary<int, Node>();
@@ -42,7 +42,7 @@ namespace AdventOfCode2016.Day10
 
                 throw new InvalidOperationException($"Unable to parse line: {line}");
             }
-            
+
             Solve();
         }
 
@@ -56,7 +56,7 @@ namespace AdventOfCode2016.Day10
             {
                 _nodes[id].Values.Add(value);
             }
-            
+
             var queue = new Queue<int>();
             var (startId, _) = _nodes.Single(x => x.Value.Values.Count == 2);
             queue.Enqueue(startId);
@@ -66,7 +66,7 @@ namespace AdventOfCode2016.Day10
                 var id = queue.Dequeue();
                 var node = _nodes[id];
                 var (lo, hi) = (node.Values.Min(), node.Values.Max());
-               
+
                 if (node.Lo.Type == DestinationType.Bot)
                 {
                     var loNode = _nodes[node.Lo.Id];
@@ -78,7 +78,7 @@ namespace AdventOfCode2016.Day10
                 {
                     _outputs[node.Lo.Id] = lo;
                 }
-                
+
                 if (node.Hi.Type == DestinationType.Bot)
                 {
                     var hiNode = _nodes[node.Hi.Id];
@@ -120,7 +120,7 @@ namespace AdventOfCode2016.Day10
         public Destination Lo { get; }
         public Destination Hi { get; }
     }
-    
+
     internal class Destination
     {
         public DestinationType Type { get; set; }

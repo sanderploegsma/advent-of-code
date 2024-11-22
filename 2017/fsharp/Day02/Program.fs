@@ -21,5 +21,5 @@ let main argv =
 
     input |> Seq.sumBy partOne |> printfn "Part one: %d"
     input |> Seq.sumBy partTwo |> printfn "Part two: %d"
-    
+
     0 // return an integer exit code

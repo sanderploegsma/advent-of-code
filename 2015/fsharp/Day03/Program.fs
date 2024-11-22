@@ -5,14 +5,14 @@ open System.IO
 type Direction = North | East | South | West
 
 let parse c =
-    match c with 
+    match c with
     | '^' -> North
     | '>' -> East
     | 'v' -> South
     | '<' -> West
 
 let nextPosition direction (x, y) =
-    match direction with 
+    match direction with
     | North -> (x, y + 1)
     | East -> (x + 1, y)
     | South -> (x, y - 1)
@@ -41,7 +41,7 @@ let partTwo directions =
 [<EntryPoint>]
 let main argv =
     let input = File.ReadAllText("Input.txt") |> Seq.map parse |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

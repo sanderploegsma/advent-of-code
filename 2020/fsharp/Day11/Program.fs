@@ -17,8 +17,8 @@ let parse (row, line) =
 
 let rec evolve tiles =
     let getNewTile coordinate tile =
-        let surroundingOccupied = 
-            neighbours8 coordinate 
+        let surroundingOccupied =
+            neighbours8 coordinate
             |> List.choose (fun c -> Map.tryFind c tiles)
             |> List.sumBy (fun t -> if t = OccupiedSeat then 1 else 0)
 
@@ -28,9 +28,9 @@ let rec evolve tiles =
         | _ -> tile
 
     let newTiles = tiles |> Map.map getNewTile
-    if newTiles = tiles then 
+    if newTiles = tiles then
         newTiles
-    else 
+    else
         evolve newTiles
 
 let rec evolve2 tiles =
@@ -42,7 +42,7 @@ let rec evolve2 tiles =
             |> Seq.head
 
         let surroundingOccupied =
-            lineOfSight coordinate 
+            lineOfSight coordinate
             |> List.choose firstSeat
             |> List.sumBy (fun t -> if t = OccupiedSeat then 1 else 0)
 
@@ -52,9 +52,9 @@ let rec evolve2 tiles =
         | _ -> tile
 
     let newTiles = tiles |> Map.map getNewTile
-    if newTiles = tiles then 
+    if newTiles = tiles then
         newTiles
-    else 
+    else
         evolve2 newTiles
 
 let partOne input =
@@ -69,12 +69,12 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.indexed
         |> Seq.collect parse
         |> Map.ofSeq
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

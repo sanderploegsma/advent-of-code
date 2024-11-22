@@ -11,8 +11,8 @@ let isValidHeight (height: string) =
         | "in", inch -> inch >= "59" && inch <= "76"
         | unit, _ -> failwithf "Invalid height unit %s" unit
 
-    let containsUnit (h: string) = 
-        ["cm"; "in"] 
+    let containsUnit (h: string) =
+        ["cm"; "in"]
         |> List.exists (fun unit -> h.Contains(unit))
 
     containsUnit height && hasValidValue height

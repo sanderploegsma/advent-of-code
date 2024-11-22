@@ -32,7 +32,7 @@ namespace AdventOfCode2016.Day07
         {
             Assert.Equal(expected, IpV7Address.Parse(address).IsTlsSupported);
         }
-        
+
         [Theory]
         [InlineData("aba[bab]xyz", true)]
         [InlineData("xyx[xyx]xyx", false)]

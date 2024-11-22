@@ -61,7 +61,7 @@ module Navigation =
         }
         |> Seq.filter (fun c' -> c' <> c)
         |> Seq.toList
-        
+
     /// Get the neighbours of a 4D coordinate
     let neighbours4D c =
         let (x, y, z, w) = c
@@ -75,7 +75,7 @@ module Navigation =
         |> Seq.filter (fun c' -> c' <> c)
         |> Seq.toList
 
-    /// Get all coordinates that are within a direct line of sight from the given coordinate    
+    /// Get all coordinates that are within a direct line of sight from the given coordinate
     let lineOfSight (x, y) =
         [
             Seq.initInfinite (fun d -> (x - d, y - d)) |> Seq.skip 1

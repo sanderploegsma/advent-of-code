@@ -18,4 +18,3 @@ module Math =
         let x' = x * cos angle - y * sin angle
         let y' = y * cos angle + x * sin angle
         (x', y')
-

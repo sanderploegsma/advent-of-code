@@ -58,7 +58,7 @@ let bounds points =
 
 let findSmallestRect min max points =
     let movePoints seconds = points |> Seq.map (fun (point: Point) -> point.move seconds)
-    
+
     Seq.init (max - min) ((+) min)
     |> Seq.map (fun seconds -> seconds, movePoints seconds)
     |> Seq.map (fun (seconds, points) -> (seconds, points, bounds points))

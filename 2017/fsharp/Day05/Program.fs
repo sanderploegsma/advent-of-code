@@ -6,7 +6,7 @@ let traverse updateOffset input =
     let mutable memory = List.toArray input
     let mutable position = 0
     let mutable jumps = 0
-    
+
     while position < Array.length memory do
         let offset = memory.[position]
         memory.[position] <- updateOffset offset

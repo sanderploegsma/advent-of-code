@@ -229,9 +229,9 @@ Remove the gaps to form the actual image:
 
 Now, you're ready to search for sea monsters! Because your image is monochrome, a sea monster will look like this:
 
-                      # 
+                      #
     #    ##    ##    ###
-     #  #  #  #  #  #   
+     #  #  #  #  #  #
 
 When looking for this pattern in the image, the spaces can be anything; only the `#` need to match. Also, you might need to rotate or flip your image before it's oriented correctly to find sea monsters. In the above image, after flipping and rotating it to the appropriate orientation, there are two sea monsters (marked with `O`):
 

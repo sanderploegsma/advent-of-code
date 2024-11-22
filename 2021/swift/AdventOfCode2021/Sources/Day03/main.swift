@@ -32,7 +32,7 @@ for position in 0...11 {
     if oxygenGeneratorRating.count > 1 {
         let zeroes = oxygenGeneratorRating.filter { $0[position] == "0" }
         let ones = oxygenGeneratorRating.filter { $0[position] == "1" }
-        
+
         if ones.count >= zeroes.count {
             oxygenGeneratorRating = ones
         } else {
@@ -43,7 +43,7 @@ for position in 0...11 {
     if co2ScrubberRating.count > 1 {
         let zeroes = co2ScrubberRating.filter { $0[position] == "0" }
         let ones = co2ScrubberRating.filter { $0[position] == "1" }
-        
+
         if zeroes.count <= ones.count {
             co2ScrubberRating = zeroes
         } else {

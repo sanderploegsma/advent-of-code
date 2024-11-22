@@ -8,15 +8,15 @@ import (
 )
 
 type specialCharacters struct {
-	BackTick string;
+	BackTick string
 }
 
 var characters = specialCharacters{BackTick: "`"}
 
 type data struct {
-	Day string;
-	Title string;
-	SpecialCharacters specialCharacters;
+	Day               string
+	Title             string
+	SpecialCharacters specialCharacters
 }
 
 var solutionTemplate = template.Must(template.New("solution").Parse(
@@ -96,9 +96,9 @@ func renderTemplate(t *template.Template, target string, data data) error {
 }
 
 func generate(day string, title string) error {
-	data := data {
-		Day: day,
-		Title: title,
+	data := data{
+		Day:               day,
+		Title:             title,
 		SpecialCharacters: characters,
 	}
 
@@ -125,7 +125,7 @@ func generate(day string, title string) error {
 	if err = renderTemplate(inputTemplate, path.Join(dir, "input.txt"), data); err != nil {
 		return fmt.Errorf("failed to generate input file: %v", err)
 	}
-	
+
 	return nil
 }
 

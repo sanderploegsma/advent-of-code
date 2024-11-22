@@ -10,7 +10,7 @@ let parseInstruction (instruction: string) =
     | 'L', steps -> (Left, (int steps))
     | 'R', steps -> (Right, (int steps))
     | _, _ -> failwithf "Invalid instruction %s" instruction
-    
+
 type Position = int * int
 type Direction = North | East | South | West
 type State = Position list * Direction
@@ -34,7 +34,7 @@ let move (state: State) (instruction: Instruction): State =
         | South -> (fun dy -> (x, y - dy))
         | West -> (fun dx -> (x - dx, y))
 
-    let pathSegment = 
+    let pathSegment =
         seq { 1 .. steps }
         |> Seq.map takeStep
         |> Seq.toList
@@ -49,10 +49,10 @@ let traverse instructions =
 let distanceFromOrigin (x, y) = (abs x) + (abs y)
 
 let firstPositionVisitedTwice (path: Position list) =
-    let visitedMoreThanOnce = 
-        path 
-        |> List.countBy id 
-        |> List.filter (fun (_, count) -> count > 1) 
+    let visitedMoreThanOnce =
+        path
+        |> List.countBy id
+        |> List.filter (fun (_, count) -> count > 1)
         |> List.map (fun (p, _) -> p)
 
     let isVisitedMoreThanOnce p = List.contains p visitedMoreThanOnce
@@ -61,11 +61,11 @@ let firstPositionVisitedTwice (path: Position list) =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadAllText("Input.txt").Split(", ") 
-        |> Array.map parseInstruction 
+    let input =
+        File.ReadAllText("Input.txt").Split(", ")
+        |> Array.map parseInstruction
         |> Array.toList
-    
+
     let path = traverse input
     printfn "Part one: %d" (distanceFromOrigin (List.last path))
     printfn "Part two: %d" (distanceFromOrigin (firstPositionVisitedTwice path))

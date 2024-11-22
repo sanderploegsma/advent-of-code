@@ -7,7 +7,7 @@ namespace AdventOfCode2020.Day12
     {
         private const string ExampleFile = "Day12\\Example.txt";
         private const string InputFile = "Day12\\Input.txt";
-        
+
         [Theory]
         [InlineData(ExampleFile, 25)]
         [InlineData(InputFile, 562)]
@@ -16,7 +16,7 @@ namespace AdventOfCode2020.Day12
             var solution = new Solution(File.ReadLines(file));
             Assert.Equal(expected, solution.PartOne());
         }
-        
+
         [Theory]
         [InlineData(ExampleFile, 286)]
         [InlineData(InputFile, 101860)]

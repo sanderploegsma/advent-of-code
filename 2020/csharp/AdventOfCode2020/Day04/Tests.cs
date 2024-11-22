@@ -9,7 +9,7 @@ namespace AdventOfCode2020.Day04
         private const string ExampleInvalidFile = "Day04\\ExampleInvalid.txt";
         private const string ExampleValidFile = "Day04\\ExampleValid.txt";
         private const string InputFile = "Day04\\Input.txt";
-        
+
         [Theory]
         [InlineData(ExamplePartOneFile, 2)]
         [InlineData(InputFile, 237)]
@@ -18,7 +18,7 @@ namespace AdventOfCode2020.Day04
             var solution = new Solution(File.ReadAllText(file));
             Assert.Equal(expected, solution.PartOne());
         }
-        
+
         [Theory]
         [InlineData(ExampleInvalidFile, 0)]
         [InlineData(ExampleValidFile, 4)]

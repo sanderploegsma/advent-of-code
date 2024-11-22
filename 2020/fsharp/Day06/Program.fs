@@ -16,11 +16,11 @@ let partTwo =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadAllText("Input.txt").Split("\r\n\r\n")
         |> Seq.map (fun group -> group.Split("\r\n") |> Array.toList)
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

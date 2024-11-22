@@ -17,11 +17,11 @@
     internal class EncryptionSubject
     {
         private readonly long _loopSize;
-        
+
         public EncryptionSubject(long publicKey)
         {
             PublicKey = publicKey;
-            
+
             _loopSize = 0;
             var result = 1L;
 
@@ -37,7 +37,7 @@
         public long Handshake(EncryptionSubject other)
         {
             var key = 1L;
-            
+
             for (var i = 0; i < _loopSize; i++)
             {
                 key = Transform(key, other.PublicKey);

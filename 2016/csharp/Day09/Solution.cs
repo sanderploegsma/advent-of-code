@@ -14,7 +14,7 @@ namespace AdventOfCode2016.Day09
         {
             _input = input;
         }
-        
+
         public long PartOne()
         {
             var result = "";

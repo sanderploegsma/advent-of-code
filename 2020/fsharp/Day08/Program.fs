@@ -27,18 +27,18 @@ let rec boot (state: State) (instructions: Instruction array): State =
     match nextInstruction state.Pos with
     | None -> state
     | Some (Jump x) when List.contains (state.Pos + x) state.Path -> state
-    | Some (Nop _) -> 
+    | Some (Nop _) ->
         let newState = { state with Pos = state.Pos + 1; Path = state.Pos :: state.Path }
         boot newState instructions
-    | Some (Acc x) -> 
+    | Some (Acc x) ->
         let newState = { state with Acc = state.Acc + x; Pos = state.Pos + 1; Path = state.Pos :: state.Path }
         boot newState instructions
-    | Some (Jump x) -> 
+    | Some (Jump x) ->
         let newState = { state with Pos = state.Pos + x; Path = state.Pos :: state.Path }
         boot newState instructions
-                
 
-let partOne input = 
+
+let partOne input =
     let initialState = { Acc = 0; Pos = 0; Path = [] }
     let finalState = boot initialState input
     finalState.Acc
@@ -53,8 +53,8 @@ let partTwo input =
         copy
 
     let initialState = { Acc = 0; Pos = 0; Path = [] }
-    seq { 0 .. Array.length input - 1 } 
-    |> Seq.map switch 
+    seq { 0 .. Array.length input - 1 }
+    |> Seq.map switch
     |> Seq.map (boot initialState)
     |> Seq.filter (fun state -> state.Pos = Array.length input)
     |> Seq.map (fun state -> state.Acc)
@@ -62,11 +62,11 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.map parse
         |> Seq.toArray
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

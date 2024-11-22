@@ -29,12 +29,12 @@ namespace AdventOfCode2020.Day20
             var masked = FindSeaMonsters(stitched);
             return masked.Pixels.Cast<char>().Count(pixel => pixel == SeaPixel);
         }
-        
+
         private static PuzzlePiece FindSeaMonsters(PuzzlePiece puzzle)
         {
-            //                   # 
+            //                   #
             // #    ##    ##    ###
-            //  #  #  #  #  #  #   
+            //  #  #  #  #  #  #
             var mask = new (int X, int Y)[]
             {
                 (0, 1), (1, 0),
@@ -54,11 +54,11 @@ namespace AdventOfCode2020.Day20
                 for (var y = 0; y < puzzle.Height - maskHeight; y++)
                 {
                     var translatedMask = mask.Select(pixel => new {X = pixel.X + x, Y = pixel.Y + y}).ToList();
-                    if (translatedMask.Any(pixel => orientation.Pixels[pixel.X, pixel.Y] != SeaPixel)) 
+                    if (translatedMask.Any(pixel => orientation.Pixels[pixel.X, pixel.Y] != SeaPixel))
                         continue;
-                    
+
                     foundMonster = true;
-                    foreach (var pixel in translatedMask) 
+                    foreach (var pixel in translatedMask)
                         orientation.Pixels[pixel.X, pixel.Y] = MonsterPixel;
                 }
 
@@ -92,7 +92,7 @@ namespace AdventOfCode2020.Day20
         public int Width => Pixels.Width();
         public int Height => Pixels.Height();
 
-        public bool Fits(PuzzlePiece other) => 
+        public bool Fits(PuzzlePiece other) =>
             Enum.GetValues(typeof(Matrix.Edge))
                 .Cast<Matrix.Edge>()
                 .Any(edge => Fits(other, edge));
@@ -103,7 +103,7 @@ namespace AdventOfCode2020.Day20
             return other.Pixels.GetEdges().Any(theirEdge => myEdge.SequenceEqual(theirEdge) || myEdge.SequenceEqual(theirEdge.Reverse()));
         }
 
-        public PuzzlePiece? ConnectTo(PuzzlePiece other, Matrix.Edge theirEdge, Matrix.Edge myEdge) => 
+        public PuzzlePiece? ConnectTo(PuzzlePiece other, Matrix.Edge theirEdge, Matrix.Edge myEdge) =>
             Orientations().FirstOrDefault(orientation => orientation.Pixels.GetEdge(myEdge).SequenceEqual(other.Pixels.GetEdge(theirEdge)));
 
         public IEnumerable<PuzzlePiece> Orientations()
@@ -121,11 +121,11 @@ namespace AdventOfCode2020.Day20
     internal static class Puzzle
     {
         private static IEnumerable<PuzzlePiece> FindCorners(IReadOnlyCollection<PuzzlePiece> pieces) =>
-            from piece in pieces 
-            let otherPieces = pieces.Where(otherPiece => piece.Id != otherPiece.Id) 
-            where otherPieces.Count(piece.Fits) == 2 
+            from piece in pieces
+            let otherPieces = pieces.Where(otherPiece => piece.Id != otherPiece.Id)
+            where otherPieces.Count(piece.Fits) == 2
             select piece;
-        
+
         private static IEnumerable<PuzzlePiece> FindTopLeft(IReadOnlyCollection<PuzzlePiece> pieces) =>
             from corner in FindCorners(pieces)
             let otherPieces = pieces.Where(otherPiece => corner.Id != otherPiece.Id)
@@ -143,11 +143,11 @@ namespace AdventOfCode2020.Day20
         private static PuzzlePiece[,]? Solve(PuzzlePiece topLeft, IEnumerable<PuzzlePiece> otherPieces)
         {
             var piecesLeft = otherPieces.ToList();
-            
+
             var size = (int) Math.Sqrt(piecesLeft.Count + 1);
             var puzzle = new PuzzlePiece[size, size];
             puzzle[0, 0] = topLeft;
-            
+
             var piece = topLeft;
             var leftEdgePiece = topLeft;
             for (var y = 0; y < size; y++)
@@ -167,7 +167,7 @@ namespace AdventOfCode2020.Day20
 
                     if (leftEdgeFittingPieces.Count == 0)
                         return null;
-                    
+
                     piece = leftEdgeFittingPieces.First();
                     leftEdgePiece = leftEdgeFittingPieces.First();
                 }
@@ -178,10 +178,10 @@ namespace AdventOfCode2020.Day20
                         .Select(p => p.ConnectTo(piece, theirEdge: Matrix.Edge.Right, myEdge: Matrix.Edge.Left))
                         .WhereNotNull()
                         .ToList();
-                    
+
                     if (fittingPieces.Count == 0)
                         return null;
-                    
+
                     piece =  fittingPieces.First();
                 }
 
@@ -197,11 +197,11 @@ namespace AdventOfCode2020.Day20
             // Remove the borders of each piece
             var tileWidth = puzzle[0, 0].Width - 2;
             var tileHeight = puzzle[0, 0].Height - 2;
-            
+
             var width = puzzle.Width() * tileWidth;
             var height = puzzle.Height() * tileHeight;
             var pixels = new char[width, height];
-            
+
             for (var puzzleY = 0; puzzleY < puzzle.Height(); puzzleY++)
             for (var puzzleX = 0; puzzleX < puzzle.Width(); puzzleX++)
             {

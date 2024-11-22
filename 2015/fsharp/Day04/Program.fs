@@ -13,7 +13,7 @@ let hash (input: string): string =
 
 let findHashMatching (pred: string -> bool) (input: string) =
     let toHash num = hash (input + num.ToString())
-    
+
     Seq.initInfinite id
     |> Seq.find (fun num -> pred (toHash num))
 
@@ -23,7 +23,7 @@ let partTwo = findHashMatching (fun h -> h.StartsWith("000000"))
 [<EntryPoint>]
 let main argv =
     let input = "bgvyzdsv"
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

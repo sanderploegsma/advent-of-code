@@ -4,7 +4,7 @@ open System.IO
 
 type Point = Square | Tree
 
-let parsePoint p = 
+let parsePoint p =
     match p with
     | '.' -> Square
     | '#' -> Tree
@@ -34,9 +34,9 @@ let partTwo grid =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("input.txt") 
-        |> Seq.map (Seq.map parsePoint >> Seq.toArray) 
+    let input =
+        File.ReadLines("input.txt")
+        |> Seq.map (Seq.map parsePoint >> Seq.toArray)
         |> Seq.toArray
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"

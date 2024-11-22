@@ -86,7 +86,7 @@ The first round begins with both players drawing the top card of their decks: `9
 
 
     == Post-game results ==
-    Player 1's deck: 
+    Player 1's deck:
     Player 2's deck: 3, 2, 10, 6, 8, 5, 9, 4, 7, 1
 
 Once the game ends, you can calculate the winning player's score. The bottom card in their deck is worth the value of the card multiplied by `1`, the second-from-the-bottom card is worth the value of the card multiplied by `2`, and so on. With 10 cards, the top card is worth the value on the card multiplied by `10`. In this example, the winning player's score is:
@@ -369,7 +369,7 @@ Here is a complete example of gameplay, where Game 1 is the primary game of Recu
 
 
     == Post-game results ==
-    Player 1's deck: 
+    Player 1's deck:
     Player 2's deck: 7, 5, 6, 2, 4, 1, 10, 8, 9, 3
 
 After the game, the winning player's score is calculated from the cards they have in their original deck using the same rules as regular Combat. In the above game, the winning player's score is `291`.

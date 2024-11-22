@@ -17,11 +17,11 @@ let (|Regex|_|) pattern input =
 
 let parse line =
     match line with
-    | Regex @"turn on (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] -> 
+    | Regex @"turn on (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] ->
         TurnOn ((int x1, int y1), (int x2, int y2))
-    | Regex @"turn off (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] -> 
+    | Regex @"turn off (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] ->
         TurnOff ((int x1, int y1), (int x2, int y2))
-    | Regex @"toggle (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] -> 
+    | Regex @"toggle (\d+),(\d+) through (\d+),(\d+)" [x1; y1; x2; y2] ->
         Toggle ((int x1, int y1), (int x2, int y2))
 
 let solve input turnOn turnOff toggle =
@@ -57,11 +57,11 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.map parse
         |> Seq.toList
-        
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

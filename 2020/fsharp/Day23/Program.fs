@@ -40,22 +40,22 @@ let play cups moves =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        "586439172" 
-        |> Seq.map (fun c -> Char.GetNumericValue(c) |> int) 
+    let input =
+        "586439172"
+        |> Seq.map (fun c -> Char.GetNumericValue(c) |> int)
         |> Seq.toList
 
-    play input 100 
-    |> Seq.skip 1 
+    play input 100
+    |> Seq.skip 1
     |> Seq.fold (sprintf "%s%d") ""
     |> printfn "Part one: %s"
 
     let bigInput = input @ Seq.toList (seq { 10 .. 1_000_000 })
-    
+
     play bigInput 10_000_000
-    |> Seq.skip 1 
-    |> Seq.take 2 
-    |> Seq.map int64 
+    |> Seq.skip 1
+    |> Seq.take 2
+    |> Seq.map int64
     |> Seq.fold (*) 1L
     |> printfn "Part two: %d"
 

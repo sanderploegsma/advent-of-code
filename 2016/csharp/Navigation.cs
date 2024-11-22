@@ -26,7 +26,7 @@ namespace AdventOfCode2016
             Direction.West => new IntVector(-1, 0),
             _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
         };
-        
+
         public static Direction Turn(this Direction direction, Rotation rotation, int times = 1) => rotation switch
         {
             Rotation.Left => direction.TurnLeft(times),
@@ -49,7 +49,7 @@ namespace AdventOfCode2016
 
         private static readonly Direction[] RightTurns =
             {Direction.North, Direction.East, Direction.South, Direction.West};
-        
+
         private static int Mod(this int n, int m) => (n % m + m) % m;
     }
 

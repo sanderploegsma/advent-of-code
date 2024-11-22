@@ -6,7 +6,7 @@ namespace AdventOfCode2020.Day15
     public class Tests
     {
         private const string Input = "9,6,0,10,18,2,1";
-            
+
         [Theory]
         [InlineData("0,3,6", 436)]
         [InlineData("1,3,2", 1)]
@@ -21,7 +21,7 @@ namespace AdventOfCode2020.Day15
             var solution = new Solution(input);
             Assert.Equal(expected, solution.PartOne());
         }
-        
+
         [Theory]
         [InlineData("0,3,6", 175594)]
         [InlineData("1,3,2", 2578)]

@@ -9,10 +9,10 @@ namespace AdventOfCode2020.Day22
     {
         private readonly IReadOnlyCollection<int> _player1;
         private readonly IReadOnlyCollection<int> _player2;
-        
+
         public Solution(string input)
         {
-            var players = input.Split(Environment.NewLine + Environment.NewLine); 
+            var players = input.Split(Environment.NewLine + Environment.NewLine);
             _player1 = players[0].Split(Environment.NewLine).Skip(1).Select(int.Parse).ToList();
             _player2 = players[1].Split(Environment.NewLine).Skip(1).Select(int.Parse).ToList();
         }
@@ -49,7 +49,7 @@ namespace AdventOfCode2020.Day22
             {
                 var card1 = _player1.Dequeue();
                 var card2 = _player2.Dequeue();
-                
+
                 if (card1 > card2)
                 {
                     _player1.Enqueue(card1);
@@ -65,7 +65,7 @@ namespace AdventOfCode2020.Day22
             return (_player1, _player2);
         }
     }
-    
+
     internal class CrabRecursiveCombat
     {
         private readonly Queue<int> _player1;
@@ -90,13 +90,13 @@ namespace AdventOfCode2020.Day22
                 {
                     return (_player1.ToArray(), Enumerable.Empty<int>());
                 }
-                
+
                 // Otherwise, this round's cards must be in a new configuration; the players begin the round by each
                 // drawing the top card of their deck as normal
                 var card1 = _player1.Dequeue();
                 var card2 = _player2.Dequeue();
                 var player1Wins = card1 > card2;
-                
+
                 if (card1 <= _player1.Count && card2 <= _player2.Count)
                 {
                     // To play a sub-game of Recursive Combat, each player creates a new deck by making a copy of the
@@ -106,7 +106,7 @@ namespace AdventOfCode2020.Day22
                     var (p1, p2) = subGame.Play();
                     player1Wins = p1.Any();
                 }
-                
+
                 if (player1Wins)
                 {
                     _player1.Enqueue(card1);
@@ -118,10 +118,10 @@ namespace AdventOfCode2020.Day22
                     _player2.Enqueue(card1);
                 }
             }
-            
+
             return (_player1, _player2);
         }
-        
+
         private class SpaceCardDeckEqualityComparer : IEqualityComparer<IEnumerable<int>>
         {
             public bool Equals(IEnumerable<int> x, IEnumerable<int> y) => x.SequenceEqual(y);
@@ -132,7 +132,7 @@ namespace AdventOfCode2020.Day22
 
     internal static class SpaceCardsExtensions
     {
-        public static int Score(this IEnumerable<int> cards) => 
+        public static int Score(this IEnumerable<int> cards) =>
             cards.Reverse().Indexed().Sum(card => (card.Index + 1) * card.Value);
     }
 }

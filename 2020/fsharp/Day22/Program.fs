@@ -34,8 +34,8 @@ let rec play2 player1 player2 =
     playRound player1 player2 []
 
 let score deck =
-    List.rev deck 
-    |> List.mapi (fun i c -> (i+1) * c) 
+    List.rev deck
+    |> List.mapi (fun i c -> (i+1) * c)
     |> List.sum
 
 [<EntryPoint>]
@@ -48,9 +48,9 @@ let main argv =
 
     match play player1 player2 with
     | Player1 deck -> printfn "Part one: Player 1 won with score %d" (score deck)
-    | Player2 deck -> printfn "Part one: Player 2 won with score %d" (score deck) 
+    | Player2 deck -> printfn "Part one: Player 2 won with score %d" (score deck)
 
     match play2 player1 player2 with
     | Player1 deck -> printfn "Part two: Player 1 won with score %d" (score deck)
-    | Player2 deck -> printfn "Part two: Player 2 won with score %d" (score deck) 
+    | Player2 deck -> printfn "Part two: Player 2 won with score %d" (score deck)
     0

@@ -14,7 +14,7 @@ namespace AdventOfCode2020.Day02
         {
             _input = input.ToList();
         }
-        
+
         public int PartOne() => _input.Select(Parser.ParseCharacterCountBasedPolicy).Count(x => x.IsValid);
 
         public int PartTwo() => _input.Select(Parser.ParseCharacterPositionBasedPolicy).Count(x => x.IsValid);
@@ -27,7 +27,7 @@ namespace AdventOfCode2020.Day02
         public static PasswordWithPolicy ParseCharacterCountBasedPolicy(string line)
         {
             var match = Regex.Match(line, Pattern);
-            
+
             return new PasswordWithPolicy
             {
                 Password = match.Groups["password"].Value,
@@ -43,7 +43,7 @@ namespace AdventOfCode2020.Day02
         public static PasswordWithPolicy ParseCharacterPositionBasedPolicy(string line)
         {
             var match = Regex.Match(line, Pattern);
-            
+
             return new PasswordWithPolicy
             {
                 Password = match.Groups["password"].Value,

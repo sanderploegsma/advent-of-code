@@ -40,7 +40,7 @@ type claim struct {
 //
 // A claim like
 //
-// 	#123 @ 3,2: 5x4
+//	#123 @ 3,2: 5x4
 //
 // means that claim ID 123 specifies a rectangle 3 inches from the left edge, 2 inches from the top edge, 5 inches wide, and 4 inches tall.
 func FindOverlaps(input []string) (int, error) {

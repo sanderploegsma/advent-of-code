@@ -6,7 +6,7 @@ namespace AdventOfCode2016.Day01
     public class Tests
     {
         private const string InputFile = @"Day01\Input.txt";
-        
+
         [Theory]
         [InlineData("R2, L3", 5)]
         [InlineData("R2, R2, R2", 2)]

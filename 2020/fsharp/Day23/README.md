@@ -16,42 +16,42 @@ Each move, the crab does the following actions:
 For example, suppose your cup labeling were `389125467`. If the crab were to do merely 10 moves, the following changes would occur:
 
 	-- move 1 --
-	cups: (3) 8  9  1  2  5  4  6  7 
+	cups: (3) 8  9  1  2  5  4  6  7
 	pick up: 8, 9, 1
 	destination: 2
 
 	-- move 2 --
-	cups:  3 (2) 8  9  1  5  4  6  7 
+	cups:  3 (2) 8  9  1  5  4  6  7
 	pick up: 8, 9, 1
 	destination: 7
 
 	-- move 3 --
-	cups:  3  2 (5) 4  6  7  8  9  1 
+	cups:  3  2 (5) 4  6  7  8  9  1
 	pick up: 4, 6, 7
 	destination: 3
 
 	-- move 4 --
-	cups:  7  2  5 (8) 9  1  3  4  6 
+	cups:  7  2  5 (8) 9  1  3  4  6
 	pick up: 9, 1, 3
 	destination: 7
 
 	-- move 5 --
-	cups:  3  2  5  8 (4) 6  7  9  1 
+	cups:  3  2  5  8 (4) 6  7  9  1
 	pick up: 6, 7, 9
 	destination: 3
 
 	-- move 6 --
-	cups:  9  2  5  8  4 (1) 3  6  7 
+	cups:  9  2  5  8  4 (1) 3  6  7
 	pick up: 3, 6, 7
 	destination: 9
 
 	-- move 7 --
-	cups:  7  2  5  8  4  1 (9) 3  6 
+	cups:  7  2  5  8  4  1 (9) 3  6
 	pick up: 3, 6, 7
 	destination: 8
 
 	-- move 8 --
-	cups:  8  3  6  7  4  1  9 (2) 5 
+	cups:  8  3  6  7  4  1  9 (2) 5
 	pick up: 5, 8, 3
 	destination: 1
 
@@ -61,12 +61,12 @@ For example, suppose your cup labeling were `389125467`. If the crab were to do 
 	destination: 5
 
 	-- move 10 --
-	cups: (5) 7  4  1  8  3  9  2  6 
+	cups: (5) 7  4  1  8  3  9  2  6
 	pick up: 7, 4, 1
 	destination: 3
 
 	-- final --
-	cups:  5 (8) 3  7  4  1  9  2  6 
+	cups:  5 (8) 3  7  4  1  9  2  6
 
 In the above example, the cups' values are the labels as they appear moving clockwise around the circle; the current cup is marked with `( )`.
 

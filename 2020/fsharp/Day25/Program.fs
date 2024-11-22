@@ -24,8 +24,8 @@ let findEncryptionKey publicKey loopSize =
 
 [<EntryPoint>]
 let main argv =
-    let pk1, pk2 = 
-        File.ReadLines("Input.txt") 
+    let pk1, pk2 =
+        File.ReadLines("Input.txt")
         |> Seq.map int64
         |> Seq.toList
         |> fun s -> s.[0], s.[1]

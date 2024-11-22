@@ -9,10 +9,10 @@ namespace AdventOfCode2020.Day04
     {
         private const int MinimumBirthYear = 1920;
         private const int MaximumBirthYear = 2002;
-        
+
         private const int MinimumIssueYear = 2010;
         private const int MaximumIssueYear = 2020;
-        
+
         private const int MinimumExpirationYear = 2020;
         private const int MaximumExpirationYear = 2030;
 
@@ -34,7 +34,7 @@ namespace AdventOfCode2020.Day04
 
         public static bool IsValid(Passport passport) => PassportRules.All(rule => rule.IsValid(passport));
     }
-    
+
     internal interface IPassportRule
     {
         bool IsValid(Passport passport);
@@ -50,7 +50,7 @@ namespace AdventOfCode2020.Day04
             _fieldSelector = fieldSelector;
             _predicate = predicate;
         }
-        
+
         public bool IsValid(Passport passport) => _predicate.Invoke(_fieldSelector.Invoke(passport));
     }
 
@@ -59,11 +59,11 @@ namespace AdventOfCode2020.Day04
         private const string HeightUnitCentimeters = "cm";
         private const int MinimumHeightInCentimeters = 150;
         private const int MaximumHeightInCentimeters = 193;
-        
+
         private const string HeightUnitInches = "in";
         private const int MinimumHeightInInches = 59;
         private const int MaximumHeightInInches = 76;
-        
+
         private static readonly string HeightPattern = $"^(?<value>\\d+)(?<unit>{HeightUnitCentimeters}|{HeightUnitInches})$";
 
         public bool IsValid(Passport passport)
@@ -82,14 +82,14 @@ namespace AdventOfCode2020.Day04
 
         private static Predicate<string> IsValidCentimeters =>
             Rules.IsNumberInRange(MinimumHeightInCentimeters, MaximumHeightInCentimeters);
-        
-        private static Predicate<string> IsValidInches => 
+
+        private static Predicate<string> IsValidInches =>
             Rules.IsNumberInRange(MinimumHeightInInches, MaximumHeightInInches);
     }
 
     internal static class Rules
     {
-        public static Predicate<string> IsNumberInRange(int min, int max) => 
+        public static Predicate<string> IsNumberInRange(int min, int max) =>
             number => int.TryParse(number, out var value) && value >= min && value <= max;
 
         public static Predicate<string> MatchesPattern(string pattern) =>

@@ -32,8 +32,8 @@ namespace AdventOfCode2020.Day04
                 return null;
 
             return new Passport(
-                birthYear: fields[FieldBirthYear], 
-                issueYear: fields[FieldIssueYear], 
+                birthYear: fields[FieldBirthYear],
+                issueYear: fields[FieldIssueYear],
                 expirationYear: fields[FieldExpirationYear],
                 height: fields[FieldHeight],
                 hairColor: fields[FieldHairColor],

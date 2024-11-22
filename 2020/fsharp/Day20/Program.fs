@@ -41,7 +41,7 @@ type Tile =
             |> Array.map (Array.take size)
 
         { this with Grid = grid }
-    
+
     /// Rotate the tile 90deg clockwise
     member this.rotate () =
         let grid = Array.mapi (fun i row -> Array.mapi (fun j _ -> this.Grid.[j].[i]) row |> Array.rev) this.Grid
@@ -81,8 +81,8 @@ let findCorners (tiles: Tile list) =
     |> List.filter isCorner
 
 let solve (tiles: Tile list) =
-    let topLeft = 
-        findCorners tiles 
+    let topLeft =
+        findCorners tiles
         |> List.take 1
         |> List.toSeq
         |> Seq.collect (fun tile -> tile.orientations())
@@ -104,7 +104,7 @@ let solve (tiles: Tile list) =
                         previousTile <- newTile
                         previousTileOnLeftEdge <- newTile
                         newTile
-                    | _, _ -> 
+                    | _, _ ->
                         let newTile = List.pick (fun (tile: Tile) -> tile.connectTo previousTile Right Left) tiles'
                         previousTile <- newTile
                         newTile
@@ -117,7 +117,7 @@ let solve (tiles: Tile list) =
 let stitch (puzzle: Tile[][]): Tile =
     let stitchRow (row: Tile[]): char[][] =
         let size = Array.length row.[0].Grid
-        seq { 
+        seq {
             for r in 0 .. size - 1 do
                 row |> Array.map (fun t -> t.Grid.[r]) |> Array.concat
         }
@@ -157,9 +157,9 @@ let partTwo input =
     let puzzle = solve input
     let image = stitch puzzle
 
-    //                   # 
+    //                   #
     // #    ##    ##    ###
-    //  #  #  #  #  #  #   
+    //  #  #  #  #  #  #
     let mask = [
         (0, 1); (1, 0)
         (4, 0); (5, 1); (6, 1); (7, 0)
@@ -172,13 +172,13 @@ let partTwo input =
 
 [<EntryPoint>]
 let main argv =
-    let input = 
-        File.ReadLines("Input.txt") 
+    let input =
+        File.ReadLines("Input.txt")
         |> Seq.filter (fun l -> l <> "")
         |> Seq.chunkBySize 11
         |> Seq.map parse
         |> Seq.toList
- 
+
     partOne input |> printfn "Part one: %d"
     partTwo input |> printfn "Part two: %d"
     0

@@ -10,14 +10,14 @@ namespace AdventOfCode2016.Day08
     {
         private const int ScreenWidth = 50;
         private const int ScreenHeight = 6;
-        
+
         private readonly IReadOnlyCollection<IInstruction> _instructions;
 
         public Solution(IEnumerable<string> input)
         {
             _instructions = input.Select(ParseInstruction).ToList();
         }
-        
+
         public int PartOne()
         {
             var screen = CreateScreen();
@@ -41,7 +41,7 @@ namespace AdventOfCode2016.Day08
         private bool[,] CreateScreen()
         {
             var screen = new bool[ScreenWidth, ScreenHeight];
-            
+
             foreach (var instruction in _instructions)
             {
                 instruction.Invoke(screen);
@@ -53,7 +53,7 @@ namespace AdventOfCode2016.Day08
         private static IInstruction ParseInstruction(string line)
         {
             Match match;
-            
+
             const string rectPattern = @"rect (?<w>\d+)x(?<h>\d+)";
             if (Regex.IsMatch(line, rectPattern))
             {

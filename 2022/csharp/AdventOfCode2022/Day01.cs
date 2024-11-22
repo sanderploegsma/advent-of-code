@@ -13,7 +13,7 @@ internal class Day01
     }
 
     public int PartOne()
-    { 
+    {
         return _data
             .Select(x => x.Sum())
             .Max();

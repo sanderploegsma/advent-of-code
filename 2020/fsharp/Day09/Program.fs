@@ -25,16 +25,16 @@ let rec partTwo number input =
 
     if List.sum seen = number then
         List.min seen + List.max seen
-    else 
+    else
         partTwo number (List.skip 1 input)
 
 [<EntryPoint>]
 let main argv =
-    let input = 
+    let input =
         File.ReadLines("Input.txt")
         |> Seq.map int64
         |> Seq.toList
-        
+
     let found = partOne (List.take 25 input) (List.skip 25 input)
     printfn "Part one: %d" found
     partTwo found input |> printfn "Part two: %d"
