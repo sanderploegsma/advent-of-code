@@ -11,6 +11,7 @@ Overview
     :delim: ;
 
     Year;Participation;Practice
+    `2024`_;`V </2023/v>`_;
     `2023`_;`Python </2023/python>`_;`Ruby </2023/ruby>`_
     `2022`_;`C# </2022/csharp>`_;`Scala </2022/scala>`_, `Elixir </2022/elixir>`_
     `2021`_;`Kotlin </2021/kotlin>`_;`Swift </2021/swift>`_
@@ -20,6 +21,41 @@ Overview
     `2017`_;;`F# </2017/fsharp>`_
     `2016`_;;`F# </2016/fsharp>`_, `C# </2016/csharp>`_
     `2015`_;;`F# </2015/fsharp>`_, `Kotlin </2015/kotlin>`_
+
+2024
+----
+
+.. csv-table::
+    :widths: 10 50 10 30
+    :header-rows: 1
+    :delim: ;
+
+    Day;Name;Stars;Solutions
+    1;;;
+    2;;;
+    3;;;
+    4;;;
+    5;;;
+    6;;;
+    7;;;
+    8;;;
+    9;;;
+    10;;;
+    11;;;
+    12;;;
+    13;;;
+    14;;;
+    15;;;
+    16;;;
+    17;;;
+    18;;;
+    19;;;
+    20;;;
+    21;;;
+    22;;;
+    23;;;
+    24;;;
+    25;;;
 
 2023
 ----
