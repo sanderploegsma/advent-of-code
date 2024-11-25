@@ -12,7 +12,7 @@ Overview
 
     Year;Participation;Practice
     `2024`_;`V </2023/v>`_;
-    `2023`_;`Python </2023/python>`_;`Ruby </2023/ruby>`_
+    `2023`_;`Python </2023/python>`_;`Ruby </2023/ruby>`_, `V </2023/v>`__
     `2022`_;`C# </2022/csharp>`_;`Scala </2022/scala>`_, `Elixir </2022/elixir>`_
     `2021`_;`Kotlin </2021/kotlin>`_;`Swift </2021/swift>`_
     `2020`_;`F# </2020/fsharp>`_;`C# </2020/csharp>`_, `Python </2020/python>`_
@@ -66,7 +66,7 @@ Overview
     :delim: ;
 
     Day;Name;Stars;Solutions
-    1;`Trebuchet?! <https://adventofcode.com/2023/day/1>`_;⭐️⭐️;`Python </2023/python/aoc_2023/day01.py>`_, `Ruby </2023/ruby/day01.rb>`_
+    1;`Trebuchet?! <https://adventofcode.com/2023/day/1>`_;⭐️⭐️;`Python </2023/python/aoc_2023/day01.py>`_, `Ruby </2023/ruby/day01.rb>`_, `V </2023/v/day01.v>`_
     2;`Cube Conundrum <https://adventofcode.com/2023/day/2>`_;⭐️⭐️;`Python </2023/python/aoc_2023/day02.py>`_
     3;`Gear Ratios <https://adventofcode.com/2023/day/3>`_;⭐️⭐️;`Python </2023/python/aoc_2023/day03.py>`_
     4;`Scratchcards <https://adventofcode.com/2023/day/4>`_;⭐️⭐️;`Python </2023/python/aoc_2023/day04.py>`_
