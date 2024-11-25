@@ -1,21 +1,9 @@
 module day_01
 
-import arrays
-import os
-
-const input_path = 'day_01.txt'
-
-@[params]
-struct Config {
-	input ?string
-}
-
-fn part_one(config Config) !int {
-	input := config.input or { os.read_file(input_path)! }
-
+fn part_one(input []string) int {
 	mut result := 0
 
-	for line in input.split_into_lines() {
+	for line in input {
 		digits := line.runes()
 			.map(it.str())
 			.filter(it.is_int())
@@ -27,9 +15,7 @@ fn part_one(config Config) !int {
 	return result
 }
 
-fn part_two(config Config) !int {
-	input := config.input or { os.read_file(input_path)! }
-
+fn part_two(input []string) int {
 	mapping := {
 		'1':     1
 		'one':   1
@@ -53,7 +39,7 @@ fn part_two(config Config) !int {
 
 	mut result := 0
 
-	for line in input.split_into_lines() {
+	for line in input {
 		mut left_idx := line.len
 		mut left_value := 0
 		mut right_idx := -1

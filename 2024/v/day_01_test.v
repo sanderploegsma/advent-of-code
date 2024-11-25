@@ -2,10 +2,14 @@ module day_01
 
 import os
 
-fn test_part_one() ! {
-	assert part_one(input: 'Hello, World!')! == 13
+const input_path = '../input/01.txt'
+
+fn test_part_one_example() {
+	input := 'Hello, World!'
+	assert part_one(input) == 13
 }
 
-fn test_part_two() {
-	assert part_two()! == 28
+fn test_part_one() ! {
+	input := os.read_file(input_path)!
+	assert part_one(input) == 28
 }
