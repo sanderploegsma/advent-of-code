@@ -11,7 +11,7 @@ Overview
     :delim: ;
 
     Year;Participation;Practice
-    `2024`_;`Kotlin </2023/kotlin>`_;
+    `2024`_;`Python </2023/python>`_;
     `2023`_;`Python </2023/python>`_;`Ruby </2023/ruby>`_, `V </2023/v>`__
     `2022`_;`C# </2022/csharp>`_;`Scala </2022/scala>`_, `Elixir </2022/elixir>`_
     `2021`_;`Kotlin </2021/kotlin>`_;`Swift </2021/swift>`_
