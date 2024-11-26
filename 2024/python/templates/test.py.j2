@@ -1,13 +1,14 @@
 """
 Advent of Code 2024, Day {{ day }}: {{ title }}.
+
+See: https://adventofcode.com/2024/day/{{ day }}
 """
 
 import io
-from typing import TextIO
 
 import pytest
 
-from day{{ day }} import part_one, part_two
+from day{{ "%02d" % day }} import part_one, part_two
 
 EXAMPLE = """\
 
