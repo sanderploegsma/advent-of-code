@@ -21,7 +21,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 
 | Day | Name                                      | Stars | Solutions |
 | --- | ----------------------------------------- | ----- | --------- |
-| 1   | [?](https://adventofcode.com/2024/day/1)  |       |           |
+| 1   | [Historian Hysteria](https://adventofcode.com/2024/day/1) | ⭐️⭐️ | [Python](/2024/python/day01.py) |
 | 2   | [?](https://adventofcode.com/2024/day/2)  |       |           |
 | 3   | [?](https://adventofcode.com/2024/day/3)  |       |           |
 | 4   | [?](https://adventofcode.com/2024/day/4)  |       |           |
