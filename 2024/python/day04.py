@@ -15,17 +15,20 @@ def part_one(file: TextIO) -> int:
     Solve part one of the puzzle.
     """
     grid = Grid.from_ascii_grid(file.readlines())
+    target = ("X", "M", "A", "S")
     count = 0
     for p, value in grid.items():
         if value != "X":
             continue
 
         for d in NEIGHBORS_8:
-            if (
+            word = (
+                value,
                 grid.get(p + d),
                 grid.get(p + 2 * d),
                 grid.get(p + 3 * d),
-            ) == ("M", "A", "S"):
+            )
+            if word == target:
                 count += 1
 
     return count
@@ -36,28 +39,25 @@ def part_two(file: TextIO) -> int:
     Solve part two of the puzzle.
     """
     grid = Grid.from_ascii_grid(file.readlines())
+    target = ("M", "A", "S")
     count = 0
     for p, value in grid.items():
         if value != "A":
             continue
 
-        if sorted(
-            [
-                grid.get(p + NORTH_EAST, "Z"),
-                grid.get(p + SOUTH_WEST, "Z"),
-            ]
-        ) != ["M", "S"]:
-            continue
+        tl_br = (
+            grid.get(p + NORTH_WEST),
+            value,
+            grid.get(p + SOUTH_EAST),
+        )
+        tr_bl = (
+            grid.get(p + SOUTH_WEST),
+            value,
+            grid.get(p + NORTH_EAST),
+        )
 
-        if sorted(
-            [
-                grid.get(p + SOUTH_EAST, "Z"),
-                grid.get(p + NORTH_WEST, "Z"),
-            ]
-        ) != ["M", "S"]:
-            continue
-
-        count += 1
+        if target in (tl_br, tl_br[::-1]) and target in (tr_bl, tr_bl[::-1]):
+            count += 1
 
     return count
 
