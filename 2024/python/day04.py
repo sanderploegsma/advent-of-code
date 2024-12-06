@@ -14,7 +14,7 @@ def part_one(file: TextIO) -> int:
     """
     Solve part one of the puzzle.
     """
-    grid = Grid.from_ascii_grid(file.readlines())
+    grid = Grid.from_ascii_grid(file.read())
     target = ("X", "M", "A", "S")
     count = 0
     for p, value in grid.items():
@@ -38,7 +38,7 @@ def part_two(file: TextIO) -> int:
     """
     Solve part two of the puzzle.
     """
-    grid = Grid.from_ascii_grid(file.readlines())
+    grid = Grid.from_ascii_grid(file.read())
     target = ("M", "A", "S")
     count = 0
     for p, value in grid.items():
