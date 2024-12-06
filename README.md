@@ -25,8 +25,8 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 2   | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)  | ⭐️⭐️ | [Python](/2024/python/day02.py) |
 | 3   | [Mull It Over](https://adventofcode.com/2024/day/3)  | ⭐️⭐️ | [Python](/2024/python/day03.py) |
 | 4   | [Ceres Search](https://adventofcode.com/2024/day/4)  | ⭐️⭐️ | [Python](/2024/python/day04.py) |
-| 5   | [?](https://adventofcode.com/2024/day/5)  |       |           |
-| 6   | [?](https://adventofcode.com/2024/day/6)  |       |           |
+| 5   | [Print Queue](https://adventofcode.com/2024/day/5)  | ⭐️⭐️ | [Python](/2024/python/day05.py) |
+| 6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)  | ⭐️⭐️ | [Python](/2024/python/day06.py) |
 | 7   | [?](https://adventofcode.com/2024/day/7)  |       |           |
 | 8   | [?](https://adventofcode.com/2024/day/8)  |       |           |
 | 9   | [?](https://adventofcode.com/2024/day/9)  |       |           |
