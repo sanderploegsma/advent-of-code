@@ -29,7 +29,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)       | ⭐️⭐️ | [Python](/2024/python/day06.py) |
 | 7   | [Bridge Repair](https://adventofcode.com/2024/day/7)         | ⭐️⭐️ | [Python](/2024/python/day07.py) |
 | 8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | ⭐️⭐️ | [Python](/2024/python/day08.py) |
-| 9   | [?](https://adventofcode.com/2024/day/9)                     |        |                                 |
+| 9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | ⭐️⭐️ | [Python](/2024/python/day09.py) |
 | 10  | [?](https://adventofcode.com/2024/day/10)                    |        |                                 |
 | 11  | [?](https://adventofcode.com/2024/day/11)                    |        |                                 |
 | 12  | [?](https://adventofcode.com/2024/day/12)                    |        |                                 |
