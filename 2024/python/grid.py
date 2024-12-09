@@ -61,6 +61,9 @@ class Grid(dict):
             ]
         )
 
+    def is_in_bounds(self, point: complex):
+        return 0 <= point.real < self.width and 0 <= point.imag < self.height
+
     @classmethod
     def from_int_grid(cls, grid: str):
         points = {
