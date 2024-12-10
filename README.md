@@ -30,7 +30,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 7   | [Bridge Repair](https://adventofcode.com/2024/day/7)         | ⭐️⭐️ | [Python](/2024/python/day07.py) |
 | 8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | ⭐️⭐️ | [Python](/2024/python/day08.py) |
 | 9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | ⭐️⭐️ | [Python](/2024/python/day09.py) |
-| 10  | [?](https://adventofcode.com/2024/day/10)                    |        |                                 |
+| 10  | [Hoof It](https://adventofcode.com/2024/day/10)              | ⭐️⭐️ | [Python](/2024/python/day10.py) |
 | 11  | [?](https://adventofcode.com/2024/day/11)                    |        |                                 |
 | 12  | [?](https://adventofcode.com/2024/day/12)                    |        |                                 |
 | 13  | [?](https://adventofcode.com/2024/day/13)                    |        |                                 |
