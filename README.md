@@ -31,7 +31,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | ⭐️⭐️ | [Python](/2024/python/day08.py) |
 | 9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | ⭐️⭐️ | [Python](/2024/python/day09.py) |
 | 10  | [Hoof It](https://adventofcode.com/2024/day/10)              | ⭐️⭐️ | [Python](/2024/python/day10.py) |
-| 11  | [?](https://adventofcode.com/2024/day/11)                    |        |                                 |
+| 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | ⭐️⭐️ | [Python](/2024/python/day11.py) |
 | 12  | [?](https://adventofcode.com/2024/day/12)                    |        |                                 |
 | 13  | [?](https://adventofcode.com/2024/day/13)                    |        |                                 |
 | 14  | [?](https://adventofcode.com/2024/day/14)                    |        |                                 |
