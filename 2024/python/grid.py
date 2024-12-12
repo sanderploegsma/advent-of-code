@@ -55,7 +55,10 @@ class Grid(dict):
         return "\n".join(
             [
                 "".join(
-                    [self.get(complex(x, y), whitespace) for x in range(self.width)]
+                    [
+                        str(self.get(complex(x, y), whitespace))
+                        for x in range(self.width)
+                    ]
                 )
                 for y in range(self.height)
             ]
