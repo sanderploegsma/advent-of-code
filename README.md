@@ -32,7 +32,7 @@ This repository contains my solutions to the yearly [Advent of Code](https://adv
 | 9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | ⭐️⭐️ | [Python](/2024/python/day09.py) |
 | 10  | [Hoof It](https://adventofcode.com/2024/day/10)              | ⭐️⭐️ | [Python](/2024/python/day10.py) |
 | 11  | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | ⭐️⭐️ | [Python](/2024/python/day11.py) |
-| 12  | [?](https://adventofcode.com/2024/day/12)                    |        |                                 |
+| 12  | [Garden Groups](https://adventofcode.com/2024/day/12)        | ⭐️⭐️ | [Python](/2024/python/day12.py) |
 | 13  | [?](https://adventofcode.com/2024/day/13)                    |        |                                 |
 | 14  | [?](https://adventofcode.com/2024/day/14)                    |        |                                 |
 | 15  | [?](https://adventofcode.com/2024/day/15)                    |        |                                 |
