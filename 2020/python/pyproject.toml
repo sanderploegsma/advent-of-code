@@ -10,7 +10,7 @@ python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.3"
+pytest = "^9.0.3"
 ruff = "^0.1.6"
 
 [build-system]
